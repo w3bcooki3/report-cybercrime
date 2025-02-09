@@ -1,0 +1,526 @@
+:root {
+    --dark1: #1C1C1C;
+    --dark2: #454545;
+    --light_white: #F9F9F9;
+    --primary_color: #1351D8;
+    --primary_color2: #4F8DFF;
+    --primary_light: #F3F6FD;
+    --primary_light2: rgb(19 81 216 / 10%);
+    --gray: #D9D9D9;
+    --font_syne: 'Syne', sans-serif;
+    --font_yantramanv: 'Yantramanav', sans-serif;
+    --font_dm: 'DM Sans', sans-serif;
+    --yellow_color: #FFD600;
+}
+
+/* ============================================================== 
+     # Reset Browsers
+=================================================================== */
+
+*,*:before,*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*------------------------*/
+
+.hero-empowerment-area .custom-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -15px;
+}
+
+
+.card {
+    flex-basis: calc(33.33% - 30px);
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 0 15px 30px; 
+}
+
+.card-title {
+    margin-top: 10px; /* Adjust title margin */
+    font-size: 15px; /* Adjust font size for better responsiveness */
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+.card .card-content a {
+    color: #1c1c1ce6;
+    font-size: 15px;
+    text-decoration: none; /* Remove underline from links */
+}
+
+.card img {
+    max-width: 100%;
+    height: auto; 
+}
+
+@media (max-width: 1024px) {
+    .card {
+        flex-basis: calc(50% - 30px);
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex-basis: 100%; /* Cards will take up full width on smaller screens */
+    }
+}
+/*---------- Organization Page -----------*/
+.searchbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.searchbar-form {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.searchbar-form select,
+.searchbar-form input,
+.searchbar-form button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.searchbar-form select {
+    flex-grow: 2;
+    max-width: 100%;
+	color: black;
+}
+
+.searchbar-form input {
+    flex-grow: 5;
+    max-width: 100%;
+}
+
+.searchbar-form button {
+    max-width: 100%;
+    cursor: pointer;
+    background-color: #0800ff;
+    color: #fff;
+	text-align: center;
+}
+
+/* Styles for smaller screens (mobile) */
+@media screen and (max-width: 767px) {
+    .searchbar-form {
+        width: 90%;
+        max-width: 500px;
+        margin-top: 10px;
+    }
+
+    .searchbar-form select,
+    .searchbar-form input,
+    .searchbar-form button {
+        margin: 5px;
+        padding: 10px;
+        font-size: 15px;
+        border: none;
+        border-radius: 2px;
+        outline: none;
+        width: 70%;
+    }
+
+    .searchbar-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+#content {
+	margin-top: 50px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	margin-bottom: 100px;
+    margin-left: 5.5vw;
+    background-color: #F3F6FD;
+    width: 88vw;
+    padding: 4vw;
+    border-radius: 13px;
+}
+
+#resultMessage{
+	color: black;
+    font-size: 1.2vw;
+	margin-left: 95px;
+	margin-bottom: 50px;
+	margin-top: 50px;
+}
+
+
+@media screen and (max-width: 767px) {
+    #resultMessage{
+		width: 100%;
+        font-size: 11px;
+        max-width: 400px;
+        margin-top: 25px;
+		margin-left: 25px;
+	}
+}
+
+@media (min-width: 1920px) {
+    #resultMessage{
+		margin-left: 230px;
+	}
+}
+
+/* Adjust for ultra-wide screens like 4K (3840px and above) */
+@media (min-width: 2560px) {
+    #resultMessage{
+		margin-left: 250px;
+	}
+}
+
+/* Adjust for even larger screens (e.g., 50-inch screens at 4K or 5K resolution) */
+@media (min-width: 3840px) {
+    #resultMessage{
+		margin-left: 280px;
+	}
+}
+
+
+
+
+/*--------Redirection Design ------------*/
+.popup-container {
+    display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	text-align: center;
+	transform: translate(-50%, -50%);
+	background-color: #f9f9f9;
+	border: 5px solid #f3f6fd; 
+	border-radius: 11px;
+	border-width: 25px;
+	padding: 0 30px;
+	padding-bottom: 50px;
+	z-index: 1000;
+	margin-bottom: 100px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.popup-container img {
+    max-width: 200px;
+    margin-bottom: -30px;
+}
+@media screen and (max-width: 768px) {
+    .popup-container{
+		width: 100%;
+		height: auto;
+	}
+}
+
+.popup-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 900;
+}
+
+.popup-container p {
+	color: #1c1c1ce6;
+	font-size: 15px;
+	margin-bottom: 10px;
+}
+
+.popup-container a {
+	color: #003366;
+	text-decoration: underline;
+}
+
+
+
+/* effects for card */
+
+.card {
+	background-repeat: no-repeat;
+	background-position: center 35%;
+	background-size: 30px;
+	background-color: #FFF;
+	box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.05);
+	transition: box-shadow 0.3s ease-out, transform 0.3s ease-out, opacity 0.2s ease-out;
+	transition-delay: 0.1s;
+	overflow: hidden;
+	position: relative;
+	border-radius: 12px;
+	margin-bottom: 30px;
+	transform: translateZ(0);
+  }
+  .card .featured-image {
+	height: 200px;
+	width: 100%;
+	left: 0px;
+    border-radius: 4px;
+	top: 0px;
+  }
+  .card .featured-image img {
+	height: 100%;
+	width: 100%;
+	object-position: center;
+	object-fit: cover;
+	border: 0;
+  }
+  .card .content {
+	padding-bottom: 60px;
+	background: #fff;
+	padding: 20px;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+  }
+  .card .meta {
+	border-top: 1px solid rgba(0, 0, 0, 0.075);
+	display: block;
+	padding: 10px 15px;
+  }
+  .card .meta button{
+	border: 1px solid rgb(20, 190, 220);
+	color:rgb(7, 99, 228)
+  }
+  .card .meta button:hover{
+	color: rgb(244, 243, 243);
+	background:rgb(16, 189, 219)
+  }
+  .card:hover {
+	opacity: 1 !important;
+	box-shadow: rgba(45, 45, 45, 0.05) 0px 2px 2px, rgba(49, 49, 49, 0.05) 0px 4px 4px, rgba(42, 42, 42, 0.05) 0px 8px 8px, rgba(32, 32, 32, 0.05) 0px 16px 16px, rgba(49, 49, 49, 0.05) 0px 32px 32px, rgba(35, 35, 35, 0.05) 0px 64px 64px;
+	transform: translate(0, -4px);
+  }
+  
+
+
+
+/* Learning and edcuation page  */
+
+
+@font-face {
+    font-family: a;
+    src: url(/assets/fonts/SFPRODISPLAYREGULAR.OTF);
+}
+
+.content {
+    display: none; /* Hide all content by default */
+}
+  
+.content.show {
+display: block; /* Show content with the 'show' class */
+}
+
+.category-learn {
+    height: 15vh;
+    width: 100vw;
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+    margin-top: 3vw;
+}
+
+.category-learn .category-button {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-left: 2.8vw;
+}
+
+.category-learn .category-button i {
+    font-size: 1.5vw;
+}
+
+.category-learn .category-button button{
+    border: none;
+    border-radius: 8px;
+    padding: 11px 30px;
+}
+
+
+.service-area {
+    background-color: #F3F6FD;
+}
+  
+
+.service-section-header h5{
+    font-size: 1vw;
+}
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 60px; /* Space between cards */
+    max-width: 100%;
+}
+
+.service-card {
+    width: 100%; /* Each card fills its grid column */
+    padding: 25px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+
+.service-card img {
+    height: 240px;
+    width: 100%;
+    margin-top: -30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+.service-card h3 {
+    font-family: var(--font_yantramanv);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 25px;
+    margin-bottom: 0; 
+    line-height: 1;
+    margin-bottom: 18px;
+}
+.service-card h3 a {
+    color: var(--dark1);
+}
+.service-card p {
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    color: rgb(28 28 28 / 70%);
+}
+
+.service-card .service-badge {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    border-radius: 10px;
+    background: var(--primary_color);
+    color: #ffffff;
+    padding: 10px 19px;
+}
+
+.service-card .card-button {
+    margin-top: 1vw;
+}
+
+
+/* Medium Screens (Tablets) */
+@media (max-width: 1024px) {
+
+    .service-section-header h5{
+        font-size: 2.5vw;
+    }
+
+    .services-list {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    }
+}
+
+/* Small Screens (Mobile) */
+@media (max-width: 768px) {
+    .service-section-header h5{
+        font-size: 2.5vw;
+    }
+
+    .services-list {
+        grid-template-columns: repeat(1, 1fr); /* 1 column */
+    }
+
+    .service-card p {
+        margin-bottom: 0;
+        font-size: 3.5vw;
+        font-weight: 500;
+        line-height: 18px;
+        color: rgb(28 28 28 / 70%);
+    }
+}
+
+@media (max-width: 768px) {
+    .category-learn {
+        margin-left: 0; /* Remove unnecessary left margin */
+        display: flex;
+        justify-content: center; /* Center align the category container */
+    }
+
+    .category-learn .category-button i {
+        font-size: 10px;
+    }
+
+    .category-learn .category-button {
+        text-align: center;
+        margin: 0 auto; /* Center the button container */
+        width: 100%; /* Ensure it fits within the screen */
+        display: flex;
+        flex-wrap: nowrap; /* Wrap buttons properly */
+        justify-content: center;
+        gap: 8px; /* Add spacing between buttons */
+    }
+
+    .category-learn .category-button button {
+        font-size: 8px; /* Use px instead of vw for better consistency */
+        padding: 10px 20px; /* Adjust padding to prevent text overflow */
+        white-space: nowrap; /* Prevent text from breaking */
+        max-width: 100%; /* Ensure it never exceeds the screen width */
+        text-align: center; /* Center the text */
+    }
+}
+
+/* Adjust for screens wider than 1920px (e.g., large monitors) */
+@media (min-width: 1920px) {
+    .service-card p {
+        font-size: 16px; /* Increase font size */
+        line-height: 25px; /* Increase line height */
+        max-width: 800px; /* Set max width to prevent overwriting */
+    }
+}
+
+/* Adjust for ultra-wide screens like 4K (3840px and above) */
+@media (min-width: 2560px) {
+    .service-card p {
+        font-size: 16px;
+        line-height: 27px;
+        max-width: 1000px;
+    }
+}
+
+/* Adjust for even larger screens (e.g., 50-inch screens at 4K or 5K resolution) */
+@media (min-width: 3840px) {
+    .service-card p {
+        font-size: 16px;
+        line-height: 29px;
+        max-width: 1200px;
+    }
+}
