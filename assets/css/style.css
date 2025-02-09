@@ -4940,6 +4940,29 @@ img {
     color: rgb(28 28 28 / 90%);
     margin-bottom: 40px;
 }
+
+.blog-details-area .blog-details-body .blog-details-inner li {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 35px;
+    color: rgb(28 28 28 / 90%);
+    margin-bottom: 40px;
+    margin-left: 10px;
+    list-style-type: circle;
+}
+
+.blog-details-area .blog-details-body .blog-details-inner li p{
+    font-size: 24px;
+    margin-left: 35px; 
+}
+
+.blog-details-area .blog-details-body .blog-details-inner ul {
+    border-bottom: 1px solid #d9e2f5;
+}
+.blog-details-area .blog-details-body .blog-details-inner ul strong {
+    font-weight: 450;
+}
+
 .blog-details-area .blog-details-body .blog-details-inner img {
     display: block;
     margin-bottom: 75px;
