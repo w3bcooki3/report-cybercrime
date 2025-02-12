@@ -632,12 +632,21 @@
     .blog-details-area .blog-details-body .blog-details-inner p {
         line-height: 30px;
     }
+    .blog-details-area .blog-details-body .blog-details-inner li {
+        line-height: 30px;
+    }
+    .blog-details-area .blog-details-body .blog-details-inner li p {
+        line-height: 30px;
+        margin-left: 20px; 
+    }
     .event-details-area .content-box .section-header p,
     .event-area .section-header p {
         font-size: 20px;
     }
     .about-service7-area .about-service7-body .about-service7-content .section-header p,
     .blog-details-area .blog-details-body .blog-details-inner p,
+    .blog-details-area .blog-details-body .blog-details-inner li,
+    .blog-details-area .blog-details-body .blog-details-inner li p,
     .our-team-4-area .section-header p,
     .cta-area .cta-body p,
     .portfolio-footer .our-expert-team-box .our-expert-team-box-inner p,
