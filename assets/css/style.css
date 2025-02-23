@@ -4948,7 +4948,7 @@ img {
     color: rgb(28 28 28 / 90%);
     margin-bottom: 40px;
     margin-left: 10px;
-    list-style-type: circle;
+    list-style-type: decimal;
 }
 
 .blog-details-area .blog-details-body .blog-details-inner li p{
