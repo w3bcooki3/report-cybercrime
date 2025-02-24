@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
+        }
+
+        .item:nth-child(1) {
+            width: 40%;
+        }
+
+        .item:nth-child(2) {
+            width: 80%;
+        }
+
+        .item:nth-child(3) {
+            width: 100%;
+        }
+
+        .item:nth-child(4) {
+            width: 25%;
+        }
+
+        .item:nth-child(5) {
+            width: 35%;
+        }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+      </div>
+      <div class="flex gap-[20px] flex-col">
+        <div class="w-[40%]">1</div>
+        <div class="w-[80%]">2</div>
+        <div class="w-full">3</div>
+        <div class="w-1/4">4</div>
+        <div class="w-[35%]">5</div>
+      </div>
+    
+</body>
+</html>
