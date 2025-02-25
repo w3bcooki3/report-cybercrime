@@ -994,16 +994,15 @@ img {
     }
 }
 /****-------------------Top Part---------------------------------------***/
-
-
 .page1-down {
     position: relative;
-    height: 90vh;
+    height: 50vh;
     width: 100vw;
+    margin-top: 1.5vw;
 }
 
 .page1-down .page1-mid {
-    height: 50%;
+    height: 100%;
     width: 100%;
     background-color: #ffffff;
     padding: 3px;
@@ -1019,7 +1018,6 @@ img {
     height: 100%;
     width: 33.33%; 
     overflow: hidden;
-    
 }
 
 .page1-mid1 img {
@@ -1041,28 +1039,31 @@ img {
     transform: translate(-10%, 40%); 
     color: white;
     text-align: center;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 19px;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.5);
+
 }
 
 .page1-mid1-text h2 {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 600;
     padding-bottom: 10px;
 }
 
 .page1-mid1-text a {
     font-size: 15px;
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 6px 30px;
     color: #000;
     background-color: #ffffff;
-    border-radius: 15px;
+    border-radius: none;
 }
 
 .page1-mid1 a:hover {
     cursor: pointer;
 }
+
 
 
 
@@ -1083,12 +1084,17 @@ img {
     }
 
     .page1-mid1-text h2 {
-        font-size: 18px;
+        font-size: 22px;
     }
 
     .page1-mid1-text a {
         font-size: 14px;
         padding: 5px 20px;
+    }
+
+    /* Ensure page1-low is visible */
+    .page1-down .page1-low {
+        display: none;
     }
 }
 
@@ -1119,7 +1125,7 @@ img {
     }
 
     .page1-mid1-text h2 {
-        font-size: 16px;
+        font-size: 20px;
     }
 
     .page1-mid1-text a {
@@ -1129,28 +1135,7 @@ img {
 
     /* Ensure page1-low is fully visible and stacked */
     .page1-down .page1-low {
-        flex-direction: column;
-        height: auto;
-        padding: 20px 10px;
-        display: flex;
-    }
-
-    .page1-low .page1-low1 {
-        width: 100%;
-        height: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .page1-low .page1-low2 {
-        width: 100%;
-        padding: 15px;
-    }
-
-    .page1-low2 h2 {
-        font-size: 20px;
-        margin-top: 20px;
+        display: none;
     }
 }
 

@@ -1,0 +1,481 @@
+/* Base styles */
+:root {
+    --blue-600: #2563eb;
+    --blue-700: #1d4ed8;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --red-600: #dc2626;
+    --red-700: #b91c1c;
+    --purple-600: #9333ea;
+    --purple-700: #7e22ce;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--gray-50);
+    color: var(--gray-900);
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 3rem 1rem;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease-out;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--gray-900);
+    animation: slideIn 0.5s ease-out;
+}
+
+.tools-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Section styles */
+.tool-section {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: scaleIn 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.tool-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.tool-section:nth-child(1) { animation-delay: 0.1s; }
+.tool-section:nth-child(2) { animation-delay: 0.2s; }
+.tool-section:nth-child(3) { animation-delay: 0.3s; }
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--gray-100);
+}
+
+.section-header h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--gray-900);
+}
+
+.icon {
+    width: 2rem;
+    height: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.tool-section:hover .icon {
+    transform: scale(1.1);
+}
+
+.icon.blue { color: var(--blue-600); }
+.icon.red { color: var(--red-600); }
+.icon.purple { color: var(--purple-600); }
+
+.tool-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Password Generator specific styles */
+.password-display {
+    background-color: var(--gray-50);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.password-display.copied {
+    animation: pulse 0.3s ease-in-out;
+}
+
+.password-segments {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.segment {
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    color: var(--gray-700);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.segment.active {
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.password-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Input styles */
+input[type="text"] {
+    padding: 1rem;
+    border: 2px solid var(--gray-200);
+    border-radius: 0.75rem;
+    font-size: 1.125rem;
+    width: 100%;
+    min-width: 200px;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--blue-600);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    transform: translateY(-1px);
+}
+
+input[type="text"]:read-only {
+    background-color: white;
+    font-family: monospace;
+    font-size: 1.25rem;
+    letter-spacing: 0.05em;
+}
+
+/* Button styles */
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border: none;
+    border-radius: 0.75rem;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.btn:active::after {
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn.blue {
+    background-color: var(--blue-600);
+}
+
+.btn.blue:hover {
+    background-color: var(--blue-700);
+}
+
+.btn.green {
+    background-color: var(--green-600);
+}
+
+.btn.green:hover {
+    background-color: var(--green-700);
+}
+
+.btn.red {
+    background-color: var(--red-600);
+}
+
+.btn.red:hover {
+    background-color: var(--red-700);
+}
+
+.btn.purple {
+    background-color: var(--purple-600);
+}
+
+.btn.purple:hover {
+    background-color: var(--purple-700);
+}
+
+/* Password Options */
+.password-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 640px) {
+    .password-options {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.length-control {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.length-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.length-header label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.length-badge {
+    background-color: var(--blue-600);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: var(--gray-200);
+    appearance: none;
+    transition: all 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--blue-600);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.checkbox-label, .radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.checkbox-label:hover, .radio-label:hover {
+    background-color: var(--gray-50);
+}
+
+.checkbox-text, .radio-text {
+    font-size: 1rem;
+    color: var(--gray-700);
+    transition: color 0.3s ease;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    transition: all 0.3s ease;
+}
+
+input[type="checkbox"]:checked + .checkbox-text,
+input[type="radio"]:checked + .radio-text {
+    color: var(--blue-600);
+    font-weight: 500;
+}
+
+/* Search group styles */
+.search-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.search-group input {
+    flex: 1;
+}
+
+/* VirusTotal specific styles */
+.virustotal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.radio-group {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+    background-color: var(--gray-50);
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.radio-group:hover {
+    background-color: var(--gray-100);
+}
+
+/* Loading states */
+.btn.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn.loading::before {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    body {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .tool-section {
+        padding: 1.5rem;
+    }
+
+    .password-actions,
+    .search-group {
+        flex-direction: column;
+    }
+
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

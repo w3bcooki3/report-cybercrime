@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Tools</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Security Tools</h1>
+
+        <div class="tools-container">
+            <!-- Password Generator -->
+            <section class="tool-section">
+                <div class="section-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon blue"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                    <h2>Password Generator</h2>
+                </div>
+                
+                <div class="tool-content">
+                    <div class="password-display">
+                        <div class="password-segments">
+                            <div class="segment uppercase">Aa</div>
+                            <div class="segment numbers">123</div>
+                            <div class="segment symbols">#$@</div>
+                        </div>
+                        <input type="text" id="passwordOutput" readonly placeholder="Generated password will appear here">
+                        <div class="password-actions">
+                            <button id="copyButton" class="btn blue">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                                Copy
+                            </button>
+                            <button id="generateButton" class="btn green">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21h5v-5"/></svg>
+                                Generate
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="password-options">
+                        <div class="length-control">
+                            <div class="length-header">
+                                <label for="lengthSlider">Password Length</label>
+                                <span id="lengthValue" class="length-badge">12</span>
+                            </div>
+                            <input type="range" id="lengthSlider" min="8" max="32" value="12">
+                        </div>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="uppercaseCheck" checked>
+                                <span class="checkbox-text">Uppercase (A-Z)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="lowercaseCheck" checked>
+                                <span class="checkbox-text">Lowercase (a-z)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="numbersCheck" checked>
+                                <span class="checkbox-text">Numbers (0-9)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="symbolsCheck" checked>
+                                <span class="checkbox-text">Symbols (!@#$)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Have I Been Pwned -->
+            <section class="tool-section">
+                <div class="section-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon red"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                    <h2>Have I Been Pwned</h2>
+                </div>
+                
+                <div class="tool-content">
+                    <div class="search-group">
+                        <input type="text" id="pwnedInput" placeholder="Enter email or password to check">
+                        <button id="pwnedButton" class="btn red">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                            Check
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VirusTotal -->
+            <section class="tool-section">
+                <div class="section-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon purple"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                    <h2>VirusTotal Scanner</h2>
+                </div>
+                
+                <div class="tool-content">
+                    <div class="virustotal-options">
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="scanType" value="url" checked>
+                                <span class="radio-text">URL</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="scanType" value="hash">
+                                <span class="radio-text">File Hash</span>
+                            </label>
+                        </div>
+                        <div class="search-group">
+                            <input type="text" id="virusTotalInput" placeholder="Enter URL or file hash to scan">
+                            <button id="virusTotalButton" class="btn purple">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                                Scan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
