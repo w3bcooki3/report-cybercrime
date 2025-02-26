@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- ========== Page Title ========== -->
-    <title>Protect yourself | PROTECT</title>
+    <title>Risk Assessment Tool | PROTECT</title>
 
     <!-- ========== Start Fonts Style ========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,16 +16,18 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600&family=Syne:wght@400;500;600&family=Yantramanav:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
-
+    
     <!-- ========== Start Stylesheet ========== -->
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
+    <link rel="stylesheet" href="landing-page/css/landing-page.css">
+    <link rel="stylesheet" href="./assets/css/risk_assessment.css">
     <!-- ========== End Stylesheet ========== -->
 
     <!-- Favicon links -->
@@ -307,17 +309,16 @@
 
         </header>
 
-
-        <!-- Portfolio Details Hero -->
-        <section class="hero-service-wrap hero-section-wrap hero-overview-wrap">
+        <section class="hero-service-wrap hero-section-wrap hero-partner-wrap">
             <div class="hero-section-content-wrap">
+                <img class="bg-shape slide-left" src="./assets/imgs/bg-shape-6.svg" alt="Shape" />
+                <img class="bg-shape2 slide-right" src="./assets/imgs/bg-shape-5.svg" alt="Shape" />
                 <div class="custom-container">
                     <div class="hero-portfolio-body">
                         <div class="hero-section-content text-center">
-                            <h5 class="section-subtitle">How to</h5>
-                            <h1 class="section-title fade-in">Protect yourself <br>from cyber incidents</h1>
-                            <p>The makers of AI have announced the company will be dedicating 20% of its <br>
-                                compute processing power over the next four years</p>
+                            <h5 class="section-subtitle">TOOLS</h5>
+                            <h1 class="section-title fade-in">Risk Assessment Tool</h1>
+                            <p>Check if you have good cyber practise to keep yourself safe and secure online or not</p>
                         </div>
                     </div>
                 </div>
@@ -325,218 +326,44 @@
         </section>
 
 
-        <!-- Portfolio Details Hero Image -->
-        <section class="new-release-hero-img-area">
-            <div class="custom-container">
-                <div class="new-release-img-box">
-                    <img src="./assets/imgs/cyber-protection.jpg" alt="Portfolio Details"/>
-                </div>
+
+        <!------------------ Risk Assessment code ------------------------------>
+        <div class="container-tool">
+            <div class="assessment-card" id="app">
+                <!-- Content will be dynamically inserted here -->
             </div>
-        </section>
-
-
-
-        <!-- Portfolio Details Content -->
-        <section class="blog-details-area portfolio-details-area">
-            <div class="custom-container">
-                <div class="blog-details-body">
-                    <div class="blog-details-inner">
-
-                        <div class="blog-details-introduction">
-                            <h1>Introduction</h1>
-                            <p>Cybercrime is a growing concern in today's digital world. 
-                                Threats such as phishing, ransomware, and identity theft can cause significant financial and personal damage. 
-                                This guide will help both tech-savvy and non-technical individuals recognize different types of cyber threats and
-                                how to prevent them.
-                            </p>
-                            <p>Cyber incidents can happen to anyone, regardless of technical expertise. 
-                                Whether you're a professional working online or someone who uses the internet casually, 
-                                here is a full detailed guide on how to protect yourself from cyber threats.
-                            </p>
-
-                            <h1>1. Use Strong and Secure Passwords</h1>
-                            <ul>
-                                <li>Enable strong, unique passwords for all your online accounts (Use a combination of uppercase and lowercase letters, numbers, and symbols. Avoid easily guessable information like birthdays or names.), and consider using a reputable password manager to keep track of them.<br> Below are the steps to create a strong password:<br><br>
-                                    <p class="bullet-points">
-                                        <strong>a. Start with a Passphrase or Random Words:</strong><br>
-                                    Choose a passphrase or a combination of random words that are meaningful to you but not easily guessable. For example, "BlueSky$ChocolateRain" or "MountainBike@SunnyTrail."<br><br>
-
-                                    <strong>b. Mix Uppercase and Lowercase Letters:</strong><br>
-                                    Mix uppercase and lowercase letters in your passphrase or word combination. Alternate between them to add complexity. For example, "BlUeSkY$cHoCoLaTeRaIn" or "MoUnTaInBiKe@SuNnYtRaIl."<br><br>
-
-                                    <strong>c. Add Numbers:</strong><br>
-                                    Insert numbers within your passphrase, preferably in a non-sequential manner. You can replace certain letters with numbers that resemble them. For example, "BlU3SkY$cHoC0LaTeR@1n" or "M0UnTa1nB1k3@SuNnY7Ra1l."<br><br>
-
-                                    <strong>d. Include Special Characters:</strong><br>
-                                    Integrate special characters like !, @, #, $, %, etc., into your password. Place them strategically within your passphrase. For example, "BlU3SkY$cHoC0!@TeR@1n" or "M0UnTa1nB1k3@SuNnY7#Ra1l."<br><br>
-
-                                    <strong>e. Length Matters:</strong><br>
-                                    Aim for a password length of at least 12 characters. The longer your password, the stronger it is against hacking attempts.<br><br>
-
-                                    <strong>f. Don't Use Predictable Patterns:</strong><br>
-                                    Avoid using predictable patterns, such as "123456" or "qwerty," as they are easily cracked.<br><br>
-
-                                    <strong>g. Personal Touch:</strong><br>
-                                    Add a personal touch or abbreviation to the passphrase that only you would understand. For example, "BlU3SkY$cHoC0!@TeR@1n_MyDog" or "M0UnTa1nB1k3@SuNnY7#Ra1l_HiSchool."<br><br>
-
-                                    <strong>h. Test Its Strength:</strong><br>
-                                    Before finalizing your password, use online password strength checkers to ensure it meets the desired level of complexity.<br><br>
-                                    </p>
-                                </li>
-                                <li>Keep It Private. Never share your password with anyone. Treat it as a sensitive piece of information.</li>
-                                <li>Change passwords regularly. Consider changing your password every 30-60 days to enhance security</li>
-                                <li>Use Password Managers. Consider using a reputable password manager to generate, store, and autofill your strong passwords securely. <br>For example: Dashlane, Lastpass are good Password Manager<br><br></li>
-                            </ul>
-
-
-
-                            <h1>2. Enable Multi-Factor Authentication (MFA)</h1>
-                            <ul>
-                                <li>
-                                    MFA adds an extra layer of security by requiring a second form of verification (e.g., a text message code or authentication app) along with your password.
-                                    It is recommended to activate MFA on your email, banking apps, social media, and any platform that offers it.
-                                </li>
-
-                                <li>Set up two-factor authentication (2FA) wherever possible to add an extra layer of security to your accounts.<br>
-                                    To see a list of 2-factor authentication softwares, visit our <a href="#!" style="color:red; font-weight: bold;">Cyber Toolkit</a> page.
-                                </li>
-                            </ul>
-
-                            <h1>3. Recognize and Avoid Phishing Scams</h1>
-                            <p>Phishing scams trick people into giving away sensitive information.</p>
-                            <ul>
-                                <li><strong>Check the Sender:</strong><br>
-                                    Always verify email addresses before clicking on links or downloading attachments.
-                                </li>
-                                <li>
-                                    <strong>Look for Red Flags:</strong><br>
-                                    Generic greetings, spelling errors, urgent requests, and suspicious links are signs of phishing.
-                                </li>
-                                <li>
-                                    <strong>Do Not Click Unknown Links:</strong><br>
-                                    Avoid clicking on suspicious links or downloading attachments from unknown sources, especially in emails or messages.Instead, hover over links to preview their true destination.
-                                </li>
-                                <li>
-                                    <strong>Report Suspicious Emails:</strong><br>
-                                    Notify your email provider or company's IT department if you receive a phishing attempt.
-                                </li>
-                                <li>
-                                    <strong>Be Cautious of Online Activites:</strong><br>
-                                    Be wary of sharing personal information online, especially on social media platforms. Cybercriminals can exploit this information for phishing attacks. Limit What You Share on Social Media.
-                                </li>
-                            </ul>
-
-                            <h1>4. Keep Your Devices and Software Updated</h1>
-                            <ul>
-                                <li><strong>Enable Automatic Updates:</strong><br>
-                                    Regular update softwares and applications on your device(s)
-                                </li>
-                                <li>
-                                    <strong>Update Your Antivirus Software:</strong><br>
-                                    Keep security programs updated to detect and block the latest threats.
-                                </li>
-                            </ul>
-
-                            <h1>5. Secure Your Internet Connection</h1>
-                            <ul>
-                                <li><strong>Use Strong Wi-Fi Passwords:</strong><br>
-                                    Prevent unauthorized access to your home network.
-                                </li>
-                                <li>
-                                    <strong>Avoid Public Wi-Fi for Sensitive Transactions:</strong><br>
-                                    Use a VPN (Virtual Private Network) when connecting to public hotspots.
-                                </li>
-                                <li>
-                                    <strong>Turn Off Bluetooth & Wi-Fi When Not in Use:</strong><br>
-                                    This reduces exposure to cyber attacks.
-                                </li>
-                            </ul>
-
-                            <h1>6. Secure Your Online Transactions</h1>
-                            <ul>
-                                <li><strong>Enable Alerts for Bank Transactions:</strong><br>
-                                    Monitor transactions in real time to detect fraud early.
-                                </li>
-                            </ul>
-
-                            <h1>7. Protect Your Social Media Accounts</h1>
-                            <ul>
-                                <li><strong>Use Unique Passwords for Each Account:</strong><br>
-                                    Prevent hackers from accessing multiple accounts if one is compromised.
-                                </li>
-                                <li>
-                                    <strong>Enable Login Notifications:</strong><br>
-                                    Receive alerts when there is a new login attempt.
-                                </li>
-                                <li>
-                                    <strong>Review Connected Apps & Devices:</strong><br>
-                                    Remove unnecessary third-party applications that have access to your accounts.
-                                </li>
-                                <li>
-                                    <strong>Enable MFA (2FA) Authentication: </strong><br>
-                                    Activate two-factor authentication to prevent access to your accounts even if hackers know your password.
-                                </li>
-                            </ul>
-
-                            <h1>8. Report Cyber Incidents Immediately</h1>
-                            <p>If you experience a cyber attack or suspect fraudulent activity, take these steps:</p>
-                            <ul>
-                                <li><strong>Report to Authorities:</strong><br>
-                                    Contact your country's cybercrime reporting agency.
-                                </li>
-                                <li>
-                                    <strong>Notify Your Bank or Service Provider:</strong><br>
-                                    Block transactions or accounts if financial details were exposed.
-                                </li>
-                                <li>
-                                    <strong>Inform Your IT Department or Employer:</strong><br>
-                                    If you're working for a company, report incidents to IT security teams.
-                                </li>
-                                <li>
-                                    <strong>Change Compromised Passwords:</strong><br>
-                                    Secure affected accounts to prevent further damage.
-                                </li>
-                            </ul>
-
-                            
-                        
-                            <div class="blog-details-pagination d-flex align-items-center justify-content-between">
-                                <a href="#" class="theme-btn">Previous</a>
-                                <a href="#" class="theme-btn">Next</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        </div>
         
+        <!------------------ Risk Assessment code ------------------------------>
 
 
-        <!-- CTA -->
-        <section class="cta-area" style="margin-bottom: 100px;">
+
+
+        <!-- About -->
+        <section class="about-service3-area about-service5-area">
             <div class="custom-container">
-                <div class="cta-body text-center">
-                    <img src="./assets/imgs/bg-shape-11.svg" alt="Shape" class="animation-slide-left bg-shape"/>
-                    <div class="our-expert-team-box">
-                        <div class="our-expert-team-box-inner d-flex align-items-center">
-                            <div class="imgs d-flex align-items-center">
-                                <img src="./assets/imgs/small-img-4.png" alt="team" />
-                                <img src="./assets/imgs/small-img-3.png" alt="team" />
-                                <img src="./assets/imgs/small-img-2.png" alt="team" />
-                                <img src="./assets/imgs/small-img-1.png" alt="team" />
-                            </div>
-                        </div>
+                <div class="custom-row align-items-center">
+                    <div class="img-box">
+                        <img src="./assets/imgs/about-service-5.jpg" alt="About" />
                     </div>
-                    <h2>Need any further assitance?</h2>
-                    <p>Feel free to reach out for any inquiries or assistance.</p>
-                    <a href="contact.html" class="theme-btn">Book an appointment now</a>
 
+                    <div class="content-box">
+                        <h1>Why our services are <br>
+                            better than others?</h1>
+                        <p>We don't believe in a one-size-fit-all approach. Our services are carefully customized to suit your specific need, ensuring you to achieve your goals.</p>
+                        <p>We believe in delivering value that extends  your beyond the immediate project. Our services are designed to provide a long-term benefits.</p>
+                        <ul>
+                            <li>
+                                <i class="las la-check"></i> PPD Development
+                            </li>
+                            <li>
+                                <i class="las la-check"></i> Quick Response
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
-
 
         <!-- Footer -->
         <footer class="footer-area">
@@ -546,34 +373,19 @@
                     <div class="custom-row align-items-end justify-content-between">
                         <div class="left-content">
                             <a href="index.html" class="logo">
-                                <img src="./assets/imgs/logo-white.svg" alt="Logo" />
+                                <img src="./assets/imgs/logo.png" style="height: 100px; width: 120px;" alt="Logo" />
                             </a>
-                            <p>We provide the expertise and support to <br>
-                                propel your business forward.</p>
-                            <form action="assets/mail/subscribe.php" method="POST" class="subscribe-form">
-                                <div class="subscribe-box d-flex">
-                                    <input type="email" id="email" name="email" placeholder="Enter Your Email" />
-                                    <button id="submit2" class="theme-btn">Get Started</button>
-                                </div>
-                                <!-- Alert Message -->  
-                                <div class="input-row">
-                                    <div class="input-group alert-notification">
-                                        <div id="alert-message-subscribe" class="alert-msg"></div>
-                                    </div>
-                                </div>
-                            </form>
+                            <p>PROTECT, a service created by a cybersecurity student to help <br>
+                                protect individuals and businesses from cyber threats.</p>
                             <div class="footer-clients d-flex align-items-center">
                                 <div class="footer-client-img">
                                     <img src="./assets/imgs/youtube.svg" alt="Youtube" />
                                 </div>
                                 <div class="footer-client-img">
-                                    <img src="./assets/imgs/webflow.svg" alt="webflow" />
+                                    <img src="./assets/imgs/youtube.svg" alt="Youtube" />
                                 </div>
                                 <div class="footer-client-img">
-                                    <img src="./assets/imgs/upwork.svg" alt="upwork" />
-                                </div>
-                                <div class="footer-client-img">
-                                    <img src="./assets/imgs/shopify.svg" alt="shopify" />
+                                    <img src="./assets/imgs/youtube.svg" alt="Youtube" />
                                 </div>
                             </div>
                         </div>
@@ -671,17 +483,9 @@
 
                         <div class="footer-contact-info">
                             <div class="footer-contact-info-item">
-                                <h4>Phone</h4>
-                                <p>
-                                    <a href="tel:+1-455-1482-236">+1-455-1482-236</a> <br>
-                                    <a href="tel:+1-938-740-75556">+1-938-740-7555</a>
-                                </p>
-                            </div>
-                            <div class="footer-contact-info-item">
                                 <h4>Mail</h4>
                                 <p>
-                                    <a href="mailto:bluebase@mail.com">bluebase@mail.com</a> <br>
-                                    <a href="mailto:mandrodio@mail.com">mandrodio@mail.com</a>
+                                    <a href="mailto:bluebase@mail.com">contact@protect.org</a>
                                 </p>
                             </div>
                         </div>
@@ -707,13 +511,16 @@
                             </a></li>
                         </ul>
 
-                        <p>&copy; 2023 All rights reserved by <a href="https://themeforest.net/user/wordpressriver/portfolio">WordpressRiver</a></p>
+                        <p>&copy; 2025 All rights reserved by <b>PROTECT</b></p>
                     </div>
                 </div>
             </div>
         </footer>
 
+
     </main>
+
+
 
     <!-- jQuery Frameworks
     ============================================= -->
@@ -725,7 +532,9 @@
     <script src="./assets/js/client-marquee.js"></script>
     <script src="./assets/js/theme-custom.js"></script>
     <script src="./assets/js/form1.js"></script>
+    <script src="./assets/js/home.js"></script>
     <script src="./assets/js/subscribe-form.js"></script>
+    <script src="./assets/js/risk.js"></script>
 </body>
 
 </html>
