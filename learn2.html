@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- ========== Page Title ========== -->
-    <title>About Us | PROTECT</title>
+    <title>Learn | PROTECT</title>
 
     <!-- ========== Start Fonts Style ========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,8 +27,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="landing-page/css/landing-page.css">
-    <link rel="stylesheet" href="./assets/css/style1.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/learrn2.css">
     <!-- ========== End Stylesheet ========== -->
 
     <!-- Favicon links -->
@@ -321,427 +320,95 @@
 
         </header>
 
-        <!-- About Hero -->
-        <section class="hero-service-wrap hero-section-wrap hero-about-wrap" style="background-color: white;">
+
+        <!--  Hero -->
+        <section class="hero-service-wrap hero-section-wrap hero-partner-wrap">
             <div class="hero-section-content-wrap">
+                <img class="bg-shape slide-left" src="./assets/imgs/bg-shape-6.svg" alt="Shape" />
+                <img class="bg-shape2 slide-right" src="./assets/imgs/bg-shape-5.svg" alt="Shape" />
                 <div class="custom-container">
                     <div class="hero-portfolio-body">
                         <div class="hero-section-content text-center">
-                            <h5 class="section-subtitle">About Us</h5>
-                            <h1 class="section-title fade-in">Who Are We?</h1>
-                            <p>Defend against evolving cyber threats with cutting-edge technology and expert strategies.</p>
-                        </div>
-
-                        <div class="hero-company-boxes">
-                            <div class="hero-company-box simple-shadow">
-                                <h1>300+</h1>
-                                <h3>Projects</h3>
-                                <p>We are spread around
-                                    the world.</p>
-                            </div>
-                            <div class="hero-company-box simple-shadow">
-                                <h1>100%</h1>
-                                <h3>Client Satisfaction</h3>
-                                <p>Our clients a happy with 
-                                    our service.</p>
-                            </div>
-                            <div class="hero-company-box simple-shadow">
-                                <h1>15k</h1>
-                                <h3>Legal Customers</h3>
-                                <p>Our customers are from
-                                    many countries.</p>
-                            </div>
-                            <div class="hero-company-box simple-shadow">
-                                <h1>1995</h1>
-                                <h3>We Established On</h3>
-                                <p>Our company have a 
-                                    great history.</p>
-                            </div>
+                            <h5 class="section-subtitle">TOOLS</h5>
+                            <h1 class="section-title fade-in">External Resources</h1>
+                            <p>Find best external resources provided by others specialized community to help you with your digital need and keep you safe and secure while you browse.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-
-
-        <!-- hero section -->
-        <div class="page1" data-scroll data-scroll-speed="-2.5">
-            <img src="./assets/imgs/main-one.jpeg" alt="">
-            <div class="inner-page1-top">
-                <h2>We Help People <br> Fight Cybercrime</h2>
-                <a href="#categories">See categories below</a>
+        <div class="container-learn">
+            <!-- Search and Filter Section -->
+            <div class="search-section">
+                <div class="search-container">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search for security services, categories, or keywords...">
+                </div>
+        
+                <div class="filter-container">
+                    <i data-lucide="filter" class="filter-icon"></i>
+                    <label for="category-select">Filter by Category:</label>
+                    <select id="category-select">
+                        <option value="all">All Categories</option>
+                        <option value="antivirus">Antivirus</option>
+                        <option value="firewall">Firewall</option>
+                        <option value="pentest">Penetration Testing</option>
+                        <option value="monitoring">Security Monitoring</option>
+                        <option value="compliance">Compliance</option>
+                    </select>
+                </div>
+        
+                <div class="results-summary" id="results-summary">Showing 12 results</div>
+        
+                <!-- Services Grid -->
+                <div class="services-grid" id="services-grid">
+                    <!-- Cards will be inserted here by JavaScript -->
+                </div>
+        
+                <!-- No Results Message -->
+                <div class="no-results" id="no-results" style="display: none;">
+                    <i data-lucide="shield-alert" class="no-results-icon"></i>
+                    <h3>No services found</h3>
+                    <p>Try adjusting your search or filter to find what you're looking for.</p>
+                </div>
             </div>
         </div>
         
-
-
-        <div id="page2">
-            <div id="elem" data-img="./assets/imgs/banner.png">
-              <h2>Ransomeware</h2>
-              <div id="moving">
-                <div id="blur"></div>
-                <div id="moving-in">
-                  <h5>Pay Money</h5>
-                  <h5>Your files have been locked</h5>
-                  <h5>Ransom</h5>
-                  <h5>Access Locked</h5>
-                  <h5>Secure Backups</h5>
+        <!-- Redirect Popup (Hidden by default) -->
+        <div class="redirect-popup" id="redirect-popup">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3><i data-lucide="external-link"></i> External Redirect</h3>
+                    <button id="close-popup"><i data-lucide="x"></i></button>
                 </div>
-    
-                <div id="moving-in">
-                  <h5>Ransomware Protection</h5>
-                  <h5>Cyber Threat Prevention</h5>
-                  <h5>Data Encryption</h5>
-                  <h5>Incident Response</h5>
-                  <h5>Secure Backups</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Ransomware Protection</h5>
-                  <h5>Cyber Threat Prevention</h5>
-                  <h5>Data Encryption</h5>
-                  <h5>Incident Response</h5>
-                  <h5>Secure Backups</h5>
-                </div>
-              </div>
-            </div>
-    
-            <div id="elem" data-img="./assets/imgs/home1.avif">
-              <h2>Phishing</h2>
-              <div id="moving">
-                <div id="blur"></div>
-                <div id="moving-in">
-                  <h5>Phishing Attack Prevention</h5>
-                  <h5>Email Security</h5>
-                  <h5>Fraud Detection</h5>
-                  <h5>Safe Browsing Practices</h5>
-                  <h5>Identity Protection</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Phishing Attack Prevention</h5>
-                  <h5>Email Security</h5>
-                  <h5>Fraud Detection</h5>
-                  <h5>Safe Browsing Practices</h5>
-                  <h5>Identity Protection</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Phishing Attack Prevention</h5>
-                  <h5>Email Security</h5>
-                  <h5>Fraud Detection</h5>
-                  <h5>Safe Browsing Practices</h5>
-                  <h5>Identity Protection</h5>
-                </div>
-              </div>
-            </div>
-
-            <div id="elem" data-img="./assets/imgs/home1.avif">
-                <h2>Digital Scam</h2>
-                <div id="moving">
-                  <div id="blur"></div>
-                  <div id="moving-in">
-                    <h5>Phishing Attack Prevention</h5>
-                    <h5>Email Security</h5>
-                    <h5>Fraud Detection</h5>
-                    <h5>Safe Browsing Practices</h5>
-                    <h5>Identity Protection</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Phishing Attack Prevention</h5>
-                    <h5>Email Security</h5>
-                    <h5>Fraud Detection</h5>
-                    <h5>Safe Browsing Practices</h5>
-                    <h5>Identity Protection</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Phishing Attack Prevention</h5>
-                    <h5>Email Security</h5>
-                    <h5>Fraud Detection</h5>
-                    <h5>Safe Browsing Practices</h5>
-                    <h5>Identity Protection</h5>
-                  </div>
-                </div>
-              </div>
-    
-            <div id="elem" data-img="./assets/imgs/home3.avif">
-              <h2>Cyberbulling</h2>
-              <div id="moving">
-                <div id="blur"></div>
-                <div id="moving-in">
-                  <h5>Cyberbullying Prevention</h5>
-                  <h5>Online Harassment Awareness</h5>
-                  <h5>Safe Social Media Practices</h5>
-                  <h5>Digital Well-being</h5>
-                  <h5>Reporting & Support</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Cyberbullying Prevention</h5>
-                  <h5>Online Harassment Awareness</h5>
-                  <h5>Safe Social Media Practices</h5>
-                  <h5>Digital Well-being</h5>
-                  <h5>Reporting & Support</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Cyberbullying Prevention</h5>
-                  <h5>Online Harassment Awareness</h5>
-                  <h5>Safe Social Media Practices</h5>
-                  <h5>Digital Well-being</h5>
-                  <h5>Reporting & Support</h5>
-                </div>
-              </div>
-            </div>
-    
-            <div id="elem" data-img="./assets/imgs/banner1.png">
-              <h2>Credit Card fraud</h2>
-              <div id="moving">
-                <div id="blur"></div>
-                <div id="moving-in">
-                  <h5>Credit Card Fraud Prevention</h5>
-                  <h5>Secure Online Transactions</h5>
-                  <h5>Identity Theft Protection</h5>
-                  <h5>Fraud Monitoring & Alerts</h5>
-                  <h5>Safe Payment Practices</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Credit Card Fraud Prevention</h5>
-                  <h5>Secure Online Transactions</h5>
-                  <h5>Identity Theft Protection</h5>
-                  <h5>Fraud Monitoring & Alerts</h5>
-                  <h5>Safe Payment Practices</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Credit Card Fraud Prevention</h5>
-                  <h5>Secure Online Transactions</h5>
-                  <h5>Identity Theft Protection</h5>
-                  <h5>Fraud Monitoring & Alerts</h5>
-                  <h5>Safe Payment Practices</h5>
-                </div>
-              </div>
-            </div>
-
-            <div id="elem" data-img="./assets/imgs/banner1.jpg">
-                <h2>Device Hacked</h2>
-                <div id="moving">
-                  <div id="blur"></div>
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-                </div>
-              </div>
-
-              <div id="elem" data-img="./assets/imgs/banner1.jpg">
-                <h2>Social Media Hacked</h2>
-                <div id="moving">
-                  <div id="blur"></div>
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-                </div>
-              </div>
-
-              <div id="elem" data-img="./assets/imgs/banner1.jpg">
-                <h2>Revenge Porn</h2>
-                <div id="moving">
-                  <div id="blur"></div>
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="page1">
-            <img src="./assets/imgs/preview.webp" alt="" data-scroll data-scroll-speed="-2.5">
-            <div class="inner-page1">
-                <h2>ARE YOU A VICTIM ?</h2>
-                <a href="index1.html#report">REPORT NOW</a>
-            </div>
-        </div>
-
-        <div class="page1-down">
-            <div class="page1-mid">
-                <div class="page1-mid1">
-                    <img src="./assets/imgs/main-outreach.avif" alt="">
-                    <div class="page1-mid1-text">
-                        <h2>Cyber Programs and Policies</h2>
-                        <a href="help_from_nonprofit.html">Learn More</a>
-                    </div>
-                </div>
-                <div class="page1-mid1">
-                    <img src="./assets/imgs/banner2.jpg" alt="">
-                    <div class="page1-mid1-text">
-                        <h2>Your Digtal Rights</h2>
-                        <a href="help_from_nonprofit.html">Learn More</a>
-                    </div>
-                </div>
-                <div class="page1-mid1">
-                    <img src="./assets/imgs/tweet-bg-1-1.jpg" alt="">
-                    <div class="page1-mid1-text">
-                        <h2>U.S. Cybersecurity Laws</h2>
-                        <a href="help_from_nonprofit.html">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Service -->
-        <section class="company-service-area">
-            <div class="custom-container">
-                <div class="hero-service-about">
-                    <div class="section-header d-flex align-items-center justify-content-between w-full">
-                        <div class="left">
-                            <h5 class="section-subtitle">Reporting Made Easy</h5>
-                            <h1 class="section-title">Join the Frontline Against Cyber Threats</h1>
-                            <p>Expert Team: Our cybersecurity experts stay ahead of trends with cutting-edge knowledge.</p>
-                        </div>
-                        <a href="contact.html" class="theme-btn">Contact Us</a>
-                    </div>
-
-                    <img src="./assets/imgs/banner2.jpg" alt="Service About"/>
-                    <div class="hero-service-about-body">
-                        <p>Your voice becomes a powerful weapon against cyber threats. 
-                            We stand apart as a reliable and user-friendly solution, offering a seamless reporting experience coupled with targeted resources and community engagement. 
-                            By choosing us, you join the frontline against cyber threats, helping us build a safer digital landscape for all. 
-                            With our intuitive interface, customized reporting process, focused awareness initiatives, and local partnerships, we empower you to make a difference. 
-                            Together, let's report, prevent, and defeat cybercrime, one incident at a time.</p>
-                        <ul>
-                            <li>
-                                <i class="las la-check"></i> User-Friendly Interface
-                            </li>
-                            <li>
-                                <i class="las la-check"></i> Target Awareness <br>and Education
-                            </li>
-                            <li>
-                                <i class="las la-check"></i> Community Engagement <br> and Empowerment
-                            </li>
-                            <li>
-                                <i class="las la-check"></i> Community Engagement
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About -->
-        <section style="margin-top: 2vw;" class="about-service3-area">
-            <div class="custom-container">
-                <div class="custom-row align-items-center">
-                    <div class="img-box">
-                        <img src="./assets/imgs/need.jpg" alt="About" />
-                    </div>
-
-                    <div class="content-box">
-                        <h1>Why Need of<br>
-                            Cybersecurity?</h1>
-                        <p>Cybersecurity is like a protective shield for your digital world. It's a set of measures and tools that help keep your personal information, online activities, and digital devices safe from hackers, viruses, and other cyber threats.</p>
-                        <p>Just like locking your front door to keep your home safe, cybersecurity helps ensure your online presence and digital belongings are secure.</p>
-                        <ul>
-                            <li>
-                                <i class="las la-check"></i> PPD Development
-                            </li>
-                            <li>
-                                <i class="las la-check"></i> Quick Response
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- CTA -->
-        <section class="cta-area" style="margin-bottom: 200px;">
-            <div class="custom-container">
-                <div class="cta-body text-center">
-                    <img src="./assets/imgs/bg-shape-11.svg" alt="Shape" class="animation-slide-left bg-shape"/>
-                    <div class="our-expert-team-box">
-                        <div class="our-expert-team-box-inner d-flex align-items-center">
-                            <div class="imgs d-flex align-items-center">
-                                <img src="./assets/imgs/small-img-4.png" alt="team" />
-                                <img src="./assets/imgs/small-img-3.png" alt="team" />
-                                <img src="./assets/imgs/small-img-2.png" alt="team" />
-                                <img src="./assets/imgs/small-img-1.png" alt="team" />
-                            </div>
+          
+                <div class="popup-body">
+                    <div class="warning">
+                        <i data-lucide="alert-triangle"></i>
+                        <div>
+                            <h4>You are leaving CyberSecure Directory</h4>
+                            <p>You will be redirected to an external website that is not operated by us.</p>
                         </div>
                     </div>
-                    <h2>Need any further assitance?</h2>
-                    <p>Feel free to reach out for any inquiries or assistance.</p>
-                    <a href="contact.html" class="theme-btn">Book an appointment now</a>
-
+                
+                    <div class="destination">
+                        <p class="destination-label">Destination:</p>
+                        <p id="destination-url" class="destination-url"></p>
+                    </div>
+                    <div class="service-info">
+                        <p>You are about to visit <span id="service-name"></span></p>
+                    </div>
+                    <div class="popup-actions">
+                      <div id="countdown" class="countdown">Redirecting in 10 seconds...</div>
+                      <div class="buttons">
+                        <button id="cancel-redirect" class="btn-cancel">Cancel</button>
+                        <button id="go-now" class="btn-go">Go Now</button>
+                      </div>
+                    </div>
                 </div>
             </div>
-        </section>
-
-
+        </div>
 
         <!-- Footer -->
         <footer class="footer-area">
@@ -751,41 +418,26 @@
                     <div class="custom-row align-items-end justify-content-between">
                         <div class="left-content">
                             <a href="index.html" class="logo">
-                                <img src="./assets/imgs/logo-white.svg" alt="Logo" />
+                                <img src="./assets/imgs/logo.png" style="height: 100px; width: 120px;" alt="Logo" />
                             </a>
-                            <p>We provide the expertise and support to <br>
-                                propel your business forward.</p>
-                            <form action="assets/mail/subscribe.php" method="POST" class="subscribe-form">
-                                <div class="subscribe-box d-flex">
-                                    <input type="email" id="email" name="email" placeholder="Enter Your Email" />
-                                    <button id="submit2" class="theme-btn">Get Started</button>
-                                </div>
-                                <!-- Alert Message -->  
-                                <div class="input-row">
-                                    <div class="input-group alert-notification">
-                                        <div id="alert-message-subscribe" class="alert-msg"></div>
-                                    </div>
-                                </div>
-                            </form>
+                            <p>PROTECT, a service created by a cybersecurity student to help <br>
+                                protect individuals and businesses from cyber threats.</p>
                             <div class="footer-clients d-flex align-items-center">
                                 <div class="footer-client-img">
                                     <img src="./assets/imgs/youtube.svg" alt="Youtube" />
                                 </div>
                                 <div class="footer-client-img">
-                                    <img src="./assets/imgs/webflow.svg" alt="webflow" />
+                                    <img src="./assets/imgs/youtube.svg" alt="Youtube" />
                                 </div>
                                 <div class="footer-client-img">
-                                    <img src="./assets/imgs/upwork.svg" alt="upwork" />
-                                </div>
-                                <div class="footer-client-img">
-                                    <img src="./assets/imgs/shopify.svg" alt="shopify" />
+                                    <img src="./assets/imgs/youtube.svg" alt="Youtube" />
                                 </div>
                             </div>
                         </div>
-
+                    
                         <div class="right-content">
                             <div class="right-content-inner">
-                                <h2>Let’s get started on something great</h2>
+                                <h2>Let's get started on something great</h2>
                                 <p>Our team of IT experts looks forward to meeting with you <br>
                                     and providing valuable insights tailored to your business.</p>
                                 <a href="contact.html" class="theme-btn">Get an appointment now</a>
@@ -804,7 +456,7 @@
                                         <h1>22+ <span>Years</span></h1>
                                         <p>Field Experience</p>
                                     </div>
-
+                                
                                 </div>
                             </div>
                         </div>
@@ -871,29 +523,21 @@
                                     <li><a href="#">Privacy</a></li>
                                 </ul>
                             </div>
-
+                        
                         </div>
-
+                    
                         <div class="footer-contact-info">
-                            <div class="footer-contact-info-item">
-                                <h4>Phone</h4>
-                                <p>
-                                    <a href="tel:+1-455-1482-236">+1-455-1482-236</a> <br>
-                                    <a href="tel:+1-938-740-75556">+1-938-740-7555</a>
-                                </p>
-                            </div>
                             <div class="footer-contact-info-item">
                                 <h4>Mail</h4>
                                 <p>
-                                    <a href="mailto:bluebase@mail.com">bluebase@mail.com</a> <br>
-                                    <a href="mailto:mandrodio@mail.com">mandrodio@mail.com</a>
+                                    <a href="mailto:bluebase@mail.com">contact@protect.org</a>
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+        
             <div class="copyright-area">
                 <div class="custom-container">
                     <div class="custom-row d-flex align-items-center justify-content-between">
@@ -911,26 +555,30 @@
                                 <i class="iconoir-linkedin"></i>
                             </a></li>
                         </ul>
-
-                        <p>&copy; 2023 All rights reserved by <a href="https://themeforest.net/user/wordpressriver/portfolio">WordpressRiver</a></p>
+                    
+                        <p>&copy; 2025 All rights reserved by <b>PROTECT</b></p>
                     </div>
                 </div>
             </div>
-        </footer>
-
-    </main>
-
-    <!-- jQuery Frameworks
-    ============================================= -->
-    <script src="./assets/js/jquery-3.7.0.min.js"></script>
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/js/gsap.min.js"></script>
-    <script src="./assets/js/Draggable.min.js"></script>
-    <script src="./assets/js/swiper-bundle.min.js"></script>
-    <script src="./assets/js/client-marquee.js"></script>
-    <script src="./assets/js/theme-custom.js"></script>
-    <script src="./assets/js/form1.js"></script>
-    <script src="./assets/js/subscribe-form.js"></script>
+          </footer>
+        </main>
+              
+              
+              
+<!-- jQuery Frameworks
+==              =========================================== -->
+<script src="./assets/js/jquery-3.7.0.min.js"></script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/js/gsap.min.js"></script>
+<script src="./assets/js/Draggable.min.js"></script>
+<script src="./assets/js/swiper-bundle.min.js"></script>
+<script src="./assets/js/client-marquee.js"></script>
+<script src="./assets/js/theme-custom.js"></script>
+<script src="./assets/js/form1.js"></script>
+<script src="./assets/js/home.js"></script>
+<script src="./assets/js/subscribe-form.js"></script>
+<script src="./assets/js/learn2.js"></script>
 </body>
 
 </html>
+
