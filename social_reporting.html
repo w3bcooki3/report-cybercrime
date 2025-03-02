@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- ========== Page Title ========== -->
-    <title>Help from Others | PROTECT</title>
+    <title>Social Reporting | PROTECT</title>
 
     <!-- ========== Start Fonts Style ========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,18 +16,20 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600&family=Syne:wght@400;500;600&family=Yantramanav:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
-
+    
     <!-- ========== Start Stylesheet ========== -->
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
-    <link rel="stylesheet" href="./assets/css/style1.css">
+    <link rel="stylesheet" href="landing-page/css/landing-page.css">
+    <link rel="stylesheet" href="./assets/css/social_reporting.css">
     <!-- ========== End Stylesheet ========== -->
+
     <!-- Favicon links -->
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/logo/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/logo/favicon-32x32.png">
@@ -281,6 +283,9 @@
                                         </div>
                                     </div>
                                 </li>
+
+                                
+
                                 <li class="mega-menu-item">
                                     <a href="Learn-edcu.html">Learn</a>
                                     <span class="dropdown-menu-item-icon">
@@ -336,9 +341,11 @@
                                         </div>
                                     </div>
                                 </li>
+
                                 <li>
                                     <a href="chatbot.html">Chatbot</a>
                                 </li>
+                                
                             <!---
                             <select class="country-select" name="country" id="country">
                                 <option value="en">EN</option>
@@ -365,152 +372,157 @@
 
         </header>
 
-
-        <!-- Service Details Hero -->
-        <section class="hero-service-wrap hero-section-wrap hero-overview-wrap">
+        <!--  Hero -->
+        <section class="hero-service-wrap hero-section-wrap hero-partner-wrap">
             <div class="hero-section-content-wrap">
+                <img class="bg-shape slide-left" src="./assets/imgs/bg-shape-6.svg" alt="Shape" />
+                <img class="bg-shape2 slide-right" src="./assets/imgs/bg-shape-5.svg" alt="Shape" />
                 <div class="custom-container">
                     <div class="hero-portfolio-body">
                         <div class="hero-section-content text-center">
-                            <h5 style="color: #1351D8;">TAKE CONTROL OF YOUR ONLINE SECURITY</h5>
-                            <h1 class="section-title fade-in">Help from Organizations</h1>
-                            <p>Need a web help to protect you? Check out below</p>
+                            <h5 class="section-subtitle">TOOLS</h5>
+                            <h1 class="section-title fade-in">Social Media Directory</h1>
+                            <p>Get all information needed to report incidents on social media. <br>This page covers all information and help you are seeking</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Service Details Hero Image -->
-        <section class="new-release-hero-img-area">
+        <!-- Social Reporting -->
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+              <div class="hero-content">
+                <div class="search-container">
+                  <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Search for a platform or issue..."
+                  />
+                  <div class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <path d="m21 21-4.3-4.3"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+              <!-- Platform Detail View -->
+              <div id="platform-detail" class="hidden"></div>
+            
+              <!-- Platforms list view -->
+              <div id="platforms-list">
+                <!-- Platform Count -->
+                <div class="platform-count">
+                  <h2>
+                    Social Media Platforms Available: <span id="platform-count">8</span>
+                  </h2>
+                </div>
+
+                <!-- Platforms Grid -->
+                <div id="platforms-grid" class="platforms-grid"></div>
+
+                <!-- No Results -->
+                <div id="no-results" class="no-results hidden">
+                  <h3>No platforms found</h3>
+                  <p>
+                    We couldn't find any platforms matching your search. <br>Try different keywords or browse all platforms.
+                  </p>
+                  <button id="view-all-btn" class="primary-btn">
+                    View All Platforms
+                  </button>
+                </div>
+              </div>
+            </div>
+        </main>
+
+        <!-- CTA -->
+        <section class="cta-area cta-area2">
             <div class="custom-container">
-                <div class="new-release-img-box">
-                    <img src="./assets/imgs/help-org.avif" alt="Service Details"/>
+                <div class="cta-body text-center d-flex align-items-center justify-content-between">
+                    <img src="./assets/imgs/bg-shape-12.png" alt="Shape" class="animation-slide-right bg-shape"/>
+                    <div class="left">
+                        <h2>Can't Find What You Need?</h2>
+                        <p>Our team can help you navigate complex reporting processes or provide guidance for platforms not listed here.</p>
+                    </div>
+                    <a href="contact.html" class="theme-btn">Request Assistance</a>
                 </div>
             </div>
         </section>
 
+        <!-- Redirect Popup -->
+        <div id="redirect-popup" class="redirect-popup hidden">
+            <div class="popup-content">
+              <div class="popup-header">
+                <div class="popup-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" x2="21" y1="14" y2="3"></line>
+                  </svg>
+                  <span>External Redirect</span>
+                </div>
+                <button id="close-popup">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                  </svg>
+                </button>
+              </div>
 
-        <div class="searchbar-container">
-            <form action="#" class="searchbar-form">
-                <select id="category">
-                    <option value="all">All Categories</option>
-                    <option value="Fight Against Cybercrime">Cybercrime Reporting Website with resources</option>
-                    <option value="Password Generator">Need a Strong and Secure Password?</option>
-                    <option value="Phishing Prevention">Check Phishing Websites</option>
-                    <option value="Credentials Safety Check">Check if your credentials are safe</option>
-                    <option value="Prevent sharing intimate images">Remove your Explicit Image from Internet</option>
-                    <option value="Help with Ransomware">Infected with Ransomware or need help with Ransomware?</option>
-                    <option value="Website Safety Check">Verify if a website is safe or not</option>
-                    <option value="Fake Videos Check">Check if a video is fake or manipulated</option>
-                    <option value="Image Search">Check image for scams</option>
-                    <option value="Search for Scams">Report and Learn Scammer Techniques</option>
-                    <option value="Patent Security">Intellectual Property Security</option>
-                </select>
-                <button class="theme-btn" style="border-radius: 40px;" type="submit"><span style="margin: 10px">Select the Categories</span><i class="fa fa-search"></i></button>
-            </form>
+              <div class="popup-body">
+                <div class="warning">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                    <path d="M12 9v4"></path>
+                    <path d="M12 17h.01"></path>
+                  </svg>
+                  <div>
+                    <h3>You are leaving CyberSecure</h3>
+                    <p>
+                      You will be redirected to an external website that is not operated by us.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="destination">
+                  <p class="destination-label">Destination:</p>
+                  <p id="destination-url"></p>
+                </div>
+
+                <p class="redirect-info">
+                  You are about to visit the <span id="category-name"></span> page 
+                  for <span id="platform-name"></span>.
+                </p>
+
+                <div class="popup-actions">
+                  <p class="countdown-text">
+                    Redirecting in <span id="countdown">10</span> seconds...
+                  </p>
+                  <div class="action-buttons">
+                    <button id="cancel-redirect" class="secondary-btn">
+                      Cancel
+                    </button>
+                    <button id="go-now" class="primary-btn">
+                      Go Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
 
-        <p id="resultMessage" class="result-message"></p>
+
+
         
-
-        <!-- Cards div // fetching data from javascript file  -->
-         
-        <div id="content" class="image-gallery">
-        </div>
-
-        <!-- redirected popup -->
-
-        <div class="popup-overlay" id="popupOverlay"></div>
-        <div class="popup-container" id="popupContainer">
-          <img src="./assets/imgs/1.png" alt="Protect Logo">
-          <p style="font-size: 18px; margin-bottom: 15px;">You are about to leave our website and visit an external resource</p>
-          <p style="font-size: 22px; font-weight: 700;">Redirecting to: <span id="redirectWebsite" style="color: #003366; font-weight: normal; font-size: 20px;"></span><br></p>
-          <p><span id="redirectUrlDisplay"></span></p>
-          <p>You are being redirected in <span id="popupSeconds" style="color: rgb(218, 13, 13); font-weight: bold;">10</span> seconds.</p>
-          <p>If you are not redirected, <a id="redirectLink" href="#" target="_blank">click here</a>.</p>
-        </div>
-
-
-
-        <!-- About -->
-
-        <section class="about-service3-area about-service3-style-2">
-            <img src="./assets/imgs/bg-shape-3.svg" alt="Shape" class="animation-slide-right bg-shape">
-            <div class="custom-container">
-                <div class="custom-row align-items-center">
-                    <div class="img-box">
-                        <img src="./assets/imgs/help-org-5.avif" alt="About" />
-                    </div>
-        
-                    <div class="content-box">
-                        <h5 class="section-subtitle">IMPORTANCE</h5>
-                        <h1 class="section-title">The Role of Organizations</h1>
-                        <p>Organizations play a critical role in educating and protecting individuals from the dangers of scam websites and online fraud.</p>
-                        <ul>
-                            <li>
-                                <i class="las la-check"></i> Spreading Awareness
-                            </li>
-                            <li>
-                                <i class="las la-check"></i> Providing Tools for Protection
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-          <!-- Feature -->
-          <section class="feature3-area feature3-style-2">
-            <!-- <img src="./assets/imgs/bg-shape-1.svg" alt="Shape" class="bg-shape" /> -->
-            <div class="custom-container">
-                <div class="feature3-body">
-                    <div class="section-header">
-                        <h5 class="section-subtitle">FEATURES</h5>
-                        <h1 class="section-title">Boosting your
-                            business using
-                            our team</h1>
-                    </div>
-
-                    <div class="feature3-lists">
-                        <div class="feature-box">
-                            <i class="icon-box las la-check"></i>
-                            <h3>Requirements Gathering</h3>
-                            <p>The development process starts with gathering and analyzing the requirements from stakeholders, including clients, end-users, and business analysts 
-                                requirements from stakeholders, </p>
-                        </div>
-                        <div class="feature-box">
-                            <i class="icon-box las la-check"></i>
-                            <h3>Devops Interoperability</h3>
-                            <p>In today's interconnected world, software often needs to integrate with other systems and platforms. Developing software with interoperability in mind ensures.</p>
-                        </div>
-                        <div class="feature-box">
-                            <i class="icon-box las la-check"></i>
-                            <h3>Data Integration</h3>
-                            <p>Software applications should be designed and developed with scalability in mind. As user bases grow and data increases, the software should be able to handle.</p>
-                        </div>
-                        <div class="feature-box">
-                            <i class="icon-box las la-check"></i>
-                            <h3>Analytics Performance</h3>
-                            <p>The development process starts with gathering and analyzing the requirements from stakeholders, including clients, end and business analysts. As user bases grow and data increases</p>
-                        </div>
-                        <div class="feature-box">
-                            <i class="icon-box las la-check"></i>
-                            <h3>Data Integration</h3>
-                            <p>Software applications should be designed and developed with scalability in mind. As user bases grow and data increases, the software should be able to handle.</p>
-                        </div>
-                        <div class="feature-box">
-                            <i class="icon-box las la-check"></i>
-                            <h3>Analytics Performance</h3>
-                            <p>The development process starts with gathering and analyzing the requirements from stakeholders, including clients, end and business analysts. As user bases grow and data increases</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
         <!-- Footer -->
         <footer class="footer-area">
             <img src="./assets/imgs/bg-shape-4.svg" alt="Shape" class="animation-slide-right bg-shape" />
@@ -519,41 +531,26 @@
                     <div class="custom-row align-items-end justify-content-between">
                         <div class="left-content">
                             <a href="index.html" class="logo">
-                                <img src="./assets/imgs/logo-white.svg" alt="Logo" />
+                                <img src="./assets/imgs/logo.png" style="height: 100px; width: 120px;" alt="Logo" />
                             </a>
-                            <p>We provide the expertise and support to <br>
-                                propel your business forward.</p>
-                            <form action="assets/mail/subscribe.php" method="POST" class="subscribe-form">
-                                <div class="subscribe-box d-flex">
-                                    <input type="email" id="email" name="email" placeholder="Enter Your Email" />
-                                    <button id="submit2" class="theme-btn">Get Started</button>
-                                </div>
-                                <!-- Alert Message -->  
-                                <div class="input-row">
-                                    <div class="input-group alert-notification">
-                                        <div id="alert-message-subscribe" class="alert-msg"></div>
-                                    </div>
-                                </div>
-                            </form>
+                            <p>PROTECT, a service created by a cybersecurity student to help <br>
+                                protect individuals and businesses from cyber threats.</p>
                             <div class="footer-clients d-flex align-items-center">
                                 <div class="footer-client-img">
                                     <img src="./assets/imgs/youtube.svg" alt="Youtube" />
                                 </div>
                                 <div class="footer-client-img">
-                                    <img src="./assets/imgs/webflow.svg" alt="webflow" />
+                                    <img src="./assets/imgs/youtube.svg" alt="Youtube" />
                                 </div>
                                 <div class="footer-client-img">
-                                    <img src="./assets/imgs/upwork.svg" alt="upwork" />
-                                </div>
-                                <div class="footer-client-img">
-                                    <img src="./assets/imgs/shopify.svg" alt="shopify" />
+                                    <img src="./assets/imgs/youtube.svg" alt="Youtube" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="right-content">
                             <div class="right-content-inner">
-                                <h2>Let’s get started on something great</h2>
+                                <h2>Let's get started on something great</h2>
                                 <p>Our team of IT experts looks forward to meeting with you <br>
                                     and providing valuable insights tailored to your business.</p>
                                 <a href="contact.html" class="theme-btn">Get an appointment now</a>
@@ -644,17 +641,9 @@
 
                         <div class="footer-contact-info">
                             <div class="footer-contact-info-item">
-                                <h4>Phone</h4>
-                                <p>
-                                    <a href="tel:+1-455-1482-236">+1-455-1482-236</a> <br>
-                                    <a href="tel:+1-938-740-75556">+1-938-740-7555</a>
-                                </p>
-                            </div>
-                            <div class="footer-contact-info-item">
                                 <h4>Mail</h4>
                                 <p>
-                                    <a href="mailto:bluebase@mail.com">bluebase@mail.com</a> <br>
-                                    <a href="mailto:mandrodio@mail.com">mandrodio@mail.com</a>
+                                    <a href="mailto:bluebase@mail.com">contact@protect.org</a>
                                 </p>
                             </div>
                         </div>
@@ -680,13 +669,16 @@
                             </a></li>
                         </ul>
 
-                        <p>&copy; 2023 All rights reserved by <a href="https://themeforest.net/user/wordpressriver/portfolio">WordpressRiver</a></p>
+                        <p>&copy; 2025 All rights reserved by <b>PROTECT</b></p>
                     </div>
                 </div>
             </div>
         </footer>
 
+
     </main>
+
+
 
     <!-- jQuery Frameworks
     ============================================= -->
@@ -698,8 +690,9 @@
     <script src="./assets/js/client-marquee.js"></script>
     <script src="./assets/js/theme-custom.js"></script>
     <script src="./assets/js/form1.js"></script>
+    <script src="./assets/js/home.js"></script>
     <script src="./assets/js/subscribe-form.js"></script>
-    <script src="./assets/js/organisationTools.js"></script>
+    <script src="./assets/js/social_reporting.js"></script>
 </body>
 
 </html>
