@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="landing-page/css/landing-page.css">
-    <link rel="stylesheet" href="./assets/css/security_features.css">
+    <link rel="stylesheet" href="./assets/css/breached.css">
     <!-- ========== End Stylesheet ========== -->
 
     <!-- Favicon links -->
@@ -183,6 +183,17 @@
                                                         </div>
                                                         <div class="mega-menu-portfolio-card">
                                                             <div class="img-box">
+                                                                <img src="./assets/imgs/16.png"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="breached.html">Breached</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
                                                                 <img src="./assets/imgs/10.png"
                                                                     alt="Portfolio" />
                                                             </div>
@@ -194,7 +205,7 @@
                                                         </div>
                                                         <div class="mega-menu-portfolio-card">
                                                             <div class="img-box">
-                                                                <img src="./assets/imgs/10.png"
+                                                                <img src="./assets/imgs/23.png"
                                                                     alt="Portfolio" />
                                                             </div>
                                                             <div class="content-box">
@@ -392,28 +403,161 @@
             </div>
         </section>
 
+        
         <div class="container">
-    
-            <div class="tools-container">
-                <!-- Have I Been Pwned -->
-                <section class="tool-section">
-                    <div class="section-header">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon red"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
-                        <h2>Have I Been Pwned</h2>
+            <div class="card">
+              <!-- Header -->
+              <div class="header">
+                <div class="header-content">
+                  <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <h1>Data Breach Checker</h1>
+                  </div>
+                  <div class="powered-by">
+                    Powered by BreachGuard
+                  </div>
+                </div>
+                <p class="subtitle">Check if your email has been compromised in known data breaches</p>
+              </div>
+        
+              <!-- Form -->
+              <div class="form-container">
+                <form id="breach-form">
+                  <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-group">
+                      <div class="input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                          <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                        </svg>
+                      </div>
+                      <input type="email" id="email" placeholder="Enter your email address" required>
+                      <button type="submit" id="check-button">
+                        <span id="button-text">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                          </svg>
+                          Check
+                        </span>
+                        <span id="spinner" class="hidden">
+                          <div class="spinner"></div>
+                        </span>
+                      </button>
                     </div>
-                    
-                    <div class="tool-content">
-                        <div class="search-group">
-                            <input type="text" id="pwnedInput" placeholder="Enter email or password to check">
-                            <button id="pwnedButton" class="btn red">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
-                                Check
-                            </button>
-                        </div>
+                  </div>
+                  
+                  <div id="error-message" class="error-message hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                      <path d="M12 9v4"></path>
+                      <path d="M12 17h.01"></path>
+                    </svg>
+                    <p></p>
+                  </div>
+                </form>
+        
+                <!-- Results -->
+                <div id="results" class="hidden">
+                  <div id="result-summary" class="result-summary">
+                    <div id="result-icon" class="result-icon"></div>
+                    <div class="result-text">
+                      <h2 id="result-title"></h2>
+                      <p id="result-subtitle"></p>
                     </div>
-                </section>
+                  </div>
+        
+                  <div id="breach-details" class="breach-details hidden">
+                    <h3>Breach Details</h3>
+                    <div id="breach-list" class="breach-list"></div>
+                  </div>
+                </div>
+              </div>
+        
+              <!-- Footer -->
+              <div class="footer">
+                <div class="footer-content">
+                  <div class="privacy-note">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Your email is never stored or shared</span>
+                  </div>
+                  <a href="https://haveibeenpwned.com/" target="_blank" rel="noopener noreferrer" class="learn-more">
+                    Learn more about data breaches
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" x2="21" y1="14" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
             </div>
-        </div>
+        
+            <!-- Tips Section -->
+            <div id="tips-section" class="tips-card hidden">
+              <div class="tips-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                  <path d="M12 9v4"></path>
+                  <path d="M12 17h.01"></path>
+                </svg>
+                <h2>What should you do now?</h2>
+              </div>
+              <div class="tips-content">
+                <div class="tip">
+                  <div class="tip-number">
+                    <span>1</span>
+                  </div>
+                  <div class="tip-text">
+                    <h3>Change your passwords</h3>
+                    <p>Update your password on the affected services and any other services where you've used the same password.</p>
+                  </div>
+                </div>
+                
+                <div class="tip">
+                  <div class="tip-number">
+                    <span>2</span>
+                  </div>
+                  <div class="tip-text">
+                    <h3>Enable two-factor authentication</h3>
+                    <p>Add an extra layer of security to your accounts by enabling 2FA wherever possible.</p>
+                  </div>
+                </div>
+                
+                <div class="tip">
+                  <div class="tip-number">
+                    <span>3</span>
+                  </div>
+                  <div class="tip-text">
+                    <h3>Monitor your accounts</h3>
+                    <p>Keep an eye on your accounts for any suspicious activity and report anything unusual immediately.</p>
+                  </div>
+                </div>
+                
+                <div class="tip">
+                  <div class="tip-number">
+                    <span>4</span>
+                  </div>
+                  <div class="tip-text">
+                    <h3>Use a password manager</h3>
+                    <p>Consider using a password manager to create and store strong, unique passwords for all your accounts.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
         <!-- Footer -->
         <footer class="footer-area">
             <img src="./assets/imgs/bg-shape-4.svg" alt="Shape" class="animation-slide-right bg-shape" />
@@ -579,7 +723,7 @@
     <script src="./assets/js/form1.js"></script>
     <script src="./assets/js/home.js"></script>
     <script src="./assets/js/subscribe-form.js"></script>
-    <script src="./assets/js/security_features.js"></script>
+    <script src="./assets/js/breached.js"></script>
 </body>
 
 </html>
