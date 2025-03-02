@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ========== Page Title ========== -->
+    <title>Page Not Found!</title>
+
+    <!-- ========== Start Fonts Style ========== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600&family=Syne:wght@400;500;600&family=Yantramanav:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    
+    <!-- ========== Start Stylesheet ========== -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <!-- ========== End Stylesheet ========== -->
+
+    <!-- Favicon links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/logo/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/logo/site.webmanifest">
+    <style>
+        /* Variables */
+        :root {
+          --light1: #FFFFFF;
+          --light2: #F0F5FF;
+          --dark_text: #333333;
+          --primary_color: #4F8DFF;
+          --primary_color2: #1351D8;
+          --primary_light: #E8F0FF;
+          --primary_light2: rgba(79, 141, 255, 0.1);
+          --accent_color: #FF6B6B;
+          --yellow_color: #FFD600;
+          --font_syne: 'Syne', sans-serif;
+          --font_yantramanv: 'Yantramanav', sans-serif;
+          --font_dm: 'DM Sans', sans-serif;
+        }
+        
+        /* Reset Browsers */
+        *,*:before,*:after {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        
+        ul,ol {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        
+        a {
+          text-decoration: none !important;
+        }
+        
+        input:focus,
+        textarea:focus,
+        button:focus {
+          outline: none;
+          box-shadow: none;
+        }
+        
+        /* Template Default Styles */
+        body {
+          font-size: 16px;
+          font-family: var(--font_dm);
+          line-height: 1.5;
+          font-weight: 400;
+          overflow-x: hidden;
+          background-color: var(--light1);
+          color: var(--dark_text);
+          height: 100vh;
+          margin: 0;
+          overflow: hidden;
+          perspective: 1000px;
+        }
+        
+        .page-wrapper {
+          position: relative;
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+        }
+        
+        .cyber-grid {
+          position: absolute;
+          width: 200%;
+          height: 200%;
+          top: -50%;
+          left: -50%;
+          background-image: 
+            linear-gradient(rgba(79, 141, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(79, 141, 255, 0.1) 1px, transparent 1px);
+          background-size: 50px 50px;
+          transform: perspective(500px) rotateX(60deg);
+          animation: grid-move 25s linear infinite;
+          z-index: 0;
+        }
+        
+        @keyframes grid-move {
+          0% {
+            background-position: 0 0;
+          }
+          100% {
+            background-position: 0 50px;
+          }
+        }
+        
+        .error-container {
+          position: relative;
+          max-width: 900px;
+          width: 90%;
+          z-index: 10;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 3rem 0;
+        }
+        
+        .error-card {
+          background: rgba(255, 255, 255, 0.9);
+          border-radius: 20px;
+          backdrop-filter: blur(10px);
+          padding: 40px;
+          box-shadow: 0 0 30px rgba(79, 141, 255, 0.2), 
+                      0 0 80px rgba(79, 141, 255, 0.1),
+                      inset 0 0 15px rgba(79, 141, 255, 0.1);
+          border: 1px solid rgba(79, 141, 255, 0.3);
+          width: 100%;
+          position: relative;
+          overflow: hidden;
+          text-align: center;
+        }
+        
+        .glitch-404 {
+          position: relative;
+          font-family: var(--font_syne);
+          font-size: 12rem;
+          font-weight: 700;
+          line-height: 1;
+          color: var(--primary_color);
+          letter-spacing: -0.05em;
+          margin-bottom: 2rem;
+          text-shadow: 
+            0 0 10px rgba(79, 141, 255, 0.4),
+            0 0 20px rgba(79, 141, 255, 0.2);
+          transform-style: preserve-3d;
+        }
+        
+        .glitch-404::before,
+        .glitch-404::after {
+          content: "404";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+        
+        .glitch-404::before {
+          color: rgba(255, 107, 107, 0.7);
+          animation: glitch-1 2s infinite linear alternate-reverse;
+        }
+        
+        .glitch-404::after {
+          color: rgba(255, 214, 0, 0.7);
+          animation: glitch-2 3s infinite linear alternate-reverse;
+        }
+        
+        @keyframes glitch-1 {
+          0%, 100% { transform: translate(0); }
+          20% { transform: translate(-3px, 3px); }
+          40% { transform: translate(-3px, -3px); }
+          60% { transform: translate(3px, 3px); }
+          80% { transform: translate(3px, -3px); }
+        }
+        
+        @keyframes glitch-2 {
+          0%, 100% { transform: translate(0); }
+          25% { transform: translate(3px, 0); }
+          50% { transform: translate(-3px, 2px); }
+          75% { transform: translate(1px, -2px); }
+        }
+        
+        
+        .scanner-circle {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+          animation: scanner-rotate 8s linear infinite;
+          cursor: pointer;
+        }
+        
+        @keyframes scanner-rotate {
+          0% { transform: rotateZ(0deg); }
+          100% { transform: rotateZ(360deg); }
+        }
+        
+        .scanner-circle:hover {
+          animation-play-state: paused;
+        }
+        
+        .scanner-glow {
+          position: absolute;
+          width: 180px;
+          height: 180px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(79, 141, 255, 0.3) 0%, rgba(79, 141, 255, 0) 70%);
+          filter: blur(15px);
+          animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+          0%, 100% { transform: scale(0.8); opacity: 0.4; }
+          50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        h1 {
+          font-family: var(--font_syne);
+          font-size: 3rem;
+          font-weight: 700;
+          margin: 1.5rem 0;
+          color: var(--primary_color2);
+          text-shadow: 0 0 10px rgba(19, 81, 216, 0.2);
+        }
+        
+        p {
+          font-size: 1.3rem;
+          margin-bottom: 2rem;
+          line-height: 1.6;
+          color: var(--dark_text);
+          max-width: 650px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        
+        .buttons-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin-bottom: 2rem;
+          gap: 1rem;
+        }
+        
+        /* Button Styles */
+        .theme-btn {
+          font-size: 18px;
+          font-weight: 500;
+          color: var(--light1);
+          background: var(--primary_color);
+          display: inline-flex;
+          align-items: center;
+          padding: 15px 30px;
+          border-radius: 30px;
+          position: relative;
+          cursor: pointer;
+          transition: .3s;
+          z-index: 1;
+          overflow: hidden;
+          text-decoration: none !important;
+          gap: 10px;
+          border: none;
+          box-shadow: 0 0 20px rgba(79, 141, 255, 0.5);
+        }
+        
+        .theme-btn::after,
+        .theme-btn::before {
+          content: '';
+          width: 50%;
+          height: 0;
+          background: var(--primary_color2);
+          border-radius: 30px 0 0 30px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          transition: .3s;
+        }
+        
+        .theme-btn::after {
+          top: auto;
+          left: auto;
+          bottom: 0;
+          right: 0;
+          border-radius: 0 30px 30px 0;
+        }
+        
+        .theme-btn:hover {
+          color: var(--light1);
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(79, 141, 255, 0.6);
+        }
+        
+        .theme-btn:hover::after,
+        .theme-btn:hover::before {
+          height: 100%;
+        }
+        
+        .theme-btn2 {
+          font-size: 18px;
+          font-weight: 500;
+          color: var(--accent_color);
+          background: rgba(255, 107, 107, 0.1);
+          display: inline-flex;
+          align-items: center;
+          padding: 15px 30px;
+          border-radius: 30px;
+          position: relative;
+          cursor: pointer;
+          transition: .3s;
+          z-index: 1;
+          overflow: hidden;
+          text-decoration: none !important;
+          gap: 10px;
+          border: none;
+          box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+        }
+        
+        .theme-btn2::after,
+        .theme-btn2::before {
+          content: '';
+          width: 50%;
+          height: 0;
+          background: var(--accent_color);
+          border-radius: 30px 0 0 30px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          transition: .3s;
+        }
+        
+        .theme-btn2::after {
+          top: auto;
+          left: auto;
+          bottom: 0;
+          right: 0;
+          border-radius: 0 30px 30px 0;
+        }
+        
+        .theme-btn2:hover {
+          color: var(--light1);
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(255, 107, 107, 0.4);
+        }
+        
+        .theme-btn2:hover::after,
+        .theme-btn2:hover::before {
+          height: 100%;
+        }
+        
+        .suggestions {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.8rem;
+          margin-top: 1.5rem;
+          position: relative;
+          z-index: 2;
+        }
+        
+        .tag {
+          background-color: var(--primary_light);
+          color: var(--primary_color2);
+          padding: 0.8rem 1.5rem;
+          border-radius: 30px;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-family: var(--font_dm);
+          border: 1px solid rgba(79, 141, 255, 0.3);
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .tag::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+          transition: 0.5s;
+        }
+        
+        .tag:hover::before {
+          left: 100%;
+        }
+        
+        .tag:hover {
+          background-color: var(--primary_color);
+          color: var(--light1);
+          transform: translateY(-3px);
+          box-shadow: 0 5px 15px rgba(79, 141, 255, 0.4);
+        }
+        
+        .scan-line {
+          position: absolute;
+          width: 100%;
+          height: 5px;
+          background: linear-gradient(to right, transparent, var(--accent_color), transparent);
+          top: 0;
+          left: 0;
+          opacity: 0.6;
+          filter: blur(2px);
+          animation: scan 5s ease-in-out infinite;
+          z-index: 1;
+        }
+        
+        @keyframes scan {
+          0%, 100% { top: 0; opacity: 0; }
+          2%, 98% { opacity: 0.6; }
+          50% { top: 100%; }
+        }
+        
+        .confetti {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+        }
+        
+        .confetti-piece {
+          position: absolute;
+          width: 8px;
+          height: 16px;
+          background-color: #4F8DFF;
+          top: -20px;
+          opacity: 0;
+        }
+        
+        @media (max-width: 768px) {
+          .glitch-404 {
+            font-size: 6rem;
+          }
+          
+          h1 {
+            font-size: 2rem;
+          }
+          
+          p {
+            font-size: 1rem;
+          }
+          
+          .scanner-glow {
+            width: 120px;
+            height: 120px;
+          }
+          
+          .error-card {
+            padding: 20px;
+          }
+        }
+      </style>
+
+
+</head>
+
+<body>
+
+    <!-- Main -->
+    <main class="main-page homepage">
+        <div class="header-bar-ad">
+            <p>Level up your online safety with our quick and easy <u>Risk Assessment Tool</u></p>
+        </div>
+
+        <!-- Header -->
+        <header class="header-area">
+
+            <div class="custom-container">
+                <div class="custom-row align-items-center justify-content-between">
+                    <div class="header-left d-flex align-items-center">
+                        <a href="index.html" class="logo">
+                            <img src="./assets/imgs/logo.png" style="height: 100px; width: 120px;" alt="Logo" />
+                        </a>
+
+                        <div class="header-left-right">
+                            <a href="contact.html" class="theme-btn">Contact Us</a>
+                            <span class="menu-bar">
+                                <i class="las la-bars"></i>
+                            </span>
+                        </div>
+                        <nav class="navbar-wrapper d-flex align-items-center">
+                            <span class="close-menu-bar">
+                                <i class="las la-times"></i>
+                            </span>
+                            <ul>
+                                <li>
+                                    <a href="index.html">Home</a>
+                                </li>
+                                <li>
+                                    <a href="about.html">About</a>
+                                </li>
+                                <li class="mega-menu-item">
+                                    <a href="portfolio.html">What-To-Do</a>
+                                    <span class="dropdown-menu-item-icon">
+                                        <i class="las la-angle-down"></i>
+                                    </span>
+                                    <div class="mega-menu mega-menu-portfolio">
+                                        <div class="mega-menu-inner">
+                                            <div class="custom-container d-flex">
+                                                <div class="left">
+                                                    <div
+                                                        class="mega-menu-link-wrap d-flex align-items-start justify-content-between">
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/portfolio-mega-menu-1.jpg"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="to_protect_yourself.html">To Protect Yourself?</a></h3>
+                                                                <p>we undertook a project to <br>migrate their existing.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/portfolio-mega-menu-2.jpg"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="If_you_become_a_victim.html">If You Become A Victim?</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div
+                                                        class="mega-meu-footer d-flex align-items-center justify-content-between w-full">
+                                                        <ul class="mega-menu-social d-flex align-items-center">
+                                                            <li><a href="#"><i class="iconoir-dribbble"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-twitter"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-instagram"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-linkedin"></i></a></li>
+                                                        </ul>
+
+                                                        <p>
+                                                            <a href="portfolio.html">View Guide
+                                                                <i class="iconoir-arrow-up-right"></i></a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mega-menu-item">
+                                    <a href="tools.html">Tools</a>
+                                    <span class="dropdown-menu-item-icon">
+                                        <i class="las la-angle-down"></i>
+                                    </span>
+                                    <div class="mega-menu mega-menu-portfolio">
+                                        <div class="mega-menu-inner">
+                                            <div class="custom-container d-flex">
+                                                <div class="left">
+                                                    <div
+                                                        class="mega-menu-link-wrap d-flex align-items-start justify-content-between">
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/softwares.png"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="tools1.html">Security Tools</a></h3>
+                                                                <p>we undertook a project to <br>migrate their existing.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/organization.png"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="external_resources.html">External Resources</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/risk_assessmentr.png"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="risk_assessment.html">Risk Assessment Tool</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/16.png"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="password.html">Password Generator</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/16.png"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="breached.html">Breached</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/10.png"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="social_reporting.html">Social Media</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/23.png"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="banking.html">Financial</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div
+                                                        class="mega-meu-footer d-flex align-items-center justify-content-between w-full">
+                                                        <ul class="mega-menu-social d-flex align-items-center">
+                                                            <li><a href="#"><i class="iconoir-dribbble"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-twitter"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-instagram"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-linkedin"></i></a></li>
+                                                        </ul>
+
+                                                        <p>
+                                                            <a href="portfolio.html">View Guide
+                                                                <i class="iconoir-arrow-up-right"></i></a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mega-menu-item">
+                                    <a href="Learn-edcu.html">Resources</a>
+                                    <span class="dropdown-menu-item-icon">
+                                        <i class="las la-angle-down"></i>
+                                    </span>
+                                    <div class="mega-menu mega-menu-portfolio">
+                                        <div class="mega-menu-inner">
+                                            <div class="custom-container d-flex">
+                                                <div class="left">
+                                                    <div
+                                                        class="mega-menu-link-wrap d-flex align-items-start justify-content-between">
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/portfolio-mega-menu-1.jpg"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="Learn-edcu.html">Blog</a></h3>
+                                                                <p>we undertook a project to <br>migrate their existing.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/portfolio-mega-menu-2.jpg"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="Learn-edcu.html">News</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/portfolio-mega-menu-2.jpg"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="Learn-edcu.html">Events</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div
+                                                        class="mega-meu-footer d-flex align-items-center justify-content-between w-full">
+                                                        <ul class="mega-menu-social d-flex align-items-center">
+                                                            <li><a href="#"><i class="iconoir-dribbble"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-twitter"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-instagram"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-linkedin"></i></a></li>
+                                                        </ul>
+
+                                                        <p>
+                                                            <a href="portfolio.html">View Guide
+                                                                <i class="iconoir-arrow-up-right"></i></a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mega-menu-item">
+                                    <a href="Learn-edcu.html">Learn</a>
+                                    <span class="dropdown-menu-item-icon">
+                                        <i class="las la-angle-down"></i>
+                                    </span>
+                                    <div class="mega-menu mega-menu-portfolio">
+                                        <div class="mega-menu-inner">
+                                            <div class="custom-container d-flex">
+                                                <div class="left">
+                                                    <div
+                                                        class="mega-menu-link-wrap d-flex align-items-start justify-content-between">
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/portfolio-mega-menu-1.jpg"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="learning2.html">Learn2</a></h3>
+                                                                <p>we undertook a project to <br>migrate their existing.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/portfolio-mega-menu-2.jpg"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="Learn-edcu.html">Games</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div
+                                                        class="mega-meu-footer d-flex align-items-center justify-content-between w-full">
+                                                        <ul class="mega-menu-social d-flex align-items-center">
+                                                            <li><a href="#"><i class="iconoir-dribbble"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-twitter"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-instagram"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-linkedin"></i></a></li>
+                                                        </ul>
+
+                                                        <p>
+                                                            <a href="portfolio.html">View Guide
+                                                                <i class="iconoir-arrow-up-right"></i></a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="chatbot.html">Chatbot</a>
+                                </li>
+                            <!---
+                            <select class="country-select" name="country" id="country">
+                                <option value="en">EN</option>
+                                <option value="uk">UK</option>
+                                <option value="dz">DZ</option>
+                            </select>
+                            -->
+                        </nav>
+                    </div>
+                    <div class="header-right">
+                        <div class="header-contact-info d-flex align-items-center">
+                            <div class="phone-number">
+                                <a href="#!">
+                                    Email 
+                                    <i class="iconoir-arrow-up-right"></i>   
+                                </a>
+                                contact@protect.org
+                            </div>
+                            <a href="contact.html" class="theme-btn">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+        <div class="page-wrapper">
+            <div class="cyber-grid"></div>
+            <div id="confetti" class="confetti"></div>
+            
+            <div class="error-container">
+              <div class="error-card">
+                <div class="scan-line"></div>
+                
+                <div class="glitch-404">404</div>
+                
+                <h1>INVESTIGATION BLOCKED!</h1>
+                
+                <p>Our cyber investigator hit a digital dead end! We can't find the page you're looking for. It might have been moved, deleted, or never existed in the first place. Our digital detective is on the case!</p>
+                
+                <div class="buttons-container">
+                  <a href="/" class="theme-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 6.19L17 10.69V18.5H15V12.5H9V18.5H7V10.69L12 6.19ZM12 3.5L2 12.5H5V20.5H11V14.5H13V20.5H19V12.5H22L12 3.5Z" fill="currentColor"/>
+                    </svg>
+                    Return to HQ
+                  </a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </main>
+
+
+
+<!-- jQuery Frameworks
+============================================= -->
+<script>
+    // Scanner circle control
+    const scannerCircle = document.getElementById('scannerCircle');
+    const scanner = document.getElementById('scanner');
+    const investigator = document.getElementById('investigator');
+    const dataStream1 = document.getElementById('dataStream1');
+    const dataStream2 = document.getElementById('dataStream2');
+    const confettiContainer = document.getElementById('confetti');
+    
+    // Function to create data particles effect
+    function createDataParticles() {
+      const colors = ['#4F8DFF', '#1351D8', '#FFD600', '#FF6B6B'];
+      const particleCount = 100;
+      
+      // Clear previous particles
+      confettiContainer.innerHTML = '';
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'confetti-piece';
+        
+        // Random styling
+        particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.width = `${Math.random() * 8 + 2}px`;
+        particle.style.height = `${Math.random() * 8 + 2}px`;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.opacity = '1';
+        particle.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+        
+        // Random rotation
+        const rotation = Math.random() * 360;
+        particle.style.transform = `rotate(${rotation}deg)`;
+        
+        // Random animation
+        const duration = Math.random() * 3 + 2;
+        const delay = Math.random() * 0.5;
+        
+        particle.style.animation = `fall ${duration}s ease-in ${delay}s forwards`;
+        
+        // Add keyframe animation dynamically
+        const keyframes = `
+          @keyframes fall {
+            0% { 
+              transform: translateY(-10px) rotate(${rotation}deg); 
+              opacity: 0;
+            }
+            10% {
+              opacity: 1;
+            }
+            100% { 
+              transform: translateY(${window.innerHeight}px) rotate(${rotation + 360}deg); 
+              opacity: 0;
+            }
+          }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = keyframes;
+        document.head.appendChild(styleSheet);
+        
+        confettiContainer.appendChild(particle);
+      }
+      
+      // Play scanner sound
+      playDigitalSound();
+    }
+    
+    // Function to play digital scanning sound
+    function playDigitalSound() {
+      try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(500, audioContext.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(2000, audioContext.currentTime + 0.15);
+        oscillator.frequency.exponentialRampToValueAtTime(500, audioContext.currentTime + 0.3);
+        
+        gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.2, audioContext.currentTime + 0.15);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.start();
+        oscillator.stop(audioContext.currentTime + 0.3);
+      } catch(e) {
+        console.log("Audio context not supported");
+      }
+    }
+    
+    scannerCircle.addEventListener('click', () => {
+      // Check if animation is paused
+      if (scannerCircle.style.animationPlayState === 'paused' || !scannerCircle.style.animationPlayState) {
+        // Start spinning fast
+        scannerCircle.style.animation = 'scanner-rotate 1s linear infinite';
+        // Add scanning animation
+        dataStream1.style.strokeDashoffset = '10';
+        dataStream1.style.animation = 'dash 1s linear infinite';
+        dataStream2.style.strokeDashoffset = '10';
+        dataStream2.style.animation = 'dash 1s linear infinite reverse';
+        
+        // Add keyframe animation for data streams
+        const dashKeyframes = `
+          @keyframes dash {
+            to {
+              stroke-dashoffset: 0;
+            }
+          }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = dashKeyframes;
+        document.head.appendChild(styleSheet);
+        
+        createDataParticles();
+      } else {
+        // Slow down
+        scannerCircle.style.animation = 'scanner-rotate 8s linear infinite';
+        dataStream1.style.animation = '';
+        dataStream2.style.animation = '';
+      }
+    });
+    
+    // Deep scan button effect
+    const scanBtn = document.getElementById('scanBtn');
+    scanBtn.addEventListener('click', () => {
+      scanBtn.style.transform = 'scale(0.95)';
+      
+      // Create scanning effects
+      document.body.classList.add('scanning');
+      
+      // Lots of data particles
+      createDataParticles();
+      setTimeout(createDataParticles, 200);
+      
+      // Pulse the page
+      document.querySelector('.error-card').style.animation = 'pulse-card 1s ease-in-out';
+      
+      // Create a pulse animation dynamically
+      const pulseKeyframes = `
+        @keyframes pulse-card {
+          0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(79, 141, 255, 0.2); }
+          50% { transform: scale(1.02); box-shadow: 0 0 50px rgba(79, 141, 255, 0.5); }
+        }
+      `;
+      
+      const styleSheet = document.createElement('style');
+      styleSheet.textContent = pulseKeyframes;
+      document.head.appendChild(styleSheet);
+      
+      // Reset after animation
+      setTimeout(() => {
+        document.querySelector('.error-card').style.animation = '';
+        scanBtn.style.transform = '';
+      }, 1000);
+    });
+    
+    // Make tags clickable
+    document.querySelectorAll('.tag').forEach(tag => {
+      tag.addEventListener('click', () => {
+        // Show a little animation when clicked
+        tag.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          tag.style.transform = '';
+        }, 200);
+        
+        // Quick digital sound
+        playDigitalSound();
+      });
+    });
+  </script>
+<script src="./assets/js/jquery-3.7.0.min.js"></script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/js/gsap.min.js"></script>
+<script src="./assets/js/Draggable.min.js"></script>
+<script src="./assets/js/swiper-bundle.min.js"></script>
+<script src="./assets/js/client-marquee.js"></script>
+<script src="./assets/js/theme-custom.js"></script>
+<script src="./assets/js/form1.js"></script>
+<script src="./assets/js/home.js"></script>
+<script src="./assets/js/subscribe-form.js"></script>
+</body>
+
+</html>
