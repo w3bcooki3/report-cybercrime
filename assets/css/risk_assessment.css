@@ -1,21 +1,22 @@
 /* Base styles */
 :root {
-  --cybersec-blue-50: #eff6ff;
-  --cybersec-blue-100: #dbeafe;
-  --cybersec-blue-200: #bfdbfe;
-  --cybersec-blue-300: #93c5fd;
-  --cybersec-blue-400: #60a5fa;
-  --cybersec-blue-500: #3b82f6;
-  --cybersec-blue-600: #2563eb;
-  --cybersec-blue-700: #1d4ed8;
-  --cybersec-blue-800: #1e40af;
-  --cybersec-blue-900: #1e3a8a;
+  --cybersec-blue-50: #f0f7ff;
+  --cybersec-blue-100: #e0f0ff;
+  --cybersec-blue-200: #bae0ff;
+  --cybersec-blue-300: #7cc5ff;
+  --cybersec-blue-400: #36a3ff;
+  --cybersec-blue-500: #0087ff;
+  --cybersec-blue-600: #0063cc;
+  --cybersec-blue-700: #0052a3;
+  --cybersec-blue-800: #003d7a;
+  --cybersec-blue-900: #002952;
   --cybersec-indigo-100: #e0e7ff;
-  --cybersec-green-100: #dcfce7;
-  --cybersec-green-300: #86efac;
-  --cybersec-green-500: #22c55e;
-  --cybersec-green-600: #16a34a;
-  --cybersec-green-700: #15803d;
+  --cybersec-green-50: #ecfdf5;
+  --cybersec-green-100: #d1fae5;
+  --cybersec-green-300: #6ee7b7;
+  --cybersec-green-500: #10b981;
+  --cybersec-green-600: #059669;
+  --cybersec-green-700: #047857;
   --cybersec-red-50: #fef2f2;
   --cybersec-red-100: #fee2e2;
   --cybersec-red-200: #fecaca;
@@ -24,7 +25,8 @@
   --cybersec-red-600: #dc2626;
   --cybersec-red-700: #b91c1c;
   --cybersec-amber-500: #f59e0b;
-  --cybersec-purple-500: #a855f7;
+  --cybersec-purple-500: #8b5cf6;
+  --cybersec-gray-50: #f9fafb;
   --cybersec-gray-100: #f3f4f6;
   --cybersec-gray-200: #e5e7eb;
   --cybersec-gray-300: #d1d5db;
@@ -33,6 +35,7 @@
   --cybersec-gray-600: #4b5563;
   --cybersec-gray-700: #374151;
   --cybersec-gray-800: #1f2937;
+  --cybersec-gray-900: #111827;
   --cybersec-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --cybersec-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --cybersec-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -48,6 +51,9 @@
   flex-direction: column;
   margin-top: 100px;
   margin-bottom: 150px;
+  position: relative;
+  scroll-behavior: smooth;
+  overflow-anchor: none;
 }
 
 
@@ -57,6 +63,7 @@
   max-width: 64rem;
   margin: 0 auto;
   width: 100%;
+  position: relative;
 }
 
 .cybersec-footer {
@@ -118,6 +125,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -128,6 +136,8 @@
   border-radius: 0.5rem;
   font-weight: bold;
   gap: 0.5rem;
+  -webkit-tap-highlight-color: transparent;
+  border: none; /* Remove border */
 }
 
 .cybersec-primary-button:hover {
@@ -144,6 +154,8 @@
   font-weight: bold;
   box-shadow: var(--cybersec-shadow-md);
   gap: 0.5rem;
+  -webkit-tap-highlight-color: transparent;
+  border: none; /* Remove border */
 }
 
 .cybersec-secondary-button:hover {
@@ -160,6 +172,8 @@
   color: var(--cybersec-gray-700);
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
+  -webkit-tap-highlight-color: transparent;
+  border: none; /* Remove border */
 }
 
 .cybersec-reset-button:hover {
@@ -175,6 +189,8 @@
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
   box-shadow: var(--cybersec-shadow-md);
+  -webkit-tap-highlight-color: transparent;
+  border: none; /* Remove border */
 }
 
 .cybersec-continue-button:hover:not(.cybersec-disabled) {
@@ -187,6 +203,7 @@
   background-color: var(--cybersec-gray-300);
   color: var(--cybersec-gray-500);
   cursor: not-allowed;
+  border: none; /* Remove border */
 }
 
 /* Quiz Intro */
@@ -194,8 +211,9 @@
   background-color: white;
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   transition: all 0.5s;
+  position: relative;
 }
 
 .cybersec-quiz-intro:hover {
@@ -239,11 +257,13 @@
   padding: 1.6rem;
   border-radius: 0.5rem;
   transition: transform 0.3s;
-  background-color: #1351D81A;
+  background-color: var(--cybersec-blue-50);
+  border: 1px solid var(--cybersec-blue-100);
 }
 
 .cybersec-feature-card:hover {
   transform: scale(1.05);
+  box-shadow: var(--cybersec-shadow-md);
 }
 
 .cybersec-feature-header {
@@ -255,32 +275,35 @@
 .cybersec-feature-header h3 {
   font-weight: 600;
   margin-left: 0.5rem;
-  color: #1351D8;
+  color: var(--cybersec-blue-700);
   font-family: var(--bs-font-sans-serif);
 }
 
 .cybersec-feature-card p {
   font-size: 0.875rem;
-  color: rgb(28 28 28 / 80%);
+  color: var(--cybersec-gray-700);
 }
 
 .cybersec-info-box {
-  padding: 1rem;
+  padding: 1.25rem;
   border-radius: 0.5rem;
   margin-bottom: 2rem;
   font-family: var(--bs-body-font-family);
+  background-color: var(--cybersec-gray-50);
+  border: 1px solid var(--cybersec-gray-200);
 }
 
 .cybersec-info-box p {
-  font-size: 18px;
+  font-size: 1rem;
   font-family: var(--bs-body-font-family);
+  color: var(--cybersec-gray-700);
+  line-height: 1.5;
 }
 
 .cybersec-bold {
   font-weight: 600;
-  color: #1351D8;
-  font-size: 18px;
-
+  color: var(--cybersec-blue-700);
+  font-size: 1.1rem;
 }
 
 .cybersec-button-container {
@@ -295,6 +318,7 @@
   padding: 1.5rem;
   box-shadow: var(--cybersec-shadow-lg);
   animation: cybersec-fadeIn 0.5s ease-out forwards;
+  position: relative;
 }
 
 @keyframes cybersec-fadeIn {
@@ -354,11 +378,12 @@
   padding: 1rem;
   border-radius: 0.5rem;
   background-color: var(--cybersec-blue-50);
-  border: 1px solid transparent;
+  border: 1px solid var(--cybersec-blue-100);
   transition: all 0.3s;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .cybersec-option-button:hover:not(.cybersec-selected) {
@@ -367,14 +392,14 @@
 }
 
 .cybersec-option-button.cybersec-selected.cybersec-correct {
-  background-color: var(--cybersec-green-100);
-  border-color: var(--cybersec-green-500);
+  background-color: var(--cybersec-green-50);
+  border-color: var(--cybersec-green-300);
   box-shadow: var(--cybersec-shadow-md);
 }
 
 .cybersec-option-button.cybersec-selected.cybersec-incorrect {
-  background-color: var(--cybersec-red-100);
-  border-color: var(--cybersec-red-500);
+  background-color: var(--cybersec-red-50);
+  border-color: var(--cybersec-red-300);
   box-shadow: var(--cybersec-shadow-md);
 }
 
@@ -393,7 +418,7 @@
 
 .cybersec-option-button.cybersec-selected.cybersec-correct .cybersec-option-indicator {
   border-color: var(--cybersec-green-500);
-  background-color: rgba(34, 197, 94, 0.2);
+  background-color: rgba(16, 185, 129, 0.2);
 }
 
 .cybersec-option-button.cybersec-selected.cybersec-incorrect .cybersec-option-indicator {
@@ -415,12 +440,12 @@
 }
 
 .cybersec-feedback-container.cybersec-correct {
-  background-color: var(--cybersec-green-100);
+  background-color: var(--cybersec-green-50);
   border: 1px solid var(--cybersec-green-300);
 }
 
 .cybersec-feedback-container.cybersec-incorrect {
-  background-color: var(--cybersec-red-100);
+  background-color: var(--cybersec-red-50);
   border: 1px solid var(--cybersec-red-300);
 }
 
@@ -497,6 +522,7 @@
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .cybersec-resource-card:hover {
@@ -513,7 +539,7 @@
 
 .cybersec-resource-title {
   font-weight: 600;
-  color: brown;
+  color: var(--cybersec-blue-700);
   margin-bottom: 0.25rem;
   white-space: nowrap;
   overflow: hidden;
@@ -567,6 +593,7 @@
   padding: 1.5rem;
   box-shadow: var(--cybersec-shadow-lg);
   animation: cybersec-fadeIn 0.5s ease-out forwards;
+  position: relative;
 }
 
 .cybersec-quiz-results h2 {
@@ -795,6 +822,38 @@
   .cybersec-results-actions {
     flex-direction: row;
     justify-content: center;
+  }
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 767px) {
+  /* Prevent unwanted scrolling */
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  /* Ensure buttons don't cause unwanted scrolling */
+  .cybersec-button, 
+  .cybersec-primary-button, 
+  .cybersec-secondary-button,
+  .cybersec-option-button,
+  .cybersec-continue-button,
+  .cybersec-reset-button {
+    touch-action: manipulation;
+  }
+  
+  /* Ensure the quiz container stays in view */
+  .cybersec-app-container {
+    scroll-margin-top: 1rem;
+    scroll-margin-bottom: 1rem;
+  }
+  
+  /* Ensure quiz sections stay in view */
+  .cybersec-quiz-intro,
+  .cybersec-quiz-question,
+  .cybersec-quiz-results {
+    scroll-margin-top: 1rem;
+    scroll-margin-bottom: 1rem;
   }
 }
 

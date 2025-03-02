@@ -16,8 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const quizQuestionTemplate = document.getElementById('cybersec-quizQuestionTemplate');
   const quizResultsTemplate = document.getElementById('cybersec-quizResultsTemplate');
   
- 
-  
   // Initialize the quiz
   showQuizIntro();
   
@@ -28,9 +26,17 @@ document.addEventListener('DOMContentLoaded', function() {
     mainContent.appendChild(introClone);
     
     // Add event listener to start button
-    document.getElementById('cybersec-startQuizButton').addEventListener('click', startQuiz);
-    
-    
+    const startButton = document.getElementById('cybersec-startQuizButton');
+    startButton.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent default behavior
+      startQuiz();
+      
+      // Keep the view centered
+      const quizContainer = document.querySelector('.cybersec-app-container');
+      if (quizContainer) {
+        quizContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
     
     // Reinitialize Lucide icons for the new content
     lucide.createIcons();
@@ -41,8 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
     currentQuestionIndex = 0;
     answers = Array(cybersecQuizQuestions.length).fill(null);
     quizCompleted = false;
-    
-   
     
     // Show first question
     showQuestion(currentQuestionIndex);
@@ -74,20 +78,54 @@ document.addEventListener('DOMContentLoaded', function() {
       `;
       
       optionButton.innerHTML = optionContent;
-      optionButton.addEventListener('click', () => handleOptionClick(optionIndex));
+      optionButton.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent default behavior
+        handleOptionClick(optionIndex);
+        
+        // Keep the view centered
+        const questionContainer = document.querySelector('.cybersec-quiz-question');
+        if (questionContainer) {
+          questionContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+      
       optionsContainer.appendChild(optionButton);
     });
     
     // Set up continue button
     const continueButton = document.getElementById('cybersec-continueButton');
-    continueButton.addEventListener('click', handleContinue);
+    continueButton.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent default behavior
+      handleContinue();
+      
+      // Keep the view centered
+      const quizContainer = document.querySelector('.cybersec-app-container');
+      if (quizContainer) {
+        quizContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
     
     // Set up reset button
     const resetButton = document.getElementById('cybersec-resetButton');
-    resetButton.addEventListener('click', handleReset);
+    resetButton.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent default behavior
+      handleReset();
+      
+      // Keep the view centered
+      const questionContainer = document.querySelector('.cybersec-quiz-question');
+      if (questionContainer) {
+        questionContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
     
     // Reinitialize Lucide icons for the new content
     lucide.createIcons();
+    
+    // Ensure the question is visible
+    const questionContainer = document.querySelector('.cybersec-quiz-question');
+    if (questionContainer) {
+      questionContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   }
   
   function handleOptionClick(optionIndex) {
@@ -175,6 +213,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Reinitialize Lucide icons for the new content
     lucide.createIcons();
+    
+    // Ensure the feedback is visible
+    feedbackContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
   
   function handleContinue() {
@@ -302,13 +343,31 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Set up retake button
-    document.getElementById('cybersec-retakeButton').addEventListener('click', resetQuiz);
+    document.getElementById('cybersec-retakeButton').addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent default behavior
+      resetQuiz();
+      
+      // Keep the view centered
+      const quizContainer = document.querySelector('.cybersec-app-container');
+      if (quizContainer) {
+        quizContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
     
     // Set up save button
-    document.getElementById('cybersec-saveButton').addEventListener('click', () => window.print());
+    document.getElementById('cybersec-saveButton').addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent default behavior
+      window.print();
+    });
     
     // Reinitialize Lucide icons for the new content
     lucide.createIcons();
+    
+    // Ensure the results are visible
+    const resultsContainer = document.querySelector('.cybersec-quiz-results');
+    if (resultsContainer) {
+      resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   }
   
   function calculateScore() {
@@ -343,4 +402,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     showQuizIntro();
   }
+  
+  // Add global event listener to prevent unwanted scrolling
+  document.addEventListener('click', function(e) {
+    const target = e.target;
+    
+    // Check if the click is within the quiz container
+    if (target.closest('.cybersec-app-container')) {
+      // If the click is on a button or interactive element
+      if (target.closest('button') || target.closest('.cybersec-option-button') || 
+          target.closest('a.cybersec-resource-card')) {
+        // Prevent the default scrolling behavior
+        e.preventDefault();
+      }
+    }
+  }, { passive: false });
 });
