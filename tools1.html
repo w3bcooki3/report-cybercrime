@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- ========== Page Title ========== -->
-    <title>Security Features | PROTECT</title>
+    <title>Report | PROTECT</title>
 
     <!-- ========== Start Fonts Style ========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="landing-page/css/landing-page.css">
-    <link rel="stylesheet" href="./assets/css/security_features.css">
+    <link rel="stylesheet" href="./assets/css/tools1.css">
     <!-- ========== End Stylesheet ========== -->
 
     <!-- Favicon links -->
@@ -40,10 +40,13 @@
 </head>
 
 <body>
+
+    <!-- Main -->
     <main class="main-page homepage">
         <div class="header-bar-ad">
             <p>Level up your online safety with our quick and easy <u>Risk Assessment Tool</u></p>
         </div>
+
         <!-- Header -->
         <header class="header-area">
 
@@ -375,17 +378,17 @@
 
         </header>
 
-        <!-- Feature Hero -->
+        <!-- Service Details Hero -->
         <section class="hero-service-wrap hero-section-wrap hero-overview-wrap">
             <div class="hero-section-content-wrap">
-                <img src="./assets/imgs/bg-shape-1.svg" alt="Shape" class="bg-shape" />
+                <img class="bg-shape slide-left" src="./assets/imgs/bg-shape-6.svg" alt="Shape" />
+                <img class="bg-shape2 slide-right" src="./assets/imgs/bg-shape-5.svg" alt="Shape" />
                 <div class="custom-container">
                     <div class="hero-portfolio-body">
                         <div class="hero-section-content text-center">
-                            <h5 class="section-subtitle">Tools</h5>
-                            <h1 class="section-title fade-in">Check if your Email is <br>
-                                Safe or Leaked</h1>
-                            <p>Know if your email is safe or has compromised in any data breaches</p>
+                            <h5 style="color: #1351D8;">TOOLS </h5>
+                            <h1 class="section-title fade-in">Security Applications</h1>
+                            <p>Free list of software</p>
                         </div>
                     </div>
                 </div>
@@ -393,27 +396,111 @@
         </section>
 
         <div class="container">
-    
-            <div class="tools-container">
-                <!-- Have I Been Pwned -->
-                <section class="tool-section">
-                    <div class="section-header">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon red"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
-                        <h2>Have I Been Pwned</h2>
+            <!-- Search and Filter Section -->
+            <header class="header">
+              <div class="header-content">
+                <div class="search-filter">
+                  <div class="search-container">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="search-input" placeholder="Search for security tools...">
+                  </div>
+                  <div class="filter-container">
+                    <svg class="filter-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                    </svg>
+                    <select id="category-filter">
+                      <option value="">All Categories</option>
+                      <!-- Categories will be populated by JavaScript -->
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </header>
+        
+            <!-- Search Results Summary -->
+            <div class="search-results-summary" id="search-results-summary">
+              <!-- Will be populated by JavaScript -->
+            </div>
+        
+            <!-- Tools Grid -->
+            <main class="tools-grid" id="tools-grid">
+              <!-- Tools will be populated by JavaScript -->
+            </main>
+        
+            <!-- Tool Details Modal -->
+            <div class="modal" id="tool-modal">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="tool-header-info">
+                    <img id="modal-logo" src="" alt="Tool logo" class="modal-logo">
+                    <div>
+                      <h2 id="modal-title"></h2>
+                      <span id="modal-category" class="category-badge"></span>
                     </div>
-                    
-                    <div class="tool-content">
-                        <div class="search-group">
-                            <input type="text" id="pwnedInput" placeholder="Enter email or password to check">
-                            <button id="pwnedButton" class="btn red">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
-                                Check
-                            </button>
-                        </div>
-                    </div>
-                </section>
+                  </div>
+                  <button id="close-modal" class="close-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                </div>
+                
+                <div class="modal-body">
+                  <div class="modal-section">
+                    <h3>Description</h3>
+                    <p id="modal-description"></p>
+                  </div>
+                  
+                  <div class="modal-section">
+                    <h3>Key Features</h3>
+                    <ul id="modal-features"></ul>
+                  </div>
+                  
+                  <div class="modal-section">
+                    <h3>Installation Instructions</h3>
+                    <p id="modal-instructions"></p>
+                  </div>
+                  
+                  <div class="modal-actions">
+                    <a id="watch-video" href="#" target="_blank" rel="noopener noreferrer" class="modal-action-button video-button">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                      </svg>
+                      Watch Installation Video
+                    </a>
+                    <a id="download-tool" href="#" target="_blank" rel="noopener noreferrer" class="modal-action-button download-button">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                      </svg>
+                      Download Software
+                    </a>
+                    <a id="visit-website" href="#" target="_blank" rel="noopener noreferrer" class="modal-action-button website-button">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                      </svg>
+                      Visit Website
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="modal-footer">
+                  <button id="back-to-list">Back to List</button>
+                </div>
+              </div>
             </div>
         </div>
+
+
+
+
         <!-- Footer -->
         <footer class="footer-area">
             <img src="./assets/imgs/bg-shape-4.svg" alt="Shape" class="animation-slide-right bg-shape" />
@@ -565,8 +652,12 @@
                 </div>
             </div>
         </footer>
+
+
     </main>
-    
+
+
+
     <!-- jQuery Frameworks
     ============================================= -->
     <script src="./assets/js/jquery-3.7.0.min.js"></script>
@@ -579,7 +670,7 @@
     <script src="./assets/js/form1.js"></script>
     <script src="./assets/js/home.js"></script>
     <script src="./assets/js/subscribe-form.js"></script>
-    <script src="./assets/js/security_features.js"></script>
+    <script src="./assets/js/tools1.js"></script>
 </body>
 
 </html>
