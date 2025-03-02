@@ -347,23 +347,25 @@
         <!-- Hero Section -->
         <div class="bg-dark1 text-white py-20">
             <div class="container mx-auto px-4">
-                <div class="max-w-3xl mx-auto text-center">
-                    <div class="relative max-w-xl mx-auto">
+                <div class="text-center">
+                    <div class="relative w-full">
                         <input
-                        type="text"
-                        id="search-input"
-                        placeholder="Search for resources..."
-                        class="w-full py-4 px-6 pr-12 rounded-full text-dark1 focus:outline-none focus:ring-2 focus:ring-primary shadow-lg"/>
+                            type="text"
+                            id="search-input"
+                            placeholder="Search for resources..."
+                            class="w-full py-4 px-6 pr-12 rounded-full text-dark1 focus:outline-none focus:ring-2 focus:ring-primary shadow-lg"/>
                         <div class="absolute right-5 top-1/2 transform -translate-y-1/2 text-dark2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <path d="m21 21-4.3-4.3"></path>
-                             </svg>
+                            </svg>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+       
   
         <!-- Main Content -->
         <div class="container mx-auto px-4 py-16">
@@ -398,8 +400,7 @@
                 <div class="relative">
                   <select
                     id="type-filter"
-                    class="appearance-none bg-white border border-gray rounded-md py-3 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
-                  >
+                    class="appearance-none bg-white border border-gray rounded-md py-3 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-primary shadow-sm">
                     <option value="All Types">All Types</option>
                     <option value="Video">Video</option>
                     <option value="Article">Article</option>
@@ -418,6 +419,7 @@
             <div id="resources-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <!-- Resource cards will be dynamically inserted here -->
             </div>
+
 
             <!-- No Results Message (hidden by default) -->
             <div id="no-results" class="text-center py-20 bg-white rounded-lg shadow-sm hidden">
