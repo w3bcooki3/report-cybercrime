@@ -151,7 +151,7 @@ function createPlatformCard(platform) {
   const cardContent = `
     <div class="card-header">
       <div class="card-bg" style="background-image: url('${platform.logo}');"></div>
-      <div class=" <div class="card-overlay"></div>
+      <div class="card-overlay"></div>
       <div class="card-logo-container">
         <div class="card-logo">
           <img src="${platform.logo}" alt="${platform.name} Logo">
@@ -286,8 +286,16 @@ function setupEventListeners() {
     const card = e.target.closest('[data-platform-id]');
     if (card) {
       const platformId = card.getAttribute('data-platform-id');
+      // Save current scroll position before showing platform detail
+      const scrollPosition = window.scrollY;
+      
       renderPlatformDetail(platformId);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Maintain the same scroll position
+      window.scrollTo({
+        top: scrollPosition,
+        behavior: 'auto'
+      });
     }
   });
   
