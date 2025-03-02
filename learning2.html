@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- ========== Page Title ========== -->
-    <title>Learn | PROTECT</title>
+    <title>Knowledgebase | PROTECT</title>
 
     <!-- ========== Start Fonts Style ========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,8 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="landing-page/css/landing-page.css">
-    <link rel="stylesheet" href="./assets/css/learrn2.css">
+    <link rel="stylesheet" href="./assets/css/learning2.css">
+    <link rel="stylesheet" href="./assets/css/external_resources.css">
     <!-- ========== End Stylesheet ========== -->
 
     <!-- Favicon links -->
@@ -290,9 +291,15 @@
                                     </span>
                                     <ul class="dropdown-menu">
                                         <li>
+                                            <a href="learning2.html">Learn2</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="dropdown-menu">
+                                        <li>
                                             <a href="Learn-edcu.html">Games</a>
                                         </li>
                                     </ul>
+                                    
                                 </li>
                             <!---
                             <select class="country-select" name="country" id="country">
@@ -320,7 +327,6 @@
 
         </header>
 
-
         <!--  Hero -->
         <section class="hero-service-wrap hero-section-wrap hero-partner-wrap">
             <div class="hero-section-content-wrap">
@@ -329,8 +335,8 @@
                 <div class="custom-container">
                     <div class="hero-portfolio-body">
                         <div class="hero-section-content text-center">
-                            <h5 class="section-subtitle">TOOLS</h5>
-                            <h1 class="section-title fade-in">External Resources</h1>
+                            <h5 class="section-subtitle">LEARN</h5>
+                            <h1 class="section-title fade-in">Cyber Knowledgebase</h1>
                             <p>Find best external resources provided by others specialized community to help you with your digital need and keep you safe and secure while you browse.</p>
                         </div>
                     </div>
@@ -338,77 +344,175 @@
             </div>
         </section>
 
-        <div class="container-learn">
-            <!-- Search and Filter Section -->
-            <div class="search-section">
-                <div class="search-container">
-                    <i data-lucide="search" class="search-icon"></i>
-                    <input type="text" id="search-input" placeholder="Search for security services, categories, or keywords...">
-                </div>
-        
-                <div class="filter-container">
-                    <i data-lucide="filter" class="filter-icon"></i>
-                    <label for="category-select">Filter by Category:</label>
-                    <select id="category-select">
-                        <option value="all">All Categories</option>
-                        <option value="antivirus">Antivirus</option>
-                        <option value="firewall">Firewall</option>
-                        <option value="pentest">Penetration Testing</option>
-                        <option value="monitoring">Security Monitoring</option>
-                        <option value="compliance">Compliance</option>
-                    </select>
-                </div>
-        
-                <div class="results-summary" id="results-summary">Showing 12 results</div>
-        
-                <!-- Services Grid -->
-                <div class="services-grid" id="services-grid">
-                    <!-- Cards will be inserted here by JavaScript -->
-                </div>
-        
-                <!-- No Results Message -->
-                <div class="no-results" id="no-results" style="display: none;">
-                    <i data-lucide="shield-alert" class="no-results-icon"></i>
-                    <h3>No services found</h3>
-                    <p>Try adjusting your search or filter to find what you're looking for.</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Redirect Popup (Hidden by default) -->
-        <div class="redirect-popup" id="redirect-popup">
-            <div class="popup-content">
-                <div class="popup-header">
-                    <h3><i data-lucide="external-link"></i> External Redirect</h3>
-                    <button id="close-popup"><i data-lucide="x"></i></button>
-                </div>
-          
-                <div class="popup-body">
-                    <div class="warning">
-                        <i data-lucide="alert-triangle"></i>
-                        <div>
-                            <h4>You are leaving CyberSecure Directory</h4>
-                            <p>You will be redirected to an external website that is not operated by us.</p>
+        <!-- Hero Section -->
+        <div class="bg-dark1 text-white py-20">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <div class="relative max-w-xl mx-auto">
+                        <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Search for resources..."
+                        class="w-full py-4 px-6 pr-12 rounded-full text-dark1 focus:outline-none focus:ring-2 focus:ring-primary shadow-lg"/>
+                        <div class="absolute right-5 top-1/2 transform -translate-y-1/2 text-dark2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.3-4.3"></path>
+                             </svg>
                         </div>
                     </div>
-                
-                    <div class="destination">
-                        <p class="destination-label">Destination:</p>
-                        <p id="destination-url" class="destination-url"></p>
-                    </div>
-                    <div class="service-info">
-                        <p>You are about to visit <span id="service-name"></span></p>
-                    </div>
-                    <div class="popup-actions">
-                      <div id="countdown" class="countdown">Redirecting in 10 seconds...</div>
-                      <div class="buttons">
-                        <button id="cancel-redirect" class="btn-cancel">Cancel</button>
-                        <button id="go-now" class="btn-go">Go Now</button>
-                      </div>
-                    </div>
                 </div>
             </div>
         </div>
+  
+        <!-- Main Content -->
+        <div class="container mx-auto px-4 py-16">
+            <!-- Filters -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+              <h2 class="text-2xl font-bold font-syne">
+                <span id="resource-count">12</span> Resources Available
+              </h2>
+              <div class="flex flex-col sm:flex-row gap-4">
+                <div class="relative">
+                  <select id="category-filter" class="appearance-none bg-white border border-gray rounded-md py-3 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-primary shadow-sm">
+                    <option value="All Categories">All Categories</option>
+                    <option value="Ethical Hacking">Ethical Hacking</option>
+                    <option value="Network Security">Network Security</option>
+                    <option value="Secure Coding">Secure Coding</option>
+                    <option value="Incident Response">Incident Response</option>
+                    <option value="Cloud Security">Cloud Security</option>
+                    <option value="Threat Hunting">Threat Hunting</option>
+                    <option value="Ransomware">Ransomware</option>
+                    <option value="Mobile Security">Mobile Security</option>
+                    <option value="Zero Trust">Zero Trust</option>
+                    <option value="Compliance">Compliance</option>
+                    <option value="Social Engineering">Social Engineering</option>
+                    <option value="IoT Security">IoT Security</option>
+                  </select>
+                  <div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-filter">
+                      <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                    </svg>
+                  </div>
+                </div>
+                <div class="relative">
+                  <select
+                    id="type-filter"
+                    class="appearance-none bg-white border border-gray rounded-md py-3 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
+                  >
+                    <option value="All Types">All Types</option>
+                    <option value="Video">Video</option>
+                    <option value="Article">Article</option>
+                    <option value="Blog">Blog</option>
+                  </select>
+                  <div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-filter">
+                      <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resources Grid -->
+            <div id="resources-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Resource cards will be dynamically inserted here -->
+            </div>
+
+            <!-- No Results Message (hidden by default) -->
+            <div id="no-results" class="text-center py-20 bg-white rounded-lg shadow-sm hidden">
+              <h3 class="text-xl font-medium mb-3">No resources found</h3>
+              <p class="text-dark2 mb-6">Try adjusting your search or filters to find what you're looking for.</p>
+              <button 
+                id="clear-filters"
+                class="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary2 transition-colors"
+              >
+                Clear all filters
+              </button>
+            </div>
+
+            <!-- More Resources Section -->
+            <div class="mt-20 bg-primaryLight2 rounded-lg p-10 shadow-sm">
+              <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                  <h3 class="text-2xl font-bold font-syne mb-3">Need More Resources?</h3>
+                  <p class="text-dark2 max-w-xl">
+                    Our team of cybersecurity experts is constantly updating our resource library. Check back regularly for new content or request specific topics.
+                  </p>
+                </div>
+                <a 
+                  href="#" 
+                  class="flex items-center bg-primary text-white px-8 py-4 rounded-md hover:bg-primary2 transition-colors shadow-md"
+                >
+                  Request a Topic 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right ml-2">
+                    <path d="M7 7h10v10"></path>
+                    <path d="M7 17 17 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+        </div>
+
+
+            <!-- Redirect Popup (hidden by default) -->
+        <div id="redirect-popup" class="redirect-popup hidden">
+            <div class="redirect-popup-content">
+                <!-- Header -->
+                <div class="redirect-header">
+                    <div class="redirect-header-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" x2="21" y1="14" y2="3"></line></svg>
+                        <h3>External Redirect</h3>
+                    </div>
+                    <button id="close-popup" class="close-popup">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+                    </button>
+                </div>
+                
+                <div class="redirect-body">
+                    <!-- Warning Message -->
+                    <div class="warning-message">
+                        <div class="warning-icon">
+                          <span>!</span>
+                        </div>
+                        <div class="warning-text">
+                          <h4>You are leaving PROTECT</h4>
+                          <p>You will be redirected to an external website that is not operated by us.</p>
+                        </div>
+                      </div>
+                    
+                    <!-- Destination URL -->
+                    <div class="destination-container">
+                        <p class="destination-label">Destination:</p>
+                        <div class="destination-url" id="destination-url">
+                          https://example.com
+                        </div>
+                    </div>
+                   
+                    <!-- Resource Info -->
+                    <div class="resource-info" id="resource-info">
+                        <p>You are about to visit <span id="resource-title">Resource Name</span>, which provides <span id="resource-type"></span> services.</p>
+                    </div>
+                    
+
+                    <!-- Countdown and Buttons -->
+                    <div class="redirect-actions">
+                        <div class="countdown" id="countdown">
+                          Redirecting in <span id="countdown-number">6</span> seconds...
+                        </div>
+
+                        <div class="action-buttons">
+                          <button id="cancel-redirect" class="cancel-btn">Cancel</button>
+                          <a id="go-now-link" href="#" target="_blank" rel="noopener noreferrer" class="primary-btn">
+                            <span>Go Now</span>
+                          </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
 
         <!-- Footer -->
         <footer class="footer-area">
@@ -434,7 +538,7 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="right-content">
                             <div class="right-content-inner">
                                 <h2>Let's get started on something great</h2>
@@ -456,7 +560,7 @@
                                         <h1>22+ <span>Years</span></h1>
                                         <p>Field Experience</p>
                                     </div>
-                                
+
                                 </div>
                             </div>
                         </div>
@@ -523,9 +627,9 @@
                                     <li><a href="#">Privacy</a></li>
                                 </ul>
                             </div>
-                        
+
                         </div>
-                    
+
                         <div class="footer-contact-info">
                             <div class="footer-contact-info-item">
                                 <h4>Mail</h4>
@@ -537,7 +641,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="copyright-area">
                 <div class="custom-container">
                     <div class="custom-row d-flex align-items-center justify-content-between">
@@ -555,30 +659,31 @@
                                 <i class="iconoir-linkedin"></i>
                             </a></li>
                         </ul>
-                    
+
                         <p>&copy; 2025 All rights reserved by <b>PROTECT</b></p>
                     </div>
                 </div>
             </div>
-          </footer>
-        </main>
-              
-              
-              
-<!-- jQuery Frameworks
-==              =========================================== -->
-<script src="./assets/js/jquery-3.7.0.min.js"></script>
-<script src="./assets/js/bootstrap.bundle.min.js"></script>
-<script src="./assets/js/gsap.min.js"></script>
-<script src="./assets/js/Draggable.min.js"></script>
-<script src="./assets/js/swiper-bundle.min.js"></script>
-<script src="./assets/js/client-marquee.js"></script>
-<script src="./assets/js/theme-custom.js"></script>
-<script src="./assets/js/form1.js"></script>
-<script src="./assets/js/home.js"></script>
-<script src="./assets/js/subscribe-form.js"></script>
-<script src="./assets/js/learn2.js"></script>
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- jQuery Frameworks
+    ============================================= -->
+    <script src="./assets/js/jquery-3.7.0.min.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/gsap.min.js"></script>
+    <script src="./assets/js/Draggable.min.js"></script>
+    <script src="./assets/js/swiper-bundle.min.js"></script>
+    <script src="./assets/js/client-marquee.js"></script>
+    <script src="./assets/js/theme-custom.js"></script>
+    <script src="./assets/js/form1.js"></script>
+    <script src="./assets/js/home.js"></script>
+    <script src="./assets/js/subscribe-form.js"></script>
+    <script src="./assets/js/learning2.js"></script>
 </body>
 
 </html>
-

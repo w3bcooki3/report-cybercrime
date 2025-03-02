@@ -1,5 +1,5 @@
 // Quiz questions data
-const quizQuestions = [
+const cybersecQuizQuestions = [
   {
     question: "How often do you update your devices and software?",
     options: [
