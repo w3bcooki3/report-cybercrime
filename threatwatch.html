@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- ========== Page Title ========== -->
-    <title>About Us | PROTECT</title>
+    <title>ThreatWatch | PROTECT</title>
 
     <!-- ========== Start Fonts Style ========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,9 +26,9 @@
     <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
-    <link rel="stylesheet" href="landing-page/css/landing-page.css">
-    <link rel="stylesheet" href="./assets/css/style1.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/threatwatch.css">
+    <link rel="stylesheet" href="./assets/css/social_reporting.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- ========== End Stylesheet ========== -->
 
     <!-- Favicon links -->
@@ -40,7 +40,7 @@
 
 </head>
 
-<body>
+<body class="bg-slate-50">
 
     <!-- Main -->
     <main class="main-page homepage">
@@ -401,42 +401,22 @@
 
         </header>
 
-        <!-- About Hero -->
-        <section class="hero-service-wrap hero-section-wrap hero-about-wrap" style="background-color: white;">
+
+        <section class="hero-service-wrap hero-section-wrap hero-partner-wrap">
             <div class="hero-section-content-wrap">
+                <img class="bg-shape slide-left" src="./assets/imgs/bg-shape-6.svg" alt="Shape" />
+                <img class="bg-shape2 slide-right" src="./assets/imgs/bg-shape-5.svg" alt="Shape" />
                 <div class="custom-container">
                     <div class="hero-portfolio-body">
                         <div class="hero-section-content text-center">
-                            <h5 class="section-subtitle">About Us</h5>
-                            <h1 class="section-title fade-in">Who Are We?</h1>
-                            <p>Defend against evolving cyber threats with cutting-edge technology and expert strategies.</p>
-                        </div>
-
-                        <div class="hero-company-boxes">
-                            <div class="hero-company-box simple-shadow">
-                                <h1>300+</h1>
-                                <h3>Projects</h3>
-                                <p>We are spread around
-                                    the world.</p>
-                            </div>
-                            <div class="hero-company-box simple-shadow">
-                                <h1>100%</h1>
-                                <h3>Client Satisfaction</h3>
-                                <p>Our clients a happy with 
-                                    our service.</p>
-                            </div>
-                            <div class="hero-company-box simple-shadow">
-                                <h1>15k</h1>
-                                <h3>Legal Customers</h3>
-                                <p>Our customers are from
-                                    many countries.</p>
-                            </div>
-                            <div class="hero-company-box simple-shadow">
-                                <h1>1995</h1>
-                                <h3>We Established On</h3>
-                                <p>Our company have a 
-                                    great history.</p>
-                            </div>
+                            <h5 class="section-subtitle">TOOLS</h5>
+                            <h1 class="section-title fade-in" style="color: #f8fafc;
+                                background: linear-gradient(90deg, #df4747, #3b82f6);
+                                -webkit-text-fill-color: transparent;
+                                background-clip: text;">ThreatWatch</h1>
+                                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                                    (Phishing Examples Database)
+                                </h2>
                         </div>
                     </div>
                 </div>
@@ -444,573 +424,375 @@
         </section>
 
 
-
-        <!-- hero section -->
-        <div class="page1" data-scroll data-scroll-speed="-2.5">
-            <img src="./assets/imgs/main-one.jpeg" alt="">
-            <div class="inner-page1-top">
-                <h2>We Help People <br> Fight Cybercrime</h2>
-                <a href="#categories">See categories below</a>
-            </div>
+        <div class="text-center mb-12">
+            <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+                Learn to identify and avoid phishing attempts by exploring our collection of real-world examples.
+            </p>
         </div>
+
+        <section class="hero">
+            <div class="container">
+              <div class="hero-content">
+                <div class="search-container">
+                  <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Search for a platform or issue..."
+                  />
+                  <div class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <path d="m21 21-4.3-4.3"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+  
+      <!-- Filter Section -->
+      <section class="py-6 border-b border-gray-200">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-medium text-gray-700">Filter by:</span>
+            <button 
+              class="filter-btn px-4 py-2 rounded-full bg-indigo-600 text-white"
+              data-filter="all"
+            >
+              All
+            </button>
+            <button 
+              class="filter-btn px-4 py-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-800 flex items-center gap-2"
+              data-filter="email"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              Emails
+            </button>
+            <button 
+              class="filter-btn px-4 py-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-800 flex items-center gap-2"
+              data-filter="sms"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              SMS
+            </button>
+            <div class="ml-auto flex items-center text-sm text-gray-500">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-1">
+                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                <path d="M12 9v4"></path>
+                <path d="M12 17h.01"></path>
+              </svg>
+              <span id="examples-count">0 phishing examples found</span>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Examples Grid -->
+      <section class="py-12">
+        <div class="container mx-auto px-4">
+          <div id="examples-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Examples will be inserted here by JavaScript -->
+          </div>
+          <div id="no-results" class="text-center py-12 hidden">
+            <div class="bg-gray-100 inline-block p-4 rounded-full mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-gray-500">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-medium text-gray-800 mb-2">No phishing examples found</h3>
+            <p class="text-gray-600">Try adjusting your search or filter criteria.</p>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Modal -->
+      <div id="detail-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+          <!-- Modal Header -->
+          <div class="p-4 border-b border-gray-200 flex justify-between items-center">
+            <div>
+              <div class="flex items-center space-x-2">
+                <span id="modal-type-icon"></span>
+                <h3 id="modal-title" class="text-xl font-semibold text-gray-800"></h3>
+              </div>
+              <p id="modal-meta" class="text-gray-500 text-sm mt-1"></p>
+            </div>
+            <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+  
+          <!-- View Toggle -->
+          <div class="bg-gray-100 p-2 flex">
+            <button
+              id="original-view-btn"
+              class="flex-1 py-2 px-4 rounded-md bg-white shadow-sm"
+            >
+              Original View
+            </button>
+            <button
+              id="annotated-view-btn"
+              class="flex-1 py-2 px-4 rounded-md hover:bg-gray-200"
+            >
+              Annotated View
+            </button>
+          </div>
+  
+          <!-- Modal Content -->
+          <div class="flex-1 overflow-auto p-4">
+            <div class="flex flex-col md:flex-row gap-6">
+              <!-- Image Container -->
+              <div class="flex-1 relative">
+                <img 
+                  id="modal-image"
+                  src="" 
+                  alt="" 
+                  class="w-full border border-gray-200 rounded-lg"
+                />
+                <div id="annotation-markers" class="annotations-container">
+                  <!-- Annotation markers will be added here -->
+                </div>
+              </div>
+  
+              <!-- Annotations List -->
+              <div id="annotations-panel" class="md:w-2/5 hidden">
+                <h4 class="text-lg font-medium mb-4">Warning Signs</h4>
+                <div id="annotations-list" class="space-y-4">
+                  <!-- Annotations will be added here -->
+                </div>
+              </div>
+  
+              <!-- Description (when in original view) -->
+              <div id="description-panel" class="md:w-2/5">
+                <h4 class="text-lg font-medium mb-4">Description</h4>
+                <p id="modal-description" class="text-gray-700 mb-4"></p>
+                
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+                  <div class="flex items-start">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-amber-600 mr-2 mt-0.5">
+                      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                      <path d="M12 9v4"></path>
+                      <path d="M12 17h.01"></path>
+                    </svg>
+                    <div>
+                      <h5 id="modal-risk-level" class="font-medium text-amber-800"></h5>
+                      <p id="modal-risk-description" class="text-amber-700 text-sm mt-1"></p>
+                    </div>
+                  </div>
+                </div>
+  
+                <h4 class="text-lg font-medium mb-2">Target</h4>
+                <p id="modal-target" class="text-gray-700 mb-4"></p>
+  
+                <h4 class="text-lg font-medium mb-2">Technique</h4>
+                <p id="modal-technique" class="text-gray-700"></p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Modal Footer -->
+          <div class="p-4 border-t border-gray-200 flex justify-between">
+            <div class="flex items-center text-amber-600">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-1">
+                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                <path d="M12 9v4"></path>
+                <path d="M12 17h.01"></path>
+              </svg>
+              <span id="modal-footer-risk" class="font-medium"></span>
+            </div>
+            <button 
+              id="close-modal-btn"
+              class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
         
-
-
-        <div id="page2">
-            <div id="elem" data-img="./assets/imgs/banner.png">
-              <h2>Ransomeware</h2>
-              <div id="moving">
-                <div id="blur"></div>
-                <div id="moving-in">
-                  <h5>Pay Money</h5>
-                  <h5>Your files have been locked</h5>
-                  <h5>Ransom</h5>
-                  <h5>Access Locked</h5>
-                  <h5>Secure Backups</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Ransomware Protection</h5>
-                  <h5>Cyber Threat Prevention</h5>
-                  <h5>Data Encryption</h5>
-                  <h5>Incident Response</h5>
-                  <h5>Secure Backups</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Ransomware Protection</h5>
-                  <h5>Cyber Threat Prevention</h5>
-                  <h5>Data Encryption</h5>
-                  <h5>Incident Response</h5>
-                  <h5>Secure Backups</h5>
-                </div>
-              </div>
-            </div>
-    
-            <div id="elem" data-img="./assets/imgs/home1.avif">
-              <h2>Phishing</h2>
-              <div id="moving">
-                <div id="blur"></div>
-                <div id="moving-in">
-                  <h5>Phishing Attack Prevention</h5>
-                  <h5>Email Security</h5>
-                  <h5>Fraud Detection</h5>
-                  <h5>Safe Browsing Practices</h5>
-                  <h5>Identity Protection</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Phishing Attack Prevention</h5>
-                  <h5>Email Security</h5>
-                  <h5>Fraud Detection</h5>
-                  <h5>Safe Browsing Practices</h5>
-                  <h5>Identity Protection</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Phishing Attack Prevention</h5>
-                  <h5>Email Security</h5>
-                  <h5>Fraud Detection</h5>
-                  <h5>Safe Browsing Practices</h5>
-                  <h5>Identity Protection</h5>
-                </div>
-              </div>
-            </div>
-
-            <div id="elem" data-img="./assets/imgs/home1.avif">
-                <h2>Digital Scam</h2>
-                <div id="moving">
-                  <div id="blur"></div>
-                  <div id="moving-in">
-                    <h5>Phishing Attack Prevention</h5>
-                    <h5>Email Security</h5>
-                    <h5>Fraud Detection</h5>
-                    <h5>Safe Browsing Practices</h5>
-                    <h5>Identity Protection</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Phishing Attack Prevention</h5>
-                    <h5>Email Security</h5>
-                    <h5>Fraud Detection</h5>
-                    <h5>Safe Browsing Practices</h5>
-                    <h5>Identity Protection</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Phishing Attack Prevention</h5>
-                    <h5>Email Security</h5>
-                    <h5>Fraud Detection</h5>
-                    <h5>Safe Browsing Practices</h5>
-                    <h5>Identity Protection</h5>
-                  </div>
-                </div>
-              </div>
-    
-            <div id="elem" data-img="./assets/imgs/home3.avif">
-              <h2>Cyberbulling</h2>
-              <div id="moving">
-                <div id="blur"></div>
-                <div id="moving-in">
-                  <h5>Cyberbullying Prevention</h5>
-                  <h5>Online Harassment Awareness</h5>
-                  <h5>Safe Social Media Practices</h5>
-                  <h5>Digital Well-being</h5>
-                  <h5>Reporting & Support</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Cyberbullying Prevention</h5>
-                  <h5>Online Harassment Awareness</h5>
-                  <h5>Safe Social Media Practices</h5>
-                  <h5>Digital Well-being</h5>
-                  <h5>Reporting & Support</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Cyberbullying Prevention</h5>
-                  <h5>Online Harassment Awareness</h5>
-                  <h5>Safe Social Media Practices</h5>
-                  <h5>Digital Well-being</h5>
-                  <h5>Reporting & Support</h5>
-                </div>
-              </div>
-            </div>
-    
-            <div id="elem" data-img="./assets/imgs/banner1.png">
-              <h2>Credit Card fraud</h2>
-              <div id="moving">
-                <div id="blur"></div>
-                <div id="moving-in">
-                  <h5>Credit Card Fraud Prevention</h5>
-                  <h5>Secure Online Transactions</h5>
-                  <h5>Identity Theft Protection</h5>
-                  <h5>Fraud Monitoring & Alerts</h5>
-                  <h5>Safe Payment Practices</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Credit Card Fraud Prevention</h5>
-                  <h5>Secure Online Transactions</h5>
-                  <h5>Identity Theft Protection</h5>
-                  <h5>Fraud Monitoring & Alerts</h5>
-                  <h5>Safe Payment Practices</h5>
-                </div>
-    
-                <div id="moving-in">
-                  <h5>Credit Card Fraud Prevention</h5>
-                  <h5>Secure Online Transactions</h5>
-                  <h5>Identity Theft Protection</h5>
-                  <h5>Fraud Monitoring & Alerts</h5>
-                  <h5>Safe Payment Practices</h5>
-                </div>
-              </div>
-            </div>
-
-            <div id="elem" data-img="./assets/imgs/banner1.jpg">
-                <h2>Device Hacked</h2>
-                <div id="moving">
-                  <div id="blur"></div>
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-                </div>
-              </div>
-
-              <div id="elem" data-img="./assets/imgs/banner1.jpg">
-                <h2>Social Media Hacked</h2>
-                <div id="moving">
-                  <div id="blur"></div>
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-                </div>
-              </div>
-
-              <div id="elem" data-img="./assets/imgs/banner1.jpg">
-                <h2>Revenge Porn</h2>
-                <div id="moving">
-                  <div id="blur"></div>
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-      
-                  <div id="moving-in">
-                    <h5>Social Media Security</h5>
-                    <h5>Privacy Settings Management</h5>
-                    <h5>Safe Sharing Practices</h5>
-                    <h5>Protecting Your Online Reputation</h5>
-                    <h5>Avoiding Social Engineering Attacks</h5>
-                  </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="page1">
-            <img src="./assets/imgs/preview.webp" alt="" data-scroll data-scroll-speed="-2.5">
-            <div class="inner-page1">
-                <h2>ARE YOU A VICTIM ?</h2>
-                <a href="index1.html#report">REPORT NOW</a>
-            </div>
-        </div>
-
-        <div class="page1-down">
-            <div class="page1-mid">
-                <div class="page1-mid1">
-                    <img src="./assets/imgs/main-outreach.avif" alt="">
-                    <div class="page1-mid1-text">
-                        <h2>Cyber Programs and Policies</h2>
-                        <a href="help_from_nonprofit.html">Learn More</a>
-                    </div>
-                </div>
-                <div class="page1-mid1">
-                    <img src="./assets/imgs/banner2.jpg" alt="">
-                    <div class="page1-mid1-text">
-                        <h2>Your Digtal Rights</h2>
-                        <a href="help_from_nonprofit.html">Learn More</a>
-                    </div>
-                </div>
-                <div class="page1-mid1">
-                    <img src="./assets/imgs/tweet-bg-1-1.jpg" alt="">
-                    <div class="page1-mid1-text">
-                        <h2>U.S. Cybersecurity Laws</h2>
-                        <a href="help_from_nonprofit.html">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Service -->
-        <section class="company-service-area">
-            <div class="custom-container">
-                <div class="hero-service-about">
-                    <div class="section-header d-flex align-items-center justify-content-between w-full">
-                        <div class="left">
-                            <h5 class="section-subtitle">Reporting Made Easy</h5>
-                            <h1 class="section-title">Join the Frontline Against Cyber Threats</h1>
-                            <p>Expert Team: Our cybersecurity experts stay ahead of trends with cutting-edge knowledge.</p>
-                        </div>
-                        <a href="contact.html" class="theme-btn">Contact Us</a>
-                    </div>
-
-                    <img src="./assets/imgs/banner2.jpg" alt="Service About"/>
-                    <div class="hero-service-about-body">
-                        <p>Your voice becomes a powerful weapon against cyber threats. 
-                            We stand apart as a reliable and user-friendly solution, offering a seamless reporting experience coupled with targeted resources and community engagement. 
-                            By choosing us, you join the frontline against cyber threats, helping us build a safer digital landscape for all. 
-                            With our intuitive interface, customized reporting process, focused awareness initiatives, and local partnerships, we empower you to make a difference. 
-                            Together, let's report, prevent, and defeat cybercrime, one incident at a time.</p>
-                        <ul>
-                            <li>
-                                <i class="las la-check"></i> User-Friendly Interface
-                            </li>
-                            <li>
-                                <i class="las la-check"></i> Target Awareness <br>and Education
-                            </li>
-                            <li>
-                                <i class="las la-check"></i> Community Engagement <br> and Empowerment
-                            </li>
-                            <li>
-                                <i class="las la-check"></i> Community Engagement
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About -->
-        <section style="margin-top: 2vw;" class="about-service3-area">
-            <div class="custom-container">
-                <div class="custom-row align-items-center">
-                    <div class="img-box">
-                        <img src="./assets/imgs/need.jpg" alt="About" />
-                    </div>
-
-                    <div class="content-box">
-                        <h1>Why Need of<br>
-                            Cybersecurity?</h1>
-                        <p>Cybersecurity is like a protective shield for your digital world. It's a set of measures and tools that help keep your personal information, online activities, and digital devices safe from hackers, viruses, and other cyber threats.</p>
-                        <p>Just like locking your front door to keep your home safe, cybersecurity helps ensure your online presence and digital belongings are secure.</p>
-                        <ul>
-                            <li>
-                                <i class="las la-check"></i> PPD Development
-                            </li>
-                            <li>
-                                <i class="las la-check"></i> Quick Response
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- CTA -->
-        <section class="cta-area" style="margin-bottom: 200px;">
-            <div class="custom-container">
-                <div class="cta-body text-center">
-                    <img src="./assets/imgs/bg-shape-11.svg" alt="Shape" class="animation-slide-left bg-shape"/>
-                    <div class="our-expert-team-box">
-                        <div class="our-expert-team-box-inner d-flex align-items-center">
-                            <div class="imgs d-flex align-items-center">
-                                <img src="./assets/imgs/small-img-4.png" alt="team" />
-                                <img src="./assets/imgs/small-img-3.png" alt="team" />
-                                <img src="./assets/imgs/small-img-2.png" alt="team" />
-                                <img src="./assets/imgs/small-img-1.png" alt="team" />
-                            </div>
-                        </div>
-                    </div>
-                    <h2>Need any further assitance?</h2>
-                    <p>Feel free to reach out for any inquiries or assistance.</p>
-                    <a href="contact.html" class="theme-btn">Book an appointment now</a>
-
-                </div>
-            </div>
-        </section>
-
-
-
+        
         <!-- Footer -->
         <footer class="footer-area">
-            <img src="./assets/imgs/bg-shape-4.svg" alt="Shape" class="animation-slide-right bg-shape" />
-            <div class="footer-top">
-                <div class="custom-container">
-                    <div class="custom-row align-items-end justify-content-between">
-                        <div class="left-content">
-                            <a href="index.html" class="logo">
-                                <img src="./assets/imgs/logo-white.svg" alt="Logo" />
-                            </a>
-                            <p>We provide the expertise and support to <br>
-                                propel your business forward.</p>
-                            <form action="assets/mail/subscribe.php" method="POST" class="subscribe-form">
-                                <div class="subscribe-box d-flex">
-                                    <input type="email" id="email" name="email" placeholder="Enter Your Email" />
-                                    <button id="submit2" class="theme-btn">Get Started</button>
-                                </div>
-                                <!-- Alert Message -->  
-                                <div class="input-row">
-                                    <div class="input-group alert-notification">
-                                        <div id="alert-message-subscribe" class="alert-msg"></div>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="footer-clients d-flex align-items-center">
-                                <div class="footer-client-img">
-                                    <img src="./assets/imgs/youtube.svg" alt="Youtube" />
-                                </div>
-                                <div class="footer-client-img">
-                                    <img src="./assets/imgs/webflow.svg" alt="webflow" />
-                                </div>
-                                <div class="footer-client-img">
-                                    <img src="./assets/imgs/upwork.svg" alt="upwork" />
-                                </div>
-                                <div class="footer-client-img">
-                                    <img src="./assets/imgs/shopify.svg" alt="shopify" />
-                                </div>
-                            </div>
-                        </div>
+          <img src="./assets/imgs/bg-shape-4.svg" alt="Shape" class="animation-slide-right bg-shape" />
+          <div class="footer-top">
+              <div class="custom-container">
+                  <div class="custom-row align-items-end justify-content-between">
+                      <div class="left-content">
+                          <a href="index.html" class="logo">
+                              <img src="./assets/imgs/logo.png" style="height: 100px; width: 120px;" alt="Logo" />
+                          </a>
+                          <p>PROTECT, a service created by a cybersecurity student to help <br>
+                              protect individuals and businesses from cyber threats.</p>
+                          <div class="footer-clients d-flex align-items-center">
+                              <div class="footer-client-img">
+                                  <img src="./assets/imgs/youtube.svg" alt="Youtube" />
+                              </div>
+                              <div class="footer-client-img">
+                                  <img src="./assets/imgs/youtube.svg" alt="Youtube" />
+                              </div>
+                              <div class="footer-client-img">
+                                  <img src="./assets/imgs/youtube.svg" alt="Youtube" />
+                              </div>
+                          </div>
+                      </div>
 
-                        <div class="right-content">
-                            <div class="right-content-inner">
-                                <h2>Let’s get started on something great</h2>
-                                <p>Our team of IT experts looks forward to meeting with you <br>
-                                    and providing valuable insights tailored to your business.</p>
-                                <a href="contact.html" class="theme-btn">Get an appointment now</a>
+                      <div class="right-content">
+                          <div class="right-content-inner">
+                              <h2>Let's get started on something great</h2>
+                              <p>Our team of IT experts looks forward to meeting with you <br>
+                                  and providing valuable insights tailored to your business.</p>
+                              <a href="contact.html" class="theme-btn">Get an appointment now</a>
 
-                                <div class="footer-experience d-flex align-items-center">
+                              <div class="footer-experience d-flex align-items-center">
 
-                                    <div class="footer-experience-item">
-                                        <h1>2 <span>Mins</span></h1>
-                                        <p>Response Time</p>
-                                    </div>
-                                    <div class="footer-experience-item">
-                                        <h1>99%</h1>
-                                        <p>Client Satisfaction</p>
-                                    </div>
-                                    <div class="footer-experience-item">
-                                        <h1>22+ <span>Years</span></h1>
-                                        <p>Field Experience</p>
-                                    </div>
+                                  <div class="footer-experience-item">
+                                      <h1>2 <span>Mins</span></h1>
+                                      <p>Response Time</p>
+                                  </div>
+                                  <div class="footer-experience-item">
+                                      <h1>99%</h1>
+                                      <p>Client Satisfaction</p>
+                                  </div>
+                                  <div class="footer-experience-item">
+                                      <h1>22+ <span>Years</span></h1>
+                                      <p>Field Experience</p>
+                                  </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
 
-            <div class="footer-bottom">
-                <div class="custom-container">
-                    <div class="custom-row">
-                        <div class="footer-all-links-wrap justify-content-between d-flex">
-                            <div class="footer-links">
-                                <h3>Services</h3>
-                                <ul>
-                                    <li><a href="service-details.html">IT Support</a></li>
-                                    <li><a href="service-details.html">Web Design</a></li>
-                                    <li><a href="service-details.html">Development</a></li>
-                                    <li><a href="service-details.html">Cloud Things <span class="new">New</span></a></li>
-                                    <li><a href="service-details.html">E-Commerce</a></li>
-                                    <li><a href="service-details.html">CRM Solutions</a></li>
-                                </ul>
-                            </div>
-                            <div class="footer-links">
-                                <h3>Company</h3>
-                                <ul>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="partner.html">Partners</a></li>
-                                    <li><a href="career.html">Careers</a></li>
-                                    <li><a href="event.html">Events</a></li>
-                                    <li><a href="team.html">Team</a></li>
-                                </ul>
-                            </div>
-                            <div class="footer-links">
-                                <h3>Product</h3>
-                                <ul>
-                                    <li><a href="case-studie.html">Case Studies </a></li>
-                                    <li><a href="pricing.html">Our Pricing</a></li>
-                                    <li><a href="feature.html">Features</a></li>
-                                    <li><a href="overview.html">Overview</a></li>
-                                    <li><a href="new-release.html">New Releases</a></li>
-                                    <li><a href="solution.html">Solutions</a></li>
-                                </ul>
-                            </div>
-                            <div class="footer-links">
-                                <h3>Our Fields</h3>
-                                <ul>
-                                    <li><a href="our-field-details.html">Healthcare</a></li>
-                                    <li><a href="our-field-details.html">Banks</a></li>
-                                    <li><a href="our-field-details.html">Logistics</a></li>
-                                    <li><a href="our-field-details.html">Supermarkets</a></li>
-                                    <li><a href="our-field-details.html">Industries</a></li>
-                                    <li><a href="our-field-details.html">Hotels</a></li>
-                                </ul>
-                            </div>
-                            <div class="footer-links">
-                                <h3>Legal</h3>
-                                <ul>
-                                    <li><a href="#">Licenses</a></li>
-                                    <li><a href="#">Settings</a></li>
-                                    <li><a href="#">Cookies</a></li>
-                                    <li><a href="#">Document</a></li>
-                                    <li><a href="#">Terms</a></li>
-                                    <li><a href="#">Privacy</a></li>
-                                </ul>
-                            </div>
+          <div class="footer-bottom">
+              <div class="custom-container">
+                  <div class="custom-row">
+                      <div class="footer-all-links-wrap justify-content-between d-flex">
+                          <div class="footer-links">
+                              <h3>Services</h3>
+                              <ul>
+                                  <li><a href="service-details.html">IT Support</a></li>
+                                  <li><a href="service-details.html">Web Design</a></li>
+                                  <li><a href="service-details.html">Development</a></li>
+                                  <li><a href="service-details.html">Cloud Things <span class="new">New</span></a></li>
+                                  <li><a href="service-details.html">E-Commerce</a></li>
+                                  <li><a href="service-details.html">CRM Solutions</a></li>
+                              </ul>
+                          </div>
+                          <div class="footer-links">
+                              <h3>Company</h3>
+                              <ul>
+                                  <li><a href="blog.html">Blog</a></li>
+                                  <li><a href="about.html">About Us</a></li>
+                                  <li><a href="partner.html">Partners</a></li>
+                                  <li><a href="career.html">Careers</a></li>
+                                  <li><a href="event.html">Events</a></li>
+                                  <li><a href="team.html">Team</a></li>
+                              </ul>
+                          </div>
+                          <div class="footer-links">
+                              <h3>Product</h3>
+                              <ul>
+                                  <li><a href="case-studie.html">Case Studies </a></li>
+                                  <li><a href="pricing.html">Our Pricing</a></li>
+                                  <li><a href="feature.html">Features</a></li>
+                                  <li><a href="overview.html">Overview</a></li>
+                                  <li><a href="new-release.html">New Releases</a></li>
+                                  <li><a href="solution.html">Solutions</a></li>
+                              </ul>
+                          </div>
+                          <div class="footer-links">
+                              <h3>Our Fields</h3>
+                              <ul>
+                                  <li><a href="our-field-details.html">Healthcare</a></li>
+                                  <li><a href="our-field-details.html">Banks</a></li>
+                                  <li><a href="our-field-details.html">Logistics</a></li>
+                                  <li><a href="our-field-details.html">Supermarkets</a></li>
+                                  <li><a href="our-field-details.html">Industries</a></li>
+                                  <li><a href="our-field-details.html">Hotels</a></li>
+                              </ul>
+                          </div>
+                          <div class="footer-links">
+                              <h3>Legal</h3>
+                              <ul>
+                                  <li><a href="#">Licenses</a></li>
+                                  <li><a href="#">Settings</a></li>
+                                  <li><a href="#">Cookies</a></li>
+                                  <li><a href="#">Document</a></li>
+                                  <li><a href="#">Terms</a></li>
+                                  <li><a href="#">Privacy</a></li>
+                              </ul>
+                          </div>
 
-                        </div>
+                      </div>
 
-                        <div class="footer-contact-info">
-                            <div class="footer-contact-info-item">
-                                <h4>Phone</h4>
-                                <p>
-                                    <a href="tel:+1-455-1482-236">+1-455-1482-236</a> <br>
-                                    <a href="tel:+1-938-740-75556">+1-938-740-7555</a>
-                                </p>
-                            </div>
-                            <div class="footer-contact-info-item">
-                                <h4>Mail</h4>
-                                <p>
-                                    <a href="mailto:bluebase@mail.com">bluebase@mail.com</a> <br>
-                                    <a href="mailto:mandrodio@mail.com">mandrodio@mail.com</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                      <div class="footer-contact-info">
+                          <div class="footer-contact-info-item">
+                              <h4>Mail</h4>
+                              <p>
+                                  <a href="mailto:bluebase@mail.com">contact@protect.org</a>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
 
-            <div class="copyright-area">
-                <div class="custom-container">
-                    <div class="custom-row d-flex align-items-center justify-content-between">
-                        <ul class="social-links d-flex align-items-center">
-                            <li><a href="#">
-                                <i class="iconoir-dribbble"></i>
-                            </a></li>
-                            <li><a href="#">
-                                <i class="iconoir-twitter"></i>
-                            </a></li>
-                            <li><a href="#">
-                                <i class="iconoir-instagram"></i>
-                            </a></li>
-                            <li><a href="#">
-                                <i class="iconoir-linkedin"></i>
-                            </a></li>
-                        </ul>
+          <div class="copyright-area">
+              <div class="custom-container">
+                  <div class="custom-row d-flex align-items-center justify-content-between">
+                      <ul class="social-links d-flex align-items-center">
+                          <li><a href="#">
+                              <i class="iconoir-dribbble"></i>
+                          </a></li>
+                          <li><a href="#">
+                              <i class="iconoir-twitter"></i>
+                          </a></li>
+                          <li><a href="#">
+                              <i class="iconoir-instagram"></i>
+                          </a></li>
+                          <li><a href="#">
+                              <i class="iconoir-linkedin"></i>
+                          </a></li>
+                      </ul>
 
-                        <p>&copy; 2023 All rights reserved by <a href="https://themeforest.net/user/wordpressriver/portfolio">WordpressRiver</a></p>
-                    </div>
-                </div>
-            </div>
-        </footer>
+                      <p>&copy; 2025 All rights reserved by <b>PROTECT</b></p>
+                  </div>
+              </div>
+          </div>
+      </footer>
 
-    </main>
 
-    <!-- jQuery Frameworks
-    ============================================= -->
-    <script src="./assets/js/jquery-3.7.0.min.js"></script>
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/js/gsap.min.js"></script>
-    <script src="./assets/js/Draggable.min.js"></script>
-    <script src="./assets/js/swiper-bundle.min.js"></script>
-    <script src="./assets/js/client-marquee.js"></script>
-    <script src="./assets/js/theme-custom.js"></script>
-    <script src="./assets/js/form1.js"></script>
-    <script src="./assets/js/subscribe-form.js"></script>
+  </main>
+
+
+
+  <!-- jQuery Frameworks
+  ============================================= -->
+  <script src="./assets/js/jquery-3.7.0.min.js"></script>
+  <script src="./assets/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/gsap.min.js"></script>
+  <script src="./assets/js/Draggable.min.js"></script>
+  <script src="./assets/js/swiper-bundle.min.js"></script>
+  <script src="./assets/js/client-marquee.js"></script>
+  <script src="./assets/js/theme-custom.js"></script>
+  <script src="./assets/js/form1.js"></script>
+  <script src="./assets/js/home.js"></script>
+  <script src="./assets/js/subscribe-form.js"></script>
+  <script src="./assets/js/threatwatch-data.js"></script>
+  <script src="./assets/js/threatwatch-main.js"></script>
 </body>
 
 </html>
+
+  
