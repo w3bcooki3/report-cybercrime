@@ -180,64 +180,81 @@ function renderPlatformDetail(platformId) {
   
   if (!platform) return;
   
-  platformDetail.innerHTML = `
-    <div class="platform-detail">
-      <button id="back-to-list" class="back-button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m15 18-6-6 6-6"></path>
-        </svg>
-        Back to all platforms
-      </button>
-      
-      <div class="detail-card">
-        <div class="detail-header">
-          <div class="detail-bg" style="background-image: url('${platform.logo}');"></div>
-          <div class="detail-overlay"></div>
-          <div class="detail-header-content">
-            <div class="detail-logo">
-              <img src="${platform.logo}" alt="${platform.name} Logo">
-            </div>
-            <h2 class="detail-title">${platform.name}</h2>
-          </div>
-        </div>
+  // Get the container element
+  const container = document.querySelector('.main-content');
+  if (container) {
+    container.scrollIntoView({ behavior: 'smooth' });
+  }
+  
+  // Add a small delay to ensure smooth transition
+  setTimeout(() => {
+    platformDetail.innerHTML = `
+      <div class="platform-detail">
+        <button id="back-to-list" class="back-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"></path>
+          </svg>
+          Back to all platforms
+        </button>
         
-        <div class="detail-body">
-          <h3 class="detail-section-title">Reporting Options</h3>
-          <p class="detail-description">${platform.description}</p>
-          
-          <div class="categories-grid">
-            ${platform.categories.map(category => `
-              <div class="category-card">
-                <h4 class="category-title">${category.name}</h4>
-                <p class="category-description">Report ${category.name.toLowerCase()} issues on ${platform.name}.</p>
-                <button class="category-button report-btn" data-platform="${platform.id}" data-category="${category.name}" data-url="${category.url}">
-                  Go to Reporting Form
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M7 7h10v10"></path>
-                    <path d="M7 17 17 7"></path>
-                  </svg>
-                </button>
+        <div class="detail-card">
+          <div class="detail-header">
+            <div class="detail-bg" style="background-image: url('${platform.logo}');"></div>
+            <div class="detail-overlay"></div>
+            <div class="detail-header-content">
+              <div class="detail-logo">
+                <img src="${platform.logo}" alt="${platform.name} Logo">
               </div>
-            `).join('')}
+              <h2 class="detail-title">${platform.name}</h2>
+            </div>
+          </div>
+          
+          <div class="detail-body">
+            <h3 class="detail-section-title">Reporting Options</h3>
+            <p class="detail-description">${platform.description}</p>
+            
+            <div class="categories-grid">
+              ${platform.categories.map(category => `
+                <div class="category-card">
+                  <h4 class="category-title">${category.name}</h4>
+                  <p class="category-description">Report ${category.name.toLowerCase()} issues on ${platform.name}.</p>
+                  <button class="category-button report-btn" data-platform="${platform.id}" data-category="${category.name}" data-url="${category.url}">
+                    Go to Reporting Form
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M7 7h10v10"></path>
+                      <path d="M7 17 17 7"></path>
+                    </svg>
+                  </button>
+                </div>
+              `).join('')}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  `;
-  
-  platformDetail.classList.remove('hidden');
-  platformsList.classList.add('hidden');
-  
-  // Add event listener to back button
-  document.getElementById('back-to-list').addEventListener('click', () => {
-    platformDetail.classList.add('hidden');
-    platformsList.classList.remove('hidden');
-  });
-  
-  // Add event listeners to report buttons
-  document.querySelectorAll('.report-btn').forEach(btn => {
-    btn.addEventListener('click', handleReportButtonClick);
-  });
+    `;
+    
+    platformDetail.classList.remove('hidden');
+    platformsList.classList.add('hidden');
+    
+    // Add event listener to back button with container scroll
+    document.getElementById('back-to-list').addEventListener('click', () => {
+      const container = document.querySelector('.main-content');
+      if (container) {
+        container.scrollIntoView({ behavior: 'smooth' });
+      }
+      
+      // Add a small delay before showing the list
+      setTimeout(() => {
+        platformDetail.classList.add('hidden');
+        platformsList.classList.remove('hidden');
+      }, 300);
+    });
+    
+    // Add event listeners to report buttons
+    document.querySelectorAll('.report-btn').forEach(btn => {
+      btn.addEventListener('click', handleReportButtonClick);
+    });
+  }, 300);
 }
 
 // Handle report button click
@@ -286,16 +303,7 @@ function setupEventListeners() {
     const card = e.target.closest('[data-platform-id]');
     if (card) {
       const platformId = card.getAttribute('data-platform-id');
-      // Save current scroll position before showing platform detail
-      const scrollPosition = window.scrollY;
-      
       renderPlatformDetail(platformId);
-      
-      // Maintain the same scroll position
-      window.scrollTo({
-        top: scrollPosition,
-        behavior: 'auto'
-      });
     }
   });
   
