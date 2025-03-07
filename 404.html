@@ -49,50 +49,11 @@
           --font_yantramanv: 'Yantramanav', sans-serif;
           --font_dm: 'DM Sans', sans-serif;
         }
-        
-        /* Reset Browsers */
-        *,*:before,*:after {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-        
-        ul,ol {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-        }
-        
-        a {
-          text-decoration: none !important;
-        }
-        
-        input:focus,
-        textarea:focus,
-        button:focus {
-          outline: none;
-          box-shadow: none;
-        }
-        
-        /* Template Default Styles */
-        body {
-          font-size: 16px;
-          font-family: var(--font_dm);
-          line-height: 1.5;
-          font-weight: 400;
-          overflow-x: hidden;
-          background-color: var(--light1);
-          color: var(--dark_text);
-          height: 100vh;
-          margin: 0;
-          overflow: hidden;
-          perspective: 1000px;
-        }
-        
+      
+    
         .page-wrapper {
           position: relative;
           width: 100%;
-          height: 100vh;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -132,6 +93,7 @@
           flex-direction: column;
           align-items: center;
           padding: 3rem 0;
+          margin-bottom: 50px;
         }
         
         .error-card {
@@ -238,7 +200,7 @@
           font-size: 3rem;
           font-weight: 700;
           margin: 1.5rem 0;
-          color: var(--primary_color2);
+          color: #4F8DFF;
           text-shadow: 0 0 10px rgba(19, 81, 216, 0.2);
         }
         
@@ -481,10 +443,6 @@
 
     <!-- Main -->
     <main class="main-page homepage">
-        <div class="header-bar-ad">
-            <p>Level up your online safety with our quick and easy <u>Risk Assessment Tool</u></p>
-        </div>
-
         <!-- Header -->
         <header class="header-area">
 
@@ -848,7 +806,7 @@
                 
                 <div class="glitch-404">404</div>
                 
-                <h1>INVESTIGATION BLOCKED!</h1>
+                <h1>Page Not Found!</h1>
                 
                 <p>Our cyber investigator hit a digital dead end! We can't find the page you're looking for. It might have been moved, deleted, or never existed in the first place. Our digital detective is on the case!</p>
                 
@@ -863,196 +821,176 @@
               </div>
             </div>
         </div>
-    </main>
+
+        <!-- Footer -->
+        <footer class="footer-area">
+          <img src="./assets/imgs/bg-shape-4.svg" alt="Shape" class="animation-slide-right bg-shape" />
+          <div class="footer-top">
+              <div class="custom-container">
+                  <div class="custom-row align-items-end justify-content-between">
+                      <div class="left-content">
+                          <a href="index.html" class="logo">
+                              <img src="./assets/imgs/logo.png" style="height: 100px; width: 120px;" alt="Logo" />
+                          </a>
+                          <p>PROTECT, a service created by a cybersecurity student to help <br>
+                              protect individuals and businesses from cyber threats.</p>
+                          <div class="footer-clients d-flex align-items-center">
+                              <div class="footer-client-img">
+                                  <img src="./assets/imgs/youtube.svg" alt="Youtube" />
+                              </div>
+                              <div class="footer-client-img">
+                                  <img src="./assets/imgs/youtube.svg" alt="Youtube" />
+                              </div>
+                              <div class="footer-client-img">
+                                  <img src="./assets/imgs/youtube.svg" alt="Youtube" />
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="right-content">
+                          <div class="right-content-inner">
+                              <h2>Let's get started on something great</h2>
+                              <p>Our team of IT experts looks forward to meeting with you <br>
+                                  and providing valuable insights tailored to your business.</p>
+                              <a href="contact.html" class="theme-btn">Get an appointment now</a>
+
+                              <div class="footer-experience d-flex align-items-center">
+
+                                  <div class="footer-experience-item">
+                                      <h1>2 <span>Mins</span></h1>
+                                      <p>Response Time</p>
+                                  </div>
+                                  <div class="footer-experience-item">
+                                      <h1>99%</h1>
+                                      <p>Client Satisfaction</p>
+                                  </div>
+                                  <div class="footer-experience-item">
+                                      <h1>22+ <span>Years</span></h1>
+                                      <p>Field Experience</p>
+                                  </div>
+
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="footer-bottom">
+              <div class="custom-container">
+                  <div class="custom-row">
+                      <div class="footer-all-links-wrap justify-content-between d-flex">
+                          <div class="footer-links">
+                              <h3>Services</h3>
+                              <ul>
+                                  <li><a href="service-details.html">IT Support</a></li>
+                                  <li><a href="service-details.html">Web Design</a></li>
+                                  <li><a href="service-details.html">Development</a></li>
+                                  <li><a href="service-details.html">Cloud Things <span class="new">New</span></a></li>
+                                  <li><a href="service-details.html">E-Commerce</a></li>
+                                  <li><a href="service-details.html">CRM Solutions</a></li>
+                              </ul>
+                          </div>
+                          <div class="footer-links">
+                              <h3>Company</h3>
+                              <ul>
+                                  <li><a href="blog.html">Blog</a></li>
+                                  <li><a href="about.html">About Us</a></li>
+                                  <li><a href="partner.html">Partners</a></li>
+                                  <li><a href="career.html">Careers</a></li>
+                                  <li><a href="event.html">Events</a></li>
+                                  <li><a href="team.html">Team</a></li>
+                              </ul>
+                          </div>
+                          <div class="footer-links">
+                              <h3>Product</h3>
+                              <ul>
+                                  <li><a href="case-studie.html">Case Studies </a></li>
+                                  <li><a href="pricing.html">Our Pricing</a></li>
+                                  <li><a href="feature.html">Features</a></li>
+                                  <li><a href="overview.html">Overview</a></li>
+                                  <li><a href="new-release.html">New Releases</a></li>
+                                  <li><a href="solution.html">Solutions</a></li>
+                              </ul>
+                          </div>
+                          <div class="footer-links">
+                              <h3>Our Fields</h3>
+                              <ul>
+                                  <li><a href="our-field-details.html">Healthcare</a></li>
+                                  <li><a href="our-field-details.html">Banks</a></li>
+                                  <li><a href="our-field-details.html">Logistics</a></li>
+                                  <li><a href="our-field-details.html">Supermarkets</a></li>
+                                  <li><a href="our-field-details.html">Industries</a></li>
+                                  <li><a href="our-field-details.html">Hotels</a></li>
+                              </ul>
+                          </div>
+                          <div class="footer-links">
+                              <h3>Legal</h3>
+                              <ul>
+                                  <li><a href="#">Licenses</a></li>
+                                  <li><a href="#">Settings</a></li>
+                                  <li><a href="#">Cookies</a></li>
+                                  <li><a href="#">Document</a></li>
+                                  <li><a href="#">Terms</a></li>
+                                  <li><a href="#">Privacy</a></li>
+                              </ul>
+                          </div>
+
+                      </div>
+
+                      <div class="footer-contact-info">
+                          <div class="footer-contact-info-item">
+                              <h4>Mail</h4>
+                              <p>
+                                  <a href="mailto:bluebase@mail.com">contact@protect.org</a>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="copyright-area">
+              <div class="custom-container">
+                  <div class="custom-row d-flex align-items-center justify-content-between">
+                      <ul class="social-links d-flex align-items-center">
+                          <li><a href="#">
+                              <i class="iconoir-dribbble"></i>
+                          </a></li>
+                          <li><a href="#">
+                              <i class="iconoir-twitter"></i>
+                          </a></li>
+                          <li><a href="#">
+                              <i class="iconoir-instagram"></i>
+                          </a></li>
+                          <li><a href="#">
+                              <i class="iconoir-linkedin"></i>
+                          </a></li>
+                      </ul>
+
+                      <p>&copy; 2025 All rights reserved by <b>PROTECT</b></p>
+                  </div>
+              </div>
+          </div>
+      </footer>
+
+
+  </main>
 
 
 
-<!-- jQuery Frameworks
-============================================= -->
-<script>
-    // Scanner circle control
-    const scannerCircle = document.getElementById('scannerCircle');
-    const scanner = document.getElementById('scanner');
-    const investigator = document.getElementById('investigator');
-    const dataStream1 = document.getElementById('dataStream1');
-    const dataStream2 = document.getElementById('dataStream2');
-    const confettiContainer = document.getElementById('confetti');
-    
-    // Function to create data particles effect
-    function createDataParticles() {
-      const colors = ['#4F8DFF', '#1351D8', '#FFD600', '#FF6B6B'];
-      const particleCount = 100;
-      
-      // Clear previous particles
-      confettiContainer.innerHTML = '';
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'confetti-piece';
-        
-        // Random styling
-        particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.width = `${Math.random() * 8 + 2}px`;
-        particle.style.height = `${Math.random() * 8 + 2}px`;
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.opacity = '1';
-        particle.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-        
-        // Random rotation
-        const rotation = Math.random() * 360;
-        particle.style.transform = `rotate(${rotation}deg)`;
-        
-        // Random animation
-        const duration = Math.random() * 3 + 2;
-        const delay = Math.random() * 0.5;
-        
-        particle.style.animation = `fall ${duration}s ease-in ${delay}s forwards`;
-        
-        // Add keyframe animation dynamically
-        const keyframes = `
-          @keyframes fall {
-            0% { 
-              transform: translateY(-10px) rotate(${rotation}deg); 
-              opacity: 0;
-            }
-            10% {
-              opacity: 1;
-            }
-            100% { 
-              transform: translateY(${window.innerHeight}px) rotate(${rotation + 360}deg); 
-              opacity: 0;
-            }
-          }
-        `;
-        
-        const styleSheet = document.createElement('style');
-        styleSheet.textContent = keyframes;
-        document.head.appendChild(styleSheet);
-        
-        confettiContainer.appendChild(particle);
-      }
-      
-      // Play scanner sound
-      playDigitalSound();
-    }
-    
-    // Function to play digital scanning sound
-    function playDigitalSound() {
-      try {
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const oscillator = audioContext.createOscillator();
-        const gainNode = audioContext.createGain();
-        
-        oscillator.type = 'sine';
-        oscillator.frequency.setValueAtTime(500, audioContext.currentTime);
-        oscillator.frequency.exponentialRampToValueAtTime(2000, audioContext.currentTime + 0.15);
-        oscillator.frequency.exponentialRampToValueAtTime(500, audioContext.currentTime + 0.3);
-        
-        gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.2, audioContext.currentTime + 0.15);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
-        
-        oscillator.connect(gainNode);
-        gainNode.connect(audioContext.destination);
-        
-        oscillator.start();
-        oscillator.stop(audioContext.currentTime + 0.3);
-      } catch(e) {
-        console.log("Audio context not supported");
-      }
-    }
-    
-    scannerCircle.addEventListener('click', () => {
-      // Check if animation is paused
-      if (scannerCircle.style.animationPlayState === 'paused' || !scannerCircle.style.animationPlayState) {
-        // Start spinning fast
-        scannerCircle.style.animation = 'scanner-rotate 1s linear infinite';
-        // Add scanning animation
-        dataStream1.style.strokeDashoffset = '10';
-        dataStream1.style.animation = 'dash 1s linear infinite';
-        dataStream2.style.strokeDashoffset = '10';
-        dataStream2.style.animation = 'dash 1s linear infinite reverse';
-        
-        // Add keyframe animation for data streams
-        const dashKeyframes = `
-          @keyframes dash {
-            to {
-              stroke-dashoffset: 0;
-            }
-          }
-        `;
-        
-        const styleSheet = document.createElement('style');
-        styleSheet.textContent = dashKeyframes;
-        document.head.appendChild(styleSheet);
-        
-        createDataParticles();
-      } else {
-        // Slow down
-        scannerCircle.style.animation = 'scanner-rotate 8s linear infinite';
-        dataStream1.style.animation = '';
-        dataStream2.style.animation = '';
-      }
-    });
-    
-    // Deep scan button effect
-    const scanBtn = document.getElementById('scanBtn');
-    scanBtn.addEventListener('click', () => {
-      scanBtn.style.transform = 'scale(0.95)';
-      
-      // Create scanning effects
-      document.body.classList.add('scanning');
-      
-      // Lots of data particles
-      createDataParticles();
-      setTimeout(createDataParticles, 200);
-      
-      // Pulse the page
-      document.querySelector('.error-card').style.animation = 'pulse-card 1s ease-in-out';
-      
-      // Create a pulse animation dynamically
-      const pulseKeyframes = `
-        @keyframes pulse-card {
-          0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(79, 141, 255, 0.2); }
-          50% { transform: scale(1.02); box-shadow: 0 0 50px rgba(79, 141, 255, 0.5); }
-        }
-      `;
-      
-      const styleSheet = document.createElement('style');
-      styleSheet.textContent = pulseKeyframes;
-      document.head.appendChild(styleSheet);
-      
-      // Reset after animation
-      setTimeout(() => {
-        document.querySelector('.error-card').style.animation = '';
-        scanBtn.style.transform = '';
-      }, 1000);
-    });
-    
-    // Make tags clickable
-    document.querySelectorAll('.tag').forEach(tag => {
-      tag.addEventListener('click', () => {
-        // Show a little animation when clicked
-        tag.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-          tag.style.transform = '';
-        }, 200);
-        
-        // Quick digital sound
-        playDigitalSound();
-      });
-    });
-  </script>
-<script src="./assets/js/jquery-3.7.0.min.js"></script>
-<script src="./assets/js/bootstrap.bundle.min.js"></script>
-<script src="./assets/js/gsap.min.js"></script>
-<script src="./assets/js/Draggable.min.js"></script>
-<script src="./assets/js/swiper-bundle.min.js"></script>
-<script src="./assets/js/client-marquee.js"></script>
-<script src="./assets/js/theme-custom.js"></script>
-<script src="./assets/js/form1.js"></script>
-<script src="./assets/js/home.js"></script>
-<script src="./assets/js/subscribe-form.js"></script>
+  <!-- jQuery Frameworks
+  ============================================= -->
+  <script src="./assets/js/jquery-3.7.0.min.js"></script>
+  <script src="./assets/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/gsap.min.js"></script>
+  <script src="./assets/js/Draggable.min.js"></script>
+  <script src="./assets/js/swiper-bundle.min.js"></script>
+  <script src="./assets/js/client-marquee.js"></script>
+  <script src="./assets/js/theme-custom.js"></script>
+  <script src="./assets/js/form1.js"></script>
+  <script src="./assets/js/home.js"></script>
+  <script src="./assets/js/subscribe-form.js"></script>
 </body>
 
 </html>
