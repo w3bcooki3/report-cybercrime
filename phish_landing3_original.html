@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Attack Encyclopedia - Protect Yourself Online</title>
+    <style>
+        :root {
+            --primary: #3a6ea5;
+            --secondary: #004e98;
+            --accent: #ff6b35;
+            --light: #f7f9fb;
+            --dark: #2c3e50;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --success: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-box {
+            display: flex;
+            width: 100%;
+        }
+        
+        .search-input {
+            flex-grow: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .search-button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
+        }
+        
+        .search-button:hover {
+            background-color: #e85a2a;
+        }
+        
+        .emergency-box {
+            background-color: var(--danger);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .emergency-box a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .scenario-section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--secondary);
+            font-size: 1.8rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .scenario-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .scenario-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card-icon {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(58, 110, 165, 0.1);
+        }
+        
+        .card-icon img {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-title {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .card-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        .learn-more {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .learn-more:hover {
+            color: #e85a2a;
+        }
+        
+        .help-finder {
+            background-color: rgba(58, 110, 165, 0.1);
+            padding: 3rem 0;
+            margin: 2rem 0;
+        }
+        
+        .help-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .help-title {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .questions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 2rem 0;
+        }
+        
+        .question-btn {
+            background-color: white;
+            color: var(--dark);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .question-btn:hover {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .resources-section {
+            padding: 3rem 0;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .resource-title {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .resource-title span {
+            margin-left: 10px;
+        }
+        
+        .resource-list {
+            list-style: none;
+        }
+        
+        .resource-list li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .resource-list li:before {
+            content: '•';
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .resource-list a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .resource-list a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            margin: 1rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .scenarios-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Phishing Attack Encyclopedia</h1>
+                <p class="subtitle">Your comprehensive guide to identifying, avoiding, and recovering from all types of phishing attacks - from beginners to IT professionals</p>
+                
+                <div class="search-container">
+                    <form class="search-box">
+                        <input type="text" class="search-input" placeholder="Search for phishing scenarios, terms, or threats...">
+                        <button type="submit" class="search-button">Search</button>
+                    </form>
+                </div>
+                
+                <div class="emergency-box">
+                    Think you've been phished? <a href="#immediate-steps">Get Immediate Help →</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="help-finder">
+        <div class="container">
+            <div class="help-content">
+                <h2 class="help-title">What happened to you?</h2>
+                <p>Select the scenario that best matches your situation for personalized guidance</p>
+                
+                <div class="questions">
+                    <button class="question-btn">I clicked on a suspicious link</button>
+                    <button class="question-btn">I provided personal information</button>
+                    <button class="question-btn">I downloaded something suspicious</button>
+                    <button class="question-btn">I received a suspicious email</button>
+                    <button class="question-btn">I got a message about my package</button>
+                    <button class="question-btn">Someone asked for my password</button>
+                    <button class="question-btn">I have a virus warning</button>
+                    <button class="question-btn">I received an account deletion notice</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="scenario-section">
+        <div class="container">
+            <h2 class="section-title">Common Phishing Scenarios</h2>
+            
+            <div class="scenarios-grid">
+                <div class="scenario-card">
+                    <div class="card-icon">
+                        <img src="/api/placeholder/60/60" alt="Email Icon">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Compromised Email Account</h3>
+                        <p class="card-description">Learn how to recognize signs that your email account has been compromised, what immediate steps to take, and how to secure your account.</p>
+                        <a href="#" class="learn-more">Read Full Guide →</a>
+                    </div>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="card-icon">
+                        <img src="/api/placeholder/60/60" alt="Reset Icon">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Password Reset Scams</h3>
+                        <p class="card-description">How to identify fake password reset emails, what hackers can do with your credentials, and how to safely reset passwords.</p>
+                        <a href="#" class="learn-more">Read Full Guide →</a>
+                    </div>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="card-icon">
+                        <img src="/api/placeholder/60/60" alt="Document Icon">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Malicious Document Attachments</h3>
+                        <p class="card-description">The dangers of opening unknown attachments, how macros can infect your computer, and safe document handling practices.</p>
+                        <a href="#" class="learn-more">Read Full Guide →</a>
+                    </div>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="card-icon">
+                        <img src="/api/placeholder/60/60" alt="Account Icon">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Account Deletion Notices</h3>
+                        <p class="card-description">How to verify if account deletion notices are legitimate, common tactics used by scammers, and what to do if you responded.</p>
+                        <a href="#" class="learn-more">Read Full Guide →</a>
+                    </div>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="card-icon">
+                        <img src="/api/placeholder/60/60" alt="Virus Icon">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Fake Virus Warnings</h3>
+                        <p class="card-description">How to distinguish between legitimate antivirus alerts and scams, avoiding tech support scams, and cleaning an infected device.</p>
+                        <a href="#" class="learn-more">Read Full Guide →</a>
+                    </div>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="card-icon">
+                        <img src="/api/placeholder/60/60" alt="Package Icon">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Package Delivery Scams</h3>
+                        <p class="card-description">Red flags in delivery notification messages, how shipping scams work, and verifying tracking information safely.</p>
+                        <a href="#" class="learn-more">Read Full Guide →</a>
+                    </div>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="card-icon">
+                        <img src="/api/placeholder/60/60" alt="Payment Icon">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Payment & Invoice Fraud</h3>
+                        <p class="card-description">Identifying fake invoices and payment requests, verifying payment information, and what to do if you've sent money to scammers.</p>
+                        <a href="#" class="learn-more">Read Full Guide →</a>
+                    </div>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="card-icon">
+                        <img src="/api/placeholder/60/60" alt="Bank Icon">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Banking & Financial Phishing</h3>
+                        <p class="card-description">How to spot fake banking communications, safeguarding your financial accounts, and recovering from financial fraud.</p>
+                        <a href="#" class="learn-more">Read Full Guide →</a>
+                    </div>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="card-icon">
+                        <img src="/api/placeholder/60/60" alt="Social Media Icon">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Social Media Account Takeovers</h3>
+                        <p class="card-description">Signs your social media has been compromised, recovering hacked accounts, and preventing future attacks.</p>
+                        <a href="#" class="learn-more">Read Full Guide →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="immediate-steps" class="resources-section">
+        <div class="container">
+            <h2 class="section-title">Resources & Reporting</h2>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3 class="resource-title">
+                        <img src="/api/placeholder/24/24" alt="Steps Icon">
+                        <span>Immediate Steps to Take</span>
+                    </h3>
+                    <ul class="resource-list">
+                        <li>Change your passwords immediately</li>
+                        <li>Contact your bank if financial information was shared</li>
+                        <li>Disconnect your device from the internet if infected</li>
+                        <li>Run an antivirus scan on your device</li>
+                        <li>Monitor your accounts for suspicious activity</li>
+                        <li>Enable two-factor authentication where possible</li>
+                    </ul>
+                </div>
+                
+                <div class="resource-card">
+                    <h3 class="resource-title">
+                        <img src="/api/placeholder/24/24" alt="Report Icon">
+                        <span>Where to Report</span>
+                    </h3>
+                    <ul class="resource-list">
+                        <li><a href="#">Report to your email provider</a></li>
+                        <li><a href="#">Federal Trade Commission (FTC)</a></li>
+                        <li><a href="#">Internet Crime Complaint Center (IC3)</a></li>
+                        <li><a href="#">Anti-Phishing Working Group</a></li>
+                        <li><a href="#">Your country's cybersecurity agency</a></li>
+                        <li><a href="#">Local law enforcement</a></li>
+                    </ul>
+                </div>
+                
+                <div class="resource-card">
+                    <h3 class="resource-title">
+                        <img src="/api/placeholder/24/24" alt="Prevention Icon">
+                        <span>Prevention Tools</span>
+                    </h3>
+                    <ul class="resource-list">
+                        <li><a href="#">Recommended password managers</a></li>
+                        <li><a href="#">Email filtering solutions</a></li>
+                        <li><a href="#">Browser security extensions</a></li>
+                        <li><a href="#">Two-factor authentication apps</a></li>
+                        <li><a href="#">Security awareness training</a></li>
+                        <li><a href="#">Security software recommendations</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 Phishing Attack Encyclopedia - Helping people stay safe online</p>
+                <div class="footer-links">
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                </div>
+                <p>This resource is regularly updated with the latest phishing tactics and prevention techniques</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Phishing Attack Encyclopedia</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@400;500;600;700&family=Yantramanav:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables */
+        :root {
+            --dark1: #1C1C1C;
+            --dark2: #454545;
+            --light_white: #F9F9F9;
+            --primary_color: #1351D8;
+            --primary_color2: #4F8DFF;
+            --primary_light: #F3F6FD;
+            --primary_light2: rgb(19 81 216 / 10%);
+            --gray: #D9D9D9;
+            --font_syne: 'Syne', sans-serif;
+            --font_yantramanv: 'Yantramanav', sans-serif;
+            --font_dm: 'DM Sans', sans-serif;
+            --yellow_color: #FFD600;
+        }
+
+        /* Reset Browsers */
+        *,*:before,*:after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul,ol {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none !important;
+        }
+        input:focus,
+        textarea:focus,
+        button:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* Template Default Styles */
+        body {
+            font-size: 16px;
+            font-family: var(--font_dm);
+            line-height: 1.5;
+            font-weight: 400;
+            overflow-x: hidden;
+            background-color: var(--light_white);
+            color: var(--dark1);
+        }
+        img {
+            max-width: 100%;
+        }
+
+        .custom-container {
+            max-width: 1550px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .custom-row {
+            display: flex;
+            width: 100%;
+        }
+        .flex-1 {
+            flex: 1;
+        }
+        .w-full {
+            width: 100%;
+        }
+        .gap-24 {
+            gap: 24px;
+        }
+
+        .card-h:hover .theme-btn i{
+            transition: transform .5s;
+            transform: rotate(45deg);
+        }
+        .card-h1:hover .theme-btn i{
+            transition: transform .5s;
+            transform: rotate(45deg);
+        }
+
+        /* Button Styles */
+        .theme-btn2,
+        .theme-btn {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--light_white);
+            background: var(--primary_color);
+            display: inline-flex;
+            align-items: center;
+            padding: 13px 26px;
+            border-radius: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: .3s;
+            z-index: 1;
+            overflow: hidden;
+            text-decoration: none !important;
+            gap: 10px;
+        }
+        .theme-btn2::after,
+        .theme-btn2::before,
+        .theme-btn::after,
+        .theme-btn::before {
+            content: '';
+            width: 50%;
+            height: 0;
+            background: var(--dark1);
+            border-radius: 30px 0 0 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: .3s;
+        }
+        .theme-btn2::after,
+        .theme-btn::after {
+            top: auto;
+            left: auto;
+            bottom: 0;
+            right: 0;
+            border-radius: 0 30px 30px 0;
+        }
+        .theme-btn2:hover,
+        .theme-btn:hover {
+            color: var(--light_white);
+        }
+        .theme-btn2:hover::after,
+        .theme-btn2:hover::before,
+        .theme-btn:hover::after,
+        .theme-btn:hover::before {
+            height: 100%;
+        }
+        .theme-btn2 {
+            background: #1351D81A;
+            color: var(--primary_color);
+        }
+        .theme-btn2::after,
+        .theme-btn2::before {
+            background: var(--primary_color);
+        }
+        .theme-btn2 i {
+            transition: .3s;
+        }
+        .theme-btn:hover i,
+        .theme-btn2:hover i {
+            transition: transform .5s;
+            transform: rotate(45deg);
+        }
+        .theme-btn:hover i,
+        .theme-btn2:hover i {
+            fill: #ffffff;
+        }
+
+        .simple-shadow {
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+            border-radius: 10px;
+            background: #ffffff;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* Section-subtitle Styles */
+        .section-subtitle {
+            font-family: var(--font_syne);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--primary_color);
+            margin: 0;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .section-subtitle1{
+            font-size: 12px;
+        }
+        .section-title {
+            font-family: var(--font_yantramanv);
+            font-size: 60px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 30px;
+            color: var(--dark1);
+        }
+        
+        /* Custom Styles for Phishing Encyclopedia */
+        header {
+            background-color: var(--primary_light);
+            padding: 40px 0;
+            position: relative;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/api/placeholder/1550/250');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header-title {
+            font-family: var(--font_yantramanv);
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark1);
+        }
+        
+        .header-description {
+            font-family: var(--font_dm);
+            font-size: 18px;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+        
+        .search-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .search-bar {
+            display: flex;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .search-bar input {
+            flex-grow: 1;
+            padding: 15px 20px;
+            border: 1px solid var(--gray);
+            border-radius: 30px 0 0 30px;
+            font-size: 16px;
+            font-family: var(--font_dm);
+        }
+        
+        .search-button {
+            background-color: var(--primary_color);
+            color: white;
+            border: none;
+            padding: 0 30px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: var(--font_dm);
+        }
+        
+        .guide-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .guide-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .guide-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .guide-icon {
+            height: 180px;
+            background-color: var(--primary_light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+        }
+        
+        .guide-content {
+            padding: 25px;
+        }
+        
+        .guide-content h3 {
+            font-family: var(--font_yantramanv);
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark1);
+        }
+        
+        .guide-content p {
+            font-family: var(--font_dm);
+            margin-bottom: 20px;
+            color: var(--dark2);
+            min-height: 100px;
+        }
+        
+        .tabs-container {
+            display: flex;
+            background-color: var(--primary_light);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            font-family: var(--font_syne);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background-color: var(--primary_color);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .alert-box {
+            background-color: #FFF7E6;
+            border-left: 4px solid var(--yellow_color);
+            padding: 20px 30px;
+            margin: 30px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .alert-box h3 {
+            color: var(--dark1);
+            font-family: var(--font_yantramanv);
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .alert-box ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        .alert-box li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .alert-box li:before {
+            content: "⚠️";
+            position: absolute;
+            left: 0;
+        }
+        
+        footer {
+            background-color: var(--dark1);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-family: var(--font_yantramanv);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: var(--light_white);
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--primary_color2);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .view-all {
+            font-family: var(--font_syne);
+            font-weight: 500;
+            color: var(--primary_color);
+        }
+        
+        .section-divider {
+            height: 1px;
+            background-color: var(--gray);
+            margin: 60px 0;
+        }
+        
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: var(--font_yantramanv);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary_color);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            font-family: var(--font_syne);
+            font-weight: 500;
+            color: var(--dark2);
+        }
+        
+        .resource-list {
+            list-style-type: none;
+            margin-top: 20px;
+        }
+        
+        .resource-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .resource-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary_color);
+        }
+        
+        @media (max-width: 1024px) {
+            .section-title {
+                font-size: 42px;
+            }
+            
+            .header-title {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .guide-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .custom-container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="custom-container header-content">
+            <p class="section-subtitle">CYBERSECURITY RESOURCE</p>
+            <h1 class="header-title">Comprehensive Phishing Attack Encyclopedia</h1>
+            <p class="header-description">Your definitive resource for understanding, identifying, and protecting yourself against all types of phishing attacks - from basic scams to sophisticated social engineering techniques.</p>
+            <a href="#guides" class="theme-btn">Explore Guides <i>→</i></a>
+        </div>
+    </header>
+    
+    <div class="custom-container">
+        <div id="guides">
+            <div class="category-header">
+                <div>
+                    <p class="section-subtitle">EMAIL PHISHING</p>
+                    <h2 class="section-title" style="font-size: 36px; margin-bottom: 0;">Email-Based Attack Guides</h2>
+                </div>
+                <a href="#" class="view-all">View All Email Guides <i>→</i></a>
+            </div>
+            
+            <div class="guide-cards">
+                <div class="guide-card card-h">
+                    <div class="guide-icon">📧</div>
+                    <div class="guide-content">
+                        <h3>Account Verification Scams</h3>
+                        <p>Learn how attackers impersonate legitimate services claiming your account needs verification or will be suspended, and what security indicators to look for.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+                
+                <div class="guide-card card-h">
+                    <div class="guide-icon">🔑</div>
+                    <div class="guide-content">
+                        <h3>Password Reset Deception</h3>
+                        <p>Discover the tactics used in fake password reset requests and the security steps to take if you receive an unexpected reset email.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+                
+                <div class="guide-card card-h">
+                    <div class="guide-icon">📄</div>
+                    <div class="guide-content">
+                        <h3>Malicious Document Attachments</h3>
+                        <p>Understand how harmful code can be hidden in attachments like PDFs, Office documents, and ZIP files, and learn safe practices for handling files.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+                
+                <div class="guide-card card-h">
+                    <div class="guide-icon">💼</div>
+                    <div class="guide-content">
+                        <h3>Business Email Compromise</h3>
+                        <p>Learn how attackers target organizations by impersonating executives to request fund transfers or access to sensitive company information.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-divider"></div>
+            
+            <div class="category-header">
+                <div>
+                    <p class="section-subtitle">MOBILE THREATS</p>
+                    <h2 class="section-title" style="font-size: 36px; margin-bottom: 0;">Mobile Phishing Attack Guides</h2>
+                </div>
+                <a href="#" class="view-all">View All Mobile Guides <i>→</i></a>
+            </div>
+            
+            <div class="guide-cards">
+                <div class="guide-card card-h">
+                    <div class="guide-icon">📱</div>
+                    <div class="guide-content">
+                        <h3>SMS Phishing (Smishing)</h3>
+                        <p>Learn about text message-based phishing that often includes urgent requests, fake delivery notifications, or account alerts with malicious links.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+                
+                <div class="guide-card card-h">
+                    <div class="guide-icon">📲</div>
+                    <div class="guide-content">
+                        <h3>Fake Banking Apps</h3>
+                        <p>Understand how cybercriminals create counterfeit banking applications to steal your credentials and financial information directly from your smartphone.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+                
+                <div class="guide-card card-h">
+                    <div class="guide-icon">🔔</div>
+                    <div class="guide-content">
+                        <h3>Push Notification Phishing</h3>
+                        <p>Discover how attackers exploit push notifications to trick users into providing credentials or installing malicious applications.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+                
+                <div class="guide-card card-h">
+                    <div class="guide-icon">💬</div>
+                    <div class="guide-content">
+                        <h3>QR Code Phishing</h3>
+                        <p>Learn how malicious QR codes can lead to fake websites or trigger automatic downloads of malware onto your mobile device.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-divider"></div>
+            
+            <div class="category-header">
+                <div>
+                    <p class="section-subtitle">VOICE & SOCIAL ENGINEERING</p>
+                    <h2 class="section-title" style="font-size: 36px; margin-bottom: 0;">Voice & Social Phishing Guides</h2>
+                </div>
+                <a href="#" class="view-all">View All Voice Guides <i>→</i></a>
+            </div>
+            
+            <div class="guide-cards">
+                <div class="guide-card card-h">
+                    <div class="guide-icon">📞</div>
+                    <div class="guide-content">
+                        <h3>Voice Phishing (Vishing)</h3>
+                        <p>Understand how attackers use phone calls to impersonate legitimate institutions and manipulate victims into revealing sensitive information.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+                
+                <div class="guide-card card-h">
+                    <div class="guide-icon">🤖</div>
+                    <div class="guide-content">
+                        <h3>AI Voice Cloning Scams</h3>
+                        <p>Learn about emerging threats that use artificial intelligence to clone voices of family members or executives for fraudulent purposes.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+                
+                <div class="guide-card card-h">
+                    <div class="guide-icon">🏛️</div>
+                    <div class="guide-content">
+                        <h3>Government Impersonation Calls</h3>
+                        <p>Discover how scammers pose as tax authorities, law enforcement, or other government agencies to extort money or information.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+                
+                <div class="guide-card card-h">
+                    <div class="guide-icon">🎭</div>
+                    <div class="guide-content">
+                        <h3>Tech Support Scam Calls</h3>
+                        <p>Learn to identify fraudulent tech support calls claiming to be from Microsoft, Apple, or other technology companies.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-divider"></div>
+            
+            <div class="category-header">
+                <div>
+                    <p class="section-subtitle">WEBSITE & ONLINE THREATS</p>
+                    <h2 class="section-title" style="font-size: 36px; margin-bottom: 0;">Web-Based Phishing Guides</h2>
+                </div>
+                <a href="#" class="view-all">View All Web Guides <i>→</i></a>
+            </div>
+            
+            <div class="guide-cards">
+                <div class="guide-card card-h">
+                    <div class="guide-icon">🔍</div>
+                    <div class="guide-content">
+                        <h3>Fake Login Pages</h3>
+                        <p>Learn how to identify counterfeit login pages designed to steal your credentials for popular services like banking, email, and social media.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+                
+                <div class="guide-card card-h">
+                    <div class="guide-icon">🔐</div>
+                    <div class="guide-content">
+                        <h3>OAuth Phishing Attacks</h3>
+                        <p>Understand how attackers abuse legitimate OAuth authorization flows to gain persistent access to your accounts and data.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+                
+                <div class="guide-card card-h">
+                    <div class="guide-icon">🛒</div>
+                    <div class="guide-content">
+                        <h3>Fake Online Stores</h3>
+                        <p>Discover how to identify fraudulent e-commerce websites designed to steal your payment information or sell counterfeit products.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+                
+                <div class="guide-card card-h">
+                    <div class="guide-icon">🎣</div>
+                    <div class="guide-content">
+                        <h3>Search Engine Phishing</h3>
+                        <p>Learn how attackers manipulate search results to direct users to malicious websites through techniques like SEO poisoning.</p>
+                        <a href="#" class="theme-btn">Read Guide <i>→</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="simple-shadow" style="margin-top: 50px;">
+            <p class="section-subtitle">PROTECTION STRATEGIES</p>
+            <h2 style="font-family: var(--font_yantramanv); font-size: 32px; margin-bottom: 20px;">How to Protect Yourself and Your Organization</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px;">
+                <div>
+                    <h3 style="font-family: var(--font_yantramanv); font-size: 22px; margin-bottom: 15px;">Individual Protection</h3>
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary_color);">✓</span>
+                            Enable two-factor authentication on all accounts
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary_color);">✓</span>
+                            Use a password manager to create and store unique passwords
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary_color);">✓</span>
+                            Verify sender emails and check for grammar/spelling errors
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary_color);">✓</span>
+                            Never click suspicious links - type URLs directly instead
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary_color);">✓</span>
+                            Keep software and devices updated with security patches
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 style="font-family: var(--font_yantramanv); font-size: 22px; margin-bottom: 15px;">Organizational Security</h3>
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary_color);">✓</span>
+                            Implement regular security awareness training
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary_color);">✓</span>
+                            Deploy email filtering and anti-phishing solutions
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary_color);">✓</span>
+                            Establish clear security policies and incident response plans
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary_color);">✓</span>
+                            Use DMARC, SPF, and DKIM email authentication protocols
+                        </li>
+                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary_color);">✓</span>
+                            Conduct regular phishing simulations to test employee awareness
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px; text-align: center;">
+                <a href="#" class="theme-btn">Download Complete Protection Guide <i>→</i></a>
+            </div>
+        </div>
+        
+        <div class="simple-shadow">
+            <p class="section-subtitle">LATEST PHISHING TRENDS</p>
+            <h2 style="font-family: var(--font_yantramanv); font-size: 32px; margin-bottom: 20px;">Emerging Threat Vectors</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px;">
+                <div>
+                    <h3 style="font-family: var(--font_yantramanv); font-size: 22px; margin-bottom: 15px; color: var(--primary_color);">AI-Generated Phishing Content</h3>
+                    <p>Attackers are increasingly using artificial intelligence to create more convincing phishing content, including personalized messages that mimic writing styles of known contacts and realistic fake websites that are harder to identify as fraudulent.</p>
+                </div>
+                
+                <div>
+                    <h3 style="font-family: var(--font_yantramanv); font-size: 22px; margin-bottom: 15px; color: var(--primary_color);">Multi-Channel Phishing Campaigns</h3>
+                    <p>Modern attacks combine multiple channels (email, SMS, voice calls) in coordinated campaigns to increase credibility. For example, a phishing email followed by a confirming text message and then a voice call, all reinforcing the same fraudulent narrative.</p>
+                </div>
+                
+                <div>
+                    <h3 style="font-family: var(--font_yantramanv); font-size: 22px; margin-bottom: 15px; color: var(--primary_color);">Evasion of MFA Through Real-Time Proxies</h3>
+                    <p>Advanced attackers now use real-time phishing proxies that can intercept authentication flows, capturing both passwords and multi-factor authentication tokens by acting as a man-in-the-middle between victims and legitimate services.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

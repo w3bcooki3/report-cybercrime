@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard: The Complete Phishing Encyclopedia</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@400;500;600;700&family=Yantramanav:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables */
+        :root {
+            --dark1: #1C1C1C;
+            --dark2: #454545;
+            --light_white: #F9F9F9;
+            --primary_color: #1351D8;
+            --primary_color2: #4F8DFF;
+            --primary_light: #F3F6FD;
+            --primary_light2: rgb(19 81 216 / 10%);
+            --gray: #D9D9D9;
+            --font_syne: 'Syne', sans-serif;
+            --font_yantramanv: 'Yantramanav', sans-serif;
+            --font_dm: 'DM Sans', sans-serif;
+            --yellow_color: #FFD600;
+        }
+
+        /* Reset Browsers */
+        *,*:before,*:after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul,ol {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none !important;
+        }
+        input:focus,
+        textarea:focus,
+        button:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* Template Default Styles */
+        body {
+            font-size: 16px;
+            font-family: var(--font_dm);
+            line-height: 1.5;
+            font-weight: 400;
+            overflow-x: hidden;
+            background-color: var(--light_white);
+            color: var(--dark1);
+        }
+        img {
+            max-width: 100%;
+        }
+
+        .phish_layout-custom-container {
+            max-width: 1550px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .phish_layout-custom-row {
+            display: flex;
+            width: 100%;
+        }
+        .phish_layout-flex-1 {
+            flex: 1;
+        }
+        .phish_layout-w-full {
+            width: 100%;
+        }
+        .phish_layout-gap-24 {
+            gap: 24px;
+        }
+
+        .phish_layout-card-h:hover .phish_layout-theme-btn i{
+            transition: transform .5s;
+            transform: rotate(45deg);
+        }
+        .phish_layout-card-h1:hover .phish_layout-theme-btn i{
+            transition: transform .5s;
+            transform: rotate(45deg);
+        }
+
+        /* Button Styles */
+        .phish_layout-theme-btn2,
+        .phish_layout-theme-btn {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--light_white);
+            background: var(--primary_color);
+            display: inline-flex;
+            align-items: center;
+            padding: 13px 26px;
+            border-radius: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: .3s;
+            z-index: 1;
+            overflow: hidden;
+            text-decoration: none !important;
+            gap: 10px;
+        }
+        .phish_layout-theme-btn2::after,
+        .phish_layout-theme-btn2::before,
+        .phish_layout-theme-btn::after,
+        .phish_layout-theme-btn::before {
+            content: '';
+            width: 50%;
+            height: 0;
+            background: var(--dark1);
+            border-radius: 30px 0 0 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: .3s;
+        }
+        .phish_layout-theme-btn2::after,
+        .phish_layout-theme-btn::after {
+            top: auto;
+            left: auto;
+            bottom: 0;
+            right: 0;
+            border-radius: 0 30px 30px 0;
+        }
+        .phish_layout-theme-btn2:hover,
+        .phish_layout-theme-btn:hover {
+            color: var(--light_white);
+        }
+        .phish_layout-theme-btn2:hover::after,
+        .phish_layout-theme-btn2:hover::before,
+        .phish_layout-theme-btn:hover::after,
+        .phish_layout-theme-btn:hover::before {
+            height: 100%;
+        }
+        .phish_layout-theme-btn2 {
+            background: #1351D81A;
+            color: var(--primary_color);
+        }
+        .phish_layout-theme-btn2::after,
+        .phish_layout-theme-btn2::before {
+            background: var(--primary_color);
+        }
+        .phish_layout-theme-btn2 i {
+            transition: .3s;
+        }
+        .phish_layout-theme-btn:hover i,
+        .phish_layout-theme-btn2:hover i {
+            transition: transform .5s;
+            transform: rotate(45deg);
+        }
+        .phish_layout-theme-btn:hover i,
+        .phish_layout-theme-btn2:hover i {
+            fill: #ffffff;
+        }
+
+        .phish_layout-simple-shadow {
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+            border-radius: 10px;
+            background: #ffffff;
+            padding: 10px;
+        }
+
+        /* Section-subtitle Styles */
+        .phish_layout-section-subtitle {
+            font-family: var(--font_syne);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--primary_color);
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .phish_layout-section-subtitle1{
+            font-size: 12px;
+        }
+        .phish_layout-section-title {
+            font-family: var(--font_yantramanv);
+            font-size: 60px;
+            font-weight: 700;
+            line-height: 56px;
+            letter-spacing: -1px;
+            color: var(--dark1);
+            margin-bottom: 30px;
+        }
+        
+        /* Header Styles */
+        .phish_layout-header {
+            background-color: #ffffff;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .phish_layout-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .phish_layout-logo h1 {
+            font-family: var(--font_yantramanv);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark1);
+        }
+        
+        .phish_layout-logo span {
+            color: var(--primary_color);
+        }
+        
+        .phish_layout-search-bar {
+            display: flex;
+            width: 50%;
+            max-width: 500px;
+        }
+        
+        .phish_layout-search-bar input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--gray);
+            border-radius: 30px 0 0 30px;
+            font-family: var(--font_dm);
+            font-size: 16px;
+        }
+        
+        .phish_layout-search-bar button {
+            background-color: var(--primary_color);
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            color: white;
+            font-family: var(--font_dm);
+            font-weight: 500;
+        }
+        
+        /* Hero Section */
+        .phish_layout-hero {
+            background-color: var(--primary_light);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .phish_layout-hero h2 {
+            font-family: var(--font_yantramanv);
+            font-size: 50px;
+            font-weight: 700;
+            color: var(--dark1);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .phish_layout-hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--dark2);
+        }
+        
+        /* Main Content */
+        .phish_layout-main-content {
+            padding: 80px 0;
+        }
+        
+        .phish_layout-audience-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .phish_layout-audience-card {
+            flex: 1;
+            width: 100%;
+            min-width: auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .phish_layout-audience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 30px 5px rgba(0,0,0,0.08);
+        }
+        
+        .phish_layout-audience-card h3 {
+            font-family: var(--font_yantramanv);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark1);
+            margin-bottom: 15px;
+        }
+        
+        .phish_layout-audience-card p {
+            color: var(--dark2);
+            margin-bottom: 25px;
+            min-height: 72px;
+        }
+        
+        /* Attack Categories */
+        .phish_layout-attack-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .phish_layout-category-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+        }
+        
+        .phish_layout-category-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .phish_layout-category-header {
+            background-color: var(--primary_color);
+            color: white;
+            padding: 20px;
+            font-family: var(--font_syne);
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .phish_layout-category-content {
+            padding: 25px;
+        }
+        
+        .phish_layout-attack-list li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .phish_layout-attack-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary_color);
+        }
+        
+        .phish_layout-attack-list a {
+            color: var(--dark1);
+            transition: color 0.2s;
+        }
+        
+        .phish_layout-attack-list a:hover {
+            color: var(--primary_color);
+        }
+        
+        /* Features Section */
+        .phish_layout-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 60px 0;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        }
+        
+        .phish_layout-feature {
+            flex: 1;
+            width: 100%;
+            min-width: auto;
+            text-align: center;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+        }
+        
+        .phish_layout-feature:hover {
+            transform: translateY(-10px);
+        }
+        
+        .phish_layout-feature-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary_light);
+            color: var(--primary_color);
+            border-radius: 50%;
+            margin-bottom: 20px;
+            font-size: 30px;
+        }
+        
+        .phish_layout-feature h3 {
+            font-family: var(--font_yantramanv);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark1);
+            margin-bottom: 15px;
+        }
+        
+        /* Recent Threats */
+        .phish_layout-threat-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .phish_layout-threat-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+        }
+        
+        .phish_layout-threat-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .phish_layout-threat-card-header {
+            background-color: var(--yellow_color);
+            color: var(--dark1);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font_syne);
+            font-weight: 600;
+        }
+        
+        .phish_layout-threat-date {
+            font-size: 14px;
+            font-weight: 400;
+        }
+        
+        .phish_layout-threat-card-content {
+            padding: 25px;
+        }
+        
+        .phish_layout-threat-card h4 {
+            font-family: var(--font_yantramanv);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark1);
+            margin-bottom: 12px;
+        }
+        
+        .phish_layout-threat-card p {
+            margin-bottom: 20px;
+            color: var(--dark2);
+        }
+        
+        .phish_layout-threat-card a {
+            color: var(--primary_color);
+            font-weight: 500;
+        }
+        
+        /* Resources Section */
+        .phish_layout-resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .phish_layout-resource-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+        }
+        
+        .phish_layout-resource-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .phish_layout-resource-card h4 {
+            font-family: var(--font_yantramanv);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark1);
+            margin-bottom: 12px;
+        }
+        
+        .phish_layout-resource-card p {
+            margin-bottom: 20px;
+            color: var(--dark2);
+        }
+        
+        .phish_layout-resource-card a {
+            color: var(--primary_color);
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        .phish_layout-footer {
+            background-color: var(--dark1);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .phish_layout-footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        
+        .phish_layout-footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .phish_layout-footer-section h3 {
+            font-family: var(--font_yantramanv);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .phish_layout-footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .phish_layout-footer-section a {
+            color: var(--gray);
+            transition: color 0.2s;
+        }
+        
+        .phish_layout-footer-section a:hover {
+            color: var(--primary_color2);
+        }
+        
+        .phish_layout-footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            color: var(--gray);
+        }
+        
+        /* Severity Indicators */
+        .phish_layout-severity-indicator {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+            font-family: var(--font_syne);
+        }
+        
+        .phish_layout-severe {
+            background-color: #e63946;
+            color: white;
+        }
+        
+        .phish_layout-moderate {
+            background-color: var(--yellow_color);
+            color: var(--dark1);
+        }
+        
+        .phish_layout-low {
+            background-color: #2a9d8f;
+            color: white;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .phish_layout-section-title {
+                font-size: 40px;
+                line-height: 1.2;
+            }
+            
+            .phish_layout-hero h2 {
+                font-size: 36px;
+            }
+            
+            .phish_layout-search-bar {
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            .phish_layout-navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .phish_layout-audience-card,
+            .phish_layout-category-card,
+            .phish_layout-threat-card,
+            .phish_layout-resource-card {
+                min-width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .phish_layout-section-title {
+                font-size: 32px;
+            }
+            
+            .phish_layout-hero h2 {
+                font-size: 28px;
+            }
+            
+            .phish_layout-theme-btn,
+            .phish_layout-theme-btn2 {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+        }
+
+        /* Improved responsiveness for different screen sizes */
+        @media (max-width: 1200px) {
+            .phish_layout-attack-categories,
+            .phish_layout-threat-list,
+            .phish_layout-resource-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .phish_layout-attack-categories,
+            .phish_layout-threat-list,
+            .phish_layout-resource-grid,
+            .phish_layout-audience-cards,
+            .phish_layout-features {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 650px) {
+            .phish_layout-attack-categories,
+            .phish_layout-threat-list,
+            .phish_layout-resource-grid,
+            .phish_layout-audience-cards,
+            .phish_layout-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .phish_layout-section-title {
+                font-size: 36px;
+                line-height: 1.3;
+            }
+        }
+        
+        /* Ensure content is readable on smaller screens */
+        @media (max-width: 480px) {
+            .phish_layout-category-content,
+            .phish_layout-threat-card-content,
+            .phish_layout-resource-card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="phish_layout-header">
+        <div class="phish_layout-custom-container">
+            <div class="phish_layout-navbar">
+                <div class="phish_layout-logo">
+                    <h1>Phish<span>Guard</span></h1>
+                </div>
+                <div class="phish_layout-search-bar">
+                    <input type="text" placeholder="Search for phishing attacks, guides, and resources...">
+                    <button>Search</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="phish_layout-hero">
+        <div class="phish_layout-custom-container">
+            <h2>Your Complete Guide to Phishing Attacks</h2>
+            <p>Comprehensive resources to help everyone - from beginners to security professionals - identify, prevent, and report phishing attacks.</p>
+            <a href="#beginner-guide" class="phish_layout-theme-btn">Beginner's Guide <i>→</i></a>
+            <a href="#attack-library" class="phish_layout-theme-btn2">Browse Attack Library <i>→</i></a>
+        </div>
+    </section>
+    
+    <section class="phish_layout-main-content">
+        <div class="phish_layout-custom-container">
+            <p class="phish_layout-section-subtitle">RESOURCES FOR EVERYONE</p>
+            <h2 class="phish_layout-section-title">Find Phishing Guides Tailored To Your Experience Level</h2>
+            
+            <div class="phish_layout-audience-cards">
+                <div class="phish_layout-audience-card phish_layout-card-h">
+                    <h3>No Tech Knowledge</h3>
+                    <p>Simple, jargon-free guides that anyone can understand to protect themselves from common phishing scams.</p>
+                    <a href="#basics" class="phish_layout-theme-btn">Start Here <i>→</i></a>
+                </div>
+                <div class="phish_layout-audience-card phish_layout-card-h">
+                    <h3>Tech-Savvy Users</h3>
+                    <p>Intermediate guides on spotting sophisticated attacks and protecting your digital identity.</p>
+                    <a href="#intermediate" class="phish_layout-theme-btn">Explore Guides <i>→</i></a>
+                </div>
+                <div class="phish_layout-audience-card phish_layout-card-h">
+                    <h3>IT Professionals</h3>
+                    <p>Advanced analysis of attack vectors, technical indicators, and organizational security measures.</p>
+                    <a href="#advanced" class="phish_layout-theme-btn">Technical Resources <i>→</i></a>
+                </div>
+            </div>
+            
+            <p class="phish_layout-section-subtitle">PHISHING ATTACK LIBRARY</p>
+            <h2 class="phish_layout-section-title" id="attack-library">Comprehensive Phishing Attack Catalog</h2>
+            <p>Browse our extensive collection of phishing attack types, each with detailed information on how they work, how to identify them, and how to stay safe.</p>
+            
+            <div class="phish_layout-attack-categories">
+                <div class="phish_layout-category-card">
+                    <div class="phish_layout-category-header">Email Phishing</div>
+                    <div class="phish_layout-category-content">
+                        <ul class="phish_layout-attack-list">
+                            <li><a href="#">Account Compromise Alerts</a></li>
+                            <li><a href="#">Password Reset Requests <span class="phish_layout-severity-indicator phish_layout-severe">High Risk</span></a></li>
+                            <li><a href="#">Banking Notifications</a></li>
+                            <li><a href="#">Package Delivery Notices</a></li>
+                            <li><a href="#">Tax Refund Scams</a></li>
+                            <li><a href="#">IT Support Requests</a></li>
+                            <li><a href="#">Document Sharing Links</a></li>
+                            <li><a href="#">See all email phishing attacks →</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="phish_layout-category-card">
+                    <div class="phish_layout-category-header">Social Media Scams</div>
+                    <div class="phish_layout-category-content">
+                        <ul class="phish_layout-attack-list">
+                            <li><a href="#">Friend/Connection Requests</a></li>
+                            <li><a href="#">Prize Notifications</a></li>
+                            <li><a href="#">Fake Profiles <span class="phish_layout-severity-indicator phish_layout-moderate">Medium Risk</span></a></li>
+                            <li><a href="#">Job Offers</a></li>
+                            <li><a href="#">Cryptocurrency Investments</a></li>
+                            <li><a href="#">Dating Scams</a></li>
+                            <li><a href="#">Charity Donation Requests</a></li>
+                            <li><a href="#">See all social media scams →</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="phish_layout-category-card">
+                    <div class="phish_layout-category-header">SMS & Mobile Threats</div>
+                    <div class="phish_layout-category-content">
+                        <ul class="phish_layout-attack-list">
+                            <li><a href="#">Smishing (SMS Phishing)</a></li>
+                            <li><a href="#">Fake App Downloads <span class="phish_layout-severity-indicator phish_layout-severe">High Risk</span></a></li>
+                            <li><a href="#">Bank Security Alerts</a></li>
+                            <li><a href="#">Two-Factor Authentication Bypass</a></li>
+                            <li><a href="#">QR Code Scams</a></li>
+                            <li><a href="#">Delivery Notifications</a></li>
+                            <li><a href="#">Mobile Payment Fraud</a></li>
+                            <li><a href="#">See all mobile threats →</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="phish_layout-category-card">
+                    <div class="phish_layout-category-header">Business & Workplace</div>
+                    <div class="phish_layout-category-content">
+                        <ul class="phish_layout-attack-list">
+                            <li><a href="#">CEO Fraud/BEC <span class="phish_layout-severity-indicator phish_layout-severe">High Risk</span></a></li>
+                            <li><a href="#">Invoice Scams</a></li>
+                            <li><a href="#">W-2 Phishing</a></li>
+                            <li><a href="#">Vendor Email Compromise</a></li>
+                            <li><a href="#">Payroll Diversion</a></li>
+                            <li><a href="#">Corporate Account Takeover</a></li>
+                            <li><a href="#">Zoom/Teams Meeting Invites</a></li>
+                            <li><a href="#">See all workplace attacks →</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="phish_layout-category-card">
+                    <div class="phish_layout-category-header">Advanced Attacks</div>
+                    <div class="phish_layout-category-content">
+                        <ul class="phish_layout-attack-list">
+                            <li><a href="#">Spear Phishing <span class="phish_layout-severity-indicator phish_layout-severe">High Risk</span></a></li>
+                            <li><a href="#">Whaling</a></li>
+                            <li><a href="#">Clone Phishing</a></li>
+                            <li><a href="#">Man-in-the-Middle Attacks</a></li>
+                            <li><a href="#">Vishing (Voice Phishing)</a></li>
+                            <li><a href="#">Session Hijacking</a></li>
+                            <li><a href="#">OAuth Phishing</a></li>
+                            <li><a href="#">See all advanced attacks →</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="phish_layout-category-card">
+                    <div class="phish_layout-category-header">Malware Delivery</div>
+                    <div class="phish_layout-category-content">
+                        <ul class="phish_layout-attack-list">
+                            <li><a href="#">Malicious Attachments <span class="phish_layout-severity-indicator phish_layout-severe">High Risk</span></a></li>
+                            <li><a href="#">Drive-by Downloads</a></li>
+                            <li><a href="#">Ransomware Distribution</a></li>
+                            <li><a href="#">Fake Software Updates</a></li>
+                            <li><a href="#">Macro-Enabled Documents</a></li>
+                            <li><a href="#">Browser Extensions</a></li>
+                            <li><a href="#">Trojan Horse Downloads</a></li>
+                            <li><a href="#">See all malware attacks →</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="phish_layout-section-subtitle">KEY INFORMATION</p>
+            <h2 class="phish_layout-section-title">Essential Phishing Knowledge</h2>
+            
+            <div class="phish_layout-features">
+                <div class="phish_layout-feature">
+                    <div class="phish_layout-feature-icon">🔍</div>
+                    <h3>What Is Phishing?</h3>
+                    <p>Learn the basics of phishing attacks and why they remain one of the most common security threats.</p>
+                </div>
+                <div class="phish_layout-feature">
+                    <div class="phish_layout-feature-icon">🎯</div>
+                    <h3>Target Identification</h3>
+                    <p>Understand who phishers target and why certain individuals or organizations are more vulnerable.</p>
+                </div>
+                <div class="phish_layout-feature">
+                    <div class="phish_layout-feature-icon">⚠️</div>
+                    <h3>Warning Signs</h3>
+                    <p>Discover the tell-tale signs of phishing attempts across different platforms and communication channels.</p>
+                </div>
+                <div class="phish_layout-feature">
+                    <div class="phish_layout-feature-icon">🛡️</div>
+                    <h3>Protection Tools</h3>
+                    <p>Explore the various tools and software that can help protect you from phishing attacks.</p>
+                </div>
+            </div>
+            
+            <p class="phish_layout-section-subtitle">RECENT THREATS</p>
+            <h2 class="phish_layout-section-title">Latest Phishing Campaigns</h2>
+            <p>Stay informed about the newest phishing threats that have been identified in the wild.</p>
+            
+            <div class="phish_layout-threat-list">
+                <div class="phish_layout-threat-card">
+                    <div class="phish_layout-threat-card-header">
+                        <span>Alert</span>
+                        <span class="phish_layout-threat-date">March 2, 2025</span>
+                    </div>
+                    <div class="phish_layout-threat-card-content">
+                        <h4>Banking App Security Update Scam</h4>
+                        <p>A new wave of SMS messages claiming to be from major banks are circulating, asking users to update their mobile banking app through a provided link. The link leads to a fake app store page.</p>
+                        <a href="#">Read full report →</a>
+                    </div>
+                </div>
+                
+                <div class="phish_layout-threat-card">
+                    <div class="phish_layout-threat-card-header">
+                        <span>Alert</span>
+                        <span class="phish_layout-threat-date">February 28, 2025</span>
+                    </div>
+                    <div class="phish_layout-threat-card-content">
+                        <h4>Tax Return Phishing Campaign</h4>
+                        <p>With tax season in full swing, fraudsters are sending emails pretending to be from tax authorities, offering "fast refund" services if recipients provide their personal and financial information.</p>
+                        <a href="#">Read full report →</a>
+                    </div>
+                </div>
+                
+                <div class="phish_layout-threat-card">
+                    <div class="phish_layout-threat-card-header">
+                        <span>Alert</span>
+                        <span class="phish_layout-threat-date">February 25, 2025</span>
+                    </div>
+                    <div class="phish_layout-threat-card-content">
+                        <h4>Corporate Email Compromise Targeting Executives</h4>
+                        <p>A sophisticated spear phishing campaign is targeting C-level executives with fake M&A documents that install keylogging malware when opened. Several Fortune 500 companies have already been affected.</p>
+                        <a href="#">Read full report →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="phish_layout-threat-list">
+                <div class="phish_layout-threat-card">
+                    <div class="phish_layout-threat-card-header">
+                        <span>Alert</span>
+                        <span class="phish_layout-threat-date">February 20, 2025</span>
+                    </div>
+                    <div class="phish_layout-threat-card-content">
+                        <h4>Job Offer Phishing Campaign</h4>
+                        <p>Fake recruiters are sending detailed job offers with malicious attachments disguised as employment contracts or job descriptions. When opened, these documents deploy credential-stealing malware.</p>
+                        <a href="#">Read full report →</a>
+                    </div>
+                </div>
+                
+                <div class="phish_layout-threat-card">
+                    <div class="phish_layout-threat-card-header">
+                        <span>Alert</span>
+                        <span class="phish_layout-threat-date">February 15, 2025</span>
+                    </div>
+                    <div class="phish_layout-threat-card-content">
+                        <h4>Fake Streaming Service Renewal Emails</h4>
+                        <p>Users of popular streaming platforms are receiving convincing emails claiming their subscription has expired, directing them to fake payment pages designed to steal credit card information.</p>
+                        <a href="#">Read full report →</a>
+                    </div>
+                </div>
+                
+                <div class="phish_layout-threat-card">
+                    <div class="phish_layout-threat-card-header">
+                        <span>Alert</span>
+                        <span class="phish_layout-threat-date">February 10, 2025</span>
+                    </div>
+                    <div class="phish_layout-threat-card-content">
+                        <h4>Healthcare Provider Data Breach Notifications</h4>
+                        <p>Phishing emails mimicking data breach notifications from healthcare providers are tricking recipients into clicking malicious links that claim to offer identity protection services.</p>
+                        <a href="#">Read full report →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="phish_layout-section-subtitle" id="beginner-guide">EDUCATIONAL RESOURCES</p>
+            <h2 class="phish_layout-section-title">Learn How to Stay Safe</h2>
+            <p>Explore our educational resources designed to help individuals and organizations protect themselves from phishing attacks.</p>
+            
+            <div class="phish_layout-resource-grid">
+                <div class="phish_layout-resource-card">
+                    <h4>The Beginner's Guide to Phishing</h4>
+                    <p>Start here if you're new to cybersecurity. This guide explains phishing in simple terms and provides basic protection strategies anyone can implement.</p>
+                    <a href="#" class="phish_layout-theme-btn2">Read Guide <i>→</i></a>
+                </div>
+                
+                <div class="phish_layout-resource-card">
+                    <h4>Interactive Phishing Quiz</h4>
+                    <p>Test your ability to spot phishing attempts with our interactive quiz featuring real-world examples of phishing emails, websites, and messages.</p>
+                    <a href="#" class="phish_layout-theme-btn2">Take Quiz <i>→</i></a>
+                </div>
+                
+                <div class="phish_layout-resource-card">
+                    <h4>Phishing Response Playbook</h4>
+                    <p>Learn exactly what steps to take if you suspect you've encountered a phishing attempt or if you've already fallen victim to an attack.</p>
+                    <a href="#" class="phish_layout-theme-btn2">Download Playbook <i>→</i></a>
+                </div>
+                
+                <div class="phish_layout-resource-card">
+                    <h4>Employee Training Materials</h4>
+                    <p>Resources for organizations to train employees on phishing awareness, including presentation slides, handouts, and simulated phishing exercises.</p>
+                    <a href="#" class="phish_layout-theme-btn2">Access Materials <i>→</i></a>
+                </div>
+                
+                <div class="phish_layout-resource-card">
+                    <h4>Video Tutorials</h4>
+                    <p>Watch our series of video tutorials demonstrating how to identify various types of phishing attacks and implement security best practices.</p>
+                    <a href="#" class="phish_layout-theme-btn2">Watch Videos <i>→</i></a>
+                </div>
+                
+                <div class="phish_layout-resource-card">
+                    <h4>Security Tool Guides</h4>
+                    <p>Step-by-step guides for setting up and using anti-phishing tools, password managers, two-factor authentication, and other security measures.</p>
+                    <a href="#" class="phish_layout-theme-btn2">View Guides <i>→</i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="phish_layout-footer">
+        <div class="phish_layout-custom-container">
+            <div class="phish_layout-footer-content">
+                <div class="phish_layout-footer-section">
+                    <h3>PhishGuard</h3>
+                    <p>Your complete resource for understanding, identifying, and protecting against phishing attacks in all their forms.</p>
+                </div>
+                
+                <div class="phish_layout-footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#attack-library">Attack Library</a></li>
+                        <li><a href="#beginner-guide">Beginner's Guide</a></li>
+                        <li><a href="#">Report Phishing</a></li>
+                        <li><a href="#">Security Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div class="phish_layout-footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Educational Materials</a></li>
+                        <li><a href="#">Technical Reports</a></li>
+                        <li><a href="#">Interactive Training</a></li>
+                        <li><a href="#">Phishing Response</a></li>
+                        <li><a href="#">Downloads</a></li>
+                    </ul>
+                </div>
+                
+                <div class="phish_layout-footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Subscribe to Alerts</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="phish_layout-footer-bottom">
+                <p>&copy; 2025 PhishGuard - The Complete Phishing Encyclopedia. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

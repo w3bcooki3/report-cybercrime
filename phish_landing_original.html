@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard: The Complete Phishing Encyclopedia</title>
+    <style>
+        :root {
+            --primary: #2a4d69;
+            --secondary: #4b86b4;
+            --accent: #adcbe3;
+            --light: #e7eff6;
+            --dark: #1d3557;
+            --danger: #e63946;
+            --success: #2a9d8f;
+            --warning: #f4a261;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--warning);
+        }
+        
+        .search-bar {
+            display: flex;
+            width: 50%;
+            max-width: 500px;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+        
+        .search-bar button {
+            background-color: var(--warning);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            color: var(--dark);
+            font-weight: bold;
+        }
+        
+        .hero {
+            background-color: var(--secondary);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--warning);
+            color: var(--dark);
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 15px;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #f8c082;
+        }
+        
+        .cta-button.secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .cta-button.secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .main-content {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+        
+        .audience-cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 3rem;
+        }
+        
+        .audience-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .audience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .audience-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .audience-card p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        .attack-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+        
+        .category-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .category-content {
+            padding: 1.5rem;
+        }
+        
+        .attack-list {
+            list-style-type: none;
+        }
+        
+        .attack-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .attack-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        .attack-list a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .attack-list a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+        
+        .features {
+            margin: 3rem 0;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .feature {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .feature-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background-color: var(--accent);
+            color: var(--primary);
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .feature h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .recent-threats {
+            margin: 3rem 0;
+        }
+        
+        .threat-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .threat-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .threat-card-header {
+            background-color: var(--danger);
+            color: white;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .threat-date {
+            font-size: 0.8rem;
+        }
+        
+        .threat-card-content {
+            padding: 1rem;
+        }
+        
+        .threat-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .threat-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .threat-card a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .threat-card a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style-type: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .search-bar {
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .audience-cards {
+                flex-direction: column;
+            }
+            
+            .audience-card {
+                min-width: 100%;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        .severity-indicator {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        
+        .severe {
+            background-color: var(--danger);
+            color: white;
+        }
+        
+        .moderate {
+            background-color: var(--warning);
+            color: var(--dark);
+        }
+        
+        .low {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .resource-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .resource-card p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .resource-card a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .resource-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <h1>Phish<span>Guard</span></h1>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for phishing attacks, guides, and resources...">
+                    <button>Search</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>Your Complete Guide to Phishing Attacks</h2>
+            <p>Comprehensive resources to help everyone - from beginners to security professionals - identify, prevent, and report phishing attacks.</p>
+            <a href="#beginner-guide" class="cta-button">Beginner's Guide</a>
+            <a href="#attack-library" class="cta-button secondary">Browse Attack Library</a>
+        </div>
+    </section>
+    
+    <section class="main-content">
+        <div class="container">
+            <h2 class="section-title">Resources For Everyone</h2>
+            <div class="audience-cards">
+                <div class="audience-card">
+                    <h3>No Tech Knowledge</h3>
+                    <p>Simple, jargon-free guides that anyone can understand to protect themselves from common phishing scams.</p>
+                    <a href="#basics" class="cta-button">Start Here</a>
+                </div>
+                <div class="audience-card">
+                    <h3>Tech-Savvy Users</h3>
+                    <p>Intermediate guides on spotting sophisticated attacks and protecting your digital identity.</p>
+                    <a href="#intermediate" class="cta-button">Explore Guides</a>
+                </div>
+                <div class="audience-card">
+                    <h3>IT Professionals</h3>
+                    <p>Advanced analysis of attack vectors, technical indicators, and organizational security measures.</p>
+                    <a href="#advanced" class="cta-button">Technical Resources</a>
+                </div>
+            </div>
+            
+            <h2 class="section-title" id="attack-library">Phishing Attack Library</h2>
+            <p>Browse our comprehensive collection of phishing attack types, each with detailed information on how they work, how to identify them, and how to stay safe.</p>
+            
+            <div class="attack-categories">
+                <div class="category-card">
+                    <div class="category-header">Email Phishing</div>
+                    <div class="category-content">
+                        <ul class="attack-list">
+                            <li><a href="#">Account Compromise Alerts</a></li>
+                            <li><a href="#">Password Reset Requests <span class="severity-indicator severe">High Risk</span></a></li>
+                            <li><a href="#">Banking Notifications</a></li>
+                            <li><a href="#">Package Delivery Notices</a></li>
+                            <li><a href="#">Tax Refund Scams</a></li>
+                            <li><a href="#">IT Support Requests</a></li>
+                            <li><a href="#">Document Sharing Links</a></li>
+                            <li><a href="#">See all email phishing attacks →</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-header">Social Media Scams</div>
+                    <div class="category-content">
+                        <ul class="attack-list">
+                            <li><a href="#">Friend/Connection Requests</a></li>
+                            <li><a href="#">Prize Notifications</a></li>
+                            <li><a href="#">Fake Profiles <span class="severity-indicator moderate">Medium Risk</span></a></li>
+                            <li><a href="#">Job Offers</a></li>
+                            <li><a href="#">Cryptocurrency Investments</a></li>
+                            <li><a href="#">Dating Scams</a></li>
+                            <li><a href="#">Charity Donation Requests</a></li>
+                            <li><a href="#">See all social media scams →</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-header">SMS & Mobile Threats</div>
+                    <div class="category-content">
+                        <ul class="attack-list">
+                            <li><a href="#">Smishing (SMS Phishing)</a></li>
+                            <li><a href="#">Fake App Downloads <span class="severity-indicator severe">High Risk</span></a></li>
+                            <li><a href="#">Bank Security Alerts</a></li>
+                            <li><a href="#">Two-Factor Authentication Bypass</a></li>
+                            <li><a href="#">QR Code Scams</a></li>
+                            <li><a href="#">Delivery Notifications</a></li>
+                            <li><a href="#">Mobile Payment Fraud</a></li>
+                            <li><a href="#">See all mobile threats →</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-header">Business & Workplace</div>
+                    <div class="category-content">
+                        <ul class="attack-list">
+                            <li><a href="#">CEO Fraud/BEC <span class="severity-indicator severe">High Risk</span></a></li>
+                            <li><a href="#">Invoice Scams</a></li>
+                            <li><a href="#">W-2 Phishing</a></li>
+                            <li><a href="#">Vendor Email Compromise</a></li>
+                            <li><a href="#">Payroll Diversion</a></li>
+                            <li><a href="#">Corporate Account Takeover</a></li>
+                            <li><a href="#">Zoom/Teams Meeting Invites</a></li>
+                            <li><a href="#">See all workplace attacks →</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-header">Advanced Attacks</div>
+                    <div class="category-content">
+                        <ul class="attack-list">
+                            <li><a href="#">Spear Phishing <span class="severity-indicator severe">High Risk</span></a></li>
+                            <li><a href="#">Whaling</a></li>
+                            <li><a href="#">Clone Phishing</a></li>
+                            <li><a href="#">Man-in-the-Middle Attacks</a></li>
+                            <li><a href="#">Vishing (Voice Phishing)</a></li>
+                            <li><a href="#">Session Hijacking</a></li>
+                            <li><a href="#">OAuth Phishing</a></li>
+                            <li><a href="#">See all advanced attacks →</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-header">Malware Delivery</div>
+                    <div class="category-content">
+                        <ul class="attack-list">
+                            <li><a href="#">Malicious Attachments <span class="severity-indicator severe">High Risk</span></a></li>
+                            <li><a href="#">Drive-by Downloads</a></li>
+                            <li><a href="#">Ransomware Distribution</a></li>
+                            <li><a href="#">Fake Software Updates</a></li>
+                            <li><a href="#">Macro-Enabled Documents</a></li>
+                            <li><a href="#">Browser Extensions</a></li>
+                            <li><a href="#">Trojan Horse Downloads</a></li>
+                            <li><a href="#">See all malware attacks →</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🔍</div>
+                    <h3>What Is Phishing?</h3>
+                    <p>Learn the basics of phishing attacks and why they remain one of the most common security threats.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Target Identification</h3>
+                    <p>Understand who phishers target and why certain individuals or organizations are more vulnerable.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚠️</div>
+                    <h3>Warning Signs</h3>
+                    <p>Discover the tell-tale signs of phishing attempts across different platforms and communication channels.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Protection Guide</h3>
+                    <p>Step-by-step instructions to protect yourself and your organization from phishing attacks.</p>
+                </div>
+            </div>
+            
+            <h2 class="section-title" id="recent-threats">Recent Phishing Threats</h2>
+            <div class="threat-list">
+                <div class="threat-card">
+                    <div class="threat-card-header">
+                        <span>Alert</span>
+                        <span class="threat-date">Mar 5, 2025</span>
+                    </div>
+                    <div class="threat-card-content">
+                        <h4>Cloud Storage Document Malware Campaign</h4>
+                        <p>Sophisticated phishing campaign using shared document notifications from popular cloud storage providers to deliver malware.</p>
+                        <a href="#">Read Full Analysis →</a>
+                    </div>
+                </div>
+                <div class="threat-card">
+                    <div class="threat-card-header">
+                        <span>Alert</span>
+                        <span class="threat-date">Mar 2, 2025</span>
+                    </div>
+                    <div class="threat-card-content">
+                        <h4>Tax Season Credential Theft</h4>
+                        <p>Attackers impersonating tax authorities sending emails claiming tax refunds or outstanding payments requiring immediate action.</p>
+                        <a href="#">Read Full Analysis →</a>
+                    </div>
+                </div>
+                <div class="threat-card">
+                    <div class="threat-card-header">
+                        <span>Alert</span>
+                        <span class="threat-date">Feb 28, 2025</span>
+                    </div>
+                    <div class="threat-card-content">
+                        <h4>AI-Generated Voice Scams</h4>
+                        <p>New wave of vishing attacks using AI-generated voices to impersonate colleagues, family members, or executives in urgent money transfer requests.</p>
+                        <a href="#">Read Full Analysis →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title" id="report-resources">Reporting & Resources</h2>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>How to Report Phishing</h4>
+                    <p>Step-by-step guide on reporting phishing attempts to the proper authorities and organizations.</p>
+                    <a href="#">View Reporting Guide →</a>
+                </div>
+                <div class="resource-card">
+                    <h4>Recovery After a Phishing Attack</h4>
+                    <p>What to do if you've fallen victim to a phishing attack to minimize damage and recover your accounts.</p>
+                    <a href="#">View Recovery Steps →</a>
+                </div>
+                <div class="resource-card">
+                    <h4>Security Tools & Software</h4>
+                    <p>Recommended tools and software to help protect against phishing and other cyber threats.</p>
+                    <a href="#">View Recommendations →</a>
+                </div>
+                <div class="resource-card">
+                    <h4>Training Materials</h4>
+                    <p>Educational resources for individuals and organizations to improve phishing awareness.</p>
+                    <a href="#">Access Training →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Attack Library</a></li>
+                        <li><a href="#">Beginner's Guide</a></li>
+                        <li><a href="#">Recent Threats</a></li>
+                        <li><a href="#">Report Phishing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Glossary</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">Training Materials</a></li>
+                        <li><a href="#">Security Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Report Phishing</h3>
+                    <ul>
+                        <li><a href="#">Report to Us</a></li>
+                        <li><a href="#">Government Resources</a></li>
+                        <li><a href="#">FBI IC3</a></li>
+                        <li><a href="#">Anti-Phishing Working Group</a></li>
+                        <li><a href="#">FTC Complaint Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">About PhishGuard</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Contributors</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PhishGuard. All rights reserved. Dedicated to making the internet safer for everyone.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
