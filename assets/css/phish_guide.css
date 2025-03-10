@@ -69,18 +69,18 @@
             gap: 24px;
         }
 
-        .card-h:hover .theme-btn i{
+        .card-h:hover .phish-theme-btn i{
             transition: transform .5s;
             transform: rotate(-35deg);
         }
-        .card-h1:hover .theme-btn i{
+        .card-h1:hover .phish-theme-btn i{
             transition: transform .5s;
             transform: rotate(-35deg);
         }
 
         /* Button Styles */
-        .theme-btn2,
-        .theme-btn {
+        .phish-theme-btn2,
+        .phish-theme-btn {
             font-size: 18px;
             font-weight: 400;
             color: var(--light_white);
@@ -97,10 +97,10 @@
             text-decoration: none !important;
             gap: 10px;
         }
-        .theme-btn2::after,
-        .theme-btn2::before,
-        .theme-btn::after,
-        .theme-btn::before {
+        .phish-theme-btn2::after,
+        .phish-theme-btn2::before,
+        .phish-theme-btn::after,
+        .phish-theme-btn::before {
             content: '';
             width: 50%;
             height: 0;
@@ -112,42 +112,42 @@
             z-index: -1;
             transition: .3s;
         }
-        .theme-btn2::after,
-        .theme-btn::after {
+        .phish-theme-btn2::after,
+        .phish-theme-btn::after {
             top: auto;
             left: auto;
             bottom: 0;
             right: 0;
             border-radius: 0 30px 30px 0;
         }
-        .theme-btn2:hover,
-        .theme-btn:hover {
+        .phish-theme-btn2:hover,
+        .phish-theme-btn:hover {
             color: var(--light_white);
         }
-        .theme-btn2:hover::after,
-        .theme-btn2:hover::before,
-        .theme-btn:hover::after,
-        .theme-btn:hover::before {
+        .phish-theme-btn2:hover::after,
+        .phish-theme-btn2:hover::before,
+        .phish-theme-btn:hover::after,
+        .phish-theme-btn:hover::before {
             height: 100%;
         }
-        .theme-btn2 {
+        .phish-theme-btn2 {
             background: #1351D81A;
             color: var(--primary_color);
         }
-        .theme-btn2::after,
-        .theme-btn2::before {
+        .phish-theme-btn2::after,
+        .phish-theme-btn2::before {
             background: var(--primary_color);
         }
-        .theme-btn2 i {
+        .phish-theme-btn2 i {
             transition: .3s;
         }
-        .theme-btn:hover i,
-        .theme-btn2:hover i {
+        .phish-theme-btn:hover i,
+        .phish-theme-btn2:hover i {
             transition: transform .5s;
             transform: rotate(-35deg);
         }
-        .theme-btn:hover i,
-        .theme-btn2:hover i {
+        .phish-theme-btn:hover i,
+        .phish-theme-btn2:hover i {
             fill: #ffffff;
         }
 
@@ -162,6 +162,7 @@
             font-family: var(--font_yantramanv);
             font-weight: 700;
             text-align: center;
+            margin-top: 100px;
             margin-bottom: 15px;
             font-size: 36px; /* Default for mobile */
         }
@@ -610,7 +611,7 @@
     text-align: center;
     font-weight: 500;
     margin: 1.5rem 0;
-    width: 100%;
+    width: auto;
     max-width: 600px;
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
