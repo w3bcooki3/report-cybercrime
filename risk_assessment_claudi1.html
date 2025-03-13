@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Risk Assessment Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@400;500;600;700&family=Yantramanav:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Keeping your existing variables and styles */
+        :root {
+            --dark1: #1C1C1C;
+            --dark2: #454545;
+            --light_white: #F9F9F9;
+            --primary_color: #1351D8;
+            --primary_color2: #4F8DFF;
+            --primary_light: #F3F6FD;
+            --primary_light2: rgb(19 81 216 / 10%);
+            --gray: #D9D9D9;
+            --font_syne: 'Syne', sans-serif;
+            --font_yantramanv: 'Yantramanav', sans-serif;
+            --font_dm: 'DM Sans', sans-serif;
+            --yellow_color: #FFD600;
+        }
+
+        /* Reset */
+        *,*:before,*:after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--light_white);
+            color: var(--dark1);
+            overflow-x: hidden;
+        }
+        
+        /* Landing Page Specific Styles */
+        .hero-section {
+            background: linear-gradient(135deg, #1351D8 0%, #4F8DFF 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-family: var(--font_syne);
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            font-weight: 400;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-graphic {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 0.1;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .feature-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: var(--font_syne);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark1);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary_color);
+            margin: 20px auto 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary_color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            color: var(--dark2);
+        }
+        
+        .stats-section {
+            padding: 60px 20px;
+            background-color: var(--primary_light);
+        }
+        
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary_color);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--dark2);
+        }
+        
+        .cta-section {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #F3F6FD 0%, #E6ECFA 100%);
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-family: var(--font_syne);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-description {
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+            color: var(--dark2);
+        }
+        
+        .theme-btn {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--light_white);
+            background: var(--primary_color);
+            display: inline-flex;
+            align-items: center;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: .3s;
+            text-decoration: none;
+            gap: 10px;
+            border: none;
+        }
+        
+        .theme-btn:hover {
+            background: var(--dark1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(19, 81, 216, 0.2);
+        }
+        
+        .floating-visual {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .visual-1 {
+            top: -150px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+        }
+        
+        .visual-2 {
+            bottom: -200px;
+            left: -100px;
+            width: 600px;
+            height: 600px;
+            animation-delay: 2s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        /* Animation for elements */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .feature-section, .stats-section, .cta-section {
+                padding: 60px 20px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+        }
+        
+        /* Header & Navigation */
+        .header {
+            padding: 15px 40px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: var(--font_syne);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: var(--primary_color);
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            color: var(--dark2);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary_color);
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--dark1);
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                background-color: white;
+                width: 100%;
+                max-width: 300px;
+                height: 100vh;
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: -5px 0 10px rgba(0,0,0,0.05);
+                transition: right 0.3s ease;
+                gap: 20px;
+                z-index: 999;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark1);
+            color: white;
+            padding: 60px 20px 30px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column h3 {
+            font-family: var(--font_syne);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary_color2);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 30px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary_color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="logo"><i class="fas fa-shield-alt"></i> CyberGuard</a>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#why-us" class="nav-link">Why Us</a></li>
+                <li><a href="#get-started" class="nav-link">Get Started</a></li>
+            </ul>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="floating-visual visual-1"></div>
+        <div class="floating-visual visual-2"></div>
+        <div class="hero-content">
+            <h1 class="hero-title animate">Assess Your Cyber Security Risk</h1>
+            <p class="hero-subtitle animate delay-1">Take our 5-minute assessment to identify vulnerabilities in your digital security practices and get personalized recommendations to protect yourself online.</p>
+            <a href="assessment.html" class="theme-btn animate delay-2">
+                Start Free Assessment <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="hero-graphic">
+            <i class="fas fa-lock" style="font-size: 400px;"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="feature-section" id="features">
+        <h2 class="section-title animate">How It Works</h2>
+        <div class="features-grid">
+            <div class="feature-card animate delay-1">
+                <div class="feature-icon">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <h3 class="feature-title">Answer Simple Questions</h3>
+                <p class="feature-description">Complete our 5-question assessment about your digital security habits and practices in just minutes.</p>
+            </div>
+            <div class="feature-card animate delay-2">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h3 class="feature-title">Get Your Risk Score</h3>
+                <p class="feature-description">Receive an immediate assessment of your cyber security risk level based on industry best practices.</p>
+            </div>
+            <div class="feature-card animate delay-3">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title">Personalized Recommendations</h3>
+                <p class="feature-description">Get tailored advice and actionable steps to improve your digital security posture and protect your data.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="why-us">
+        <div class="stats-container">
+            <div class="stat-item animate">
+                <div class="stat-number">85%</div>
+                <div class="stat-label">of data breaches involve human error</div>
+            </div>
+            <div class="stat-item animate delay-1">
+                <div class="stat-number">60+</div>
+                <div class="stat-label">security parameters checked</div>
+            </div>
+            <div class="stat-item animate delay-2">
+                <div class="stat-number">10k+</div>
+                <div class="stat-label">assessments completed</div>
+            </div>
+            <div class="stat-item animate delay-3">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">user satisfaction rate</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="get-started">
+        <div class="cta-container">
+            <h2 class="cta-title animate">Ready to Secure Your Digital Life?</h2>
+            <p class="cta-description animate delay-1">Start your free cyber risk assessment today and take the first step toward better online security.</p>
+            <a href="assessment.html" class="theme-btn animate delay-2">
+                Take the Assessment <i class="fas fa-shield-alt"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>CyberGuard</h3>
+                <p>Helping individuals and small businesses assess and improve their cybersecurity posture with simple, actionable guidance.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#why-us">Why Us</a></li>
+                    <li><a href="#get-started">Get Started</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Security Tips</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CyberGuard. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    document.querySelector('.nav-menu').classList.remove('active');
+                    const icon = document.querySelector('.mobile-toggle i');
+                    if (icon.classList.contains('fa-times')) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const animateElements = document.querySelectorAll('.animate');
+        
+        function checkIfInView() {
+            const windowHeight = window.innerHeight;
+            const windowTop = window.scrollY;
+            const windowBottom = windowTop + windowHeight;
+            
+            animateElements.forEach(element => {
+                const elementTop = element.offsetTop;
+                const elementBottom = elementTop + element.offsetHeight;
+                
+                // Check if element is in viewport
+                if (elementBottom > windowTop && elementTop < windowBottom) {
+                    element.style.animationPlayState = 'running';
+                }
+            });
+        }
+        
+        // Pause animations initially
+        animateElements.forEach(element => {
+            element.style.animationPlayState = 'paused';
+        });
+        
+        // Run on load and scroll
+        window.addEventListener('load', checkIfInView);
+        window.addEventListener('scroll', checkIfInView);
+    </script>
+</body>
+</html>

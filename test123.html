@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Risk Assessment Tool</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f8fa;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question-container {
+            margin-bottom: 25px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        .options {
+            margin-top: 10px;
+        }
+        
+        .option {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .option:hover {
+            background-color: #f0f7ff;
+        }
+        
+        .option.selected {
+            background-color: #e1f0fb;
+            border-color: #3498db;
+        }
+        
+        .progress-container {
+            margin: 20px 0;
+            background-color: #eee;
+            border-radius: 10px;
+            height: 10px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            background-color: #3498db;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .results {
+            display: none;
+            margin-top: 20px;
+        }
+        
+        .risk-level {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .high-risk {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+        
+        .medium-risk {
+            background-color: #fff8e1;
+            color: #f57f17;
+            border: 1px solid #ffe082;
+        }
+        
+        .low-risk {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+        
+        .recommendation {
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .recommendation h3 {
+            margin-top: 0;
+        }
+        
+        .example {
+            font-style: italic;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f1f8e9;
+            border-radius: 4px;
+        }
+        
+        .resource {
+            margin-top: 10px;
+        }
+        
+        .restart {
+            display: block;
+            margin: 20px auto;
+        }
+        
+        .invisible {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cybersecurity Risk Assessment Tool</h1>
+        <p>Answer the following questions about your daily cybersecurity practices to receive a personalized risk assessment and recommendations.</p>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div id="questionContainer">
+            <!-- Questions will be inserted here dynamically -->
+        </div>
+        
+        <div class="navigation">
+            <button id="prevBtn" disabled>Previous</button>
+            <button id="nextBtn" disabled>Next</button>
+        </div>
+        
+        <div id="results" class="results">
+            <h2>Your Cybersecurity Risk Assessment</h2>
+            <div id="riskLevel" class="risk-level"></div>
+            <div id="score"></div>
+            <div id="recommendations"></div>
+            <button id="restartBtn" class="restart">Take Assessment Again</button>
+        </div>
+    </div>
+    
+    <script>
+        // Assessment questions and options
+        const questions = [
+            {
+                question: "How do you manage your passwords?",
+                options: [
+                    { text: "I use the same password for most accounts", points: 0, isGood: false, 
+                      recommendation: "Using unique passwords for each account is crucial for security. If one account is compromised, all your accounts could be at risk.",
+                      example: "In 2019, a major data breach at Collection #1 exposed 87GB of data including passwords. People who reused passwords across sites experienced multiple account breaches.",
+                      resource: "Consider using a password manager like LastPass, 1Password, or Bitwarden to create and store unique passwords securely." },
+                    
+                    { text: "I have different passwords but follow a pattern", points: 1, isGood: false, 
+                      recommendation: "Password patterns can be easily guessed once one password is known. Cybercriminals use sophisticated pattern recognition to crack related passwords.",
+                      example: "In 2020, researchers found that hackers could predict pattern-based password variations with 73% accuracy after learning just one of a user's passwords.",
+                      resource: "Generate completely random passwords using a password manager instead of relying on patterns." },
+                    
+                    { text: "I use unique passwords for important accounts only", points: 2, isGood: false, 
+                      recommendation: "Even seemingly 'unimportant' accounts can be leveraged to access more critical ones through various attack vectors.",
+                      example: "In 2021, attackers compromised a marketing platform account to send legitimate-looking phishing emails to customers, leading to multiple data breaches.",
+                      resource: "Check if your accounts have been compromised at Have I Been Pwned (haveibeenpwned.com)." },
+                    
+                    { text: "I use a password manager with unique passwords for all accounts", points: 4, isGood: true, 
+                      recommendation: "Excellent practice! Password managers are the most secure way to create and manage unique, strong passwords.",
+                      example: "Companies implementing password managers have reported up to 70% fewer password-related security incidents.",
+                      resource: "Make sure to protect your password manager with a strong master password and enable two-factor authentication for additional security." }
+                ]
+            },
+            {
+                question: "How do you handle multi-factor authentication (MFA)?",
+                options: [
+                    { text: "I don't use multi-factor authentication", points: 0, isGood: false, 
+                      recommendation: "MFA is one of the most effective ways to prevent unauthorized access, even if your password is compromised.",
+                      example: "Microsoft reported that MFA blocks 99.9% of automated attacks. A major cryptocurrency exchange suffered a $40 million breach in 2019 that could have been prevented with MFA.",
+                      resource: "Enable MFA on your email accounts first, as email is often used for password resets on other services." },
+                    
+                    { text: "I use it only for financial accounts", points: 2, isGood: false, 
+                      recommendation: "While prioritizing financial accounts is a good start, many other accounts contain valuable personal information or could be used for identity theft.",
+                      example: "In 2022, attackers compromised non-financial accounts to gather personal information, which was then used for targeted phishing attacks against financial accounts.",
+                      resource: "Turn on MFA for email, social media, cloud storage, and other important accounts." },
+                    
+                    { text: "I use SMS-based verification codes", points: 2, isGood: false, 
+                      recommendation: "SMS-based verification is better than no MFA, but it's vulnerable to SIM swapping attacks where attackers take control of your phone number.",
+                      example: "In 2019, Twitter CEO Jack Dorsey's account was hacked through a SIM swap attack, bypassing SMS verification.",
+                      resource: "Consider using authenticator apps like Google Authenticator, Microsoft Authenticator, or Authy instead of SMS." },
+                    
+                    { text: "I use authenticator apps or security keys for most accounts", points: 4, isGood: true, 
+                      recommendation: "Excellent! Authenticator apps and security keys provide the strongest protection against unauthorized access.",
+                      example: "Google reported zero successful account takeovers among employees after implementing security keys.",
+                      resource: "Physical security keys like YubiKey or Google Titan offer the highest level of MFA protection for critical accounts." }
+                ]
+            },
+            {
+                question: "How do you approach software updates?",
+                options: [
+                    { text: "I often postpone updates for weeks or months", points: 0, isGood: false, 
+                      recommendation: "Postponing updates leaves your devices vulnerable to known security flaws that have been patched in newer versions.",
+                      example: "The WannaCry ransomware attack in 2017 affected more than 200,000 computers across 150 countries, primarily targeting systems that had not installed a critical Windows update released two months earlier.",
+                      resource: "Set aside a specific time each week to check for and install updates, or enable automatic updates whenever possible." },
+                    
+                    { text: "I update when prompted, but often click 'remind me later'", points: 1, isGood: false, 
+                      recommendation: "Even short delays in applying security updates create windows of opportunity for attackers to exploit known vulnerabilities.",
+                      example: "The Equifax breach that exposed 147 million Americans' personal data in 2017 exploited a vulnerability that had a patch available for two months before the attack.",
+                      resource: "Configure your devices to install security updates automatically outside of your working hours." },
+                    
+                    { text: "I update most software within a week of releases", points: 3, isGood: true, 
+                      recommendation: "Good practice! Updating within a week significantly reduces your exposure to known vulnerabilities.",
+                      example: "Organizations with patch management policies requiring updates within 7 days experience 80% fewer successful cyberattacks according to a 2020 security industry report.",
+                      resource: "Consider prioritizing updates for your operating system, web browsers, and email clients, as these are common attack vectors." },
+                    
+                    { text: "I have automatic updates enabled for all my devices and software", points: 4, isGood: true, 
+                      recommendation: "Excellent! Automatic updates ensure you're protected from known vulnerabilities as quickly as possible.",
+                      example: "Google Chrome's automatic update feature has been credited with significantly reducing the number of users affected by browser-based attacks.",
+                      resource: "For critical systems, review release notes before updates to ensure compatibility with your other software." }
+                ]
+            },
+            {
+                question: "How do you handle suspicious emails?",
+                options: [
+                    { text: "I open emails and attachments without much scrutiny", points: 0, isGood: false, 
+                      recommendation: "Opening emails and attachments without verification is extremely risky and can lead to malware infections or phishing attacks.",
+                      example: "In 2021, a hospital employee opened a malicious email attachment that installed ransomware, forcing the hospital to pay $4.5 million to recover their systems.",
+                      resource: "Never open attachments from unknown senders, and verify unexpected attachments from known contacts by contacting them through a different method." },
+                    
+                    { text: "I'm cautious with unknown senders but trust emails from people I know", points: 1, isGood: false, 
+                      recommendation: "Email addresses can be spoofed, and accounts of people you know can be compromised to send malicious content.",
+                      example: "Business Email Compromise (BEC) attacks often involve hackers taking over legitimate email accounts and sending malicious files or requests to contacts.",
+                      resource: "Verify unusual requests from known contacts through a different communication channel before taking action." },
+                    
+                    { text: "I check sender addresses and avoid clicking links or downloading attachments", points: 3, isGood: true, 
+                      recommendation: "Good practice! Being skeptical of links and attachments is essential for email security.",
+                      example: "Organizations that implement email security training focused on link and attachment awareness report up to 60% reduction in successful phishing attempts.",
+                      resource: "Hover over links to preview the URL before clicking, and use online tools like VirusTotal to scan suspicious files." },
+                    
+                    { text: "I use email filtering, verify senders, and never click unexpected links", points: 4, isGood: true, 
+                      recommendation: "Excellent! A multi-layered approach to email security provides the best protection against phishing and malware.",
+                      example: "Companies with comprehensive email security practices (including technical controls and user education) experience 95% fewer email-based compromises.",
+                      resource: "Consider using additional email security tools like phishing-resistant email clients or advanced spam filters." }
+                ]
+            },
+            {
+                question: "How do you secure your home WiFi network?",
+                options: [
+                    { text: "I use the default router settings and password", points: 0, isGood: false, 
+                      recommendation: "Default router credentials are often publicly known and make your network an easy target for attackers.",
+                      example: "In 2018, hackers compromised over 500,000 routers with default settings in a massive botnet attack called VPNFilter.",
+                      resource: "Change your router's admin password and WiFi password immediately. Instructions are typically available on the router or manufacturer's website." },
+                    
+                    { text: "I changed the WiFi password but haven't modified other settings", points: 1, isGood: false, 
+                      recommendation: "While changing the WiFi password is important, other default settings can still leave your network vulnerable.",
+                      example: "Attackers often exploit default router settings to conduct man-in-the-middle attacks or gain access to connected devices.",
+                      resource: "Update your router's firmware, disable remote management, and consider changing the default SSID (network name)." },
+                    
+                    { text: "I use WPA2/WPA3 encryption and changed default credentials", points: 3, isGood: true, 
+                      recommendation: "Good practice! Strong encryption and custom credentials significantly improve your network security.",
+                      example: "WPA3 encryption addresses vulnerabilities in earlier standards and provides enhanced protection against password cracking attempts.",
+                      resource: "Consider implementing a guest network for visitors to keep them separate from your primary network and devices." },
+                    
+                    { text: "I regularly update firmware, use strong encryption, and implement network segmentation", points: 4, isGood: true, 
+                      recommendation: "Excellent! A comprehensive approach to network security provides multiple layers of protection.",
+                      example: "Enterprise networks with regular firmware updates and network segmentation reported 70% fewer successful intrusions according to a 2021 security report.",
+                      resource: "Consider using a VPN at the router level for additional encryption, especially when accessing sensitive information." }
+                ]
+            },
+            {
+                question: "How do you back up your important data?",
+                options: [
+                    { text: "I rarely or never back up my data", points: 0, isGood: false, 
+                      recommendation: "Without backups, you risk permanent data loss from ransomware, hardware failure, theft, or disasters.",
+                      example: "A 2020 ransomware attack on Garmin affected their services for days, costing an estimated $10 million. Proper backups could have minimized the impact.",
+                      resource: "Start with a simple external drive backup of your most important files, then expand to a more comprehensive backup strategy." },
+                    
+                    { text: "I occasionally back up to an external drive", points: 1, isGood: false, 
+                      recommendation: "Infrequent backups leave gaps where new or changed data remains vulnerable to loss.",
+                      example: "A university lost months of research data when their only backup was outdated and couldn't restore recent changes after a system failure.",
+                      resource: "Set a regular schedule for backups, such as weekly or monthly, depending on how frequently your data changes." },
+                    
+                    { text: "I use cloud backup for some important files", points: 2, isGood: false, 
+                      recommendation: "Partial backups are better than none, but a comprehensive approach ensures all valuable data is protected.",
+                      example: "Many ransomware victims discover too late that critical files weren't included in their partial backup strategy.",
+                      resource: "Create an inventory of important data across all your devices to ensure your backup strategy is complete." },
+                    
+                    { text: "I follow the 3-2-1 backup rule (3 copies, 2 different media types, 1 offsite)", points: 4, isGood: true, 
+                      recommendation: "Excellent! The 3-2-1 backup strategy provides robust protection against virtually all data loss scenarios.",
+                      example: "Organizations following the 3-2-1 backup rule reported successful recovery rates of over 95% even after catastrophic incidents.",
+                      resource: "Consider adding versioning to your backup strategy to protect against corrupted files being backed up over good ones." }
+                ]
+            },
+            {
+                question: "How do you protect your devices when using public WiFi?",
+                options: [
+                    { text: "I connect to any available free WiFi network", points: 0, isGood: false, 
+                      recommendation: "Public WiFi networks are often unsecured and can be created or monitored by attackers to intercept your data.",
+                      example: "In a 2019 experiment, a security researcher set up a fake public WiFi at a conference and captured sensitive data from 75% of users who connected.",
+                      resource: "Avoid using public WiFi for sensitive activities like banking or accessing confidential information." },
+                    
+                    { text: "I use public WiFi but avoid sensitive transactions", points: 1, isGood: false, 
+                      recommendation: "Even non-sensitive browsing can reveal login credentials and personal information if the network is compromised.",
+                      example: "Session hijacking attacks on public WiFi can steal authentication cookies and give attackers access to your accounts without needing passwords.",
+                      resource: "Use your phone's mobile data hotspot instead of public WiFi when possible, as it's typically more secure." },
+                    
+                    { text: "I verify network names and use HTTPS websites on public WiFi", points: 2, isGood: false, 
+                      recommendation: "While HTTPS provides some protection, it doesn't secure all traffic, and network names can be easily spoofed.",
+                      example: "Evil twin attacks create networks with names identical to legitimate ones, tricking users into connecting to the attacker's network instead.",
+                      resource: "Install a browser extension like HTTPS Everywhere to ensure you're using encrypted connections whenever possible." },
+                    
+                    { text: "I use a VPN whenever connecting to public WiFi", points: 4, isGood: true, 
+                      recommendation: "Excellent! VPNs encrypt all your traffic, protecting it from interception even on unsecured networks.",
+                      example: "Corporate users with VPN requirements reported 97% fewer data breaches related to public WiFi usage compared to those without VPNs.",
+                      resource: "Choose a reputable VPN service with a no-logs policy and strong encryption standards." }
+                ]
+            },
+            {
+                question: "How do you protect your mobile devices?",
+                options: [
+                    { text: "I don't use screen locks or security features", points: 0, isGood: false, 
+                      recommendation: "Unlocked devices provide immediate access to emails, photos, banking apps, and personal information if lost or stolen.",
+                      example: "A 2021 study found that 60% of unlocked phones that were 'lost' in public places were accessed for personal information by finders.",
+                      resource: "At minimum, enable a PIN, pattern, or preferably biometric authentication (fingerprint/face recognition) on all mobile devices." },
+                    
+                    { text: "I use a simple PIN or pattern lock", points: 1, isGood: false, 
+                      recommendation: "Simple PINs and patterns can be observed or guessed, especially common patterns like '1234' or 'Z' shapes.",
+                      example: "Researchers found that 6-digit PIN codes provided significantly better protection than 4-digit ones, decreasing successful brute force attacks by 90%.",
+                      resource: "Use a complex PIN (at least 6 digits) or alphanumeric password, and enable options to wipe data after multiple failed attempts." },
+                    
+                    { text: "I use biometric authentication (fingerprint/face recognition)", points: 3, isGood: true, 
+                      recommendation: "Good practice! Biometric authentication provides a good balance of security and convenience.",
+                      example: "Modern biometric systems have false acceptance rates below 0.1%, making them significantly more secure than simple PINs.",
+                      resource: "While biometrics are secure, also set a strong backup password, as courts may compel biometric unlocking but have stronger protections for passwords." },
+                    
+                    { text: "I use biometrics, encrypt my device, and can remotely wipe if lost", points: 4, isGood: true, 
+                      recommendation: "Excellent! A multi-layered approach provides comprehensive protection for mobile devices.",
+                      example: "Remote wipe features have prevented data breaches in 93% of reported corporate device theft cases when activated promptly.",
+                      resource: "Both Android (Find My Device) and iOS (Find My) offer free built-in features to locate, lock, and erase lost devices." }
+                ]
+            },
+            {
+                question: "How do you verify the legitimacy of websites when shopping or banking online?",
+                options: [
+                    { text: "I don't check website security before entering personal information", points: 0, isGood: false, 
+                      recommendation: "Phishing websites can perfectly mimic legitimate ones to steal your credentials and financial information.",
+                      example: "In 2020, a sophisticated phishing campaign targeted PayPal users with fake sites that were visually identical to the real PayPal login page, collecting thousands of credentials.",
+                      resource: "Always check for 'https://' and a padlock icon in the URL bar before entering sensitive information." },
+                    
+                    { text: "I check for https:// but don't verify further", points: 1, isGood: false, 
+                      recommendation: "While HTTPS is important, attackers can create fraudulent sites with valid SSL certificates (e.g., https://paypa1.com).",
+                      example: "Typosquatting attacks use domains like 'amaz0n.com' or 'g00gle.com' with valid HTTPS certificates to trick users.",
+                      resource: "Pay close attention to domain names, checking for spelling mistakes or substituted characters." },
+                    
+                    { text: "I verify the URL and look for security indicators", points: 3, isGood: true, 
+                      recommendation: "Good practice! Checking both HTTPS and the exact domain name provides strong protection against phishing.",
+                      example: "Banking customers trained to verify full URLs reported 85% fewer successful phishing attacks according to a financial security study.",
+                      resource: "Consider bookmarking important financial websites rather than clicking links or using search engines to find them." },
+                    
+                    { text: "I use bookmarks for important sites and verify site certificates when suspicious", points: 4, isGood: true, 
+                      recommendation: "Excellent! Using bookmarks eliminates the risk of mistyping URLs or clicking malicious links.",
+                      example: "Organizations that implement bookmark policies for financial sites report near-zero successful phishing attempts for those services.",
+                      resource: "Consider using a password manager, which can also function as a bookmark system that will only fill credentials on the genuine website." }
+                ]
+            },
+            {
+                question: "How do you approach sharing personal information on social media?",
+                options: [
+                    { text: "I freely share personal details including my location, travel plans, and daily activities", points: 0, isGood: false, 
+                      recommendation: "Oversharing on social media provides valuable information for social engineering attacks and physical security threats.",
+                      example: "Home burglaries have been linked to social media posts announcing vacations or extended absences, with a 33% increase in targeted burglaries based on social media information.",
+                      resource: "Wait until you return from trips to post photos, and avoid sharing home addresses, phone numbers, or identification documents." },
+                    
+                    { text: "I share some personal information but limit access to friends", points: 1, isGood: false, 
+                      recommendation: "Even 'friends-only' information can spread beyond your intended audience and may include connections you don't know well.",
+                      example: "In multiple cases, identity thieves have created fake profiles to befriend targets and access their restricted information.",
+                      resource: "Regularly audit your friends list and remove or restrict access for contacts you don't know well or trust." },
+                    
+                    { text: "I'm selective about what I share and regularly review privacy settings", points: 3, isGood: true, 
+                      recommendation: "Good practice! Being mindful about shared content and privacy settings significantly reduces your exposure.",
+                      example: "Regular privacy audits have helped users discover that up to 76% of their supposedly private content was actually accessible to the public due to changing platform policies.",
+                      resource: "Set a quarterly reminder to review social media privacy settings, as platforms often update their options and defaults." },
+                    
+                    { text: "I minimize personal information online and use privacy-focused platforms", points: 4, isGood: true, 
+                      recommendation: "Excellent! A privacy-first approach to social media provides the best protection against information-based attacks.",
+                      example: "Privacy-conscious social media users experience 91% fewer targeted phishing attempts compared to those with public profiles.",
+                      resource: "Consider using pseudonyms or alternate names for social accounts that don't need to be linked to your real identity." }
+                ]
+            },
+            {
+                question: "How do you handle work-related cybersecurity?",
+                options: [
+                    { text: "I use personal devices for work and mix personal/work accounts", points: 0, isGood: false, 
+                      recommendation: "Mixing personal and work activities creates security risks for both you and your employer.",
+                      example: "A 2021 data breach at a marketing firm occurred when an employee's personal device was compromised through a gaming site, giving attackers access to corporate systems.",
+                      resource: "Keep separate devices for work and personal use when possible, or use separate user accounts if sharing a device." },
+                    
+                    { text: "I follow basic security requirements but sometimes take shortcuts", points: 1, isGood: false, 
+                      recommendation: "Security shortcuts can create vulnerabilities that put both your data and your organization at risk.",
+                      example: "An employee sharing confidential files via personal email to 'work from home more easily' resulted in a significant data breach costing millions in damages.",
+                      resource: "If security measures seem overly burdensome, discuss more efficient alternatives with your IT department rather than circumventing them." },
+                    
+                    { text: "I follow company security policies consistently", points: 3, isGood: true, 
+                      recommendation: "Good practice! Consistent adherence to security policies provides reliable protection for organizational data.",
+                      example: "Organizations with high employee compliance to security policies experience 76% fewer successful cyberattacks.",
+                      resource: "Take advantage of any security training offered by your employer to stay updated on best practices and emerging threats." },
+                    
+                    { text: "I follow policies and proactively suggest security improvements", points: 4, isGood: true, 
+                      recommendation: "Excellent! A security-conscious workforce that actively participates in improvement is an organization's strongest defense.",
+                      example: "Companies with employee-led security improvements report 82% better outcomes in security audits and penetration tests.",
+                      resource: "Consider pursuing basic cybersecurity training or certification to enhance your skills and value to your organization." }
+                ]
+            }
+        ];
+        
+        let currentQuestion = 0;
+        let answers = [];
+        let selectedOption = null;
+        
+        // Initialize the assessment
+        function initAssessment() {
+            showQuestion(currentQuestion);
+            updateProgressBar();
+        }
+        
+        // Display the current question
+        function showQuestion(index) {
+            const questionContainer = document.getElementById('questionContainer');
+            const question = questions[index];
+            
+            let questionHTML = `
+                <div class="question-container">
+                    <h3>Question ${index + 1} of ${questions.length}</h3>
+                    <p>${question.question}</p>
+                    <div class="options">
+            `;
+            
+            question.options.forEach((option, optionIndex) => {
+                questionHTML += `
+                    <div class="option" data-index="${optionIndex}" onclick="selectOption(${optionIndex})">
+                        ${option.text}
+                    </div>
+                `;
+            });
+            
+            questionHTML += `
+                    </div>
+                </div>
+            `;
+            
+            questionContainer.innerHTML = questionHTML;
+            
+            // Reset selected option
+            selectedOption = null;
+            updateNextButton();
+        }
+        
+        // Handle option selection
+        function selectOption(optionIndex) {
+            // Clear previous selections
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Select the clicked option
+            document.querySelector(`.option[data-index="${optionIndex}"]`).classList.add('selected');
+            
+            // Update the selected option
+            selectedOption = optionIndex;
+            updateNextButton();
+        }
+        
+        // Update the next button state
+        function updateNextButton() {
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.disabled = selectedOption === null;
+        }
+        
+        // Update the progress bar
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progressBar');
+            const progress = ((currentQuestion) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+        
+        // Handle next button click
+        function nextQuestion() {
+            if (selectedOption !== null) {
+                // Save the answer
+                answers[currentQuestion] = selectedOption;
+                
+                // Move to the next question or show results
+                if (currentQuestion < questions.length - 1) {
+                    currentQuestion++;
+                    showQuestion(currentQuestion);
+                    updateProgressBar();
+                    document.getElementById('prevBtn').disabled = false;
+                } else {
+                    showResults();
+                }
+                
+                // Reset selected option
+                selectedOption = null;
+                updateNextButton();
+            }
+        }
+        
+        // Handle previous button click
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+                updateProgressBar();
+                
+                // Set the previously selected option
+                if (answers[currentQuestion] !== undefined) {
+                    const previousSelection = document.querySelector(`.option[data-index="${answers[currentQuestion]}"]`);
+                    if (previousSelection) {
+                        previousSelection.classList.add('selected');
+                        selectedOption = answers[currentQuestion];
+                        updateNextButton();
+                    }
+                }
+                
+                // Disable prev button if at first question
+                document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            }
+        }
+
+// Calculate the total score
+function calculateScore() {
+    let totalScore = 0;
+    let maxPossibleScore = 0;
+    
+    for (let i = 0; i < questions.length; i++) {
+        if (answers[i] !== undefined) {
+            totalScore += questions[i].options[answers[i]].points;
+        }
+        
+        // Calculate maximum possible score
+        let maxQuestionScore = 0;
+        questions[i].options.forEach(option => {
+            if (option.points > maxQuestionScore) {
+                maxQuestionScore = option.points;
+            }
+        });
+        maxPossibleScore += maxQuestionScore;
+    }
+    
+    // Calculate percentage score
+    const percentageScore = (totalScore / maxPossibleScore) * 100;
+    
+    return {
+        score: totalScore,
+        percentage: percentageScore.toFixed(1),
+        maxScore: maxPossibleScore
+    };
+}
+
+// Display the assessment results
+function showResults() {
+    const questionContainer = document.getElementById('questionContainer');
+    const resultsContainer = document.getElementById('results');
+    const riskLevelContainer = document.getElementById('riskLevel');
+    const scoreContainer = document.getElementById('score');
+    const recommendationsContainer = document.getElementById('recommendations');
+    const navigationButtons = document.querySelector('.navigation');
+    
+    // Calculate score
+    const scoreData = calculateScore();
+    
+    // Determine risk level
+    let riskLevel, riskClass;
+    if (scoreData.percentage >= 75) {
+        riskLevel = "Low Risk";
+        riskClass = "low-risk";
+    } else if (scoreData.percentage >= 50) {
+        riskLevel = "Medium Risk";
+        riskClass = "medium-risk";
+    } else {
+        riskLevel = "High Risk";
+        riskClass = "high-risk";
+    }
+    
+    // Update risk level display
+    riskLevelContainer.textContent = riskLevel;
+    riskLevelContainer.className = `risk-level ${riskClass}`;
+    
+    // Update score display
+    scoreContainer.innerHTML = `
+        <p>Your score: ${scoreData.score} out of ${scoreData.maxScore} (${scoreData.percentage}%)</p>
+    `;
+    
+    // Generate recommendations
+    recommendationsContainer.innerHTML = '';
+    let recommendationsHTML = '<h3>Personalized Security Recommendations</h3>';
+    
+    // Add recommendations based on answers
+    for (let i = 0; i < questions.length; i++) {
+        const selectedOption = questions[i].options[answers[i]];
+        
+        // If not a good practice, provide recommendation
+        if (!selectedOption.isGood) {
+            recommendationsHTML += `
+                <div class="recommendation">
+                    <h4>Regarding ${questions[i].question}</h4>
+                    <p>${selectedOption.recommendation}</p>
+                    <div class="example">Example: ${selectedOption.example}</div>
+                    <div class="resource">Resource: ${selectedOption.resource}</div>
+                </div>
+            `;
+        }
+    }
+    
+    // Add general recommendations based on risk level
+    recommendationsHTML += `
+        <div class="recommendation">
+            <h4>Overall Security Posture</h4>
+    `;
+    
+    if (riskClass === "high-risk") {
+        recommendationsHTML += `
+            <p>Your security practices require immediate attention. Focus on implementing the recommendations above, starting with password management and enabling multi-factor authentication.</p>
+            <div class="resource">Resource: Consider taking a basic cybersecurity awareness course to improve your understanding of digital security fundamentals.</div>
+        `;
+    } else if (riskClass === "medium-risk") {
+        recommendationsHTML += `
+            <p>You have some good security practices in place, but there are important areas for improvement. Focus on addressing the recommendations above to strengthen your overall security posture.</p>
+            <div class="resource">Resource: Set a monthly reminder to review and improve one aspect of your digital security.</div>
+        `;
+    } else {
+        recommendationsHTML += `
+            <p>You have strong security practices! Continue maintaining your good habits and stay informed about emerging threats and best practices.</p>
+            <div class="resource">Resource: Consider helping friends and family improve their security practices too.</div>
+        `;
+    }
+    
+    recommendationsHTML += `</div>`;
+    recommendationsContainer.innerHTML = recommendationsHTML;
+    
+    // Hide questions and navigation, show results
+    questionContainer.style.display = 'none';
+    navigationButtons.style.display = 'none';
+    resultsContainer.style.display = 'block';
+}
+
+// Display the current question
+function showQuestion(index) {
+    const questionContainer = document.getElementById('questionContainer');
+    const question = questions[index];
+    
+    let questionHTML = `
+        <div class="question-container">
+            <h3>Question ${index + 1} of ${questions.length}</h3>
+            <p>${question.question}</p>
+            <div class="options">
+    `;
+    
+    question.options.forEach((option, optionIndex) => {
+        questionHTML += `
+            <div class="option" data-index="${optionIndex}" onclick="selectOption(${optionIndex})">
+                ${option.text}
+            </div>
+        `;
+    });
+    
+    questionHTML += `
+            </div>
+            <div id="feedback" class="recommendation" style="display: none; margin-top: 20px;"></div>
+        </div>
+    `;
+    
+    questionContainer.innerHTML = questionHTML;
+    
+    // Reset selected option
+    selectedOption = null;
+    updateNextButton();
+}
+
+// Handle option selection
+function selectOption(optionIndex) {
+    // Clear previous selections
+    document.querySelectorAll('.option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+    
+    // Select the clicked option
+    document.querySelector(`.option[data-index="${optionIndex}"]`).classList.add('selected');
+    
+    // Update the selected option
+    selectedOption = optionIndex;
+    updateNextButton();
+    
+    // Show feedback for bad practices immediately
+    const currentOption = questions[currentQuestion].options[optionIndex];
+    const feedbackElement = document.getElementById('feedback');
+    
+    if (!currentOption.isGood) {
+        feedbackElement.innerHTML = `
+            <h4>Security Advice</h4>
+            <p>${currentOption.recommendation}</p>
+            <div class="example">Example: ${currentOption.example}</div>
+            <div class="resource">Resource: ${currentOption.resource}</div>
+        `;
+        feedbackElement.style.display = 'block';
+    } else {
+        feedbackElement.style.display = 'none';
+    }
+}
+
+// Update the next button state
+function updateNextButton() {
+    const nextBtn = document.getElementById('nextBtn');
+    nextBtn.disabled = selectedOption === null;
+}
+
+// Update the progress bar
+function updateProgressBar() {
+    const progressBar = document.getElementById('progressBar');
+    const progress = ((currentQuestion) / questions.length) * 100;
+    progressBar.style.width = `${progress}%`;
+}
+
+// Handle next button click
+function nextQuestion() {
+    if (selectedOption !== null) {
+        // Save the answer
+        answers[currentQuestion] = selectedOption;
+        
+        // Move to the next question or show results
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            showQuestion(currentQuestion);
+            updateProgressBar();
+            document.getElementById('prevBtn').disabled = false;
+        } else {
+            showResults();
+        }
+        
+        // Reset selected option
+        selectedOption = null;
+        updateNextButton();
+    }
+}
+
+// Handle previous button click
+function prevQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        showQuestion(currentQuestion);
+        updateProgressBar();
+        
+        // Set the previously selected option
+        if (answers[currentQuestion] !== undefined) {
+            const previousSelection = document.querySelector(`.option[data-index="${answers[currentQuestion]}"]`);
+            if (previousSelection) {
+                previousSelection.classList.add('selected');
+                selectedOption = answers[currentQuestion];
+                updateNextButton();
+                
+                // Show feedback for previously selected bad practices
+                const currentOption = questions[currentQuestion].options[answers[currentQuestion]];
+                const feedbackElement = document.getElementById('feedback');
+                
+                if (!currentOption.isGood) {
+                    feedbackElement.innerHTML = `
+                        <h4>Security Advice</h4>
+                        <p>${currentOption.recommendation}</p>
+                        <div class="example">Example: ${currentOption.example}</div>
+                        <div class="resource">Resource: ${currentOption.resource}</div>
+                    `;
+                    feedbackElement.style.display = 'block';
+                } else {
+                    feedbackElement.style.display = 'none';
+                }
+            }
+        }
+        
+        // Disable prev button if at first question
+        document.getElementById('prevBtn').disabled = currentQuestion === 0;
+    }
+}
+
+// Handle restart button click
+function restartAssessment() {
+    // Reset variables
+    currentQuestion = 0;
+    answers = [];
+    selectedOption = null;
+    
+    // Reset display
+    const questionContainer = document.getElementById('questionContainer');
+    const resultsContainer = document.getElementById('results');
+    const navigationButtons = document.querySelector('.navigation');
+    
+    questionContainer.style.display = 'block';
+    navigationButtons.style.display = 'flex';
+    resultsContainer.style.display = 'none';
+    
+    // Reset the previous button
+    document.getElementById('prevBtn').disabled = true;
+    
+    // Restart the assessment
+    initAssessment();
+}
+
+// Set up event listeners
+document.getElementById('nextBtn').addEventListener('click', nextQuestion);
+document.getElementById('prevBtn').addEventListener('click', prevQuestion);
+document.getElementById('restartBtn').addEventListener('click', restartAssessment);
+
+// Make selectOption function globally available
+window.selectOption = selectOption;
+
+// Initialize the assessment when the page loads
+document.addEventListener('DOMContentLoaded', initAssessment);
+
+    </script>
+</body>
+</html>
