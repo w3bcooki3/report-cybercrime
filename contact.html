@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <!-- ========== Page Title ========== -->
-    <title>Synck - New IT Services and Business Consulting HTML5 Template</title>
+    <title>Contact | PROTECT</title>
 
     <!-- ========== Start Fonts Style ========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,18 +16,24 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600&family=Syne:wght@400;500;600&family=Yantramanav:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
-
+    
     <!-- ========== Start Stylesheet ========== -->
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="./assets/css/jsvectormap.css">
+    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
+    <link rel="stylesheet" href="landing-page/css/landing-page.css">
     <!-- ========== End Stylesheet ========== -->
+
+    <!-- Favicon links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/logo/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/logo/site.webmanifest">
 
 
 </head>
@@ -35,35 +41,15 @@
 <body>
 
     <!-- Main -->
-    <main class="main-page contact-page">
-        <!-- Header Bar -->
-        <div class="header-bar">
-            <div class="custom-container">
-                <div class="header-bar-body d-flex align-items-center justify-content-between">
-                    <div class="left">
-                        <select class="country-select" name="country" id="country">
-                            <option value="en">EN</option>
-                            <option value="uk">UK</option>
-                            <option value="dz">DZ</option>
-                        </select>
-                    </div>
-                   <div class="right">
-                        <p>
-                            Level up your business with <a href="about.html" data-word="SYNCK." id="dataWord">SYNCK.</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    <main class="main-page homepage">
         <!-- Header -->
         <header class="header-area">
 
             <div class="custom-container">
                 <div class="custom-row align-items-center justify-content-between">
                     <div class="header-left d-flex align-items-center">
-                        <a href="./index.html" class="logo">
-                            <img src="./assets/imgs/logo.svg" alt="Logo" />
+                        <a href="index.html" class="logo">
+                            <img src="./assets/imgs/logo.png" style="height: 100px; width: 120px;" alt="Logo" />
                         </a>
 
                         <div class="header-left-right">
@@ -72,110 +58,19 @@
                                 <i class="las la-bars"></i>
                             </span>
                         </div>
-                        <nav class="navbar-wrapper">
+                        <nav class="navbar-wrapper d-flex align-items-center">
                             <span class="close-menu-bar">
                                 <i class="las la-times"></i>
                             </span>
                             <ul>
-                                <li class="dropdown-menu-item">
+                                <li>
                                     <a href="index.html">Home</a>
-                                    <span class="dropdown-menu-item-icon">
-                                        <i class="las la-angle-down"></i>
-                                    </span>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="./index.html">IT Services</a>
-                                        </li>
-                                        <li>
-                                            <a href="./home2.html">Business Consulting</a>
-                                        </li>
-                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="about.html">About</a>
                                 </li>
                                 <li class="mega-menu-item">
-                                    <a href="company.html">Company</a>
-                                    <span class="dropdown-menu-item-icon">
-                                        <i class="las la-angle-down"></i>
-                                    </span>
-                                    <div class="mega-menu mega-menu-company">
-                                        <div class="mega-menu-inner">
-                                            <div class="custom-container d-flex">
-                                                <div class="left">
-                                                    <div class="mega-menu-link-wrap d-flex justify-content-between">
-                                                        <div class="mega-menu-link">
-                                                            <h3>Get Started</h3>
-                                                            <ul>
-                                                                <li><a href="#">Setup 101</a></li>
-                                                                <li><a href="#">Adding users</a></li>
-                                                                <li><a href="#">Video tutorials</a></li>
-                                                                <li><a href="#">Libraries and SDKs</a></li>
-                                                                <li><a href="#">Plugins</a></li>
-                                                                <li><a href="#">Templates</a></li>
-                                                            </ul>
-                                                        </div>
-
-                                                        <div class="mega-menu-links d-flex">
-                                                            <div class="mega-menu-link">
-                                                                <h3>Company</h3>
-                                                                <ul>
-                                                                    <li><a href="about.html">About Us</a></li>
-                                                                    <li><a href="partner.html">Partners</a></li>
-                                                                    <li><a href="career.html">Careers</a></li>
-                                                                    <li><a href="event.html">Events</a></li>
-                                                                    <li><a href="team.html">Team</a></li>
-                                                                     <li><a href="blog.html">Blog</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="mega-menu-link">
-                                                                <h3>Product</h3>
-                                                                <ul>
-                                                                    <li><a href="overview.html">Overview</a></li>
-                                                                    <li><a href="pricing.html">Pricing</a></li>
-                                                                    <li><a href="feature.html">Features</a></li>
-                                                                    <li><a href="case-studie.html">Case Studies</a></li>
-                                                                    <li><a href="new-release.html">New Releases</a></li>
-                                                                    <li><a href="solution.html">Solutions</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="mega-menu-link">
-                                                                <h3>Legal</h3>
-                                                                <ul>
-                                                                    <li><a href="#">Licenses</a></li>
-                                                                    <li><a href="#">Settings</a></li>
-                                                                    <li><a href="#">Cookies</a></li>
-                                                                    <li><a href="#">Document</a></li>
-                                                                    <li><a href="#">Terms</a></li>
-                                                                    <li><a href="#">Privacy</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div
-                                                        class="mega-meu-footer d-flex align-items-center justify-content-between w-full">
-                                                        <ul class="mega-menu-social d-flex align-items-center">
-                                                            <li><a href="#"><i class="iconoir-dribbble"></i></a></li>
-                                                            <li><a href="#"><i class="iconoir-twitter"></i></a></li>
-                                                            <li><a href="#"><i class="iconoir-instagram"></i></a></li>
-                                                            <li><a href="#"><i class="iconoir-linkedin"></i></a></li>
-                                                        </ul>
-
-                                                        <p>Looking for new career? <a href="career.html">We're hiring</a></p>
-                                                    </div>
-                                                </div>
-                                                <div class="right">
-                                                    <div class="mega-menu-ads">
-                                                        <img src="./assets/imgs/iphone-13-1.jpg" alt="Iphone" />
-                                                        <h2>Solution in your hand</h2>
-                                                        <p>Develop IT solutions based on the<br> analysis phase.</p>
-                                                        <a href="case-studie-single.html">View more</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="mega-menu-item">
-                                    <a href="portfolio.html">Portfolio</a>
+                                    <a href="portfolio.html">What-To-Do</a>
                                     <span class="dropdown-menu-item-icon">
                                         <i class="las la-angle-down"></i>
                                     </span>
@@ -191,7 +86,7 @@
                                                                     alt="Portfolio" />
                                                             </div>
                                                             <div class="content-box">
-                                                                <h3><a href="portfolio-details.html">E-commerce</a></h3>
+                                                                <h3><a href="to_protect_yourself.html">To Protect Yourself?</a></h3>
                                                                 <p>we undertook a project to <br>migrate their existing.
                                                                 </p>
                                                             </div>
@@ -202,31 +97,9 @@
                                                                     alt="Portfolio" />
                                                             </div>
                                                             <div class="content-box">
-                                                                <h3><a href="portfolio-details.html">App Development</a></h3>
+                                                                <h3><a href="If_you_become_a_victim.html">If You Become A Victim?</a></h3>
                                                                 <p>The mobile application has <br>significantly
                                                                     improved.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="mega-menu-portfolio-card">
-                                                            <div class="img-box">
-                                                                <img src="./assets/imgs/portfolio-mega-menu-3.jpeg"
-                                                                    alt="Portfolio" />
-                                                            </div>
-                                                            <div class="content-box">
-                                                                <h3><a href="portfolio-details.html">SAAS Integration</a></h3>
-                                                                <p>We partnered with DEF to <br>upgrade their outdated
-                                                                    IT.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="mega-menu-portfolio-card">
-                                                            <div class="img-box">
-                                                                <img src="./assets/imgs/portfolio-mega-menu-4.jpeg"
-                                                                    alt="Portfolio" />
-                                                            </div>
-                                                            <div class="content-box">
-                                                                <h3><a href="portfolio-details.html">Virtual Reality</a></h3>
-                                                                <p>Enter into the virtual reality <br>
-                                                                    world for real experience.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -241,100 +114,113 @@
                                                         </ul>
 
                                                         <p>
-                                                            <a href="portfolio.html">View Portfolio 
+                                                            <a href="portfolio.html">View Guide
                                                                 <i class="iconoir-arrow-up-right"></i></a>
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <div class="right">
-                                                    <div class="mega-menu-ads">
-                                                        <img src="./assets/imgs/macbook.jpg" alt="iPad" />
-                                                        <h2>Mobile app for a new era</h2>
-                                                        <p>Download slack in your mobile for <br>
-                                                            your daily usage.</p>
-                                                        <a href="case-studie-single.html">View more</a>
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                               <li class="mega-menu-item">
-                                    <a href="service.html">Services</a>
+                                <li class="mega-menu-item">
+                                    <a href="tools.html">Tools</a>
                                     <span class="dropdown-menu-item-icon">
                                         <i class="las la-angle-down"></i>
                                     </span>
-                                    <div class="mega-menu">
+                                    <div class="mega-menu mega-menu-portfolio">
                                         <div class="mega-menu-inner">
                                             <div class="custom-container d-flex">
                                                 <div class="left">
                                                     <div
                                                         class="mega-menu-link-wrap d-flex align-items-start justify-content-between">
-                                                        <div class="mega-menu-service-cards align-items-start">
-                                                            <div class="mega-menu-service-card">
-                                                                <span class="icon">
-                                                                    <img src="./assets/imgs/hwd-icon-1.svg"
-                                                                        alt="Service" />
-                                                                </span>
-                                                                <div class="content">
-                                                                    <h2><a href="how-we-do-single.html">Brainstroming</a></h2>
-                                                                    <p>Ideas</p>
-                                                                </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/softwares.png"
+                                                                    alt="Portfolio" />
                                                             </div>
-                                                            <div class="mega-menu-service-card">
-                                                                <span class="icon">
-                                                                    <img src="./assets/imgs/hwd-icon-4.svg"
-                                                                        alt="Service" />
-                                                                </span>
-                                                                <div class="content">
-                                                                     <h2><a href="how-we-do-single.html">Product</a></h2>
-                                                                    <p>Design</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mega-menu-service-card">
-                                                                <span class="icon">
-                                                                    <img src="./assets/imgs/hwd-icon-2.svg"
-                                                                        alt="Service" />
-                                                                </span>
-                                                                <div class="content">
-                                                                     <h2><a href="how-we-do-single.html">SEO</a></h2>
-                                                                    <p>Optimization</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mega-menu-service-card">
-                                                                <span class="icon">
-                                                                    <img src="./assets/imgs/hwd-icon-3.svg"
-                                                                        alt="Service" />
-                                                                </span>
-                                                                <div class="content">
-                                                                     <h2><a href="how-we-do-single.html">Front-End</a></h2>
-                                                                    <p>Development</p>
-                                                                </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="tools1.html">Security Tools</a></h3>
+                                                                <p>we undertook a project to <br>migrate their existing.
+                                                                </p>
                                                             </div>
                                                         </div>
-
-                                                        <div class="mega-menu-links d-flex">
-                                                            <div class="mega-menu-link">
-                                                                <h3>Services</h3>
-                                                                <ul>
-                                                                    <li><a href="service-details.html">Development</a></li>
-                                                                    <li><a href="service-details.html">Web Design</a></li>
-                                                                    <li><a href="service-details.html">IT Support</a></li>
-                                                                    <li><a href="service-details.html">E-Commerce</a></li>
-                                                                    <li><a href="service-details.html">Cloud Things</a></li>
-                                                                    <li><a href="service-details.html">CRM Solutions</a></li>
-                                                                </ul>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/organization.png"
+                                                                    alt="Portfolio" />
                                                             </div>
-                                                            <div class="mega-menu-link">
-                                                                <h3>Our Fields</h3>
-                                                                <ul>
-                                                                    <li><a href="our-field-details.html">Healthcare</a></li>
-                                                                    <li><a href="our-field-details.html">Banks</a></li>
-                                                                    <li><a href="our-field-details.html">Logistics</a></li>
-                                                                    <li><a href="our-field-details.html">Supermarkets</a></li>
-                                                                    <li><a href="our-field-details.html">Industries</a></li>
-                                                                    <li><a href="our-field-details.html">Hotels</a></li>
-                                                                </ul>
+                                                            <div class="content-box">
+                                                                <h3><a href="external_resources.html">External Resources</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/risk_assessmentr.png"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="risk_assessment.html">Risk Assessment Tool</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/16.png"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="password.html">Password Generator</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/16.png"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="breached.html">Breached</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/10.png"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="social_reporting.html">Social Media</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/23.png"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="banking.html">Financial</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/17.png"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="threatwatch.html">ThreatWatch</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -348,35 +234,158 @@
                                                             <li><a href="#"><i class="iconoir-linkedin"></i></a></li>
                                                         </ul>
 
-                                                        <p>Looking for new career? <a href="career.html">We're hiring</a></p>
+                                                        <p>
+                                                            <a href="portfolio.html">View Guide
+                                                                <i class="iconoir-arrow-up-right"></i></a>
+                                                        </p>
                                                     </div>
                                                 </div>
-                                                <div class="right">
-                                                    <div class="mega-menu-ads">
-                                                        <img src="./assets/imgs/ipad.jpg" alt="iPad" />
-                                                        <h2>Our product hits</h2>
-                                                        <p>Our new best IT product of the <br>year 2023.</p>
-                                                        <a href="case-studie-single.html">View more</a>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mega-menu-item">
+                                    <a href="Learn-edcu.html">Resources</a>
+                                    <span class="dropdown-menu-item-icon">
+                                        <i class="las la-angle-down"></i>
+                                    </span>
+                                    <div class="mega-menu mega-menu-portfolio">
+                                        <div class="mega-menu-inner">
+                                            <div class="custom-container d-flex">
+                                                <div class="left">
+                                                    <div
+                                                        class="mega-menu-link-wrap d-flex align-items-start justify-content-between">
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/portfolio-mega-menu-1.jpg"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="Learn-edcu.html">Blog</a></h3>
+                                                                <p>we undertook a project to <br>migrate their existing.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/portfolio-mega-menu-2.jpg"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="Learn-edcu.html">News</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/portfolio-mega-menu-2.jpg"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="Learn-edcu.html">Events</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div
+                                                        class="mega-meu-footer d-flex align-items-center justify-content-between w-full">
+                                                        <ul class="mega-menu-social d-flex align-items-center">
+                                                            <li><a href="#"><i class="iconoir-dribbble"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-twitter"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-instagram"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-linkedin"></i></a></li>
+                                                        </ul>
+
+                                                        <p>
+                                                            <a href="portfolio.html">View Guide
+                                                                <i class="iconoir-arrow-up-right"></i></a>
+                                                        </p>
                                                     </div>
                                                 </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mega-menu-item">
+                                    <a href="Learn-edcu.html">Learn</a>
+                                    <span class="dropdown-menu-item-icon">
+                                        <i class="las la-angle-down"></i>
+                                    </span>
+                                    <div class="mega-menu mega-menu-portfolio">
+                                        <div class="mega-menu-inner">
+                                            <div class="custom-container d-flex">
+                                                <div class="left">
+                                                    <div
+                                                        class="mega-menu-link-wrap d-flex align-items-start justify-content-between">
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/portfolio-mega-menu-1.jpg"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="learning2.html">Learn2</a></h3>
+                                                                <p>we undertook a project to <br>migrate their existing.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/portfolio-mega-menu-2.jpg"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="Learn-edcu.html">Games</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div
+                                                        class="mega-meu-footer d-flex align-items-center justify-content-between w-full">
+                                                        <ul class="mega-menu-social d-flex align-items-center">
+                                                            <li><a href="#"><i class="iconoir-dribbble"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-twitter"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-instagram"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-linkedin"></i></a></li>
+                                                        </ul>
+
+                                                        <p>
+                                                            <a href="portfolio.html">View Guide
+                                                                <i class="iconoir-arrow-up-right"></i></a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="faq.html">FAQ</a>
+                                    <a href="contact.html">Contact</a>
                                 </li>
-                            </ul>
+                            <!---
+                            <select class="country-select" name="country" id="country">
+                                <option value="en">EN</option>
+                                <option value="uk">UK</option>
+                                <option value="dz">DZ</option>
+                            </select>
+                            -->
                         </nav>
                     </div>
                     <div class="header-right">
                         <div class="header-contact-info d-flex align-items-center">
                             <div class="phone-number">
-                                <a href="tel:+1-938-740-7555">
-                                    Call Us 
-                                    <i class="iconoir-arrow-up-right"></i>
+                                <a href="#!">
+                                    Email 
+                                    <i class="iconoir-arrow-up-right"></i>   
                                 </a>
-                                +1-938-740-7555
+                                contact@protect.org
                             </div>
                             <a href="contact.html" class="theme-btn">Join as Volunteer</a>
                         </div>
@@ -391,11 +400,11 @@
         <section class="hero-service-wrap hero-section-wrap hero-portfolio-wrap">
             <div class="hero-section-content-wrap">
                 <div class="custom-container">
-                    <div class="hero-portfolio-body">
+                    <div class="hero-portfolio-body" style="border-bottom: none;">
                         <div class="hero-section-content text-center">
-                            <h5 class="section-subtitle">Contact Us</h5>
-                            <h1 class="section-title fade-in">We are always open to talk</h1>
-                            <p>We have offices and teams all around the world</p>
+                            <h5 class="section-subtitle">Contact</h5>
+                            <h1 class="section-title fade-in">Connect With Us</h1>
+                            <p>Have questions or want to collaborate? We are always open to talk</p>
                         </div>
                     </div>
                 </div>
@@ -405,176 +414,88 @@
         <!-- Contact -->
         <section class="contact-area2">
             <div class="custom-container">
-                <div class="contact-inner">
-                    <div class="contact-map-wrap">
-                        <h4>Connect Us</h4>
-
-                        
-                        <div id="map">
-                            <div class="map-location-item">
-                                <div class="map-location-item-inner">
-                                    <img src="./assets/imgs/flag.png" alt="Flag" />
-                                    <div class="content">
-                                        <h3>New York, USA</h3>
-                                        <p>720/5, Starc Street,
-                                        North View, New York</p>
-                                    </div>
-                                </div>
-                                <span class="circle"></span>
-                            </div>
-                            <div class="map-location-item">
-                                <div class="map-location-item-inner">
-                                    <img src="./assets/imgs/flag.png" alt="Flag" />
-                                    <div class="content">
-                                        <h3>New York, USA</h3>
-                                        <p>720/5, Starc Street,
-                                        North View, New York</p>
-                                    </div>
-                                </div>
-                                <span class="circle"></span>
-                            </div>
-                            <div class="map-location-item">
-                                <div class="map-location-item-inner">
-                                    <img src="./assets/imgs/flag.png" alt="Flag" />
-                                    <div class="content">
-                                        <h3>New York, USA</h3>
-                                        <p>720/5, Starc Street,
-                                        North View, New York</p>
-                                    </div>
-                                </div>
-                                <span class="circle"></span>
-                            </div>
-                            <div class="map-location-item">
-                                <div class="map-location-item-inner">
-                                    <img src="./assets/imgs/flag.png" alt="Flag" />
-                                    <div class="content">
-                                        <h3>New York, USA</h3>
-                                        <p>720/5, Starc Street,
-                                        North View, New York</p>
-                                    </div>
-                                </div>
-                                <span class="circle"></span>
-                            </div>
-                            <div class="map-location-item">
-                                <div class="map-location-item-inner">
-                                    <img src="./assets/imgs/flag.png" alt="Flag" />
-                                    <div class="content">
-                                        <h3>New York, USA</h3>
-                                        <p>720/5, Starc Street,
-                                        North View, New York</p>
-                                    </div>
-                                </div>
-                                <span class="circle"></span>
-                            </div>
-                            <div class="map-location-item">
-                                <div class="map-location-item-inner">
-                                    <img src="./assets/imgs/flag.png" alt="Flag" />
-                                    <div class="content">
-                                        <h3>New York, USA</h3>
-                                        <p>720/5, Starc Street,
-                                        North View, New York</p>
-                                    </div>
-                                </div>
-                                <span class="circle"></span>
-                            </div>
-                            <img src="./assets/imgs/map.svg" alt="Map"/>
-                        </div>
-                    </div>
+                <div class="contact-inner" >
                     <div class="contact-inner-info-box d-flex align-items-center">
                         <div class="contact-info-box simple-shadow">
-                            <div class="icon"><i class="las la-headset"></i></div>
-                            <h4>Support</h4>
-                            <p>Contact our fast support team</p>
-                            <h6><a href="mailto:bluebsupport@mail.com">bluebsupport@mail.com</a></h6>
+                            <div class="icon"><i class="las la-comments"></i></div>
+                            <h4>General inquiries</h4>
+                            <p style="line-height: 30px;">Get answers to your questions about <br> PROTECT and our initiatives.</p>
+                            <h6><a href="mailto:#">Contact Us</a></h6>
                         </div>
                         <div class="contact-info-box simple-shadow">
-                            <div class="icon"><i class="las la-phone"></i></div>
-                            <h4>Phone</h4>
-                            <p>Mon-Fri from 9am to 6pm.</p>
-                            <h6><a href="tel:+1-938-740-7555">+1-938-740-7555</a></h6>
+                            <div class="icon"><i class="las la-handshake"></i></div>
+                            <h4>Partnership Opportunities</h4>
+                            <p style="line-height: 30px;">Explore how your organization <br> can collaborate with PROTECT.</p>
+                            <h6><a href="tel:+1-938-740-7555">Partner With Us</a></h6>
+                        </div>
+                        <div class="contact-info-box simple-shadow">
+                            <div class="icon"><i class="las la-calendar-alt"></i></div>
+                            <h4>Event Information</h4>
+                            <p style="line-height: 30px;">Learn more about upcoming workshops <br> and community events.</p>
+                            <h6><a href="tel:+1-938-740-7555">View Events</a></h6>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-
-        <!-- Location -->
-        <section class="contact-location-area">
-            <img class="animation-slide-left bg-shape" src="./assets/imgs/bg-shape-7.svg" alt="Shape"/>
+        <!-- Partners -->
+        <section class="partner-area">
             <div class="custom-container">
-                <div class="custom-row justify-content-between align-items-center">
-                    <div class="contact-location-left-content">
-                        <div class="contact-location-left-body">
-                            <h5 class="section-subtitle">Locations</h5>
-                            <h1 class="section-title">Visit our store all <br>
-                                around the <br>
-                                world</h1>
-                            <p>Our location is strategically situated at the heart of City, making it an ideal destination for businesses and visitors alike.</p>
-                        </div>
+                <div class="custom-row align-items-center">
+                    <div class="partner-left-content">
+                        <h5 class="section-subtitle">PARTNERS</h5>
+                        <h1 class="section-title">Trusted by our
+                            customers &
+                            partners</h1>
+                        <p>Our commitment to excellence extends beyond immediate team. We actively seek out partners who share our values,
+                                vision and dedication.</p>
                     </div>
-
                     <div class="right">
-                        <div class="contact-locations-list">
+                        <div class="partners-list-wrap">
+                            
+                            <div class="partners-list-inner">
+                                <div class="partner-box">
+                                    <img src="./assets/imgs/client-logo7.svg" alt="Client" />
+                                </div>
+                                <div class="partner-box">
+                                    <img src="./assets/imgs/client-logo8.svg" alt="Client" />
+                                </div>
+                                <div class="partner-box">
+                                    <img src="./assets/imgs/client-logo9.svg" alt="Client" />
+                                </div>
+                                <div class="partner-box">
+                                    <img src="./assets/imgs/client-logo10.svg" alt="Client" />
+                                </div>
+                            </div>
 
-                            <div class="contact-location-box">
-                                <div class="number">
-                                    #1
+                            <div class="partners-list-inner">
+                                <div class="partner-box">
+                                    <img src="./assets/imgs/client-logo11.svg" alt="Client" />
                                 </div>
-                                <div class="content">
-                                    <h3>New York, USA</h3>
-                                    <p>720/5, Starc Street,
-                                        North View, New York</p>
+                                <div class="partner-box">
+                                    <img src="./assets/imgs/client-logo2.svg" alt="Client" />
                                 </div>
-                            </div>
-                            <div class="contact-location-box">
-                                <div class="number">
-                                    #2
+                                <div class="partner-box">
+                                    <img src="./assets/imgs/client-logo12.svg" alt="Client" />
                                 </div>
-                                <div class="content">
-                                    <h3>Edinburgh, UK</h3>
-                                    <p>5/3, Hilton Clinch, NS
-                                        Bay Low, Aberdeen</p>
+                                <div class="partner-box">
+                                    <img src="./assets/imgs/client-logo13.svg" alt="Client" />
                                 </div>
                             </div>
-                            <div class="contact-location-box">
-                                <div class="number">
-                                    #3
+
+                            <div class="partners-list-inner">
+                                <div class="partner-box">
+                                    <img src="./assets/imgs/client-logo14.svg" alt="Client" />
                                 </div>
-                                <div class="content">
-                                    <h3>Cape Town, SA</h3>
-                                    <p>Marco Street, Seventh
-                                        Road, Cape Town</p>
+                                <div class="partner-box">
+                                    <img src="./assets/imgs/upwork.svg" alt="Client" />
                                 </div>
-                            </div>
-                            <div class="contact-location-box">
-                                <div class="number">
-                                    #4
+                                <div class="partner-box">
+                                    <img src="./assets/imgs/client-logo15.svg" alt="Client" />
                                 </div>
-                                <div class="content">
-                                    <h3>Madras, IND</h3>
-                                    <p>3/5, Geils Street
-                                        Mannady, Madras</p>
-                                </div>
-                            </div>
-                            <div class="contact-location-box">
-                                <div class="number">
-                                    #5
-                                </div>
-                                <div class="content">
-                                    <h3>Tokyo, JAP</h3>
-                                    <p>77, Xiong Street, Main
-                                        Town, Tokyo, Japan</p>
-                                </div>
-                            </div>
-                            <div class="contact-location-box">
-                                <div class="number">
-                                    #6
-                                </div>
-                                <div class="content">
-                                    <h3>Canberra, AUS</h3>
-                                    <p>458, Highland Street,
-                                        Sydney, Australia</p>
+                                <div class="partner-box">
+                                    <img src="./assets/imgs/client-logo16.svg" alt="Client" />
                                 </div>
                             </div>
 
@@ -584,143 +505,44 @@
             </div>
         </section>
 
-
-        <!-- Contact -->
-        <section class="contact-area">
+        <section class="client-area client-area-2">
             <div class="custom-container">
-                <div class="custom-row">
-                    <div class="contact-form-wrap">
-                        <div class="contact-form-body">
-                            <h5 class="section-subtitle">Contact</h5>
-                            <h1 class="section-title">Lets get in touch</h1>
-                            <p>You can reach us anytime via <a href="mailto:bluebase@mail.com">bluebase@mail.com</a></p>
-                            <form action="assets/mail/contact.php" method="POST" class="contact-form">
-                                <div class="input-row">
-                                    <div class="input-group">
-                                        <label for="first_name">First Name</label>
-                                        <input type="text" id="first_name" name="first_name" placeholder="First Name" />
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="last_name">Last Name</label>
-                                        <input type="text" id="last_name" name="last_name" placeholder="Last Name" />
-                                    </div>
-                                </div>
-                                <div class="input-row">
-                                    <div class="input-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" id="email" name="email" placeholder="Your Email" />
-                                    </div>
-                                </div>
-                                <div class="input-row">
-                                    <div class="input-group phone-number">
-                                        <select class="number-prefix">
-                                            <option value="uk">UK</option>
-                                            <option value="us">US</option>
-                                        </select>
-                                        <label for="phone_number">Phone Number</label>
-                                        <input type="text" id="phone_number" name="phone_number" placeholder="Your Number" />
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="country">Country</label>
-                                        <input type="text" id="homeland" name="country" placeholder="Your Country" />
-                                    </div>
-                                </div>
-                                <div class="input-row">
-                                    <div class="input-group">
-                                        <label for="message">Message</label>
-                                        <textarea name="message" id="message"
-                                            placeholder="Leave us a message...."></textarea>
-                                    </div>
-                                </div>
-                                <div class="input-row">
-                                    <div class="input-group input-checkbox">
-                                        <input type="checkbox" id="privacy_policy_accept" name="privacy_policy_accept">
-                                        <label for="privacy_policy_accept">You agree to our <a href="#">terms and conditions.</a></label>
-                                    </div>
-                                </div>
-
-                                <div class="input-row">
-                                    <div class="input-group">
-                                        <button id="submit" class="theme-btn">Get Started</button>
-                                    </div>
-                                </div>
-                                <!-- Alert Message -->
-                                <div class="input-row">
-                                    <div class="input-group alert-notification">
-                                        <div id="alert-message" class="alert-msg"></div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                <p>PROTECT has collaborated with 20+ organizations across the world</p>
+                <div class="clients clients-marquee d-flex align-items-center">
+                    <div class="client-logo simple-shadow">
+                        <img src="./assets/imgs/youtube-2.svg" alt="Client" />
                     </div>
-
-                    <div class="contact-experience">
-                        <ul>
-                            <li>
-                                <h1>22+ <span>Years</span></h1>
-                                <p>Field Experience </p>
-                            </li>
-                            <li>
-                                <h1>950+ <span>Projects</span></h1>
-                                <p>Done Around World </p>
-                            </li>
-                            <li>
-                                <h1>99%</h1>
-                                <p>Client Satisfaction</p>
-                            </li>
-                            <li>
-                                <h1>1995+ <span>Year</span></h1>
-                                <p>Established On</p>
-                            </li>
-                            <li>
-                                <h1>2 <span>Mins</span></h1>
-                                <p>Response Time</p>
-                            </li>
-                        </ul>
+                    <div class="client-logo simple-shadow">
+                        <img src="./assets/imgs/webflow-2.svg" alt="Client" />
                     </div>
-
-                    <div class="contact-infos">
-                        <div class="contact-infos-inner">
-                            <div class="contact-info">
-                                <img src="./assets/imgs/support-icon.svg" alt="Support" />
-                                <h3>Contact Info</h3>
-                                <p>
-                                    +1 455 1482 236 <br>
-                                    Bluebase@mail.com
-                                </p>
-                            </div>
-                            <div class="contact-office-info contact-info">
-                                <img src="./assets/imgs/map-icon.svg" alt="Map" />
-                                <h3>Visit our office</h3>
-                                <p>16/9, Down Street
-                                    Edinburgh, Scotland
-                                    United Kingdom</p>
-                            </div>
-
-                            <ul class="contact-social-links">
-                                <li>
-                                    <a href="#">
-                                        <i class="iconoir-dribbble"></i> Dribbble
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="iconoir-twitter"></i> Twitter
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="iconoir-instagram"></i> Instagram
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="iconoir-linkedin"></i> linkedin
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="client-logo simple-shadow">
+                        <img src="./assets/imgs/upwork.svg" alt="Client" />
                     </div>
+                    <div class="client-logo simple-shadow">
+                        <img src="./assets/imgs/shopify-2.svg" alt="Client" />
+                    </div>
+                    <div class="client-logo simple-shadow">
+                        <img src="./assets/imgs/netflix.svg" alt="Client" />
+                    </div>
+                    <div class="client-logo simple-shadow">
+                        <img src="./assets/imgs/zoom.svg" alt="Client" />
+                    </div>
+                    <div class="client-logo simple-shadow">
+                        <img src="./assets/imgs/forbes.svg" alt="Client" />
+                    </div>
+                    <div class="client-logo simple-shadow">
+                        <img src="./assets/imgs/shopify-2.svg" alt="Client" />
+                    </div>
+                    <div class="client-logo simple-shadow">
+                        <img src="./assets/imgs/netflix.svg" alt="Client" />
+                    </div>
+                    <div class="client-logo simple-shadow">
+                        <img src="./assets/imgs/zoom.svg" alt="Client" />
+                    </div>
+                    <div class="client-logo simple-shadow">
+                        <img src="./assets/imgs/forbes.svg" alt="Client" />
+                    </div>
+                    <div class="client-logo" style="min-width: 0;"></div>
                 </div>
             </div>
         </section>

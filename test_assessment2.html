@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Risk Assessment Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        /* Variables */
+        :root {
+            --dark1: #1A2238;
+            --dark2: #344163;
+            --light_white: #FCFCFC;
+            --primary_color: #0B5ED7;
+            --primary_hover: #094bb0;
+            --primary_color2: #4F8DFF;
+            --primary_light: #F0F5FF;
+            --primary_light2: rgba(11, 94, 215, 0.1);
+            --gray: #E9ECEF;
+            --font_main: 'Poppins', sans-serif;
+            --font_heading: 'Montserrat', sans-serif;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Reset Browsers */
+        *,*:before,*:after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul,ol {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none !important;
+        }
+        input:focus,
+        textarea:focus,
+        button:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* Template Default Styles */
+        body {
+            font-size: 16px;
+            font-family: var(--font_main);
+            line-height: 1.6;
+            font-weight: 400;
+            overflow-x: hidden;
+            background-color: #F5F7FA;
+            color: var(--dark1);
+        }
+        img {
+            max-width: 100%;
+        }
+
+        .custom-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .flex-1 {
+            flex: 1;
+        }
+        .w-full {
+            width: 100%;
+        }
+        .gap-24 {
+            gap: 24px;
+        }
+
+        /* Button Styles */
+        .theme-btn {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--light_white);
+            background: var(--primary_color);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 8px;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1;
+            overflow: hidden;
+            text-decoration: none !important;
+            gap: 10px;
+            border: none;
+            box-shadow: 0 4px 6px rgba(11, 94, 215, 0.2);
+        }
+        
+        .theme-btn:hover {
+            background: var(--primary_hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(11, 94, 215, 0.25);
+        }
+        
+        .theme-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .theme-btn2 {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--primary_color);
+            background: var(--primary_light);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 8px;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+            gap: 10px;
+            border: 1px solid transparent;
+            box-shadow: 0 4px 6px rgba(11, 94, 215, 0.1);
+        }
+        
+        .theme-btn2:hover {
+            border-color: var(--primary_color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(11, 94, 215, 0.15);
+        }
+
+        /* Card Styles */
+        .card {
+            box-shadow: var(--shadow);
+            border-radius: 16px;
+            background: #ffffff;
+            padding: 40px;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        
+        .card:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Landing Page Styles */
+        .landing-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 60px 40px;
+            text-align: center;
+            display: block;
+        }
+        
+        .landing-title {
+            font-family: var(--font_heading);
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--dark1);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .landing-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary_color);
+            border-radius: 2px;
+        }
+        
+        .landing-subtitle {
+            font-size: 20px;
+            color: var(--primary_color);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .landing-description {
+            color: var(--dark2);
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .features-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+        
+        .feature-item {
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+            padding: 30px 25px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .feature-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary_color);
+            z-index: 2;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-icon:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: var(--primary_light);
+            border-radius: 50%;
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark1);
+            font-family: var(--font_heading);
+        }
+        
+        .feature-description {
+            font-size: 14px;
+            color: var(--dark2);
+        }
+        
+        .start-button {
+            margin-top: 30px;
+            font-size: 18px;
+            padding: 15px 40px;
+            font-weight: 600;
+        }
+        
+        .stat-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            position: relative;
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary_color);
+            margin-bottom: 5px;
+            font-family: var(--font_heading);
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--dark2);
+            max-width: 150px;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: var(--gray);
+            width: 100%;
+            margin: 50px 0;
+        }
+
+        /* Assessment Tool Specific Styles */
+        .risk-assessment-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 50px;
+            display: none;
+            min-height: 650px;
+            position: relative;
+        }
+
+        .assessment-title {
+            font-family: var(--font_heading);
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark1);
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .assessment-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary_color);
+            border-radius: 2px;
+        }
+
+        .assessment-description {
+            color: var(--dark2);
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .question-container {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            height: auto;
+            padding: 50px;
+        }
+
+        .question-container.active {
+            position: relative;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .question-number {
+            color: var(--primary_color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .question-text {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            font-family: var(--font_heading);
+            color: var(--dark1);
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            cursor: pointer;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: #ffffff;
+            transition: var(--transition);
+            border: 2px solid var(--gray);
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+        }
+        
+        .option:before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            border-radius: 50%;
+            border: 2px solid var(--gray);
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .option:hover {
+            background-color: var(--primary_light);
+            border-color: var(--primary_color);
+        }
+        
+        .option:hover:before {
+            border-color: var(--primary_color);
+        }
+        
+        .option.selected {
+            background-color: var(--primary_light);
+            border-color: var(--primary_color);
+        }
+        
+        .option.selected:before {
+            border-color: var(--primary_color);
+            background-color: var(--primary_color);
+            box-shadow: inset 0 0 0 4px #fff;
+        }
+
+        .feedback-container {
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            display: none;
+            transition: var(--transition);
+            overflow: hidden;
+            max-height: 0;
+        }
+        
+        .feedback-container[style*="display: block"] {
+            max-height: 1000px;
+        }
+
+        .feedback-good {
+            background-color: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--success);
+        }
+
+        .feedback-bad {
+            background-color: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--danger);
+        }
+
+        .feedback-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-family: var(--font_heading);
+            font-size: 18px;
+        }
+
+        .feedback-advice {
+            margin-bottom: 15px;
+        }
+
+        .resource-cards {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .resource-card {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            background: white;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid var(--gray);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .card-title {
+            font-weight: 600;
+            color: var(--primary_color);
+            margin-bottom: 10px;
+            font-family: var(--font_heading);
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: var(--dark2);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .result-container {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .result-container[style*="display: block"] {
+            position: relative;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .result-title {
+            font-family: var(--font_heading);
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--dark1);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .result-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary_color);
+            border-radius: 2px;
+        }
+
+        .score-container {
+            background-color: #ffffff;
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 40px;
+            border: 5px solid var(--primary_color);
+            box-shadow: 0 10px 30px rgba(11, 94, 215, 0.2);
+            position: relative;
+        }
+        
+        .score-container:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            border: 2px dashed var(--primary_color);
+            opacity: 0.3;
+        }
+
+        .score {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary_color);
+            font-family: var(--font_heading);
+        }
+
+        .risk-level {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            font-family: var(--font_heading);
+        }
+
+        .risk-high {
+            color: var(--danger);
+        }
+
+        .risk-medium {
+            color: var(--warning);
+        }
+
+        .risk-low {
+            color: var(--success);
+        }
+
+        .result-description {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--dark2);
+        }
+
+        .summary-container {
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .summary-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            font-family: var(--font_heading);
+            color: var(--dark1);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .summary-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary_color);
+            border-radius: 2px;
+        }
+
+        .summary-item {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: left;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary_color);
+            transition: var(--transition);
+        }
+        
+        .summary-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .summary-question {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark1);
+            font-family: var(--font_heading);
+        }
+
+        .summary-choice {
+            margin-bottom: 10px;
+            color: var(--dark2);
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .summary-choice:before {
+            content: '•';
+            position: absolute;
+            left: 5px;
+            color: var(--primary_color);
+        }
+
+        .summary-advice {
+            font-style: italic;
+            color: var(--dark2);
+            background-color: var(--primary_light);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: var(--gray);
+            border-radius: 10px;
+            margin: 20px 0 40px;
+            overflow: hidden;
+            height: 8px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--primary_color);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .save-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .save-button svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* PDF Specific Styles */
+        .pdf-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            font-family: var(--font_main);
+        }
+        
+        .pdf-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .pdf-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary_color);
+            margin-bottom: 5px;
+        }
+        
+        .pdf-date {
+            font-size: 14px;
+            color: var(--dark2);
+        }
+        
+        .pdf-content {
+            margin-bottom: 30px;
+        }
+        
+        .pdf-footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--dark2);
+            margin-top: 50px;
+            border-top: 1px solid var(--gray);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .landing-container,
+            .risk-assessment-container,
+            .question-container,
+            .result-container {
+                padding: 30px 20px;
+            }
+            
+            .landing-title {
+                font-size: 32px;
+            }
+            
+            .features-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .feature-item {
+                max-width: 100%;
+            }
+            
+            .stat-container {
+                gap: 30px;
+            }
+            
+            .resource-cards {
+                flex-direction: column;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .button-container button {
+                width: 100%;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="custom-container">
+    <!-- Landing Container -->
+    <div class="card landing-container" id="landingContainer">
+        <h1 class="landing-title">Cyber Risk Assessment</h1>
+        <p class="landing-subtitle">Evaluate your cybersecurity posture in under 5 minutes</p>
+        <p class="landing-description">Cyber threats are evolving rapidly. This free assessment helps you identify vulnerabilities in your digital security practices and provides actionable recommendations to protect your data and systems.</p>
+        
+        <div class="stat-container">
+            <div class="stat-item">
+                <div class="stat-number">76%</div>
+                <div class="stat-label">of organizations experienced cyber attacks in 2024</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">$4.45M</div>
+                <div class="stat-label">average cost of a data breach</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">92%</div>
+                <div class="stat-label">of breaches involve human error</div>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <h3 class="feature-title" style="margin-bottom: 30px; text-align: center;">What You'll Get From This Assessment</h3>
+        
+        <div class="features-container">
+            <div class="feature-item">
+                <div class="feature-icon">🔍</div>
+                <h4 class="feature-title">Risk Score</h4>
+                <p class="feature-description">Receive a personalized risk score based on your current security practices</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📊</div>
+                <h4 class="feature-title">Vulnerability Analysis</h4>
+                <p class="feature-description">Identify specific areas where your digital security could be improved</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🛡️</div>
+                <h4 class="feature-title">Action Plan</h4>
+                <p class="feature-description">Get practical recommendations to enhance your cybersecurity posture</p>
+            </div>
+        </div>
+        
+        <button class="theme-btn start-button" id="startAssessment">Start Your Assessment</button>
+    </div>
+
+    <!-- Assessment Container -->
+    <div class="card risk-assessment-container" id="assessmentContainer">
+        <h1 class="assessment-title">Cyber Risk Assessment</h1>
+        <p class="assessment-description">Answer 5 questions about your cybersecurity practices to evaluate your risk level and receive personalized recommendations.</p>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <!-- Question 1 -->
+        <div class="question-container active" id="question1">
+            <p class="question-number">Question 1 of 5</p>
+            <h3 class="question-text">How often do you update your passwords?</h3>
+            <div class="options-container">
+                <div class="option" data-value="bad" data-points="0">
+                    I use the same passwords for everything and rarely change them
+                </div>
+                <div class="option" data-value="medium" data-points="1">
+                    I change them about once a year or when prompted
+                </div>
+                <div class="option" data-value="good" data-points="2">
+                    I regularly update passwords every 3-6 months and use different passwords for critical accounts
+                </div>
+            </div>
+            <div class="feedback-container" id="feedback1"></div>
+            <div class="button-container">
+                <button class="theme-btn next-button" disabled>Next Question</button>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-container" id="question2">
+            <p class="question-number">Question 2 of 5</p>
+            <h3 class="question-text">How do you handle suspicious emails?</h3>
+            <div class="options-container">
+                <div class="option" data-value="bad" data-points="0">
+                    I usually click on links to see what they are and download attachments if they seem important
+                </div>
+                <div class="option" data-value="medium" data-points="1">
+                    I delete them but sometimes check links if the email looks legitimate
+                </div>
+                <div class="option" data-value="good" data-points="2">
+                    I never click on suspicious links, verify sender emails, and report phishing attempts
+                </div>
+            </div>
+            <div class="feedback-container" id="feedback2"></div>
+            <div class="button-container">
+                <button class="theme-btn2 prev-button">Previous</button>
+                <button class="theme-btn next-button" disabled>Next Question</button>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-container" id="question3">
+            <p class="question-number">Question 3 of 5</p>
+            <h3 class="question-text">What is your approach to software and system updates?</h3>
+            <div class="options-container">
+                <div class="option" data-value="bad" data-points="0">
+                    I usually postpone or ignore updates because they're inconvenient
+                </div>
+                <div class="option" data-value="medium" data-points="1">
+                    I install updates eventually, but often delay them for days or weeks
+                </div>
+                <div class="option" data-value="good" data-points="2">
+                    I enable automatic updates when possible and install security patches promptly
+                </div>
+            </div>
+            <div class="feedback-container" id="feedback3"></div>
+            <div class="button-container">
+                <button class="theme-btn2 prev-button">Previous</button>
+                <button class="theme-btn next-button" disabled>Next Question</button>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-container" id="question4">
+            <p class="question-number">Question 4 of 5</p>
+            <h3 class="question-text">How do you protect your accounts online?</h3>
+            <div class="options-container">
+                <div class="option" data-value="bad" data-points="0">
+                    I only use passwords to secure my accounts
+                </div>
+                <div class="option" data-value="medium" data-points="1">
+                    I use strong passwords but only enable two-factor authentication on financial accounts
+                </div>
+                <div class="option" data-value="good" data-points="2">
+                    I use a password manager, strong unique passwords, and two-factor authentication wherever available
+                </div>
+            </div>
+            <div class="feedback-container" id="feedback4"></div>
+            <div class="button-container">
+                <button class="theme-btn2 prev-button">Previous</button>
+                <button class="theme-btn next-button" disabled>Next Question</button>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question-container" id="question5">
+            <p class="question-number">Question 5 of 5</p>
+            <h3 class="question-text">What is your approach to public Wi-Fi networks?</h3>
+            <div class="options-container">
+                <div class="option" data-value="bad" data-points="0">
+                    I connect to any available public Wi-Fi and use it for all online activities including banking
+                </div>
+                </div>
+                <div class="option" data-value="medium" data-points="1">
+                    I connect to public Wi-Fi when needed but avoid sensitive transactions
+                </div>
+                <div class="option" data-value="good" data-points="2">
+                    I use a VPN when connecting to public Wi-Fi or avoid public networks for sensitive activities
+                </div>
+            </div>
+            <div class="feedback-container" id="feedback5"></div>
+            <div class="button-container">
+                <button class="theme-btn2 prev-button">Previous</button>
+                <button class="theme-btn next-button" disabled>Submit Assessment</button>
+            </div>
+        </div>
+
+        <!-- Results Container -->
+        <div class="result-container" id="resultContainer">
+            <h2 class="result-title">Your Cyber Risk Assessment Results</h2>
+            
+            <div class="score-container">
+                <div class="score" id="finalScore">0</div>
+            </div>
+            
+            <h3 class="risk-level" id="riskLevel">Risk Level: Medium</h3>
+            
+            <p class="result-description" id="resultDescription">
+                Based on your responses, your cyber security posture shows some strengths but also has areas that need improvement. The recommendations below will help you strengthen your digital security.
+            </p>
+            
+            <div class="summary-container">
+                <h3 class="summary-title">Your Response Summary</h3>
+                <div id="summaryItems"></div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="theme-btn save-button" id="savePDF">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Save as PDF
+                </button>
+                <button class="theme-btn2" id="restartAssessment">Retake Assessment</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    // DOM Elements
+    document.addEventListener('DOMContentLoaded', function() {
+    // Original script initialization
+    const landingContainer = document.getElementById('landingContainer');
+    const assessmentContainer = document.getElementById('assessmentContainer');
+    const startButton = document.getElementById('startAssessment');
+    const progressBar = document.getElementById('progressBar');
+    const resultContainer = document.getElementById('resultContainer');
+    const finalScoreElement = document.getElementById('finalScore');
+    const riskLevelElement = document.getElementById('riskLevel');
+    const resultDescriptionElement = document.getElementById('resultDescription');
+    const summaryItemsContainer = document.getElementById('summaryItems');
+    const savePDFButton = document.getElementById('savePDF');
+    const restartButton = document.getElementById('restartAssessment');
+
+    // Question containers
+    const questionContainers = document.querySelectorAll('.question-container');
+    
+    // State variables
+    let currentQuestion = 1;
+    let totalQuestions = questionContainers.length;
+    let userResponses = [];
+    let totalScore = 0;
+
+    // Feedback content
+    const feedbackContent = {
+        question1: {
+            good: {
+                title: "Excellent password practice!",
+                advice: "Regular password updates significantly reduce your risk of unauthorized access. Consider using a password manager to generate and store complex passwords securely.",
+                resources: [
+                    {
+                        title: "Password Manager Guide",
+                        description: "Learn how to use password managers effectively"
+                    },
+                    {
+                        title: "Creating Strong Passwords",
+                        description: "Best practices for creating secure passwords"
+                    }
+                ]
+            },
+            medium: {
+                title: "Room for improvement",
+                advice: "Annual password changes are better than nothing, but increasing frequency and using unique passwords for each account would greatly enhance your security.",
+                resources: [
+                    {
+                        title: "Password Security Tips",
+                        description: "Simple ways to improve your password security"
+                    }
+                ]
+            },
+            bad: {
+                title: "High risk practice",
+                advice: "Using the same password across accounts creates significant vulnerability. If one account is compromised, all others become vulnerable.",
+                resources: [
+                    {
+                        title: "Password Security Basics",
+                        description: "Essential steps to protect your accounts"
+                    },
+                    {
+                        title: "Password Manager Comparison",
+                        description: "Find the right password manager for your needs"
+                    }
+                ]
+            }
+        },
+        question2: {
+            good: {
+                title: "Excellent email security awareness!",
+                advice: "Your cautious approach to suspicious emails significantly reduces your risk of phishing attacks and malware infections.",
+                resources: [
+                    {
+                        title: "Advanced Phishing Detection",
+                        description: "Learn to identify sophisticated phishing attempts"
+                    }
+                ]
+            },
+            medium: {
+                title: "Moderate risk level",
+                advice: "Clicking on links even occasionally can expose you to phishing attacks. Always verify the sender through other means before engaging with unexpected emails.",
+                resources: [
+                    {
+                        title: "Email Safety Guide",
+                        description: "How to safely handle suspicious emails"
+                    }
+                ]
+            },
+            bad: {
+                title: "High risk behavior",
+                advice: "Clicking on unknown links is one of the most common ways malware is installed and accounts are compromised. This practice significantly increases your cyber risk.",
+                resources: [
+                    {
+                        title: "Phishing 101",
+                        description: "Learn to identify and avoid phishing attempts"
+                    },
+                    {
+                        title: "Safe Email Practices",
+                        description: "Essential guidelines for email security"
+                    }
+                ]
+            }
+        },
+        question3: {
+            good: {
+                title: "Excellent update practices!",
+                advice: "Keeping your software updated promptly is one of the most effective security measures you can take.",
+                resources: [
+                    {
+                        title: "Update Automation Guide",
+                        description: "How to automate updates across all your devices"
+                    }
+                ]
+            },
+            medium: {
+                title: "Moderate risk level",
+                advice: "Delaying updates leaves you temporarily vulnerable to known security issues that have already been patched.",
+                resources: [
+                    {
+                        title: "Update Scheduling Tips",
+                        description: "How to manage updates with minimal disruption"
+                    }
+                ]
+            },
+            bad: {
+                title: "High risk practice",
+                advice: "Ignoring updates leaves your devices vulnerable to known security vulnerabilities that hackers actively exploit.",
+                resources: [
+                    {
+                        title: "Understanding Security Patches",
+                        description: "Why updates are crucial for security"
+                    },
+                    {
+                        title: "Update Management Guide",
+                        description: "Making updates less disruptive to your workflow"
+                    }
+                ]
+            }
+        },
+        question4: {
+            good: {
+                title: "Excellent account security!",
+                advice: "Using a password manager and two-factor authentication provides strong protection against unauthorized access.",
+                resources: [
+                    {
+                        title: "Advanced 2FA Methods",
+                        description: "Going beyond SMS-based two-factor authentication"
+                    }
+                ]
+            },
+            medium: {
+                title: "Moderate protection",
+                advice: "Consider extending two-factor authentication to all important accounts, not just financial ones.",
+                resources: [
+                    {
+                        title: "2FA Implementation Guide",
+                        description: "How to set up two-factor authentication everywhere"
+                    }
+                ]
+            },
+            bad: {
+                title: "Minimal protection",
+                advice: "Passwords alone, especially if reused, provide inadequate protection in today's threat landscape.",
+                resources: [
+                    {
+                        title: "Account Security Basics",
+                        description: "Essential steps to protect your online accounts"
+                    },
+                    {
+                        title: "Two-Factor Authentication Guide",
+                        description: "How to implement 2FA on your accounts"
+                    }
+                ]
+            }
+        },
+        question5: {
+            good: {
+                title: "Excellent Wi-Fi security!",
+                advice: "Using a VPN on public Wi-Fi networks effectively protects your data from interception.",
+                resources: [
+                    {
+                        title: "VPN Comparison Guide",
+                        description: "Finding the right VPN service for your needs"
+                    }
+                ]
+            },
+            medium: {
+                title: "Moderate protection",
+                advice: "While avoiding sensitive transactions on public Wi-Fi is good practice, consider using a VPN for all public Wi-Fi connections.",
+                resources: [
+                    {
+                        title: "VPN Basics",
+                        description: "Introduction to virtual private networks"
+                    }
+                ]
+            },
+            bad: {
+                title: "High risk behavior",
+                advice: "Using public Wi-Fi for sensitive activities creates significant exposure to potential data interception.",
+                resources: [
+                    {
+                        title: "Public Wi-Fi Dangers",
+                        description: "Understanding the risks of unsecured networks"
+                    },
+                    {
+                        title: "Mobile Hotspot Guide",
+                        description: "Safer alternatives to public Wi-Fi"
+                    }
+                ]
+            }
+        }
+    };
+
+    // Risk level descriptions
+    const riskDescriptions = {
+        high: "Your digital security practices have significant vulnerabilities that could be exploited by cyber attacks. Implementing the recommendations below should be a priority to protect your data and accounts.",
+        medium: "Your cyber security posture shows some strengths but also has areas that need improvement. The recommendations below will help you strengthen your digital security.",
+        low: "Your digital security practices show good awareness of cyber risks. Review the recommendations below to further enhance your protection."
+    };
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    
+    // Event Listeners
+    startButton.addEventListener('click', startAssessment);
+    savePDFButton.addEventListener('click', generatePDF);
+    restartButton.addEventListener('click', restartAssessment);
+
+    // Setup each question's event handlers with improved handling for question 5
+    // Keep your original event listeners for options and basic functionality
+questionContainers.forEach((container, index) => {
+    const questionNum = index + 1;
+    const options = container.querySelectorAll('.option');
+    const nextButton = container.querySelector('.next-button');
+    const prevButton = container.querySelector('.prev-button');
+    
+    // Option selection
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+            // Remove selected class from all options
+            options.forEach(opt => opt.classList.remove('selected'));
+            // Add selected class to clicked option
+            option.classList.add('selected');
+            // Enable next button
+            if (nextButton) {
+                nextButton.removeAttribute('disabled');
+            }
+            
+            // Show feedback for the selected option
+            showFeedback(questionNum, option.dataset.value);
+        });
+    });
+    
+    // Next button - Fixed for question 5
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            console.log(`Next button clicked for question ${questionNum}`); // Debug
+            
+            // Save response
+            const selectedOption = container.querySelector('.option.selected');
+            if (selectedOption) {
+                userResponses[questionNum - 1] = {
+                    question: container.querySelector('.question-text').textContent,
+                    answer: selectedOption.textContent.trim(),
+                    value: selectedOption.dataset.value,
+                    points: parseInt(selectedOption.dataset.points),
+                    advice: feedbackContent[`question${questionNum}`][selectedOption.dataset.value].advice
+                };
+                
+                // Update total score
+                calculateScore();
+                
+                // Explicitly check if last question and handle accordingly
+                if (questionNum === totalQuestions) {
+                    console.log("Last question - showing results"); // Debug
+                    showResults();
+                } else {
+                    // Otherwise, show next question
+                    goToQuestion(questionNum + 1);
+                }
+            }
+        });
+    }
+    
+    // Previous button - Fixed for all questions
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            console.log(`Previous button clicked for question ${questionNum}`); // Debug
+            if (questionNum > 1) {
+                goToQuestion(questionNum - 1);
+            } else {
+                // Disable previous button on first question
+                prevButton.setAttribute('disabled', true);
+            }
+        });
+    }
+});
+
+// Add this code to fix the submit button on the last question
+const lastQuestionContainer = document.getElementById(`question${totalQuestions}`);
+if (lastQuestionContainer) {
+    const nextButton = lastQuestionContainer.querySelector('.next-button');
+    
+    if (nextButton) {
+        // Make it visually distinct as a submit button
+        nextButton.textContent = "Submit";
+        nextButton.classList.add('submit-button');
+        
+        // Clear existing click handlers and add the correct one
+        nextButton.replaceWith(nextButton.cloneNode(true));
+        
+        // Get the fresh button reference
+        const submitButton = lastQuestionContainer.querySelector('.next-button');
+        
+        // Add the correct event listener for the submit button
+        submitButton.addEventListener('click', () => {
+            console.log(`Submit button clicked for last question`);
+            
+            // Save response for the last question
+            const selectedOption = lastQuestionContainer.querySelector('.option.selected');
+            if (selectedOption) {
+                userResponses[totalQuestions - 1] = {
+                    question: lastQuestionContainer.querySelector('.question-text').textContent,
+                    answer: selectedOption.textContent.trim(),
+                    value: selectedOption.dataset.value,
+                    points: parseInt(selectedOption.dataset.points),
+                    advice: feedbackContent[`question${totalQuestions}`][selectedOption.dataset.value].advice
+                };
+                
+                // Update total score
+                calculateScore();
+                
+                // Show results
+                showResults();
+            }
+        });
+    }
+}
+    // Functions
+    function startAssessment() {
+        landingContainer.style.display = 'none';
+        assessmentContainer.style.display = 'block';
+        // Reset state
+        currentQuestion = 1;
+        userResponses = [];
+        totalScore = 0;
+        goToQuestion(1);
+    }
+    
+    function restartAssessment() {
+        resultContainer.style.display = 'none';
+        // Reset state
+        currentQuestion = 1;
+        userResponses = [];
+        totalScore = 0;
+        
+        // Reset all selected options
+        document.querySelectorAll('.option').forEach(option => {
+            option.classList.remove('selected');
+        });
+        
+        // Reset all next buttons
+        document.querySelectorAll('.next-button').forEach(button => {
+            button.setAttribute('disabled', true);
+        });
+        
+        // Hide all feedback containers
+        document.querySelectorAll('.feedback-container').forEach(container => {
+            container.style.display = 'none';
+        });
+        
+        goToQuestion(1);
+    }
+    
+    function goToQuestion(questionNum) {
+        console.log(`Going to question ${questionNum}`); // Debug
+        
+        // Hide all questions
+        questionContainers.forEach(container => {
+            container.classList.remove('active');
+        });
+        
+        // Show selected question
+        document.getElementById(`question${questionNum}`).classList.add('active');
+        currentQuestion = questionNum;
+        
+        // Update progress bar
+        updateProgressBar();
+    }
+    
+    function updateProgressBar() {
+        const progress = ((currentQuestion - 1) / totalQuestions) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+    
+    function showFeedback(questionNum, value) {
+        const feedbackContainer = document.getElementById(`feedback${questionNum}`);
+        const feedback = feedbackContent[`question${questionNum}`][value];
+        
+        // Build feedback HTML
+        let feedbackHTML = `
+            <h4 class="feedback-title">${feedback.title}</h4>
+            <p class="feedback-advice">${feedback.advice}</p>
+        `;
+        
+        if (feedback.resources && feedback.resources.length > 0) {
+            feedbackHTML += `<div class="resource-cards">`;
+            
+            feedback.resources.forEach(resource => {
+                feedbackHTML += `
+                    <div class="resource-card">
+                        <h5 class="card-title">${resource.title}</h5>
+                        <p class="card-description">${resource.description}</p>
+                    </div>
+                `;
+            });
+            
+            feedbackHTML += `</div>`;
+        }
+        
+        // Set feedback HTML and show container
+        feedbackContainer.innerHTML = feedbackHTML;
+        feedbackContainer.className = 'feedback-container';
+        feedbackContainer.classList.add(`feedback-${value}`);
+        feedbackContainer.style.display = 'block';
+    }
+    
+    function calculateScore() {
+        totalScore = userResponses.reduce((total, response) => {
+            return total + (response ? response.points : 0);
+        }, 0);
+    }
+
+    // Functions remain the same as before, except for showResults which is fixed
+    function showResults() {
+        console.log("Showing results"); // Debug
+
+        // Hide all questions
+        questionContainers.forEach(container => {
+            container.classList.remove('active');
+        });
+        
+        // Calculate final score as percentage
+        const maxPossibleScore = totalQuestions * 2; // 2 points max per question
+        const scorePercentage = Math.round((totalScore / maxPossibleScore) * 100);
+        
+        // Determine risk level
+        let riskLevel;
+        if (scorePercentage >= 80) {
+            riskLevel = "Low";
+            riskLevelElement.className = "risk-level risk-low";
+            resultDescriptionElement.textContent = riskDescriptions.low;
+        } else if (scorePercentage >= 50) {
+            riskLevel = "Medium";
+            riskLevelElement.className = "risk-level risk-medium";
+            resultDescriptionElement.textContent = riskDescriptions.medium;
+        } else {
+            riskLevel = "High";
+            riskLevelElement.className = "risk-level risk-high";
+            resultDescriptionElement.textContent = riskDescriptions.high;
+        }
+        
+        // Update result elements
+        finalScoreElement.textContent = scorePercentage;
+        riskLevelElement.textContent = `Risk Level: ${riskLevel}`;
+        
+        // Generate summary items
+        generateSummary();
+        
+        // Show result container - fixed to ensure it's displayed
+        resultContainer.style.display = 'block';
+        progressBar.style.width = '100%'; // Complete the progress bar
+    }
+    
+    function generateSummary() {
+        let summaryHTML = '';
+        
+        userResponses.forEach((response, index) => {
+            let valueClass;
+            switch(response.value) {
+                case 'good':
+                    valueClass = 'risk-low';
+                    break;
+                case 'medium':
+                    valueClass = 'risk-medium';
+                    break;
+                case 'bad':
+                    valueClass = 'risk-high';
+                    break;
+            }
+            
+            summaryHTML += `
+                <div class="summary-item">
+                    <h4 class="summary-question">${response.question}</h4>
+                    <p class="summary-choice ${valueClass}">${response.answer}</p>
+                    <p class="summary-advice">${response.advice}</p>
+                </div>
+            `;
+        });
+        
+        summaryItemsContainer.innerHTML = summaryHTML;
+    }
+    
+    function calculateScore() {
+        totalScore = userResponses.reduce((total, response) => {
+            return total + (response ? response.points : 0);
+        }, 0);
+    }
+    
+    function generateSummary() {
+        let summaryHTML = '';
+        
+        userResponses.forEach((response, index) => {
+            let valueClass;
+            switch(response.value) {
+                case 'good':
+                    valueClass = 'risk-low';
+                    break;
+                case 'medium':
+                    valueClass = 'risk-medium';
+                    break;
+                case 'bad':
+                    valueClass = 'risk-high';
+                    break;
+            }
+            
+            summaryHTML += `
+                <div class="summary-item">
+                    <h4 class="summary-question">${response.question}</h4>
+                    <p class="summary-choice ${valueClass}">${response.answer}</p>
+                    <p class="summary-advice">${response.advice}</p>
+                </div>
+            `;
+        });
+        
+        summaryItemsContainer.innerHTML = summaryHTML;
+    }
+    
+    function generatePDF() {
+        // Create temporary element for PDF content
+        const pdfContent = document.createElement('div');
+        pdfContent.className = 'pdf-container';
+        
+        // Add header
+        const header = document.createElement('div');
+        header.className = 'pdf-header';
+        
+        header.innerHTML = `
+            <div class="pdf-logo">Cyber Risk Assessment Report</div>
+            <div class="pdf-date">Generated on ${new Date().toLocaleDateString()}</div>
+        `;
+        
+        pdfContent.appendChild(header);
+        
+        // Add score and risk level
+        const scoreSection = document.createElement('div');
+        scoreSection.className = 'pdf-content';
+        
+        // Get risk level text
+        const riskLevelText = riskLevelElement.textContent;
+        const riskClass = riskLevelElement.className.split(' ')[1]; // Get risk-low, risk-medium, or risk-high
+        
+        scoreSection.innerHTML = `
+            <h2>Assessment Results</h2>
+            <p><strong>Score:</strong> ${finalScoreElement.textContent}%</p>
+            <p><strong>${riskLevelText}</strong></p>
+            <p>${resultDescriptionElement.textContent}</p>
+        `;
+        
+        pdfContent.appendChild(scoreSection);
+        
+        // Add recommendations
+        const recommendationsSection = document.createElement('div');
+        recommendationsSection.className = 'pdf-content';
+        
+        recommendationsSection.innerHTML = `
+            <h2>Security Recommendations</h2>
+        `;
+        
+        // Add each response and recommendation
+        userResponses.forEach((response, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.style.marginBottom = '20px';
+            
+            itemDiv.innerHTML = `
+                <h3>${index + 1}. ${response.question}</h3>
+                <p><strong>Your response:</strong> ${response.answer}</p>
+                <p><strong>Recommendation:</strong> ${response.advice}</p>
+            `;
+            
+            recommendationsSection.appendChild(itemDiv);
+        });
+        
+        pdfContent.appendChild(recommendationsSection);
+        
+        // Add footer
+        const footer = document.createElement('div');
+        footer.className = 'pdf-footer';
+        footer.innerHTML = `
+            <p>This assessment is provided for informational purposes only.</p>
+            <p>For professional cybersecurity consultation, please consult with a certified expert.</p>
+        `;
+        
+        pdfContent.appendChild(footer);
+        
+        // Generate PDF
+        const opt = {
+            margin: 10,
+            filename: 'cyber_risk_assessment.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+        
+        // Generate PDF
+        html2pdf().set(opt).from(pdfContent).save();
+    }
+
+    
+    // Initialize function to set up event listeners after PDF generation
+    function initialize() {
+        // Re-get DOM elements
+        const landingContainer = document.getElementById('landingContainer');
+        const assessmentContainer = document.getElementById('assessmentContainer');
+        const startButton = document.getElementById('startAssessment');
+        const resultContainer = document.getElementById('resultContainer');
+        const savePDFButton = document.getElementById('savePDF');
+        const restartButton = document.getElementById('restartAssessment');
+        const questionContainers = document.querySelectorAll('.question-container');
+        
+        // Re-attach event listeners
+        startButton.addEventListener('click', startAssessment);
+        savePDFButton.addEventListener('click', generatePDF);
+        restartButton.addEventListener('click', restartAssessment);
+        
+        // Setup each question's event handlers again
+        questionContainers.forEach((container, index) => {
+            const questionNum = index + 1;
+            const options = container.querySelectorAll('.option');
+            const nextButton = container.querySelector('.next-button');
+            const prevButton = container.querySelector('.prev-button');
+            
+            // Option selection
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    // Remove selected class from all options
+                    options.forEach(opt => opt.classList.remove('selected'));
+                    // Add selected class to clicked option
+                    option.classList.add('selected');
+                    // Enable next button
+                    nextButton.removeAttribute('disabled');
+                    
+                    // Show feedback for the selected option
+                    showFeedback(questionNum, option.dataset.value);
+                });
+            });
+            
+            // Next button
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    // Save response
+                    const selectedOption = container.querySelector('.option.selected');
+                    if (selectedOption) {
+                        userResponses[questionNum - 1] = {
+                            question: container.querySelector('.question-text').textContent,
+                            answer: selectedOption.textContent.trim(),
+                            value: selectedOption.dataset.value,
+                            points: parseInt(selectedOption.dataset.points),
+                            advice: feedbackContent[`question${questionNum}`][selectedOption.dataset.value].advice
+                        };
+                        
+                        // Update total score
+                        calculateScore();
+                    }
+                    
+                    // If last question, show results
+                    if (questionNum === totalQuestions) {
+                        showResults();
+                    } else {
+                        // Otherwise, show next question
+                        goToQuestion(questionNum + 1);
+                    }
+                });
+            }
+            
+            // Previous button
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    goToQuestion(questionNum - 1);
+                });
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>
