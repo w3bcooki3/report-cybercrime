@@ -18,40 +18,8 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Reset Browsers */
-*,*:before,*:after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-ul,ol {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-a {
-    text-decoration: none !important;
-}
-input:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-    box-shadow: none;
-}
 
-/* Template Default Styles */
-body {
-    font-size: 16px;
-    font-family: var(--font_main);
-    line-height: 1.6;
-    font-weight: 400;
-    overflow-x: hidden;
-    background-color: #F5F7FA;
-    color: var(--dark1);
-}
-img {
-    max-width: 100%;
-}
+
 
 .custom-container-risk {
     max-width: 1200px;
@@ -68,33 +36,6 @@ img {
     gap: 24px;
 }
 
-/* Button Styles */
-.theme-btn {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--light_white);
-    background: var(--primary_color);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 28px;
-    border-radius: 8px;
-    position: relative;
-    cursor: pointer;
-    transition: var(--transition);
-    z-index: 1;
-    overflow: hidden;
-    text-decoration: none !important;
-    gap: 10px;
-    border: none;
-    box-shadow: 0 4px 6px rgba(11, 94, 215, 0.2);
-}
-
-.theme-btn:hover {
-    background: var(--primary_hover);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(11, 94, 215, 0.25);
-}
 
 .theme-btn:disabled {
     opacity: 0.7;
@@ -103,30 +44,9 @@ img {
     box-shadow: none;
 }
 
-.theme-btn2 {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--primary_color);
-    background: var(--primary_light);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 28px;
-    border-radius: 8px;
-    position: relative;
-    cursor: pointer;
-    transition: var(--transition);
-    gap: 10px;
-    border: 1px solid transparent;
-    box-shadow: 0 4px 6px rgba(11, 94, 215, 0.1);
+.theme-btn, .theme-btn2{
+    border: none;
 }
-
-.theme-btn2:hover {
-    border-color: var(--primary_color);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(11, 94, 215, 0.15);
-}
-
 /* Card Styles */
 .card {
     box-shadow: var(--shadow);
@@ -144,7 +64,7 @@ img {
 
 /* Landing Page Styles */
 .landing-container {
-    max-width: 900px;
+    max-width: 100%;
     margin: 40px auto;
     padding: 60px 40px;
     text-align: center;
@@ -196,6 +116,21 @@ img {
     flex-wrap: wrap;
 }
 
+.landing-title:after,
+.assessment-title:after,
+.summary-title:after,
+.result-title:after {
+    transition: width 0.3s ease; /* Add this for smooth width changes */
+    width: 0; /* Start with 0 width */
+}
+
+.landing-title:hover:after,
+.assessment-title:hover:after,
+.summary-title:hover:after,
+.result-title:hover:after {
+    width: 80px; /* Or whatever your final width is */
+}
+
 .feature-item {
     flex: 1;
     min-width: 200px;
@@ -209,6 +144,7 @@ img {
     position: relative;
     z-index: 1;
     overflow: hidden;
+    transform: translateY(0);
 }
 
 .feature-item:before {
@@ -303,7 +239,7 @@ img {
 
 /* Assessment Tool Specific Styles */
 .risk-assessment-container {
-    max-width: 900px;
+    max-width: 100%;
     margin: 40px auto;
     padding: 50px;
     display: none;

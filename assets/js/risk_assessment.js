@@ -1,6 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////////
-    // DOM Elements
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     // Original script initialization
     const landingContainer = document.getElementById('landingContainer');
     const assessmentContainer = document.getElementById('assessmentContainer');
@@ -13,7 +11,7 @@
     const summaryItemsContainer = document.getElementById('summaryItems');
     const savePDFButton = document.getElementById('savePDF');
     const restartButton = document.getElementById('restartAssessment');
-
+    
     // Question containers
     const questionContainers = document.querySelectorAll('.question-container');
     
@@ -22,9 +20,10 @@
     let totalQuestions = questionContainers.length;
     let userResponses = [];
     let totalScore = 0;
-
+    
     // Feedback content
     const feedbackContent = {
+        // Feedback content remains the same
         question1: {
             good: {
                 title: "Excellent password practice!",
@@ -217,126 +216,86 @@
         medium: "Your cyber security posture shows some strengths but also has areas that need improvement. The recommendations below will help you strengthen your digital security.",
         low: "Your digital security practices show good awareness of cyber risks. Review the recommendations below to further enhance your protection."
     };
-
-
-
-    ////////////////////////////////////////////////////////////////////////////////////
     
     // Event Listeners
     startButton.addEventListener('click', startAssessment);
     savePDFButton.addEventListener('click', generatePDF);
     restartButton.addEventListener('click', restartAssessment);
 
-    // Setup each question's event handlers with improved handling for question 5
-    // Keep your original event listeners for options and basic functionality
-questionContainers.forEach((container, index) => {
-    const questionNum = index + 1;
-    const options = container.querySelectorAll('.option');
-    const nextButton = container.querySelector('.next-button');
-    const prevButton = container.querySelector('.prev-button');
-    
-    // Option selection
-    options.forEach(option => {
-        option.addEventListener('click', () => {
-            // Remove selected class from all options
-            options.forEach(opt => opt.classList.remove('selected'));
-            // Add selected class to clicked option
-            option.classList.add('selected');
-            // Enable next button
-            if (nextButton) {
-                nextButton.removeAttribute('disabled');
-            }
-            
-            // Show feedback for the selected option
-            showFeedback(questionNum, option.dataset.value);
+    // Setup each question's event handlers
+    questionContainers.forEach((container, index) => {
+        const questionNum = index + 1;
+        const options = container.querySelectorAll('.option');
+        
+        // Option selection
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove selected class from all options
+                options.forEach(opt => opt.classList.remove('selected'));
+                // Add selected class to clicked option
+                option.classList.add('selected');
+                
+                // Enable next/submit button
+                const actionButton = container.querySelector('.next-button');
+                if (actionButton) {
+                    actionButton.removeAttribute('disabled');
+                }
+                
+                // Show feedback for the selected option
+                showFeedback(questionNum, option.dataset.value);
+            });
         });
     });
     
-    // Next button - Fixed for question 5
-    if (nextButton) {
-        nextButton.addEventListener('click', () => {
-            console.log(`Next button clicked for question ${questionNum}`); // Debug
-            
-            // Save response
-            const selectedOption = container.querySelector('.option.selected');
-            if (selectedOption) {
-                userResponses[questionNum - 1] = {
-                    question: container.querySelector('.question-text').textContent,
-                    answer: selectedOption.textContent.trim(),
-                    value: selectedOption.dataset.value,
-                    points: parseInt(selectedOption.dataset.points),
-                    advice: feedbackContent[`question${questionNum}`][selectedOption.dataset.value].advice
-                };
-                
-                // Update total score
-                calculateScore();
-                
-                // Explicitly check if last question and handle accordingly
-                if (questionNum === totalQuestions) {
-                    console.log("Last question - showing results"); // Debug
-                    showResults();
-                } else {
-                    // Otherwise, show next question
-                    goToQuestion(questionNum + 1);
+    // Set up navigation buttons (previous and next/submit)
+    questionContainers.forEach((container, index) => {
+        const questionNum = index + 1;
+        const prevButton = container.querySelector('.prev-button');
+        const nextButton = container.querySelector('.next-button');
+        
+        // Previous button
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                if (questionNum > 1) {
+                    goToQuestion(questionNum - 1);
                 }
+            });
+        }
+        
+        // Next/Submit button
+        if (nextButton) {
+            // Change text for last question
+            if (questionNum === totalQuestions) {
+                nextButton.textContent = "Submit Assessment";
             }
-        });
-    }
-    
-    // Previous button - Fixed for all questions
-    if (prevButton) {
-        prevButton.addEventListener('click', () => {
-            console.log(`Previous button clicked for question ${questionNum}`); // Debug
-            if (questionNum > 1) {
-                goToQuestion(questionNum - 1);
-            } else {
-                // Disable previous button on first question
-                prevButton.setAttribute('disabled', true);
-            }
-        });
-    }
-});
-
-// Add this code to fix the submit button on the last question
-const lastQuestionContainer = document.getElementById(`question${totalQuestions}`);
-if (lastQuestionContainer) {
-    const nextButton = lastQuestionContainer.querySelector('.next-button');
-    
-    if (nextButton) {
-        // Make it visually distinct as a submit button
-        nextButton.textContent = "Submit";
-        nextButton.classList.add('submit-button');
-        
-        // Clear existing click handlers and add the correct one
-        nextButton.replaceWith(nextButton.cloneNode(true));
-        
-        // Get the fresh button reference
-        const submitButton = lastQuestionContainer.querySelector('.next-button');
-        
-        // Add the correct event listener for the submit button
-        submitButton.addEventListener('click', () => {
-            console.log(`Submit button clicked for last question`);
             
-            // Save response for the last question
-            const selectedOption = lastQuestionContainer.querySelector('.option.selected');
-            if (selectedOption) {
-                userResponses[totalQuestions - 1] = {
-                    question: lastQuestionContainer.querySelector('.question-text').textContent,
-                    answer: selectedOption.textContent.trim(),
-                    value: selectedOption.dataset.value,
-                    points: parseInt(selectedOption.dataset.points),
-                    advice: feedbackContent[`question${totalQuestions}`][selectedOption.dataset.value].advice
-                };
-                
-                // Update total score
-                calculateScore();
-                
-                // Show results
-                showResults();
-            }
-        });
-    }
-}
+            nextButton.addEventListener('click', () => {
+                // Save response
+                const selectedOption = container.querySelector('.option.selected');
+                if (selectedOption) {
+                    userResponses[questionNum - 1] = {
+                        question: container.querySelector('.question-text').textContent,
+                        answer: selectedOption.textContent.trim(),
+                        value: selectedOption.dataset.value,
+                        points: parseInt(selectedOption.dataset.points),
+                        advice: feedbackContent[`question${questionNum}`][selectedOption.dataset.value].advice
+                    };
+                    
+                    // Update total score
+                    calculateScore();
+                    
+                    // If last question, show results
+                    if (questionNum === totalQuestions) {
+                        showResults();
+                    } else {
+                        // Otherwise, show next question
+                        goToQuestion(questionNum + 1);
+                    }
+                }
+            });
+        }
+    });
+    
     // Functions
     function startAssessment() {
         landingContainer.style.display = 'none';
@@ -350,6 +309,8 @@ if (lastQuestionContainer) {
     
     function restartAssessment() {
         resultContainer.style.display = 'none';
+        // Show assessment container again
+        assessmentContainer.style.display = 'block';
         // Reset state
         currentQuestion = 1;
         userResponses = [];
@@ -367,6 +328,7 @@ if (lastQuestionContainer) {
         
         // Hide all feedback containers
         document.querySelectorAll('.feedback-container').forEach(container => {
+            container.innerHTML = '';
             container.style.display = 'none';
         });
         
@@ -374,8 +336,6 @@ if (lastQuestionContainer) {
     }
     
     function goToQuestion(questionNum) {
-        console.log(`Going to question ${questionNum}`); // Debug
-        
         // Hide all questions
         questionContainers.forEach(container => {
             container.classList.remove('active');
@@ -387,6 +347,9 @@ if (lastQuestionContainer) {
         
         // Update progress bar
         updateProgressBar();
+
+        // Scroll to the top of the assessment container
+        assessmentContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     
     function updateProgressBar() {
@@ -431,15 +394,16 @@ if (lastQuestionContainer) {
             return total + (response ? response.points : 0);
         }, 0);
     }
-
-    // Functions remain the same as before, except for showResults which is fixed
+    
     function showResults() {
-        console.log("Showing results"); // Debug
-
-        // Hide all questions
-        questionContainers.forEach(container => {
+        // Hide questions
+        document.querySelectorAll('.question-container').forEach(container => {
             container.classList.remove('active');
         });
+        
+        // Show result container - changing this from hiding the assessment container
+        assessmentContainer.style.display = 'block';
+        resultContainer.style.display = 'block';
         
         // Calculate final score as percentage
         const maxPossibleScore = totalQuestions * 2; // 2 points max per question
@@ -468,8 +432,7 @@ if (lastQuestionContainer) {
         // Generate summary items
         generateSummary();
         
-        // Show result container - fixed to ensure it's displayed
-        resultContainer.style.display = 'block';
+        // Show result container - already done above
         progressBar.style.width = '100%'; // Complete the progress bar
     }
     
@@ -502,42 +465,13 @@ if (lastQuestionContainer) {
         summaryItemsContainer.innerHTML = summaryHTML;
     }
     
-    function calculateScore() {
-        totalScore = userResponses.reduce((total, response) => {
-            return total + (response ? response.points : 0);
-        }, 0);
-    }
-    
-    function generateSummary() {
-        let summaryHTML = '';
-        
-        userResponses.forEach((response, index) => {
-            let valueClass;
-            switch(response.value) {
-                case 'good':
-                    valueClass = 'risk-low';
-                    break;
-                case 'medium':
-                    valueClass = 'risk-medium';
-                    break;
-                case 'bad':
-                    valueClass = 'risk-high';
-                    break;
-            }
-            
-            summaryHTML += `
-                <div class="summary-item">
-                    <h4 class="summary-question">${response.question}</h4>
-                    <p class="summary-choice ${valueClass}">${response.answer}</p>
-                    <p class="summary-advice">${response.advice}</p>
-                </div>
-            `;
-        });
-        
-        summaryItemsContainer.innerHTML = summaryHTML;
-    }
-    
     function generatePDF() {
+        // Check if html2pdf is available
+        if (typeof html2pdf === 'undefined') {
+            alert('PDF generation library not loaded. Please include the html2pdf.js library.');
+            return;
+        }
+        
         // Create temporary element for PDF content
         const pdfContent = document.createElement('div');
         pdfContent.className = 'pdf-container';
@@ -604,7 +538,16 @@ if (lastQuestionContainer) {
         
         pdfContent.appendChild(footer);
         
-        // Generate PDF
+        // For fallback without html2pdf
+        if (typeof html2pdf === 'undefined') {
+            // Create a printable version
+            document.body.appendChild(pdfContent);
+            window.print();
+            document.body.removeChild(pdfContent);
+            return;
+        }
+        
+        // Generate PDF if html2pdf is available
         const opt = {
             margin: 10,
             filename: 'cyber_risk_assessment.pdf',
@@ -615,81 +558,5 @@ if (lastQuestionContainer) {
         
         // Generate PDF
         html2pdf().set(opt).from(pdfContent).save();
-    }
-
-    
-    // Initialize function to set up event listeners after PDF generation
-    function initialize() {
-        // Re-get DOM elements
-        const landingContainer = document.getElementById('landingContainer');
-        const assessmentContainer = document.getElementById('assessmentContainer');
-        const startButton = document.getElementById('startAssessment');
-        const resultContainer = document.getElementById('resultContainer');
-        const savePDFButton = document.getElementById('savePDF');
-        const restartButton = document.getElementById('restartAssessment');
-        const questionContainers = document.querySelectorAll('.question-container');
-        
-        // Re-attach event listeners
-        startButton.addEventListener('click', startAssessment);
-        savePDFButton.addEventListener('click', generatePDF);
-        restartButton.addEventListener('click', restartAssessment);
-        
-        // Setup each question's event handlers again
-        questionContainers.forEach((container, index) => {
-            const questionNum = index + 1;
-            const options = container.querySelectorAll('.option');
-            const nextButton = container.querySelector('.next-button');
-            const prevButton = container.querySelector('.prev-button');
-            
-            // Option selection
-            options.forEach(option => {
-                option.addEventListener('click', () => {
-                    // Remove selected class from all options
-                    options.forEach(opt => opt.classList.remove('selected'));
-                    // Add selected class to clicked option
-                    option.classList.add('selected');
-                    // Enable next button
-                    nextButton.removeAttribute('disabled');
-                    
-                    // Show feedback for the selected option
-                    showFeedback(questionNum, option.dataset.value);
-                });
-            });
-            
-            // Next button
-            if (nextButton) {
-                nextButton.addEventListener('click', () => {
-                    // Save response
-                    const selectedOption = container.querySelector('.option.selected');
-                    if (selectedOption) {
-                        userResponses[questionNum - 1] = {
-                            question: container.querySelector('.question-text').textContent,
-                            answer: selectedOption.textContent.trim(),
-                            value: selectedOption.dataset.value,
-                            points: parseInt(selectedOption.dataset.points),
-                            advice: feedbackContent[`question${questionNum}`][selectedOption.dataset.value].advice
-                        };
-                        
-                        // Update total score
-                        calculateScore();
-                    }
-                    
-                    // If last question, show results
-                    if (questionNum === totalQuestions) {
-                        showResults();
-                    } else {
-                        // Otherwise, show next question
-                        goToQuestion(questionNum + 1);
-                    }
-                });
-            }
-            
-            // Previous button
-            if (prevButton) {
-                prevButton.addEventListener('click', () => {
-                    goToQuestion(questionNum - 1);
-                });
-            }
-        });
     }
 });

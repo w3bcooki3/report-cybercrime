@@ -955,7 +955,6 @@
                 <div class="option" data-value="bad" data-points="0">
                     I connect to any available public Wi-Fi and use it for all online activities including banking
                 </div>
-                </div>
                 <div class="option" data-value="medium" data-points="1">
                     I connect to public Wi-Fi when needed but avoid sensitive transactions
                 </div>
@@ -965,8 +964,7 @@
             </div>
             <div class="feedback-container" id="feedback5"></div>
             <div class="button-container">
-                <button class="theme-btn2 prev-button">Previous</button>
-                <button class="theme-btn next-button" disabled>Submit Assessment</button>
+                <button class="theme-btn" id="submitButton" disabled>Submit Assessment</button>
             </div>
         </div>
 
@@ -1021,6 +1019,8 @@
     const summaryItemsContainer = document.getElementById('summaryItems');
     const savePDFButton = document.getElementById('savePDF');
     const restartButton = document.getElementById('restartAssessment');
+    const submitButton = document.getElementById('submitButton');
+    const question5Container = document.getElementById('question5');
 
     // Question containers
     const questionContainers = document.querySelectorAll('.question-container');
