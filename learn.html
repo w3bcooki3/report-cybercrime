@@ -26,9 +26,7 @@
     <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
-    <link rel="stylesheet" href="landing-page/css/landing-page.css">
-    <link rel="stylesheet" href="./assets/css/learning2.css">
-    <link rel="stylesheet" href="./assets/css/external_resources.css">
+    <link rel="stylesheet" href="./assets/css/learn.css">
     <!-- ========== End Stylesheet ========== -->
 
     <!-- Favicon links -->
@@ -44,9 +42,6 @@
 
     <!-- Main -->
     <main class="main-page homepage">
-        <div class="header-bar-ad">
-            <p>Level up your online safety with our quick and easy <u>Risk Assessment Tool</u></p>
-        </div>
 
         <!-- Header -->
         <header class="header-area">
@@ -317,34 +312,65 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="dropdown-menu-item">
-                                    <a href="Learn-edcu.html">Learn</a>
+                                <li class="mega-menu-item">
+                                    <a href="learn.html">Learn</a>
                                     <span class="dropdown-menu-item-icon">
                                         <i class="las la-angle-down"></i>
                                     </span>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="learning2.html">Learn2</a>
-                                        </li>
-                                    </ul>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="Learn-edcu.html">Games</a>
-                                        </li>
-                                    </ul>
-                                    
+                                    <div class="mega-menu mega-menu-portfolio">
+                                        <div class="mega-menu-inner">
+                                            <div class="custom-container d-flex">
+                                                <div class="left">
+                                                    <div
+                                                        class="mega-menu-link-wrap d-flex align-items-start justify-content-between">
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/portfolio-mega-menu-1.jpg"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="learning2.html">Learn2</a></h3>
+                                                                <p>we undertook a project to <br>migrate their existing.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mega-menu-portfolio-card">
+                                                            <div class="img-box">
+                                                                <img src="./assets/imgs/portfolio-mega-menu-2.jpg"
+                                                                    alt="Portfolio" />
+                                                            </div>
+                                                            <div class="content-box">
+                                                                <h3><a href="Learn-edcu.html">Games</a></h3>
+                                                                <p>The mobile application has <br>significantly
+                                                                    improved.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div
+                                                        class="mega-meu-footer d-flex align-items-center justify-content-between w-full">
+                                                        <ul class="mega-menu-social d-flex align-items-center">
+                                                            <li><a href="#"><i class="iconoir-dribbble"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-twitter"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-instagram"></i></a></li>
+                                                            <li><a href="#"><i class="iconoir-linkedin"></i></a></li>
+                                                        </ul>
+
+                                                        <p>
+                                                            <a href="portfolio.html">View Guide
+                                                                <i class="iconoir-arrow-up-right"></i></a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
 
                                 <li>
                                     <a href="contact.html">Contact</a>
                                 </li>
-                            <!---
-                            <select class="country-select" name="country" id="country">
-                                <option value="en">EN</option>
-                                <option value="uk">UK</option>
-                                <option value="dz">DZ</option>
-                            </select>
-                            -->
                         </nav>
                     </div>
                     <div class="header-right">
@@ -364,11 +390,9 @@
 
         </header>
 
-        <!--  Hero -->
-        <section class="hero-service-wrap hero-section-wrap hero-partner-wrap">
+        <section class="hero-service-wrap hero-section-wrap hero-career-wrap hero-event-wrap">
             <div class="hero-section-content-wrap">
-                <img class="bg-shape slide-left" src="./assets/imgs/bg-shape-6.svg" alt="Shape" />
-                <img class="bg-shape2 slide-right" src="./assets/imgs/bg-shape-5.svg" alt="Shape" />
+                <img src="./assets/imgs/bg-shape-1.svg" alt="Shape" class="animation-slide-left bg-shape" />
                 <div class="custom-container">
                     <div class="hero-portfolio-body">
                         <div class="hero-section-content text-center">
@@ -378,29 +402,28 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Hero Section -->
-        <div class="bg-dark1 text-white py-20">
-            <div class="container mx-auto px-4">
-                <div class="text-center">
-                    <div class="relative w-full">
-                        <input
-                            type="text"
-                            id="search-input"
-                            placeholder="Search for resources..."
-                            class="w-full py-4 px-6 pr-12 rounded-full text-dark1 focus:outline-none focus:ring-2 focus:ring-primary shadow-lg"/>
-                        <div class="absolute right-5 top-1/2 transform -translate-y-1/2 text-dark2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <path d="m21 21-4.3-4.3"></path>
-                            </svg>
+                <!-- search bar -->
+                <div class="bg-dark1 text-white py-20">
+                    <div class="container mx-auto px-4">
+                        <div class="text-center">
+                            <div class="relative w-full">
+                                <input
+                                    type="text"
+                                    id="search-input"
+                                    placeholder="Search for resources..."
+                                    class="w-full py-4 px-6 pr-12 rounded-full text-dark1 focus:outline-none focus:ring-2 focus:ring-primary shadow-lg"/>
+                                <div class="absolute right-5 top-1/2 transform -translate-y-1/2 text-dark2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <path d="m21 21-4.3-4.3"></path>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
        
   
@@ -464,32 +487,9 @@
               <p class="text-dark2 mb-6">Try adjusting your search or filters to find what you're looking for.</p>
               <button 
                 id="clear-filters"
-                class="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary2 transition-colors"
-              >
+                class="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary2 transition-colors">
                 Clear all filters
               </button>
-            </div>
-
-            <!-- More Resources Section -->
-            <div class="mt-20 bg-primaryLight2 rounded-lg p-10 shadow-sm">
-              <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                  <h3 class="text-2xl font-bold font-syne mb-3">Need More Resources?</h3>
-                  <p class="text-dark2 max-w-xl">
-                    Our team of cybersecurity experts is constantly updating our resource library. Check back regularly for new content or request specific topics.
-                  </p>
-                </div>
-                <a 
-                  href="#" 
-                  class="flex items-center bg-primary text-white px-8 py-4 rounded-md hover:bg-primary2 transition-colors shadow-md"
-                >
-                  Request a Topic 
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right ml-2">
-                    <path d="M7 7h10v10"></path>
-                    <path d="M7 17 17 7"></path>
-                  </svg>
-                </a>
-              </div>
             </div>
         </div>
 
@@ -551,6 +551,21 @@
                 </div>
             </div>
         </div>
+
+        <section class="cta-area cta-area2">
+            <div class="custom-container">
+                <div class="cta-body text-center d-flex align-items-center justify-content-between">
+                    <img src="./assets/imgs/bg-shape-12.png" alt="Shape" class="animation-slide-right bg-shape"/>
+                    <div class="left">
+                        <h2>Need More Resources?</h2>
+                        <p>Our team of cybersecurity experts is constantly updating our resource library. 
+                            Check back regularly for new content or request specific topics.</p>
+                    </div>
+                    <a href="contact.html" class="theme-btn">Request a Topic</a>
+
+                </div>
+            </div>
+        </section>
 
 
         <!-- Footer -->
@@ -722,7 +737,7 @@
     <script src="./assets/js/form1.js"></script>
     <script src="./assets/js/home.js"></script>
     <script src="./assets/js/subscribe-form.js"></script>
-    <script src="./assets/js/learning2.js"></script>
+    <script src="./assets/js/learn.js"></script>
 </body>
 
 </html>

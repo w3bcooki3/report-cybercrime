@@ -265,13 +265,32 @@ const tools = [
       const noResults = document.createElement('div');
       noResults.className = 'no-results';
       noResults.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 1rem;">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="8" y1="12" x2="16" y2="12"></line>
-        </svg>
-        <p>No tools found matching your criteria.</p>
-        <p>Try adjusting your search or filter settings.</p>
-      `;
+      <div style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        color: #4a5568;
+        font-family: 'Arial', sans-serif;
+        padding: 20px;
+      ">
+        <div style="
+          padding: 2rem;
+          border-radius: 12px;
+        ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+          </svg>
+          <p style="font-size: 1.8rem; font-weight: bold; margin: 0; color: #333;">No tools found</p>
+          <p style="font-size: 1.3rem; margin: 0.5rem 0; color: #6b7280;">Try adjusting your search or filter settings.</p>
+        </div>
+      </div>
+    `;
+
       toolsGrid.appendChild(noResults);
       return;
     }

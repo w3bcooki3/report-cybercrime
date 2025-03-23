@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const summaryItemsContainer = document.getElementById('summaryItems');
     const savePDFButton = document.getElementById('savePDF');
     const restartButton = document.getElementById('restartAssessment');
+    const progressContainer = document.getElementsByClassName('progress-container');
     
     // Question containers
     const questionContainers = document.querySelectorAll('.question-container');
@@ -348,8 +349,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update progress bar
         updateProgressBar();
 
-        // Scroll to the top of the assessment container
-        assessmentContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Ensure the progress bar remains visible
+        const progressContainer = document.getElementsByClassName('progress-container')[0]; // Access first element
+        progressContainer.style.display = 'block';
+
+        // Get the position of the progress container and assessment container
+        const assessmentContainer = document.getElementById('assessmentContainer');
+
+        // Smoothly scroll to include progress bar & question together
+        const yPosition = assessmentContainer.offsetTop - progressContainer.offsetHeight - 20; 
+
+        window.scrollTo({ top: yPosition, behavior: 'smooth' });
     }
     
     function updateProgressBar() {
@@ -434,6 +444,21 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Show result container - already done above
         progressBar.style.width = '100%'; // Complete the progress bar
+
+        // Scroll to the top of the result container
+        if (resultTitle) {
+            // Use the result title element if it exists
+            setTimeout(() => {
+                resultTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Add a small offset to ensure the title is fully visible
+                window.scrollBy(0, -20);
+            }, 100);
+        } else {
+            // Fallback to the result container
+            setTimeout(() => {
+                resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
     }
     
     function generateSummary() {

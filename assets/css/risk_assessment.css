@@ -19,7 +19,6 @@
 
 
 
-
 .custom-container-risk {
     max-width: 1200px;
     margin: 0 auto;
@@ -201,6 +200,7 @@
     padding: 15px 40px;
     font-weight: 600;
 }
+
 
 .stat-container {
     display: flex;
