@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - CyberShield Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@400;500;600;700&family=Yantramanav:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles to complement existing CSS */
+        .about-hero {
+            background: linear-gradient(135deg, var(--primary_color) 0%, var(--primary_color2) 100%);
+            padding: 120px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--light_white);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-hero-shape {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZD0iTTEwMCAxMDBMMzAwIDEwMEwzMDAgMzAwTDEwMCAzMDBMMTAwIDEwMFoiIGZpbGw9IiNmZmZmZmYiLz4KICA8cGF0aCBkPSJNMjAwIDIwMEw0MDAgMjAwTDQwMCA0MDBMMjAwIDQwMEwyMDAgMjAwWiIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=');
+            background-size: 500px;
+        }
+        
+        .mission-section {
+            padding: 100px 0;
+            background-color: var(--light_white);
+        }
+        
+        .mission-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .mission-image {
+            flex: 1;
+            position: relative;
+            padding-top: 80%;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .mission-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .mission-text {
+            flex: 1;
+        }
+        
+        .team-section {
+            padding: 100px 0;
+            background-color: var(--primary_light);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+        
+        .team-info {
+            padding: 25px;
+        }
+        
+        .team-info h3 {
+            color: var(--dark1);
+            margin-bottom: 5px;
+        }
+        
+        .team-info p {
+            color: var(--primary_color);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .services-section {
+            padding: 100px 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .service-card {
+            padding: 40px 30px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background: linear-gradient(135deg, var(--primary_color) 0%, var(--primary_color2) 100%);
+            z-index: -1;
+            transition: height 0.5s ease;
+        }
+        
+        .service-card:hover::before {
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card:hover h3,
+        .service-card:hover p {
+            color: white;
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary_light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            background: white;
+        }
+        
+        .service-icon i {
+            font-size: 30px;
+            color: var(--primary_color);
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+        
+        .service-card p {
+            transition: color 0.3s ease;
+        }
+        
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary_color) 0%, var(--primary_color2) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats-shape {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTUwIiByPSIxMDAiIGZpbGw9IiNmZmZmZmYiLz4KICA8Y2lyY2xlIGN4PSIzNTAiIGN5PSIzNTAiIHI9IjEwMCIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=');
+            background-size: 500px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: var(--font_yantramanv);
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            font-weight: 500;
+            font-family: var(--font_syne);
+        }
+        
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background-color: var(--primary_light);
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .mission-content {
+                flex-direction: column;
+            }
+            
+            .mission-image {
+                width: 100%;
+                padding-top: 56.25%; /* 16:9 aspect ratio */
+            }
+            
+            .services-grid,
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .section-title {
+                font-size: 48px;
+                line-height: 1.2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 80px 0 60px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .services-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Blur effect for images */
+        .blur-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blur-image-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            filter: blur(20px);
+            transform: scale(1.1);
+            z-index: 1;
+        }
+        
+        .blur-image-main {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Bar (Already in your existing site) -->
+    <div class="header-bar-ad">
+        <img src="/api/placeholder/500/100" alt="Background Shape" class="bg-shape">
+        <img src="/api/placeholder/500/100" alt="Background Shape" class="bg-shape bg-shape2">
+        <p>Protecting Communities: Your Defense Against Cyber Threats</p>
+    </div>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-shape"></div>
+        <div class="custom-container">
+            <div class="about-hero-content fade-in">
+                <p class="section-subtitle">OUR STORY</p>
+                <h1 class="section-title" style="color: white; margin-bottom: 30px;">Securing The Digital World Together</h1>
+                <p style="margin-bottom: 40px; font-size: 18px;">CyberShield Community is a collective of cybersecurity experts, enthusiasts, and advocates committed to creating a safer digital environment for everyone through education, tools, and community support.</p>
+                <a href="#" class="theme-btn">Join Our Mission <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="custom-container">
+            <div class="mission-content">
+                <div class="mission-image slide-left">
+                    <div class="blur-image-container">
+                        <img src="/api/placeholder/600/600" alt="Our Mission" class="blur-image-bg">
+                        <img src="/api/placeholder/600/600" alt="Our Mission" class="blur-image-main">
+                    </div>
+                </div>
+                <div class="mission-text slide-right">
+                    <p class="section-subtitle">OUR MISSION</p>
+                    <h2 class="section-title" style="margin-bottom: 30px;">Democratizing Cybersecurity Knowledge</h2>
+                    <p style="margin-bottom: 20px;">At CyberShield Community, we believe that cybersecurity knowledge shouldn't be limited to professionals or large organizations. Our mission is to make cybersecurity resources, education, and support accessible to everyone.</p>
+                    <p style="margin-bottom: 30px;">We are committed to creating a digital world where individuals and communities are empowered to protect themselves from evolving cyber threats through practical knowledge, cutting-edge tools, and a supportive global network.</p>
+                    <a href="#" class="theme-btn">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="custom-container">
+            <div class="text-center" style="margin-bottom: 30px;">
+                <p class="section-subtitle fade-in">WHAT WE OFFER</p>
+                <h2 class="section-title fade-in" style="margin-bottom: 20px;">Comprehensive Cybersecurity Solutions</h2>
+                <p style="max-width: 700px; margin: 0 auto; font-size: 18px;" class="fade-in">We provide a wide range of services designed to educate, protect, and empower our community against cyber threats.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service Card 1 -->
+                <div class="service-card card-h pop-in">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Threat Intelligence</h3>
+                    <p>Stay ahead of emerging cyber threats with our real-time threat intelligence reports and alerts tailored for individuals and organizations.</p>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="service-card card-h pop-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Educational Resources</h3>
+                    <p>Access comprehensive guides, articles, and courses covering everything from basic digital hygiene to advanced cybersecurity practices.</p>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="service-card card-h pop-in delay-3">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Security Tools</h3>
+                    <p>Utilize our curated selection of open-source security tools designed for personal and organizational protection.</p>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="service-card card-h pop-in">
+                    <div class="service-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Incident Response</h3>
+                    <p>Get guidance and support in responding to cyber incidents through our community-driven response framework and expert advice.</p>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="service-card card-h pop-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Community Forums</h3>
+                    <p>Join discussions with cybersecurity professionals and enthusiasts to share knowledge, ask questions, and collaborate on solutions.</p>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="service-card card-h pop-in delay-3">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Awareness Campaigns</h3>
+                    <p>Participate in our global cybersecurity awareness initiatives designed to educate and protect vulnerable populations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-shape"></div>
+        <div class="custom-container">
+            <div class="stats-grid">
+                <div class="stat-item bounce-in">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Community Members</div>
+                </div>
+                <div class="stat-item bounce-in delay-2">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Educational Resources</div>
+                </div>
+                <div class="stat-item bounce-in delay-3">
+                    <div class="stat-number">35+</div>
+                    <div class="stat-label">Security Tools</div>
+                </div>
+                <div class="stat-item bounce-in">
+                    <div class="stat-number">120+</div>
+                    <div class="stat-label">Countries Reached</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="custom-container">
+            <div class="text-center" style="margin-bottom: 30px;">
+                <p class="section-subtitle fade-in">OUR TEAM</p>
+                <h2 class="section-title fade-in" style="margin-bottom: 20px;">Meet The Experts Behind CyberShield</h2>
+                <p style="max-width: 700px; margin: 0 auto; font-size: 18px;" class="fade-in">Our diverse team of cybersecurity professionals brings together decades of experience from various sectors to protect our digital community.</p>
+            </div>
+
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-card simple-shadow slide-left">
+                    <div class="team-image">
+                        <img src="/api/placeholder/400/400" alt="Team Member">
+                    </div>
+                    <div class="team-info">
+                        <h3>Alex Morgan</h3>
+                        <p>Founder & Security Strategist</p>
+                        <div style="display: flex; gap: 15px;">
+                            <a href="#" style="color: var(--primary_color);"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" style="color: var(--primary_color);"><i class="fab fa-twitter"></i></a>
+                            <a href="#" style="color: var(--primary_color);"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-card simple-shadow fade-in">
+                    <div class="team-image">
+                        <img src="/api/placeholder/400/400" alt="Team Member">
+                    </div>
+                    <div class="team-info">
+                        <h3>Samira Patel</h3>
+                        <p>Threat Intelligence Director</p>
+                        <div style="display: flex; gap: 15px;">
+                            <a href="#" style="color: var(--primary_color);"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" style="color: var(--primary_color);"><i class="fab fa-twitter"></i></a>
+                            <a href="#" style="color: var(--primary_color);"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-card simple-shadow slide-right">
+                    <div class="team-image">
+                        <img src="/api/placeholder/400/400" alt="Team Member">
+                    </div>
+                    <div class="team-info">
+                        <h3>Marcus Chen</h3>
+                        <p>Education Program Lead</p>
+                        <div style="display: flex; gap: 15px;">
+                            <a href="#" style="color: var(--primary_color);"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" style="color: var(--primary_color);"><i class="fab fa-twitter"></i></a>
+                            <a href="#" style="color: var(--primary_color);"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="team-card simple-shadow slide-left">
+                    <div class="team-image">
+                        <img src="/api/placeholder/400/400" alt="Team Member">
+                    </div>
+                    <div class="team-info">
+                        <h3>Elena Rodriguez</h3>
+                        <p>Tools & Development Lead</p>
+                        <div style="display: flex; gap: 15px;">
+                            <a href="#" style="color: var(--primary_color);"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" style="color: var(--primary_color);"><i class="fab fa-twitter"></i></a>
+                            <a href="#" style="color: var(--primary_color);"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 5 -->
+                <div class="team-card simple-shadow fade-in">
+                    <div class="team-image">
+                        <img src="/api/placeholder/400/400" alt="Team Member">
+                    </div>
+                    <div class="team-info">
+                        <h3>David Okoye</h3>
+                        <p>Community Engagement Manager</p>
+                        <div style="display: flex; gap: 15px;">
+                            <a href="#" style="color: var(--primary_color);"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" style="color: var(--primary_color);"><i class="fab fa-twitter"></i></a>
+                            <a href="#" style="color: var(--primary_color);"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 6 -->
+                <div class="team-card simple-shadow slide-right">
+                    <div class="team-image">
+                        <img src="/api/placeholder/400/400" alt="Team Member">
+                    </div>
+                    <div class="team-info">
+                        <h3>Sophia Williams</h3>
+                        <p>Incident Response Specialist</p>
+                        <div style="display: flex; gap: 15px;">
+                            <a href="#" style="color: var(--primary_color);"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" style="color: var(--primary_color);"><i class="fab fa-twitter"></i></a>
+                            <a href="#" style="color: var(--primary_color);"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="custom-container">
+            <div class="cta-content bounce-in">
+                <p class="section-subtitle">JOIN US TODAY</p>
+                <h2 class="section-title" style="margin-bottom: 30px;">Be Part Of The Cybersecurity Revolution</h2>
+                <p style="margin-bottom: 40px; font-size: 18px;">Join thousands of individuals and organizations committed to creating a safer digital world for everyone. Together, we can build stronger defenses against cyber threats.</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" class="theme-btn">Become A Member <i class="fas fa-user-plus"></i></a>
+                    <a href="#" class="theme-btn2">Explore Resources <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

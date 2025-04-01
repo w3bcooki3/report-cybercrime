@@ -1,30 +1,23 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Original script initialization
+document.addEventListener('DOMContentLoaded', () => {
     const landingContainer = document.getElementById('landingContainer');
     const assessmentContainer = document.getElementById('assessmentContainer');
-    const startButton = document.getElementById('startAssessment');
-    const progressBar = document.getElementById('progressBar');
     const resultContainer = document.getElementById('resultContainer');
+    const startButton = document.getElementById('startAssessment');
+    const restartButton = document.getElementById('restartAssessment');
+    const savePDFButton = document.getElementById('savePDF');
+    const progressBar = document.getElementById('progressBar');
     const finalScoreElement = document.getElementById('finalScore');
     const riskLevelElement = document.getElementById('riskLevel');
     const resultDescriptionElement = document.getElementById('resultDescription');
     const summaryItemsContainer = document.getElementById('summaryItems');
-    const savePDFButton = document.getElementById('savePDF');
-    const restartButton = document.getElementById('restartAssessment');
-    const progressContainer = document.getElementsByClassName('progress-container');
-    
-    // Question containers
     const questionContainers = document.querySelectorAll('.question-container');
-    
-    // State variables
+    const progressContainer = document.getElementsByClassName('progress-container')[0];
+
     let currentQuestion = 1;
-    let totalQuestions = questionContainers.length;
     let userResponses = [];
     let totalScore = 0;
-    
-    // Feedback content
+
     const feedbackContent = {
-        // Feedback content remains the same
         question1: {
             good: {
                 title: "Excellent password practice!",
@@ -211,175 +204,40 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Risk level descriptions
     const riskDescriptions = {
         high: "Your digital security practices have significant vulnerabilities that could be exploited by cyber attacks. Implementing the recommendations below should be a priority to protect your data and accounts.",
         medium: "Your cyber security posture shows some strengths but also has areas that need improvement. The recommendations below will help you strengthen your digital security.",
         low: "Your digital security practices show good awareness of cyber risks. Review the recommendations below to further enhance your protection."
     };
-    
-    // Event Listeners
-    startButton.addEventListener('click', startAssessment);
-    savePDFButton.addEventListener('click', generatePDF);
-    restartButton.addEventListener('click', restartAssessment);
 
-    // Setup each question's event handlers
-    questionContainers.forEach((container, index) => {
-        const questionNum = index + 1;
-        const options = container.querySelectorAll('.option');
-        
-        // Option selection
-        options.forEach(option => {
-            option.addEventListener('click', () => {
-                // Remove selected class from all options
-                options.forEach(opt => opt.classList.remove('selected'));
-                // Add selected class to clicked option
-                option.classList.add('selected');
-                
-                // Enable next/submit button
-                const actionButton = container.querySelector('.next-button');
-                if (actionButton) {
-                    actionButton.removeAttribute('disabled');
-                }
-                
-                // Show feedback for the selected option
-                showFeedback(questionNum, option.dataset.value);
-            });
-        });
-    });
-    
-    // Set up navigation buttons (previous and next/submit)
-    questionContainers.forEach((container, index) => {
-        const questionNum = index + 1;
-        const prevButton = container.querySelector('.prev-button');
-        const nextButton = container.querySelector('.next-button');
-        
-        // Previous button
-        if (prevButton) {
-            prevButton.addEventListener('click', () => {
-                if (questionNum > 1) {
-                    goToQuestion(questionNum - 1);
-                }
-            });
-        }
-        
-        // Next/Submit button
-        if (nextButton) {
-            // Change text for last question
-            if (questionNum === totalQuestions) {
-                nextButton.textContent = "Submit Assessment";
-            }
-            
-            nextButton.addEventListener('click', () => {
-                // Save response
-                const selectedOption = container.querySelector('.option.selected');
-                if (selectedOption) {
-                    userResponses[questionNum - 1] = {
-                        question: container.querySelector('.question-text').textContent,
-                        answer: selectedOption.textContent.trim(),
-                        value: selectedOption.dataset.value,
-                        points: parseInt(selectedOption.dataset.points),
-                        advice: feedbackContent[`question${questionNum}`][selectedOption.dataset.value].advice
-                    };
-                    
-                    // Update total score
-                    calculateScore();
-                    
-                    // If last question, show results
-                    if (questionNum === totalQuestions) {
-                        showResults();
-                    } else {
-                        // Otherwise, show next question
-                        goToQuestion(questionNum + 1);
-                    }
-                }
-            });
-        }
-    });
-    
-    // Functions
-    function startAssessment() {
-        landingContainer.style.display = 'none';
-        assessmentContainer.style.display = 'block';
-        // Reset state
-        currentQuestion = 1;
-        userResponses = [];
-        totalScore = 0;
-        goToQuestion(1);
-    }
-    
-    function restartAssessment() {
-        resultContainer.style.display = 'none';
-        // Show assessment container again
-        assessmentContainer.style.display = 'block';
-        // Reset state
-        currentQuestion = 1;
-        userResponses = [];
-        totalScore = 0;
-        
-        // Reset all selected options
-        document.querySelectorAll('.option').forEach(option => {
-            option.classList.remove('selected');
-        });
-        
-        // Reset all next buttons
-        document.querySelectorAll('.next-button').forEach(button => {
-            button.setAttribute('disabled', true);
-        });
-        
-        // Hide all feedback containers
-        document.querySelectorAll('.feedback-container').forEach(container => {
-            container.innerHTML = '';
-            container.style.display = 'none';
-        });
-        
-        goToQuestion(1);
-    }
-    
-    function goToQuestion(questionNum) {
-        // Hide all questions
-        questionContainers.forEach(container => {
-            container.classList.remove('active');
-        });
-        
-        // Show selected question
+    // Function to show a question
+    const showQuestion = (questionNum) => {
+        questionContainers.forEach(container => container.classList.remove('active'));
         document.getElementById(`question${questionNum}`).classList.add('active');
         currentQuestion = questionNum;
-        
-        // Update progress bar
         updateProgressBar();
-
-        // Ensure the progress bar remains visible
-        const progressContainer = document.getElementsByClassName('progress-container')[0]; // Access first element
         progressContainer.style.display = 'block';
+        const assessmentContainerTop = assessmentContainer.offsetTop;
+        const progressContainerHeight = progressContainer.offsetHeight;
+        window.scrollTo({ top: assessmentContainerTop - progressContainerHeight - 20, behavior: 'smooth' });
+    };
 
-        // Get the position of the progress container and assessment container
-        const assessmentContainer = document.getElementById('assessmentContainer');
-
-        // Smoothly scroll to include progress bar & question together
-        const yPosition = assessmentContainer.offsetTop - progressContainer.offsetHeight - 20; 
-
-        window.scrollTo({ top: yPosition, behavior: 'smooth' });
-    }
-    
-    function updateProgressBar() {
-        const progress = ((currentQuestion - 1) / totalQuestions) * 100;
+    // Function to update progress bar
+    const updateProgressBar = () => {
+        const progress = ((currentQuestion - 1) / questionContainers.length) * 100;
         progressBar.style.width = `${progress}%`;
-    }
-    
-    function showFeedback(questionNum, value) {
+    };
+
+    // Function to show feedback
+    const showFeedback = (questionNum, value) => {
         const feedbackContainer = document.getElementById(`feedback${questionNum}`);
         const feedback = feedbackContent[`question${questionNum}`][value];
-        
-        // Build feedback HTML
         let feedbackHTML = `
             <h4 class="feedback-title">${feedback.title}</h4>
             <p class="feedback-advice">${feedback.advice}</p>
         `;
-        
         if (feedback.resources && feedback.resources.length > 0) {
             feedbackHTML += `<div class="resource-cards">`;
-            
             feedback.resources.forEach(resource => {
                 feedbackHTML += `
                     <div class="resource-card">
@@ -388,96 +246,40 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 `;
             });
-            
             feedbackHTML += `</div>`;
         }
-        
-        // Set feedback HTML and show container
         feedbackContainer.innerHTML = feedbackHTML;
-        feedbackContainer.className = 'feedback-container';
-        feedbackContainer.classList.add(`feedback-${value}`);
+        feedbackContainer.className = `feedback-container feedback-${value}`;
         feedbackContainer.style.display = 'block';
-    }
-    
-    function calculateScore() {
-        totalScore = userResponses.reduce((total, response) => {
-            return total + (response ? response.points : 0);
-        }, 0);
-    }
-    
-    function showResults() {
-        // Hide questions
-        document.querySelectorAll('.question-container').forEach(container => {
-            container.classList.remove('active');
-        });
-        
-        // Show result container - changing this from hiding the assessment container
+    };
+
+    // Function to calculate score
+    const calculateScore = () => {
+        totalScore = userResponses.reduce((total, response) => total + (response ? response.points : 0), 0);
+    };
+
+    // Function to show results
+    const showResults = () => {
+        questionContainers.forEach(container => container.classList.remove('active'));
         assessmentContainer.style.display = 'block';
         resultContainer.style.display = 'block';
-        
-        // Calculate final score as percentage
-        const maxPossibleScore = totalQuestions * 2; // 2 points max per question
-        const scorePercentage = Math.round((totalScore / maxPossibleScore) * 100);
-        
-        // Determine risk level
+        const scorePercentage = Math.round((totalScore / (questionContainers.length * 2)) * 100);
         let riskLevel;
-        if (scorePercentage >= 80) {
-            riskLevel = "Low";
-            riskLevelElement.className = "risk-level risk-low";
-            resultDescriptionElement.textContent = riskDescriptions.low;
-        } else if (scorePercentage >= 50) {
-            riskLevel = "Medium";
-            riskLevelElement.className = "risk-level risk-medium";
-            resultDescriptionElement.textContent = riskDescriptions.medium;
-        } else {
-            riskLevel = "High";
-            riskLevelElement.className = "risk-level risk-high";
-            resultDescriptionElement.textContent = riskDescriptions.high;
-        }
-        
-        // Update result elements
+        if (scorePercentage >= 80) { riskLevel = "Low"; riskLevelElement.className = "risk-level risk-low"; resultDescriptionElement.textContent = riskDescriptions.low; }
+        else if (scorePercentage >= 50) { riskLevel = "Medium"; riskLevelElement.className = "risk-level risk-medium"; resultDescriptionElement.textContent = riskDescriptions.medium; }
+        else { riskLevel = "High"; riskLevelElement.className = "risk-level risk-high"; resultDescriptionElement.textContent = riskDescriptions.high; }
         finalScoreElement.textContent = scorePercentage;
         riskLevelElement.textContent = `Risk Level: ${riskLevel}`;
-        
-        // Generate summary items
         generateSummary();
-        
-        // Show result container - already done above
-        progressBar.style.width = '100%'; // Complete the progress bar
+        progressBar.style.width = '100%';
+        setTimeout(() => resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    };
 
-        // Scroll to the top of the result container
-        if (resultTitle) {
-            // Use the result title element if it exists
-            setTimeout(() => {
-                resultTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // Add a small offset to ensure the title is fully visible
-                window.scrollBy(0, -20);
-            }, 100);
-        } else {
-            // Fallback to the result container
-            setTimeout(() => {
-                resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
-        }
-    }
-    
-    function generateSummary() {
+    // Function to generate summary
+    const generateSummary = () => {
         let summaryHTML = '';
-        
-        userResponses.forEach((response, index) => {
-            let valueClass;
-            switch(response.value) {
-                case 'good':
-                    valueClass = 'risk-low';
-                    break;
-                case 'medium':
-                    valueClass = 'risk-medium';
-                    break;
-                case 'bad':
-                    valueClass = 'risk-high';
-                    break;
-            }
-            
+        userResponses.forEach(response => {
+            const valueClass = response.value === 'good' ? 'risk-low' : response.value === 'medium' ? 'risk-medium' : 'risk-high';
             summaryHTML += `
                 <div class="summary-item">
                     <h4 class="summary-question">${response.question}</h4>
@@ -486,102 +288,53 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         });
-        
         summaryItemsContainer.innerHTML = summaryHTML;
-    }
-    
-    function generatePDF() {
-        // Check if html2pdf is available
-        if (typeof html2pdf === 'undefined') {
-            alert('PDF generation library not loaded. Please include the html2pdf.js library.');
-            return;
-        }
-        
-        // Create temporary element for PDF content
+    };
+
+    // Function for generating PDF
+    const generatePDF = () => {
+        if (typeof html2pdf === 'undefined') { alert('PDF library not loaded.'); return; }
         const pdfContent = document.createElement('div');
         pdfContent.className = 'pdf-container';
-        
-        // Add header
-        const header = document.createElement('div');
-        header.className = 'pdf-header';
-        
-        header.innerHTML = `
-            <div class="pdf-logo">Cyber Risk Assessment Report</div>
-            <div class="pdf-date">Generated on ${new Date().toLocaleDateString()}</div>
+        pdfContent.innerHTML = `
+            <div class="pdf-header">
+                <div class="pdf-logo">Cyber Risk Assessment Report</div>
+                <div class="pdf-date">Generated on ${new Date().toLocaleDateString()}</div>
+            </div>
+            <div class="pdf-content">
+                <p>Your score: ${finalScoreElement.textContent}</p>
+                <p>Risk level: ${riskLevelElement.textContent}</p>
+                ${summaryItemsContainer.innerHTML}
+            </div>
         `;
-        
-        pdfContent.appendChild(header);
-        
-        // Add score and risk level
-        const scoreSection = document.createElement('div');
-        scoreSection.className = 'pdf-content';
-        
-        // Get risk level text
-        const riskLevelText = riskLevelElement.textContent;
-        const riskClass = riskLevelElement.className.split(' ')[1]; // Get risk-low, risk-medium, or risk-high
-        
-        scoreSection.innerHTML = `
-            <h2>Assessment Results</h2>
-            <p><strong>Score:</strong> ${finalScoreElement.textContent}%</p>
-            <p><strong>${riskLevelText}</strong></p>
-            <p>${resultDescriptionElement.textContent}</p>
-        `;
-        
-        pdfContent.appendChild(scoreSection);
-        
-        // Add recommendations
-        const recommendationsSection = document.createElement('div');
-        recommendationsSection.className = 'pdf-content';
-        
-        recommendationsSection.innerHTML = `
-            <h2>Security Recommendations</h2>
-        `;
-        
-        // Add each response and recommendation
-        userResponses.forEach((response, index) => {
-            const itemDiv = document.createElement('div');
-            itemDiv.style.marginBottom = '20px';
-            
-            itemDiv.innerHTML = `
-                <h3>${index + 1}. ${response.question}</h3>
-                <p><strong>Your response:</strong> ${response.answer}</p>
-                <p><strong>Recommendation:</strong> ${response.advice}</p>
-            `;
-            
-            recommendationsSection.appendChild(itemDiv);
+        html2pdf().from(pdfContent).save('cyber-risk-assessment.pdf');
+    };
+
+    // Event listeners
+    startButton.addEventListener('click', () => { landingContainer.style.display = 'none'; assessmentContainer.style.display = 'block'; showQuestion(1); });
+    restartButton.addEventListener('click', () => { resultContainer.style.display = 'none'; assessmentContainer.style.display = 'block'; questionContainers.forEach(q => q.classList.remove('active')); questionContainers[0].classList.add('active'); userResponses = []; totalScore = 0; showQuestion(1); });
+    savePDFButton.addEventListener('click', generatePDF);
+
+    // Question option selection and navigation
+    questionContainers.forEach((container, index) => {
+        const questionNum = index + 1;
+        container.addEventListener('click', (event) => {
+            if (event.target.classList.contains('option')) {
+                const options = container.querySelectorAll('.option');
+                options.forEach(opt => opt.classList.remove('selected'));
+                event.target.classList.add('selected');
+                showFeedback(questionNum, event.target.dataset.value);
+                container.querySelector('.next-button').removeAttribute('disabled');
+            }
+            if (event.target.classList.contains('next-button') && !event.target.disabled) {
+                const selectedOption = container.querySelector('.option.selected');
+                userResponses[questionNum - 1] = { question: container.querySelector('.question-text').textContent, answer: selectedOption.textContent.trim(), value: selectedOption.dataset.value, points: parseInt(selectedOption.dataset.points), advice: feedbackContent[`question${questionNum}`][selectedOption.dataset.value].advice };
+                calculateScore();
+                if (questionNum === questionContainers.length) showResults(); else showQuestion(questionNum + 1);
+            }
+            if (event.target.classList.contains('prev-button')) {
+                showQuestion(questionNum - 1);
+            }
         });
-        
-        pdfContent.appendChild(recommendationsSection);
-        
-        // Add footer
-        const footer = document.createElement('div');
-        footer.className = 'pdf-footer';
-        footer.innerHTML = `
-            <p>This assessment is provided for informational purposes only.</p>
-            <p>For professional cybersecurity consultation, please consult with a certified expert.</p>
-        `;
-        
-        pdfContent.appendChild(footer);
-        
-        // For fallback without html2pdf
-        if (typeof html2pdf === 'undefined') {
-            // Create a printable version
-            document.body.appendChild(pdfContent);
-            window.print();
-            document.body.removeChild(pdfContent);
-            return;
-        }
-        
-        // Generate PDF if html2pdf is available
-        const opt = {
-            margin: 10,
-            filename: 'cyber_risk_assessment.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2 },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
-        
-        // Generate PDF
-        html2pdf().set(opt).from(pdfContent).save();
-    }
+    });
 });

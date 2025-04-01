@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About PROTECT | Cybersecurity Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@400;500;600;700&family=Yantramanav:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables */
+        :root {
+            --dark1: #1C1C1C;
+            --dark2: #454545;
+            --light_white: #F9F9F9;
+            --primary_color: #1351D8;
+            --primary_color2: #4F8DFF;
+            --primary_light: #F3F6FD;
+            --primary_light2: rgb(19 81 216 / 10%);
+            --gray: #D9D9D9;
+            --font_syne: 'Syne', sans-serif;
+            --font_yantramanv: 'Yantramanav', sans-serif;
+            --font_dm: 'DM Sans', sans-serif;
+            --yellow_color: #FFD600;
+        }
+
+        /* Reset Browsers */
+        *,*:before,*:after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul,ol {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none !important;
+        }
+        input:focus,
+        textarea:focus,
+        button:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* Template Default Styles */
+        body {
+            font-size: 16px;
+            font-family: var(--font_dm);
+            line-height: 1.5;
+            font-weight: 400;
+            overflow-x: hidden;
+            color: var(--dark1);
+            background-color: var(--light_white);
+        }
+        img {
+            max-width: 100%;
+        }
+
+        .custom-container {
+            max-width: 1550px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .custom-row {
+            display: flex;
+            width: 100%;
+        }
+        .flex-1 {
+            flex: 1;
+        }
+        .w-full {
+            width: 100%;
+        }
+        .gap-24 {
+            gap: 24px;
+        }
+        .text-center {
+            text-align: center;
+        }
+
+        /* Button Styles */
+        .theme-btn2,
+        .theme-btn {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--light_white);
+            background: var(--primary_color);
+            display: inline-flex;
+            align-items: center;
+            padding: 13px 26px;
+            border-radius: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: .3s;
+            z-index: 1;
+            overflow: hidden;
+            text-decoration: none !important;
+            gap: 10px;
+        }
+        .theme-btn2::after,
+        .theme-btn2::before,
+        .theme-btn::after,
+        .theme-btn::before {
+            content: '';
+            width: 50%;
+            height: 0;
+            background: var(--dark1);
+            border-radius: 30px 0 0 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: .3s;
+        }
+        .theme-btn2::after,
+        .theme-btn::after {
+            top: auto;
+            left: auto;
+            bottom: 0;
+            right: 0;
+            border-radius: 0 30px 30px 0;
+        }
+        .theme-btn2:hover,
+        .theme-btn:hover {
+            color: var(--light_white);
+        }
+        .theme-btn2:hover::after,
+        .theme-btn2:hover::before,
+        .theme-btn:hover::after,
+        .theme-btn:hover::before {
+            height: 100%;
+        }
+        .theme-btn2 {
+            background: #1351D81A;
+            color: var(--primary_color);
+        }
+        .theme-btn2::after,
+        .theme-btn2::before {
+            background: var(--primary_color);
+        }
+
+        /* Section-subtitle Styles */
+        .section-subtitle {
+            font-family: var(--font_syne);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--primary_color);
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .section-subtitle1 {
+            font-size: 12px;
+        }
+        .section-title {
+            font-family: var(--font_yantramanv);
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            color: var(--dark1);
+        }
+
+        /* Custom Styles for PROTECT website */
+        section {
+            padding: 80px 0;
+        }
+        p {
+            margin: 16px 0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark1) 0%, var(--dark2) 100%);
+            color: var(--light_white);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 120px 0;
+        }
+        .hero h1 {
+            font-family: var(--font_yantramanv);
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/api/placeholder/1200/800');
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .stat-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--primary_color);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        .stat-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark1);
+            margin-bottom: 10px;
+        }
+        
+        /* Approach Section */
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .approach-card {
+            text-align: center;
+            padding: 30px;
+        }
+        .approach-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary_color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 30px;
+        }
+        .approach-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: var(--dark1);
+            color: var(--light_white);
+        }
+        .services .section-title {
+            color: var(--light_white);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        .service-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--yellow_color);
+            font-weight: 700;
+        }
+        
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary_color) 0%, var(--primary_color2) 100%);
+            color: var(--light_white);
+        }
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .cta h2 {
+            font-family: var(--font_yantramanv);
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .cta .theme-btn {
+            background-color: var(--light_white);
+            color: var(--primary_color);
+            margin-top: 20px;
+        }
+        .cta .theme-btn:hover {
+            color: var(--light_white);
+        }
+        .cta .theme-btn::before,
+        .cta .theme-btn::after {
+            background-color: var(--dark1);
+        }
+        
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: var(--gray);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            padding-left: 40px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        .testimonial-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .author-info h4 {
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        .author-info p {
+            color: var(--dark2);
+            margin: 0;
+        }
+        
+        /* Team Section */
+        .team {
+            background-color: var(--primary_light);
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .team-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+        }
+        .team-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .team-info {
+            padding: 20px;
+        }
+        .team-name {
+            font-size: 20px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        .team-role {
+            color: var(--primary_color);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        /* Footer CTA */
+        .footer-cta {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .footer-cta h2 {
+            font-family: var(--font_yantramanv);
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="custom-container">
+            <div class="hero-content">
+                <h1>Securing the Digital Future, Together</h1>
+                <p>PROTECT is a coalition of cybersecurity experts, educators, and advocates united in the mission to create a safer online world for everyone.</p>
+                <a href="#" class="theme-btn">Join Our Community</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Mission Section -->
+    <section class="mission">
+        <div class="custom-container">
+            <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+                <p class="section-subtitle">Our Mission</p>
+                <h2 class="section-title">Empowering Digital Safety</h2>
+                <p>PROTECT was founded on a simple principle: everyone deserves to feel safe in the digital world. We believe that effective cybersecurity education and community support are the foundations of a resilient digital society.</p>
+                <p>Through accessible resources, personalized guidance, and advocacy for stronger digital protections, we're building a world where technology empowers rather than endangers.</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">350+</div>
+                    <h3 class="stat-title">Security Resources</h3>
+                    <p>Comprehensive guides created by cybersecurity professionals</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">60K+</div>
+                    <h3 class="stat-title">Community Members</h3>
+                    <p>Individuals empowered with digital safety knowledge</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">250+</div>
+                    <h3 class="stat-title">Expert Volunteers</h3>
+                    <p>Professionals dedicating time to our shared mission</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <h3 class="stat-title">Support Available</h3>
+                    <p>Round-the-clock assistance for urgent digital crises</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Our Approach Section -->
+    <section>
+        <div class="custom-container">
+            <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+                <p class="section-subtitle">Our Approach</p>
+                <h2 class="section-title">How We Make a Difference</h2>
+                <p>Our holistic approach addresses cybersecurity challenges through four interconnected pillars of action.</p>
+            </div>
+            
+            <div class="approach-grid">
+                <div class="approach-card simple-shadow">
+                    <div class="approach-icon">🛡️</div>
+                    <h3 class="approach-title">Education</h3>
+                    <p>We create accessible, jargon-free resources that make cybersecurity understandable for everyone, regardless of technical background.</p>
+                </div>
+                <div class="approach-card simple-shadow">
+                    <div class="approach-icon">🤝</div>
+                    <h3 class="approach-title">Community</h3>
+                    <p>We foster a supportive network where individuals can share experiences, solutions, and find assistance during digital security challenges.</p>
+                </div>
+                <div class="approach-card simple-shadow">
+                    <div class="approach-icon">📣</div>
+                    <h3 class="approach-title">Advocacy</h3>
+                    <p>We champion policies and standards that strengthen digital rights and create a more secure internet ecosystem for all users.</p>
+                </div>
+                <div class="approach-card simple-shadow">
+                    <div class="approach-icon">🔍</div>
+                    <h3 class="approach-title">Intervention</h3>
+                    <p>We provide direct support to those facing immediate cybersecurity threats, helping them navigate recovery and prevention.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services">
+        <div class="custom-container">
+            <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+                <p class="section-subtitle">Our Services</p>
+                <h2 class="section-title">Protection for Everyone</h2>
+                <p>We provide tailored resources and support for individuals at every stage of life and technical ability.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3 class="service-title">For Families</h3>
+                    <p>Comprehensive guides for parents and children to navigate digital spaces safely together, from first devices to advanced social media safety.</p>
+                </div>
+                <div class="service-card">
+                    <h3 class="service-title">For Professionals</h3>
+                    <p>Resources to protect sensitive work information, secure remote work environments, and implement best practices for digital workplace safety.</p>
+                </div>
+                <div class="service-card">
+                    <h3 class="service-title">For Seniors</h3>
+                    <p>Easy-to-follow resources designed specifically for older adults learning to navigate digital spaces and avoid targeted scams.</p>
+                </div>
+                <div class="service-card">
+                    <h3 class="service-title">For Small Businesses</h3>
+                    <p>Affordable security solutions and guidance to help small organizations protect their digital assets without enterprise-level budgets.</p>
+                </div>
+                <div class="service-card">
+                    <h3 class="service-title">For Educators</h3>
+                    <p>Curriculum materials and training to help teachers integrate digital safety education into classroom environments.</p>
+                </div>
+                <div class="service-card">
+                    <h3 class="service-title">For Communities</h3>
+                    <p>Outreach programs and workshops designed to strengthen digital resilience in underserved and vulnerable communities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="custom-container">
+            <div class="cta-content">
+                <h2>Join Our Mission</h2>
+                <p>Whether you're a cybersecurity professional looking to share your expertise or someone passionate about digital safety, there's a place for you in our community.</p>
+                <a href="#" class="theme-btn">Become a Volunteer</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="custom-container">
+            <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+                <p class="section-subtitle">Testimonials</p>
+                <h2 class="section-title">Impact Stories</h2>
+                <p>Hear from those who have experienced the difference our community makes.</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">When my small healthcare practice was targeted by ransomware, PROTECT's rapid response team guided us through recovery without paying the ransom. They helped us strengthen our systems and train our staff to prevent future attacks.</p>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/100/100" alt="Dr. Rivera" class="testimonial-img">
+                        <div class="author-info">
+                            <h4>Dr. Elena Rivera</h4>
+                            <p>Healthcare Provider</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">After my grandfather lost his retirement savings to an online scam, PROTECT not only helped us report the crime but provided support through the recovery process. Their senior-focused workshops have given him confidence to use technology safely again.</p>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/100/100" alt="Marcus Taylor" class="testimonial-img">
+                        <div class="author-info">
+                            <h4>Marcus Taylor</h4>
+                            <p>Community Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">As a teacher, I've integrated PROTECT's digital citizenship curriculum into my classroom. The materials are engaging and age-appropriate, and my students now approach their online activities with a security-first mindset.</p>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/100/100" alt="Aisha Johnson" class="testimonial-img">
+                        <div class="author-info">
+                            <h4>Aisha Johnson</h4>
+                            <p>Middle School Educator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section class="team">
+        <div class="custom-container">
+            <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+                <p class="section-subtitle">Our Leadership</p>
+                <h2 class="section-title">Meet the Team</h2>
+                <p>Led by experts from cybersecurity, education, and policy backgrounds united by a common mission.</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="/api/placeholder/400/350" alt="Director" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Dr. Maya Patel</h3>
+                        <p class="team-role">Executive Director</p>
+                        <p>Former CISO with 15 years of experience in cybersecurity leadership and a passion for making security accessible to everyone.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="/api/placeholder/400/350" alt="Education Director" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Daniel Kwon</h3>
+                        <p class="team-role">Education Director</p>
+                        <p>Curriculum development specialist who transforms complex security concepts into engaging, accessible learning experiences.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="/api/placeholder/400/350" alt="Operations Director" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Olivia Washington</h3>
+                        <p class="team-role">Operations Director</p>
+                        <p>Organizational leader with expertise in scaling community-based initiatives and maximizing volunteer impact.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="/api/placeholder/400/350" alt="Policy Director" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Thomas Alvarez</h3>
+                        <p class="team-role">Policy Director</p>
+                        <p>Former legislative advisor specializing in technology policy and digital rights advocacy at state and federal levels.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <div class="custom-container">
+            <h2>Ready to make the digital world safer?</h2>
+            <p>Whether you need help with a cybersecurity challenge or want to contribute to our mission, we're here for you.</p>
+            
+            <div class="btn-group">
+                <a href="#" class="theme-btn">Get Support</a>
+                <a href="#" class="theme-btn2">Join Our Team</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
