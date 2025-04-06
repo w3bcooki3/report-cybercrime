@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield Community - Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Yantramanav:wght@400;500;700&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark1: #1C1C1C;
+            --dark2: #454545;
+            --light_white: #F9F9F9;
+            --primary_color: #1351D8;
+            --primary_color2: #4F8DFF;
+            --primary_light: #F3F6FD;
+            --primary_light2: rgb(19 81 216 / 10%);
+            --gray: #D9D9D9;
+            --font_syne: 'Syne', sans-serif;
+            --font_yantramanv: 'Yantramanav', sans-serif;
+            --font_dm: 'DM Sans', sans-serif;
+            --yellow_color: #FFD600;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 16px;
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.5;
+            font-weight: 400;
+            overflow-x: hidden;
+            background-color: var(--light_white);
+        }
+
+        .custom-container {
+            max-width: 1550px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .custom-row {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .flex-1 {
+            flex: 1;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .gap-24 {
+            gap: 24px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: var(--font_yantramanv);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary_color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary_color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--dark1);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary_color);
+        }
+
+        /* Blog Hero Section */
+        .blog-hero {
+            background: var(--primary_light);
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-subtitle {
+            font-family: var(--font_syne);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--primary_color);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-family: var(--font_yantramanv);
+            font-size: 60px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            color: var(--dark1);
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+            color: var(--dark2);
+        }
+
+        .bg-shape {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--primary_color);
+            opacity: 0.05;
+            border-radius: 50%;
+        }
+
+        .shape-1 {
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+        }
+
+        .shape-2 {
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+        }
+
+        /* Search Section */
+        .search-section {
+            padding: 30px 0;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        .search-wrap {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-input input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid var(--gray);
+            border-radius: 30px;
+            font-family: var(--font_syne);
+            font-size: 16px;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary_color);
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag-btn {
+            padding: 8px 16px;
+            background: var(--primary_light);
+            color: var(--primary_color);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tag-btn:hover, .tag-btn.active {
+            background: var(--primary_color);
+            color: white;
+        }
+
+        /* Featured Posts */
+        .featured-posts {
+            padding: 80px 0 50px;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .view-all {
+            color: var(--primary_color);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .featured-main {
+            grid-column: 1;
+            grid-row: span 2;
+        }
+
+        .featured-main .blog-card {
+            height: 100%;
+        }
+
+        .featured-main .blog-img {
+            height: 400px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-img {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .blog-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--primary_color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--dark2);
+            font-size: 14px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .blog-title {
+            font-family: var(--font_yantramanv);
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark1);
+            transition: color 0.3s;
+        }
+
+        .blog-title:hover {
+            color: var(--primary_color);
+        }
+
+        .blog-excerpt {
+            color: var(--dark2);
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            color: var(--primary_color);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s;
+        }
+
+        .read-more:hover {
+            gap: 10px;
+        }
+
+        /* Latest Posts */
+        .latest-posts {
+            padding: 50px 0;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 0;
+            background: var(--primary_light);
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .newsletter-title {
+            font-family: var(--font_yantramanv);
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark1);
+        }
+
+        .newsletter-description {
+            margin-bottom: 30px;
+            color: var(--dark2);
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid var(--gray);
+            border-radius: 30px 0 0 30px;
+            font-family: var(--font_syne);
+            font-size: 16px;
+        }
+
+        .newsletter-btn {
+            background: var(--primary_color);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            font-family: var(--font_dm);
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--dark1);
+        }
+
+        /* Category Section */
+        .categories {
+            padding: 50px 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.03);
+            text-align: center;
+            padding: 30px 20px;
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary_light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary_color);
+            font-size: 24px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .category-card:hover .category-icon {
+            background: var(--primary_color);
+            color: white;
+        }
+
+        .category-title {
+            font-family: var(--font_yantramanv);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark1);
+        }
+
+        .category-count {
+            color: var(--primary_color);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark1);
+            padding: 80px 0 30px;
+            color: white;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-family: var(--font_yantramanv);
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-description {
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: background 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary_color);
+        }
+
+        .footer-title {
+            font-family: var(--font_yantramanv);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-contact li {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1s cubic-bezier(.97,.01,.92,1);
+        }
+
+        .slide-left {
+            animation: slideLeft 1s;
+        }
+
+        .slide-right {
+            animation: slideRight 1s;
+        }
+
+        .bounce-in {
+            animation: bounceIn 0.5s ease;
+            animation-delay: 1s;
+            visibility: hidden;
+            animation-fill-mode: forwards;
+        }
+
+        .delay-2 {
+            animation-delay: 1.5s;
+        }
+
+        .delay-3 {
+            animation-delay: 2s;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% { transform: scale(.9); }
+            100% { transform: scale(1); visibility: visible; }
+        }
+
+        @keyframes slideLeft {
+            0% { transform: translateX(-900px) rotate(-90deg); }
+            100% { transform: translateX(0) rotate(0); }
+        }
+
+        @keyframes slideRight {
+            0% { transform: translateX(900px) rotate(90deg); }
+            100% { transform: translateX(0) rotate(0); }
+        }
+
+        /* Media Queries */
+        @media (max-width: 1200px) {
+            .section-title {
+                font-size: 48px;
+            }
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 36px;
+            }
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+            .featured-main {
+                grid-column: auto;
+                grid-row: auto;
+            }
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .newsletter-form {
+                flex-direction: column;
+            }
+            .newsletter-input {
+                border-radius: 30px;
+                margin-bottom: 15px;
+            }
+            .newsletter-btn {
+                border-radius: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Bar -->
+    <div class="header-bar-ad">
+        <div class="bg-shape"></div>
+        <div class="bg-shape bg-shape2"></div>
+        <p>Join our next webinar: "Protecting Your Digital Identity" - April 15, 2025</p>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="custom-container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <div class="logo-icon">🛡️</div>
+                    <span>CyberShield</span>
+                </a>
+                <nav class="nav-menu">
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link active">Blog</a>
+                    <a href="#" class="nav-link">Tools</a>
+                    <a href="#" class="nav-link">Report</a>
+                    <a href="#" class="nav-link">Events</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        <div class="custom-container">
+            <div class="blog-hero-content">
+                <div class="section-subtitle fade-in">CYBERSECURITY INSIGHTS</div>
+                <h1 class="section-title slide-left">Stay Protected in the Digital World</h1>
+                <p class="hero-description slide-right">Latest insights, guides, and resources to help you navigate the cybersecurity landscape and protect your digital assets.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="custom-container">
+            <div class="search-wrap">
+                <div class="search-input">
+                    <input type="text" placeholder="Search for articles...">
+                    <div class="search-icon">🔍</div>
+                </div>
+                <div class="filter-tags">
+                    <div class="tag-btn active">All</div>
+                    <div class="tag-btn">Ransomware</div>
+                    <div class="tag-btn">Phishing</div>
+                    <div class="tag-btn">Data Privacy</div>
+                    <div class="tag-btn">Tools</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Posts -->
+    <section class="featured-posts">
+        <div class="custom-container">
+            <div class="section-header">
+                <h2 class="section-subtitle">FEATURED ARTICLES</h2>
+                <a href="#" class="view-all">View All <span>→</span></a>
+            </div>
+            <div class="featured-grid">
+                <div class="featured-main">
+                    <div class="blog-card">
+                        <div class="blog-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1666997726532-33f671ca24c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y3liZXJ8ZW58MHx8MHx8fDA%3D');">
+                            <div class="blog-tag">Featured</div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <div class="meta-item">
+                                    <span>👤</span> Admin
+                                </div>
+                                <div class="meta-item">
+                                    <span>📅</span> April 3, 2025
+                                </div>
+                                <div class="meta-item">
+                                    <span>👁️</span> 1.2k Views
+                                </div>
+                            </div>
+                            <h3 class="blog-title">The Rise of AI-Powered Cyber Threats: What You Need to Know</h3>
+                            <p class="blog-excerpt">Artificial Intelligence is transforming cybersecurity on both sides of the battlefield. Learn how attackers are leveraging AI to create more sophisticated threats and how defenders are using it to protect systems.</p>
+                            <a href="#" class="read-more">Read More <span>→</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1666997726532-33f671ca24c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y3liZXJ8ZW58MHx8MHx8fDA%3D');">
+                        <div class="blog-tag">Ransomware</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <div class="meta-item">
+                                <span>👤</span> Security Expert
+                            </div>
+                            <div class="meta-item">
+                                <span>📅</span> April 1, 2025
+                            </div>
+                        </div>
+                        <h3 class="blog-title">5 Steps to Take After a Ransomware Attack</h3>
+                        <p class="blog-excerpt">Immediate response strategies that can help minimize damage and recover your systems faster.</p>
+                        <a href="#" class="read-more">Read More <span>→</span></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1666997726532-33f671ca24c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y3liZXJ8ZW58MHx8MHx8fDA%3D');">
+                        <div class="blog-tag">Tools</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <div class="meta-item">
+                                <span>👤</span> Tool Analyst
+                            </div>
+                            <div class="meta-item">
+                                <span>📅</span> March 28, 2025
+                            </div>
+                        </div>
+                        <h3 class="blog-title">Top 10 Free Cybersecurity Tools Everyone Should Have</h3>
+                        <p class="blog-excerpt">Protect yourself with these essential free tools that every individual and small business should deploy.</p>
+                        <a href="#" class="read-more">Read More <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Posts -->
+    <section class="latest-posts">
+        <div class="custom-container">
+            <div class="section-header">
+                <h2 class="section-subtitle">LATEST ARTICLES</h2>
+                <a href="#" class="view-all">View All <span>→</span></a>
+            </div>
+            <div class="posts-grid">
+                <div class="blog-card">
+                    <div class="blog-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1666997726532-33f671ca24c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y3liZXJ8ZW58MHx8MHx8fDA%3D');">
+                        <div class="blog-tag">Phishing</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <div class="meta-item">
+                                <span>👤</span> Security Analyst
+                            </div>
+                            <div class="meta-item">
+                                <span>📅</span> March 25, 2025
+                            </div>
+                        </div>
+                        <h3 class="blog-title">New Phishing Campaign Targets Banking Customers</h3>
+                        <p class="blog-excerpt">Learn how to spot these sophisticated phishing attempts that are bypassing traditional security filters.</p>
+                        <a href="#" class="read-more">Read More <span>→</span></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1666997726532-33f671ca24c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y3liZXJ8ZW58MHx8MHx8fDA%3D');">
+                        <div class="blog-tag">Data Privacy</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <div class="meta-item">
+                                <span>👤</span> Privacy Expert
+                            </div>
+                            <div class="meta-item">
+                                <span>📅</span> March 22, 2025
+                            </div>
+                        </div>
+                        <h3 class="blog-title">GDPR vs CCPA: What's the Difference for Users?</h3>
+                        <p class="blog-excerpt">Understanding your rights under different privacy regulations and how they protect your personal data.</p>
+                        <a href="#" class="read-more">Read More <span>→</span></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1666997726532-33f671ca24c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y3liZXJ8ZW58MHx8MHx8fDA%3D');">
+                        <div class="blog-tag">Education</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <div class="meta-item">
+                                <span>👤</span> Cyber Educator
+                            </div>
+                            <div class="meta-item">
+                                <span>📅</span> March 20, 2025
+                            </div>
+                        </div>
+                        <h3 class="blog-title">Teaching Kids About Online Safety: A Parent's Guide</h3>
+                        <p class="blog-excerpt">Practical strategies for parents to help children navigate the digital world safely and responsibly.</p>
+                        <a href="#" class="read-more">Read More <span>→</span></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1666997726532-33f671ca24c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y3liZXJ8ZW58MHx8MHx8fDA%3D');">
+                        <div class="blog-tag">Zero Trust</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <div class="meta-item">
+                                <span>👤</span> Network Specialist
+                            </div>
+                            <div class="meta-item">
+                                <span>📅</span> March 18, 2025
+                            </div>
+                        </div>
+                        <h3 class="blog-title">Implementing Zero Trust Architecture for Small Businesses</h3>
+                        <p class="blog-excerpt">Cost-effective ways to adopt the "never trust, always verify" security model in your organization.</p>
+                        <a href="#" class="read-more">Read More <span>→</span></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1666997726532-33f671ca24c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y3liZXJ8ZW58MHx8MHx8fDA%3D');">
+                        <div class="blog-tag">Guides</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <div class="meta-item">
+                                <span>👤</span> Tutorial Writer
+                            </div>
+                            <div class="meta-item">
+                                <span>📅</span> March 15, 2025
+                            </div>
+                        </div>
+                        <h3 class="blog-title">Setting Up a Secure Home Network: Step-by-Step Guide</h3>
+                        <p class="blog-excerpt">Protect your smart home devices and personal data with these essential network security measures.</p>
+                        <a href="#" class="read-more">Read More <span>→</span></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1666997726532-33f671ca24c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y3liZXJ8ZW58MHx8MHx8fDA%3D');">
+                        <div class="blog-tag">Vulnerability</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <div class="meta-item">
+                                <span>👤</span> Researcher
+                            </div>
+                            <div class="meta-item">
+                                <span>📅</span> March 12, 2025
+                            </div>
+                        </div>
+                        <h3 class="blog-title">Critical Vulnerability Found in Popular IoT Devices</h3>
+                        <p class="blog-excerpt">Researchers discover a flaw affecting millions of smart home products. Here's how to check if you're affected.</p>
+                        <a href="#" class="read-more">Read More <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="custom-container">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title">Stay Updated on Cybersecurity Trends</h2>
+                <p class="newsletter-description">Subscribe to our newsletter and receive the latest cybersecurity news, tutorials, and alerts directly to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address">
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Section -->
+    <section class="categories">
+        <div class="custom-container">
+            <div class="section-header">
+                <h2 class="section-subtitle">EXPLORE CATEGORIES</h2>
+                <a href="#" class="view-all">View All <span>→</span></a>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">🛡️</div>
+                    <h3 class="category-title">Ransomware Protection</h3>
+                    <div class="category-count">24 Articles</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🔒</div>
+                    <h3 class="category-title">Data Privacy</h3>
+                    <div class="category-count">18 Articles</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">📱</div>
+                    <h3 class="category-title">Mobile Security</h3>
+                    <div class="category-count">15 Articles</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🏠</div>
+                    <h3 class="category-title">Smart Home Security</h3>
+                    <div class="category-count">12 Articles</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="custom-container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <div class="logo-icon">🛡️</div>
+                        <span>CyberShield</span>
+                    </div>
+                    <p class="footer-description">Empowering individuals and organizations with knowledge and tools to protect their digital assets in an increasingly connected world.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">𝕏</a>
+                        <a href="#" class="social-link">𝔽</a>
+                        <a href="#" class="social-link">𝕃</a>
+                        <a href="#" class="social-link">𝕐</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Tools</a></li>
+                        <li><a href="#">Report</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-title">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-title">Contact Us</h3>
+                    <ul class="footer-contact">
+                        <li><span>📞</span> +1 (555) 123-4567</li>
+                        <li><span>✉️</span> info@cybershield.com</li>
+                        <li><span>🌐</span> www.cybershield.com</li>
+                        <li><span>📍</span> 123 Security Ave, Digital City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CyberShield Community. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for animation triggers and interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show elements with visibility: hidden
+            const animatedElements = document.querySelectorAll('.bounce-in');
+            animatedElements.forEach(el => {
+                el.style.visibility = 'visible';
+            });
+            
+            // Tag button click event
+            const tagButtons = document.querySelectorAll('.tag-btn');
+            tagButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tagButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
