@@ -746,7 +746,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .container{
-    max-width: 60%;
+    max-width: 80%;
   }
 }
 
@@ -754,9 +754,12 @@
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+  .container{
+    max-width: 80%;
+  }
 }
 
-@media (max-width: 1700px) {
+@media (min-width: 1700px) {
   .container {
       max-width: 1170px;
   }

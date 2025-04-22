@@ -1,0 +1,2397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield - Cybersecurity Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark1: #121820;
+            --dark2: #3a4049;
+            --light-white: #f9fafb;
+            --primary-color: #0052cc;
+            --primary-hover: #0747a6;
+            --primary-light: #e6f0ff;
+            --primary-light2: rgba(0, 82, 204, 0.08);
+            --accent-color: #ff6b4a;
+            --gray: #e2e8f0;
+            --gray-light: #f1f5f9;
+            --font-inter: 'Inter', sans-serif;
+            --font-syne: 'Syne', sans-serif;
+            --font-dm: 'DM Sans', sans-serif;
+            --alert-color: #dc2626;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-dm);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark2);
+            background-color: var(--light-white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-inter);
+            font-weight: 700;
+            color: var(--dark1);
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        ul, ol {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        button, input {
+            font-family: var(--font-dm);
+            border: none;
+            outline: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .gap-6 {
+            gap: 24px;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 82, 204, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border: 1px solid transparent;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-light2);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-light2);
+            transform: translateY(-2px);
+        }
+
+        .btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Security Alert Bar */
+        .security-alert {
+            background: linear-gradient(90deg, var(--alert-color), #e11d48);
+            color: white;
+            padding: 12px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .security-alert::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(0, 0, 0, 0.05),
+                rgba(0, 0, 0, 0.05) 10px,
+                rgba(0, 0, 0, 0) 10px,
+                rgba(0, 0, 0, 0) 20px
+            );
+        }
+
+        .alert-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .alert-tag {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .alert-message {
+            font-weight: 500;
+        }
+
+        .alert-link {
+            color: white;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .alert-link:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* News Ticker */
+        .news-ticker {
+            background-color: var(--dark1);
+            padding: 12px 0;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ticker-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-label {
+            background-color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-right: 24px;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0, 82, 204, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ticker-wrapper {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .ticker-items {
+            display: flex;
+            animation: ticker 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        .ticker-item {
+            margin-right: 60px;
+            font-size: 15px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .ticker-item:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 20px;
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-light), white);
+            position: relative;
+            overflow: hidden;
+            padding: 100px 0 120px;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-light2) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-light2) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-title {
+            font-size: clamp(40px, 5vw, 56px);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .hero-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin-top: 20px;
+            border-radius: 2px;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            margin-bottom: 32px;
+            color: var(--dark2);
+            max-width: 560px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-img-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-img-wrapper img {
+            width: 100%;
+            display: block;
+            border-radius: 16px;
+        }
+
+        .hero-img-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 70%;
+            height: 70%;
+            border: 3px solid var(--primary-color);
+            border-radius: 16px;
+            z-index: -1;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            flex: 1;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--dark2);
+        }
+
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-image {
+                order: -1;
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto 40px;
+            }
+        }
+
+        /* IMPROVED - Search Section */
+        .search-section {
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-container {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .search-header {
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .search-title {
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: var(--dark1);
+        }
+
+        .search-subtitle {
+            font-size: 15px;
+            color: var(--dark2);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            display: flex;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 2px solid var(--gray);
+            transition: all 0.3s ease;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .search-box:hover, 
+        .search-box:focus-within {
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 20px rgba(0, 82, 204, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .search-box-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 16px;
+            color: var(--dark2);
+            font-size: 18px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 18px 0;
+            font-size: 16px;
+            border-radius: 0;
+            background: transparent;
+        }
+
+        .search-box input::placeholder {
+            color: var(--dark2);
+            opacity: 0.7;
+        }
+
+        .search-box button {
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+            color: white;
+            padding: 0 36px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-box button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .search-box button:hover::before {
+            left: 100%;
+        }
+
+        .search-box button:hover {
+            background: linear-gradient(90deg, var(--primary-hover), var(--primary-color));
+            box-shadow: 0 0 15px rgba(0, 82, 204, 0.3);
+        }
+
+        .search-categories {
+            display: flex;
+            margin-top: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .category-tag {
+            padding: 8px 16px;
+            background-color: var(--gray-light);
+            color: var(--dark2);
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .category-tag i {
+            font-size: 12px;
+            color: var(--primary-color);
+        }
+
+        .category-tag:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.1);
+        }
+
+        /* IMPROVED - Blog Cards and Sections */
+        .blog-section-heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title-main {
+            font-size: 38px;
+            margin-bottom: 16px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title-main::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section-description {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: var(--dark2);
+        }
+
+        .blog-container {
+            position: relative;
+            padding: 30px 0;
+        }
+
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modern Blog Card Style 1 */
+        .blog-card-modern {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .blog-card-modern:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-card-modern:hover::after {
+            width: 100%;
+        }
+
+        .blog-img-modern {
+            position: relative;
+            overflow: hidden;
+            height: 240px;
+        }
+
+        .blog-img-modern img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .blog-card-modern:hover .blog-img-modern img {
+            transform: scale(1.1);
+        }
+
+        .blog-img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .blog-card-modern:hover .blog-img-overlay {
+            opacity: 0.9;
+        }
+
+        .blog-tag-modern {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card-modern:hover .blog-tag-modern {
+            background-color: var(--accent-color);
+            transform: translateY(-4px);
+        }
+
+        .blog-content-modern {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .blog-meta-modern {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: var(--dark2);
+        }
+
+        .blog-meta-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .blog-author-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .blog-author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-date {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--dark2);
+            opacity: 0.8;
+        }
+
+        .blog-title-modern {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card-modern:hover .blog-title-modern {
+            color: var(--primary-color);
+        }
+
+        .blog-excerpt-modern {
+            color: var(--dark2);
+            margin-bottom: 24px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex-grow: 1;
+            line-height: 1.7;
+        }
+
+        .read-more-modern {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+            margin-top: auto;
+            gap: 8px;
+        }
+
+        .read-more-modern:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateX(6px);
+        }
+
+        .read-more-modern i {
+            transition: transform 0.3s ease;
+        }
+
+        .read-more-modern:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Blog Card Style 2 - Horizontal */
+        .blog-card-horizontal {
+            display: flex;
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+        }
+
+        .blog-card-horizontal:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-img-horizontal {
+            width: 35%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-img-horizontal img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .blog-card-horizontal:hover .blog-img-horizontal img {
+            transform: scale(1.1);
+        }
+
+        .blog-tag-horizontal {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-content-horizontal {
+            width: 65%;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-meta-horizontal {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--dark2);
+        }
+
+        .blog-title-horizontal {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card-horizontal:hover .blog-title-horizontal {
+            color: var(--primary-color);
+        }
+
+        .blog-excerpt-horizontal {
+            color: var(--dark2);
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+            margin-top: auto;
+        }
+
+        .read-more-btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 82, 204, 0.2);
+        }
+
+        .read-more-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .read-more-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Featured Card */
+        .featured-card {
+            display: flex;
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .featured-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 82, 204, 0.05) 0%, rgba(255,255,255,0) 50%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @media (max-width: 992px) {
+            .featured-card {
+                flex-direction: column;
+            }
+            
+            .featured-img {
+                width: 100%;
+                height: 300px;
+            }
+            
+            .featured-content {
+                width: 100%;
+            }
+        }
+
+        .featured-img {
+            width: 50%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .featured-card:hover .featured-img img {
+            transform: scale(1.05);
+        }
+
+        .featured-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(255, 107, 74, 0.3);
+        }
+
+        .featured-content {
+            width: 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            align-self: flex-start;
+        }
+
+        .featured-badge i {
+            font-size: 16px;
+        }
+
+        .featured-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .featured-excerpt {
+            color: var(--dark2);
+            margin-bottom: 30px;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .featured-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .featured-author-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .featured-author-name {
+            font-weight: 600;
+            color: var(--dark1);
+        }
+
+        .featured-author-role {
+            font-size: 13px;
+            color: var(--dark2);
+            opacity: 0.8;
+        }
+
+        .featured-date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--dark2);
+            font-size: 14px;
+        }
+
+        .featured-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+            box-shadow: 0 8px 16px rgba(0, 82, 204, 0.2);
+        }
+
+        .featured-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 24px rgba(0, 82, 204, 0.3);
+        }
+
+        .featured-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .featured-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Trending Topics Section */
+        .trending-section {
+            padding: 80px 0;
+            background-color: var(--gray-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trending-section::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 82, 204, 0.05) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+        }
+
+        .trending-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 1200px) {
+            .trending-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .trending-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .trending-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .trending-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .trending-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .trending-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: width 0.3s ease;
+        }
+
+        .trending-card:hover::after {
+            width: 100%;
+        }
+
+        .trending-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 48px;
+            font-weight: 800;
+            color: rgba(0, 82, 204, 0.06);
+            line-height: 1;
+            font-family: var(--font-syne);
+        }
+
+        .trending-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .trending-card:hover .trending-icon {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .trending-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            transition: color 0.3s ease;
+        }
+
+        .trending-card:hover .trending-title {
+            color: var(--primary-color);
+        }
+
+        .trending-description {
+            color: var(--dark2);
+            font-size: 14px;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .trending-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid var(--gray);
+        }
+
+        .trending-count {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--dark2);
+        }
+
+        .trending-count i {
+            color: var(--accent-color);
+        }
+
+
+        /* Recommended Section */
+        .recommended-section {
+            padding: 80px 0;
+            background-color: white;
+            position: relative;
+        }
+
+        .recommended-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .recommended-title-wrapper {
+            max-width: 60%;
+        }
+
+        .recommended-subtitle {
+            font-size: 16px;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .recommended-subtitle i {
+            font-size: 14px;
+        }
+
+        .recommended-title {
+            font-size: 32px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .recommended-description {
+            color: var(--dark2);
+            max-width: 700px;
+        }
+
+        .view-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .view-all:hover {
+            background-color: var(--primary-light);
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .recommended-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 992px) {
+            .recommended-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .recommended-heading {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .recommended-title-wrapper {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .recommended-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .recommended-card {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 1px solid var(--gray);
+        }
+
+        .recommended-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-light);
+        }
+
+        .recommended-img {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .recommended-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .recommended-card:hover .recommended-img img {
+            transform: scale(1.1);
+        }
+
+        .recommended-tag {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .recommended-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .recommended-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: var(--dark2);
+        }
+
+        .recommended-date {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--dark2);
+            opacity: 0.8;
+        }
+
+        .recommended-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        .recommended-card:hover .recommended-title {
+            color: var(--primary-color);
+        }
+
+        .recommended-excerpt {
+            color: var(--dark2);
+            margin-bottom: 24px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex-grow: 1;
+        }
+
+        .recommended-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid var(--gray);
+        }
+
+        .recommended-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .recommended-author-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .recommended-author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .recommended-author-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .recommended-stats {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            color: var(--dark2);
+        }
+
+        .stat i {
+            color: var(--primary-color);
+        }
+
+
+        /* Trending Section */
+        .trending2-section {
+            background-color: var(--primary-light);
+            position: relative;
+            z-index: 1;
+        }
+
+        .trending2-section::before,
+        .trending2-section::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .trending2-section::before {
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(19, 81, 216, 0.1) 0%, rgba(255,255,255,0) 70%);
+        }
+
+        .trending2-section::after {
+            bottom: -100px;
+            left: -100px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(19, 81, 216, 0.1) 0%, rgba(255,255,255,0) 70%);
+        }
+        /* Recommended Blogs */
+        .trend-recommended-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 992px) {
+            .trend-recommended-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .trend-recommended-card {
+            display: flex;
+            gap: 20px;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-recommended-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .trend-recommended-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .trend-recommended-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .trend-recommended-card:hover .trend-recommended-img img {
+            transform: scale(1.08);
+        }
+
+        .trend-recommended-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .trend-recommended-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        .trend-recommended-card:hover .trend-recommended-title {
+            color: var(--primary-color);
+        }
+
+        .trend-recommended-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: var(--dark2);
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 99;
+            box-shadow: 0 6px 16px rgba(0, 82, 204, 0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 40px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .blog-card-horizontal {
+                flex-direction: column;
+            }
+            
+            .blog-img-horizontal {
+                width: 100%;
+                height: 240px;
+            }
+            
+            .blog-content-horizontal {
+                width: 100%;
+            }
+            
+            .hero-section {
+                padding: 80px 0 100px;
+            }
+            
+            .search-section {
+                margin-top: -50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+            
+            .section-title-main {
+                font-size: 32px;
+            }
+            
+            .security-alert {
+                padding: 16px 0;
+            }
+            
+            .alert-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+            
+            .hero-section {
+                padding: 60px 0 80px;
+            }
+            
+            .hero-title {
+                font-size: clamp(32px, 5vw, 44px);
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .search-container {
+                padding: 30px 20px;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .search-box button {
+                width: 100%;
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .hero-btns .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Utility Classes */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-0 { margin-top: 0; }
+        .mt-1 { margin-top: 4px; }
+        .mt-2 { margin-top: 8px; }
+        .mt-3 { margin-top: 16px; }
+        .mt-4 { margin-top: 24px; }
+        .mt-5 { margin-top: 32px; }
+
+        .mb-0 { margin-bottom: 0; }
+        .mb-1 { margin-bottom: 4px; }
+        .mb-2 { margin-bottom: 8px; }
+        .mb-3 { margin-bottom: 16px; }
+        .mb-4 { margin-bottom: 24px; }
+        .mb-5 { margin-bottom: 32px; }
+
+        .px-0 { padding-left: 0; padding-right: 0; }
+        .px-1 { padding-left: 4px; padding-right: 4px; }
+        .px-2 { padding-left: 8px; padding-right: 8px; }
+        .px-3 { padding-left: 16px; padding-right: 16px; }
+        .px-4 { padding-left: 24px; padding-right: 24px; }
+        .px-5 { padding-left: 32px; padding-right: 32px; }
+
+        .py-0 { padding-top: 0; padding-bottom: 0; }
+        .py-1 { padding-top: 4px; padding-bottom: 4px; }
+        .py-2 { padding-top: 8px; padding-bottom: 8px; }
+        .py-3 { padding-top: 16px; padding-bottom: 16px; }
+        .py-4 { padding-top: 24px; padding-bottom: 24px; }
+        .py-5 { padding-top: 32px; padding-bottom: 32px; }
+</style>
+</head>
+<body>
+    <!-- Security Alert Banner -->
+    <div class="security-alert">
+        <div class="container">
+            <div class="alert-content">
+                <div class="alert-tag">Security Alert</div>
+                <div class="alert-message">Critical vulnerability detected in OpenSSL versions 3.0.0-3.0.7 - <a href="#" class="alert-link">Update Now</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- News Ticker -->
+    <div class="news-ticker">
+        <div class="container">
+            <div class="ticker-content">
+                <div class="ticker-label">
+                    <i class="fas fa-bolt"></i> Trending
+                </div>
+                <div class="ticker-wrapper">
+                    <div class="ticker-items">
+                        <div class="ticker-item">New ransomware strain targeting healthcare sector</div>
+                        <div class="ticker-item">Microsoft patches zero-day vulnerability in Windows 11</div>
+                        <div class="ticker-item">CISA adds 3 new vulnerabilities to Known Exploited catalog</div>
+                        <div class="ticker-item">Major data breach affects over 5 million users</div>
+                        <div class="ticker-item">AI-powered phishing attacks on the rise</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Stay Secure in a Connected World</h1>
+                    <p class="hero-description">Explore the latest cybersecurity insights, threats, and best practices to protect your digital assets. Our experts help you navigate the evolving threat landscape.</p>
+                    <div class="hero-btns">
+                        <a href="#" class="btn btn-primary">Explore Articles <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="btn btn-outline">Security Resources</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Security Articles</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50K+</div>
+                            <div class="stat-label">Monthly Readers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">Expert Contributors</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaHxlbnwwfHwwfHx8MA%3D%3D" alt="Cybersecurity Illustration">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <div class="search-header">
+                    <h2 class="search-title">Find Security Insights</h2>
+                    <p class="search-subtitle">Search our extensive knowledge base for the latest cybersecurity information</p>
+                </div>
+                <div class="search-box">
+                    <div class="search-box-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <input type="text" placeholder="Search for security topics, threats, or best practices...">
+                    <button>Search</button>
+                </div>
+                <div class="search-categories">
+                    <a href="#" class="category-tag"><i class="fas fa-virus"></i> Malware</a>
+                    <a href="#" class="category-tag"><i class="fas fa-lock"></i> Data Privacy</a>
+                    <a href="#" class="category-tag"><i class="fas fa-cloud"></i> Cloud Security</a>
+                    <a href="#" class="category-tag"><i class="fas fa-mobile-alt"></i> Mobile Security</a>
+                    <a href="#" class="category-tag"><i class="fas fa-wifi"></i> Network Security</a>
+                    <a href="#" class="category-tag"><i class="fas fa-code"></i> Secure Coding</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Articles Section -->
+    <section class="blog-section section-padding">
+        <div class="container">
+            <div class="blog-section-heading">
+                <h2 class="section-title-main">Latest Blogs</h2>
+                <p class="section-description">Stay informed with our latest articles covering emerging threats, vulnerability analysis, and security best practices</p>
+            </div>
+
+            <div class="blog-container">
+
+                <div class="blog-grid">
+                    <!-- Blog Card 1 -->
+                    <div class="blog-card-modern">
+                        <div class="blog-img-modern">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaHxlbnwwfHwwfHx8MA%3D%3D" alt="Ransomware Trends">
+                            <div class="blog-img-overlay"></div>
+                            <div class="blog-tag-modern">Threat Intelligence</div>
+                        </div>
+                        <div class="blog-content-modern">
+                            <div class="blog-meta-modern">
+                                <div class="blog-meta-author">
+                                    <div class="blog-author-img">
+                                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaHxlbnwwfHwwfHx8MA%3D%3D" alt="Author">
+                                    </div>
+                                    <span>Sarah Johnson</span>
+                                </div>
+                                <div class="blog-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>April 12, 2025</span>
+                                </div>
+                            </div>
+                            <h3 class="blog-title-modern">Ransomware Trends in 2025: What Organizations Need to Know</h3>
+                            <p class="blog-excerpt-modern">Explore the evolving tactics of ransomware groups and learn how organizations can strengthen their defenses against sophisticated ransomware attacks.</p>
+                            <a href="#" class="read-more-modern">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Blog Card 2 -->
+                    <div class="blog-card-modern">
+                        <div class="blog-img-modern">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaHxlbnwwfHwwfHx8MA%3D%3D" alt="Zero Trust Architecture">
+                            <div class="blog-img-overlay"></div>
+                            <div class="blog-tag-modern">Best Practices</div>
+                        </div>
+                        <div class="blog-content-modern">
+                            <div class="blog-meta-modern">
+                                <div class="blog-meta-author">
+                                    <div class="blog-author-img">
+                                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaHxlbnwwfHwwfHx8MA%3D%3D" alt="Author">
+                                    </div>
+                                    <span>Michael Chen</span>
+                                </div>
+                                <div class="blog-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>April 10, 2025</span>
+                                </div>
+                            </div>
+                            <h3 class="blog-title-modern">Implementing Zero Trust Architecture: A Practical Guide</h3>
+                            <p class="blog-excerpt-modern">Learn how to transition from traditional security models to Zero Trust Architecture with practical steps for implementation across your organization.</p>
+                            <a href="#" class="read-more-modern">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Blog Card 3 -->
+                    <div class="blog-card-modern">
+                        <div class="blog-img-modern">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaHxlbnwwfHwwfHx8MA%3D%3D" alt="API Security">
+                            <div class="blog-img-overlay"></div>
+                            <div class="blog-tag-modern">Vulnerability Analysis</div>
+                        </div>
+                        <div class="blog-content-modern">
+                            <div class="blog-meta-modern">
+                                <div class="blog-meta-author">
+                                    <div class="blog-author-img">
+                                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaHxlbnwwfHwwfHx8MA%3D%3D" alt="Author">
+                                    </div>
+                                    <span>David Rodriguez</span>
+                                </div>
+                                <div class="blog-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>April 8, 2025</span>
+                                </div>
+                            </div>
+                            <h3 class="blog-title-modern">Common API Security Vulnerabilities and How to Fix Them</h3>
+                            <p class="blog-excerpt-modern">Discover the most prevalent API security vulnerabilities and learn effective strategies to secure your APIs against common attack vectors.</p>
+                            <a href="#" class="read-more-modern">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Topics Section -->
+    <section class="trending-section section-padding">
+        <div class="container">
+            <div class="blog-section-heading">
+                <h2 class="section-title-main">Trending Cybersecurity Topics</h2>
+                <p class="section-description">Stay informed about the most discussed cybersecurity threats and solutions that are trending in the security community</p>
+            </div>
+            
+            <div class="trending-grid">
+                <div class="trending-card">
+                    <div class="trending-number">01</div>
+                    <div class="trending-icon">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h3 class="trending-title">Ransomware Protection Strategies</h3>
+                    <p class="trending-description">Essential strategies for organizations to prevent, detect, and recover from ransomware attacks efficiently.</p>
+                    <div class="trending-meta">
+                        <div class="trending-count">
+                            <i class="fas fa-eye"></i> 8.2K views
+                        </div>
+                        <div class="trending-count">
+                            <i class="fas fa-comments"></i> 156 comments
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trending-card">
+                    <div class="trending-number">02</div>
+                    <div class="trending-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="trending-title">AI-Powered Threat Detection</h3>
+                    <p class="trending-description">How artificial intelligence is revolutionizing cybersecurity threat detection and response mechanisms.</p>
+                    <div class="trending-meta">
+                        <div class="trending-count">
+                            <i class="fas fa-eye"></i> 7.5K views
+                        </div>
+                        <div class="trending-count">
+                            <i class="fas fa-comments"></i> 134 comments
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trending-card">
+                    <div class="trending-number">03</div>
+                    <div class="trending-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3 class="trending-title">Cloud Security Best Practices</h3>
+                    <p class="trending-description">Secure your cloud environments with these industry-recognized security best practices and guidelines.</p>
+                    <div class="trending-meta">
+                        <div class="trending-count">
+                            <i class="fas fa-eye"></i> 6.9K views
+                        </div>
+                        <div class="trending-count">
+                            <i class="fas fa-comments"></i> 112 comments
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trending-card">
+                    <div class="trending-number">04</div>
+                    <div class="trending-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3 class="trending-title">Zero Trust Architecture</h3>
+                    <p class="trending-description">Implementing zero trust security models to enhance your organization's cybersecurity posture.</p>
+                    <div class="trending-meta">
+                        <div class="trending-count">
+                            <i class="fas fa-eye"></i> 6.3K views
+                        </div>
+                        <div class="trending-count">
+                            <i class="fas fa-comments"></i> 98 comments
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Section -->
+<section class="trending2-section section-padding">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Trending Topics</h2>
+            <a href="#" class="view-all">View all topics <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="trend-recommended-grid">
+            <!-- Recommended Card 1 -->
+            <div class="trend-recommended-card">
+                <div class="trend-recommended-img">
+                    <img src="/api/placeholder/200/200" alt="Zero-Day Exploits">
+                </div>
+                <div class="trend-recommended-content">
+                    <h3 class="trend-recommended-title">Understanding Zero-Day Exploits: Detection and Prevention</h3>
+                    <div class="trend-recommended-meta">
+                        <span><i class="far fa-calendar"></i> Apr 2, 2025</span>
+                        <span><i class="far fa-eye"></i> 3.2K views</span>
+                    </div>
+                    <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Recommended Card 2 -->
+            <div class="trend-recommended-card">
+                <div class="trend-recommended-img">
+                    <img src="/api/placeholder/200/200" alt="Cloud Security">
+                </div>
+                <div class="trend-recommended-content">
+                    <h3 class="trend-recommended-title">Securing Cloud Infrastructure: Best Practices for 2025</h3>
+                    <div class="trend-recommended-meta">
+                        <span><i class="far fa-calendar"></i> Mar 25, 2025</span>
+                        <span><i class="far fa-eye"></i> 2.8K views</span>
+                    </div>
+                    <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Recommended Card 3 -->
+            <div class="trend-recommended-card">
+                <div class="trend-recommended-img">
+                    <img src="/api/placeholder/200/200" alt="IoT Security">
+                </div>
+                <div class="trend-recommended-content">
+                    <h3 class="trend-recommended-title">IoT Security Challenges: Protecting Smart Devices</h3>
+                    <div class="trend-recommended-meta">
+                        <span><i class="far fa-calendar"></i> Mar 20, 2025</span>
+                        <span><i class="far fa-eye"></i> 2.1K views</span>
+                    </div>
+                    <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Recommended Card 4 -->
+            <div class="trend-recommended-card">
+                <div class="trend-recommended-img">
+                    <img src="/api/placeholder/200/200" alt="Phishing Attacks">
+                </div>
+                <div class="trend-recommended-content">
+                    <h3 class="trend-recommended-title">Advanced Phishing Techniques: How to Identify and Avoid Them</h3>
+                    <div class="trend-recommended-meta">
+                        <span><i class="far fa-calendar"></i> Mar 15, 2025</span>
+                        <span><i class="far fa-eye"></i> 4.5K views</span>
+                    </div>
+                    <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Recommended Section -->
+    <section class="recommended-section section-padding">
+        <div class="container">
+            <div class="recommended-heading">
+                <div class="recommended-title-wrapper">
+                    <div class="recommended-subtitle">
+                        <i class="fas fa-thumbs-up"></i> Top Picks For You
+                    </div>
+                    <h2 class="recommended-title">Recommended Reading</h2>
+                    <p class="recommended-description">Articles curated specifically for security professionals looking to enhance their knowledge and stay ahead of threats</p>
+                </div>
+                <a href="#" class="view-all">View All Articles <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="recommended-grid">
+                <div class="recommended-card">
+                    <div class="recommended-img">
+                        <img src="/api/placeholder/400/250" alt="Recommended Article">
+                        <div class="recommended-tag">Security Analysis</div>
+                    </div>
+                    <div class="recommended-content">
+                        <div class="recommended-meta">
+                            <div class="recommended-date">
+                                <i class="far fa-calendar-alt"></i> April 10, 2025
+                            </div>
+                            <div class="stat">
+                                <i class="far fa-clock"></i> 8 min read
+                            </div>
+                        </div>
+                        <h3 class="recommended-title">Understanding Supply Chain Attacks and Mitigation Strategies</h3>
+                        <p class="recommended-excerpt">Supply chain attacks have become increasingly sophisticated, targeting the weakest links in trusted software. Learn how to identify vulnerabilities and implement robust defenses.</p>
+                        <div class="recommended-footer">
+                            <div class="recommended-author">
+                                <div class="recommended-author-img">
+                                    <img src="/api/placeholder/60/60" alt="Author">
+                                </div>
+                                <div class="recommended-author-name">James Wilson</div>
+                            </div>
+                            <div class="recommended-stats">
+                                <div class="stat">
+                                    <i class="fas fa-eye"></i> 3.2K
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-comment"></i> 48
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommended-card">
+                    <div class="recommended-img">
+                        <img src="/api/placeholder/400/250" alt="Recommended Article">
+                        <div class="recommended-tag">Guide</div>
+                    </div>
+                    <div class="recommended-content">
+                        <div class="recommended-meta">
+                            <div class="recommended-date">
+                                <i class="far fa-calendar-alt"></i> April 8, 2025
+                            </div>
+                            <div class="stat">
+                                <i class="far fa-clock"></i> 12 min read
+                            </div>
+                        </div>
+                        <h3 class="recommended-title">Building a Comprehensive Incident Response Plan</h3>
+                        <p class="recommended-excerpt">A step-by-step guide to creating an effective incident response strategy that minimizes damage and ensures business continuity during security breaches.</p>
+                        <div class="recommended-footer">
+                            <div class="recommended-author">
+                                <div class="recommended-author-img">
+                                    <img src="/api/placeholder/60/60" alt="Author">
+                                </div>
+                                <div class="recommended-author-name">Lisa Chen</div>
+                            </div>
+                            <div class="recommended-stats">
+                                <div class="stat">
+                                    <i class="fas fa-eye"></i> 2.8K
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-comment"></i> 36
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommended-card">
+                    <div class="recommended-img">
+                        <img src="/api/placeholder/400/250" alt="Recommended Article">
+                        <div class="recommended-tag">Tutorial</div>
+                    </div>
+                    <div class="recommended-content">
+                        <div class="recommended-meta">
+                            <div class="recommended-date">
+                                <i class="far fa-calendar-alt"></i> April 5, 2025
+                            </div>
+                            <div class="stat">
+                                <i class="far fa-clock"></i> 10 min read
+                            </div>
+                        </div>
+                        <h3 class="recommended-title">Implementing Multi-Factor Authentication Across Your Organization</h3>
+                        <p class="recommended-excerpt">A practical guide for security teams on deploying MFA solutions that balance security requirements with user experience considerations.</p>
+                        <div class="recommended-footer">
+                            <div class="recommended-author">
+                                <div class="recommended-author-img">
+                                    <img src="/api/placeholder/60/60" alt="Author">
+                                </div>
+                                <div class="recommended-author-name">Michael Rodriguez</div>
+                            </div>
+                            <div class="recommended-stats">
+                                <div class="stat">
+                                    <i class="fas fa-eye"></i> 2.5K
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-comment"></i> 29
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="featured-card">
+                <div class="featured-img">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaHxlbnwwfHwwfHx8MA%3D%3D" alt="Featured Article">
+                    <div class="featured-tag">EXCLUSIVE</div>
+                </div>
+                <div class="featured-content">
+                    <div class="featured-badge">
+                        <i class="fas fa-star"></i> Editor's Pick
+                    </div>
+                    <h2 class="featured-title">The Future of Quantum Cryptography in Enterprise Security</h2>
+                    <p class="featured-excerpt">Explore how quantum computing advancements are reshaping the cryptographic landscape and what organizations need to know to prepare for post-quantum security challenges.</p>
+                    
+                    <div class="featured-meta">
+                        <div class="featured-author">
+                            <div class="featured-author-img">
+                                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaHxlbnwwfHwwfHx8MA%3D%3D" alt="Author">
+                            </div>
+                            <div class="featured-author-info">
+                                <div class="author-name">Dr. Sarah Mitchell</div>
+                                <div class="author-role">Cryptography Expert</div>
+                            </div>
+                        </div>
+                        <div class="featured-date">
+                            <i class="far fa-calendar-alt"></i> April 15, 2025
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="featured-btn">
+                        Read Full Article <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Articles Section with Horizontal Cards -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="blog-section-heading">
+                <h2 class="section-title-main">Recent Articles</h2>
+                <p class="section-description">Explore our most recent cybersecurity content</p>
+            </div>
+
+            <div class="blog-container">
+                <!-- Horizontal Blog Card 1 -->
+                <div class="blog-card-horizontal mb-4">
+                    <div class="blog-img-horizontal">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaHxlbnwwfHwwfHx8MA%3D%3D" alt="Cloud Security">
+                        <div class="blog-tag-horizontal">Cloud Security</div>
+                    </div>
+                    <div class="blog-content-horizontal">
+                        <div class="blog-meta-horizontal">
+                            <div class="blog-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>April 7, 2025</span>
+                            </div>
+                            <div class="blog-date">
+                                <i class="far fa-clock"></i>
+                                <span>8 min read</span>
+                            </div>
+                        </div>
+                        <h3 class="blog-title-horizontal">Securing Multi-Cloud Environments: Challenges and Solutions</h3>
+                        <p class="blog-excerpt-horizontal">As organizations increasingly adopt multi-cloud strategies, security challenges multiply. Learn how to implement consistent security controls across diverse cloud environments.</p>
+                        <a href="#" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Horizontal Blog Card 2 -->
+                <div class="blog-card-horizontal mb-4">
+                    <div class="blog-img-horizontal">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaHxlbnwwfHwwfHx8MA%3D%3D" alt="Supply Chain Security">
+                        <div class="blog-tag-horizontal">Supply Chain</div>
+                    </div>
+                    <div class="blog-content-horizontal">
+                        <div class="blog-meta-horizontal">
+                            <div class="blog-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>April 5, 2025</span>
+                            </div>
+                            <div class="blog-date">
+                                <i class="far fa-clock"></i>
+                                <span>10 min read</span>
+                            </div>
+                        </div>
+                        <h3 class="blog-title-horizontal">Protecting Your Software Supply Chain: Beyond SBOMs</h3>
+                        <p class="blog-excerpt-horizontal">Software supply chain attacks continue to threaten organizations. Discover advanced techniques for securing your development pipeline and third-party dependencies.</p>
+                        <a href="#" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Horizontal Blog Card 3 -->
+                <div class="blog-card-horizontal">
+                    <div class="blog-img-horizontal">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaHxlbnwwfHwwfHx8MA%3D%3D" alt="IoT Security">
+                        <div class="blog-tag-horizontal">IoT</div>
+                    </div>
+                    <div class="blog-content-horizontal">
+                        <div class="blog-meta-horizontal">
+                            <div class="blog-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>April 3, 2025</span>
+                            </div>
+                            <div class="blog-date">
+                                <i class="far fa-clock"></i>
+                                <span>6 min read</span>
+                            </div>
+                        </div>
+                        <h3 class="blog-title-horizontal">IoT Security Standards: Navigating the Regulatory Landscape</h3>
+                        <p class="blog-excerpt-horizontal">With new IoT security regulations emerging globally, organizations need to understand compliance requirements. This guide breaks down key standards and implementation strategies.</p>
+                        <a href="#" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop">
+<i class="fas fa-arrow-up"></i>
+</div>
+
+<!-- JavaScript -->
+<script>
+// Back to Top functionality
+const backToTopButton = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+    } else {
+        backToTopButton.classList.remove('visible');
+    }
+});
+
+backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+
+// Category tags in search functionality
+const categoryTags = document.querySelectorAll('.category-tag');
+const searchInput = document.querySelector('.search-box input');
+
+categoryTags.forEach(tag => {
+    tag.addEventListener('click', () => {
+        // Set search input value to the tag text
+        const tagText = tag.textContent.trim();
+        searchInput.value = tagText;
+        searchInput.focus();
+    });
+});
+</script>
+</body>
+</html>
+                            

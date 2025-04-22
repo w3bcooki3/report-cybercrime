@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Blog Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@400;500;600;700&family=Yantramanav:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base styles from provided CSS */
+        :root {
+            --dark1: #1C1C1C;
+            --dark2: #454545;
+            --light_white: #F9F9F9;
+            --primary_color: #1351D8;
+            --primary_color2: #4F8DFF;
+            --primary_light: #F3F6FD;
+            --primary_light2: rgb(19 81 216 / 10%);
+            --gray: #D9D9D9;
+            --font_syne: 'Syne', sans-serif;
+            --font_yantramanv: 'Yantramanav', sans-serif;
+            --font_dm: 'DM Sans', sans-serif;
+            --yellow_color: #FFD600;
+            --danger_color: #FF3A3A;
+            --warning_color: #FF8A00;
+            --success_color: #00C875;
+        }
+
+        *,*:before,*:after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-size: 16px;
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.5;
+            font-weight: 400;
+            overflow-x: hidden;
+            background-color: var(--light_white);
+        }
+        
+        /* Blog Homepage Specific Classes */
+        .blog-homepage-container {
+            max-width: 1550px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .blog-homepage-hero {
+            background: linear-gradient(45deg, var(--primary_color), var(--primary_color2));
+            padding: 120px 0 190px;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .blog-homepage-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            animation: pulse 8s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.05); opacity: 0.15; }
+            100% { transform: scale(1); opacity: 0.1; }
+        }
+        
+        .blog-homepage-hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .blog-homepage-hero-subtitle {
+            font-family: var(--font_syne);
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .blog-homepage-hero-title {
+            font-family: var(--font_yantramanv);
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: white;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .blog-homepage-hero-description {
+            font-size: 20px;
+            color: white;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.6s both;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .blog-homepage-search-container {
+            position: relative;
+            margin-top: -70px;
+            z-index: 10;
+        }
+        
+        .blog-homepage-search {
+            background: white;
+            border-radius: 15px;
+            padding: 10px;
+            display: flex;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .blog-homepage-search:hover {
+            box-shadow: 0 20px 40px rgba(19, 81, 216, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .blog-homepage-search-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            color: var(--primary_color);
+            font-size: 20px;
+        }
+        
+        .blog-homepage-search input {
+            flex: 1;
+            border: none;
+            padding: 20px 5px;
+            font-size: 18px;
+            font-family: var(--font_dm);
+        }
+        
+        .blog-homepage-search input:focus {
+            outline: none;
+        }
+        
+        .blog-homepage-search button {
+            background: var(--primary_color);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 16px 35px;
+            cursor: pointer;
+            font-family: var(--font_dm);
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-homepage-search button:hover {
+            background: var(--dark1);
+            transform: translateY(-2px);
+        }
+        
+        .blog-homepage-alert {
+            background: var(--dark1);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: 500;
+            font-family: var(--font_syne);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-homepage-alert::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            left: -100px;
+            top: 0;
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -100px; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        .blog-homepage-news-scroll {
+            background: var(--primary_light);
+            padding: 15px 0;
+            overflow: hidden;
+            margin: 40px 0;
+            border-top: 1px solid rgba(19, 81, 216, 0.1);
+            border-bottom: 1px solid rgba(19, 81, 216, 0.1);
+            position: relative;
+        }
+        
+        .blog-homepage-news-scroll::before {
+            content: '🔔 LATEST NEWS';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            padding: 0 30px;
+            background: var(--primary_color);
+            color: white;
+            font-weight: 700;
+            z-index: 2;
+            font-family: var(--font_syne);
+            letter-spacing: 1px;
+        }
+        
+        .blog-homepage-news-scroll-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll-left 40s linear infinite;
+            padding-left: 200px;
+        }
+        
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .blog-homepage-news-item {
+            display: inline-block;
+            margin-right: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-homepage-news-item:hover {
+            transform: translateY(-2px);
+        }
+        
+        .blog-homepage-news-item a {
+            color: var(--primary_color);
+            text-decoration: none;
+        }
+        
+        .blog-homepage-section {
+            margin: 70px 0;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .blog-homepage-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .blog-homepage-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .blog-homepage-section-title {
+            font-family: var(--font_yantramanv);
+            font-size: 42px;
+            font-weight: 700;
+            position: relative;
+            padding-left: 20px;
+            margin: 0;
+        }
+        
+        .blog-homepage-section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 6px;
+            background: var(--primary_color);
+            border-radius: 5px;
+        }
+        
+        .blog-homepage-view-all {
+            color: var(--primary_color);
+            font-weight: 600;
+            font-family: var(--font_syne);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-homepage-view-all:hover {
+            color: var(--dark1);
+            transform: translateX(5px);
+        }
+        
+        .blog-homepage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .blog-homepage-featured {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 30px;
+        }
+        
+        .blog-homepage-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+        
+        .blog-homepage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(19, 81, 216, 0.15);
+        }
+        
+        .blog-homepage-card-image {
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .blog-homepage-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .blog-homepage-card:hover .blog-homepage-card-image img {
+            transform: scale(1.1);
+        }
+        
+        .blog-homepage-card-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+            z-index: 1;
+        }
+        
+        .blog-homepage-card-content {
+            padding: 30px;
+            position: relative;
+        }
+        
+        .blog-homepage-category {
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-homepage-category.ransomware {
+            background: rgba(255, 58, 58, 0.1);
+            color: var(--danger_color);
+        }
+        
+        .blog-homepage-category.phishing {
+            background: rgba(255, 138, 0, 0.1);
+            color: var(--warning_color);
+        }
+        
+        .blog-homepage-category.scams {
+            background: rgba(19, 81, 216, 0.1);
+            color: var(--primary_color);
+        }
+        
+        .blog-homepage-category.malware {
+            background: rgba(138, 43, 226, 0.1);
+            color: #8A2BE2;
+        }
+        
+        .blog-homepage-category.security {
+            background: rgba(0, 200, 117, 0.1);
+            color: var(--success_color);
+        }
+        
+        .blog-homepage-card-title {
+            font-family: var(--font_yantramanv);
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            line-height: 1.3;
+        }
+        
+        .blog-homepage-card-title a {
+            color: var(--dark1);
+            text-decoration: none;
+        }
+        
+        .blog-homepage-card:hover .blog-homepage-card-title a {
+            color: var(--primary_color);
+        }
+        
+        .blog-homepage-card-excerpt {
+            color: var(--dark2);
+            margin-bottom: 25px;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        .blog-homepage-meta {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: var(--dark2);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding-top: 20px;
+        }
+        
+        .blog-homepage-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .blog-homepage-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-homepage-date {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .blog-homepage-featured-main {
+            position: relative;
+            height: 550px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .blog-homepage-featured-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s ease;
+        }
+        
+        .blog-homepage-featured-main:hover img {
+            transform: scale(1.05);
+        }
+        
+        .blog-homepage-featured-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 50px;
+            color: white;
+            z-index: 2;
+        }
+        
+        .blog-homepage-featured-title {
+            font-family: var(--font_yantramanv);
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .blog-homepage-featured-title a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-homepage-featured-main:hover .blog-homepage-featured-title a {
+            color: var(--primary_color2);
+        }
+        
+        .blog-homepage-featured-excerpt {
+            margin-bottom: 25px;
+            font-size: 18px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+        
+        .blog-homepage-featured-meta {
+            display: flex;
+            align-items: center;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        .blog-homepage-trending-number {
+            font-family: var(--font_yantramanv);
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary_light);
+            margin-right: 20px;
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary_light2);
+            border-radius: 50%;
+            color: var(--primary_color);
+            transition: all 0.3s ease;
+        }
+        
+        .blog-homepage-trending-item:hover .blog-homepage-trending-number {
+            background: var(--primary_color);
+            color: white;
+        }
+        
+        .blog-homepage-trending-item {
+            display: flex;
+            align-items: center;
+            padding: 25px;
+            border-bottom: 1px solid rgba(19, 81, 216, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .blog-homepage-trending-item:last-child {
+            border-bottom: none;
+        }
+        
+        .blog-homepage-trending-item:hover {
+            background: var(--primary_light);
+        }
+        
+        .blog-homepage-trending-content {
+            flex: 1;
+        }
+        
+        .blog-homepage-trending-title {
+            font-family: var(--font_yantramanv);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        
+        .blog-homepage-trending-title a {
+            color: var(--dark1);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-homepage-trending-item:hover .blog-homepage-trending-title a {
+            color: var(--primary_color);
+        }
+        
+        .blog-homepage-trending-meta {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: var(--dark2);
+        }
+        
+        .blog-homepage-categories {
+            margin: 50px 0;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .blog-homepage-categories.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .blog-homepage-categories-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+        
+        .blog-homepage-category-card {
+            background: white;
+            border-radius: 15px;
+            text-align: center;
+            padding: 30px 20px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-homepage-category-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary_color);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+            transform-origin: left;
+        }
+        
+        .blog-homepage-category-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .blog-homepage-category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(19, 81, 216, 0.15);
+        }
+        
+        .blog-homepage-category-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-homepage-category-card:hover .blog-homepage-category-icon {
+            transform: scale(1.1);
+        }
+        
+        .blog-homepage-category-card.ransomware .blog-homepage-category-icon {
+            background: rgba(255, 58, 58, 0.1);
+            color: var(--danger_color);
+        }
+        
+        .blog-homepage-category-card.phishing .blog-homepage-category-icon {
+            background: rgba(255, 138, 0, 0.1);
+            color: var(--warning_color);
+        }
+        
+        .blog-homepage-category-card.scams .blog-homepage-category-icon {
+            background: rgba(19, 81, 216, 0.1);
+            color: var(--primary_color);
+        }
+        
+        .blog-homepage-category-card.malware .blog-homepage-category-icon {
+            background: rgba(138, 43, 226, 0.1);
+            color: #8A2BE2;
+        }
+        
+        .blog-homepage-category-card.security .blog-homepage-category-icon {
+            background: rgba(0, 200, 117, 0.1);
+            color: var(--success_color);
+        }
+        
+        .blog-homepage-category-card:hover.ransomware .blog-homepage-category-icon {
+            background: var(--danger_color);
+            color: white;
+        }
+        
+        .blog-homepage-category-card:hover.phishing .blog-homepage-category-icon {
+            background: var(--warning_color);
+            color: white;
+        }
+        
+        .blog-homepage-category-card:hover.scams .blog-homepage-category-icon {
+            background: var(--primary_color);
+            color: white;
+        }
+        
+        .blog-homepage-category-card:hover.malware .blog-homepage-category-icon {
+            background: #8A2BE2;
+            color: white;
+        }
+        
+        .blog-homepage-category-card:hover.security .blog-homepage-category-icon {
+            background: var(--success_color);
+            color: white;
+        }
+        
+        .blog-homepage-category-name {
+            font-family: var(--font_yantramanv);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .blog-homepage-category-count {
+            font-size: 14px;
+            color: var(--dark2);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 1200px) {
+            .blog-homepage-categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .blog-homepage-grid, 
+            .blog-homepage-featured {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .blog-homepage-hero-title {
+                font-size: 56px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .blog-homepage-grid,
+            .blog-homepage-featured,
+            .blog-homepage-categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-homepage-hero-title {
+                font-size: 42px;
+            }
+            
+            .blog-homepage-hero {
+                padding: 80px 0 150px;
+            }
+            
+            .blog-homepage-featured-main {
+                height: 400px;
+            }
+            
+            .blog-homepage-featured-overlay {
+                padding: 30px;
+            }
+            
+            .blog-homepage-featured-title {
+                font-size: 28px;
+            }
+            
+            .blog-homepage-section-title {
+                font-size: 32px;
+            }
+        }
+        .search-highlight {
+            background-color: yellow;
+            padding: 0 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Alert Bar -->
+    <div class="blog-homepage-alert">
+        🔒 Welcome to CyberShield Blog - Your trusted source for cybersecurity insights and protection strategies
+    </div>
+    
+    <!-- Hero Section -->
+    <div class="blog-homepage-hero">
+        <div class="blog-homepage-container">
+            <div class="blog-homepage-hero-content">
+                <div class="blog-homepage-hero-subtitle">Cybersecurity Knowledge Hub</div>
+                <h1 class="blog-homepage-hero-title">Stay Protected in the Digital World</h1>
+                <p class="blog-homepage-hero-description">Expert insights, latest threats, and actionable advice to keep your digital life secure from ransomware, phishing, scams, and other cyber threats.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Search Bar -->
+    <div class="blog-homepage-container blog-homepage-search-container">
+        <div class="blog-homepage-search">
+            <div class="blog-homepage-search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <input type="text" placeholder="Search for cybersecurity articles, topics, or threats...">
+            <button>Search</button>
+        </div>
+    </div>
+    
+    <!-- Categories Section -->
+    <div class="blog-homepage-container">
+        <div class="blog-homepage-categories">
+            <div class="blog-homepage-section-header">
+                <h2 class="blog-homepage-section-title">Browse by Category</h2>
+                <a href="#" class="blog-homepage-view-all">View All Categories <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="blog-homepage-categories-grid">
+                <div class="blog-homepage-category-card ransomware">
+                    <div class="blog-homepage-category-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="blog-homepage-category-name">Ransomware</div>
+                    <div class="blog-homepage-category-count">48 Articles</div>
+                </div>
+                <div class="blog-homepage-category-card phishing">
+                    <div class="blog-homepage-category-icon">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <div class="blog-homepage-category-name">Phishing</div>
+                    <div class="blog-homepage-category-count">35 Articles</div>
+                </div>
+                <div class="blog-homepage-category-card scams">
+                    <div class="blog-homepage-category-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="blog-homepage-category-name">Scams</div>
+                    <div class="blog-homepage-category-count">62 Articles</div>
+                </div>
+                <div class="blog-homepage-category-card malware">
+                    <div class="blog-homepage-category-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <div class="blog-homepage-category-name">Malware</div>
+                    <div class="blog-homepage-category-count">53 Articles</div>
+                </div>
+                <div class="blog-homepage-category-card security">
+                    <div class="blog-homepage-category-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="blog-homepage-category-name">Security</div>
+                    <div class="blog-homepage-category-count">77 Articles</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- News Scroll Animation -->
+    <div class="blog-homepage-news-scroll">
+        <div class="blog-homepage-news-scroll-content">
+            <span class="blog-homepage-news-item">⚠️ <a href="#">Alert: New Ransomware Variant Targeting Healthcare Sector - Read Protection Guide</a></span>
+            <span class="blog-homepage-news-item">🔍 <a href="#">Latest Phishing Campaign Impersonates Major Banking Institutions - Learn How to Identify it</a></span>
+            <span class="blog-homepage-news-item">🛡️ <a href="#">Critical Windows Security Update Released - Patch Your Systems Now</a></span>
+            <span class="blog-homepage-news-item">📱 <a href="#">Dangerous Android Malware Steals Banking Credentials - Check If You're Affected</a></span>
+            <span class="blog-homepage-news-item">💼 <a href="#">Business Email Compromise Scams Surge by 45% - Protect Your Organization</a></span>
+        </div>
+    </div>
+    
+    <div class="blog-homepage-container">
+    <div class="blog-homepage-section">
+        <div class="blog-homepage-section-header">
+            <h2 class="blog-homepage-section-title">Featured Articles</h2>
+            <a href="#" class="blog-homepage-view-all">View All Featured <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="blog-homepage-featured">
+            <div class="blog-homepage-featured-main">
+                <img src="https://plus.unsplash.com/premium_photo-1683836722388-8643468c327d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW50ZXJuZXR8ZW58MHx8MHx8fDA%3D" alt="Featured Article Image">
+                <div class="blog-homepage-featured-overlay">
+                    <span class="blog-homepage-category ransomware">Ransomware</span>
+                    <h3 class="blog-homepage-featured-title"><a href="#">Understanding the Critical Rise in Ransomware Attacks on Small Businesses</a></h3>
+                    <p class="blog-homepage-featured-excerpt">Small businesses are increasingly becoming targets of sophisticated ransomware attacks. Learn why attackers are shifting focus and what protective measures you can implement today.</p>
+                    <div class="blog-homepage-featured-meta">
+                        <div class="blog-homepage-author">
+                            <img src="https://plus.unsplash.com/premium_photo-1683836722388-8643468c327d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW50ZXJuZXR8ZW58MHx8MHx8fDA%3D" alt="Author">
+                            <span>By Michael Stevens</span>
+                        </div>
+                        <div class="blog-homepage-date">
+                            <i class="far fa-clock"></i> April 5, 2025
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-homepage-trending">
+                <div class="blog-homepage-trending-item">
+                    <div class="blog-homepage-trending-number">1</div>
+                    <div class="blog-homepage-trending-content">
+                        <h3 class="blog-homepage-trending-title"><a href="#">How to Identify and Stop Phishing Attempts in Your Organization</a></h3>
+                        <div class="blog-homepage-trending-meta">
+                            <span><i class="far fa-eye"></i> 4.2K Views</span>
+                            <span style="margin-left: 15px;"><i class="far fa-clock"></i> April 8, 2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-homepage-trending-item">
+                    <div class="blog-homepage-trending-number">2</div>
+                    <div class="blog-homepage-trending-content">
+                        <h3 class="blog-homepage-trending-title"><a href="#">Top 10 Password Management Tools for Enhanced Security</a></h3>
+                        <div class="blog-homepage-trending-meta">
+                            <span><i class="far fa-eye"></i> 3.8K Views</span>
+                            <span style="margin-left: 15px;"><i class="far fa-clock"></i> April 6, 2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-homepage-trending-item">
+                    <div class="blog-homepage-trending-number">3</div>
+                    <div class="blog-homepage-trending-content">
+                        <h3 class="blog-homepage-trending-title"><a href="#">The Rising Threat of Supply Chain Attacks: What You Need to Know</a></h3>
+                        <div class="blog-homepage-trending-meta">
+                            <span><i class="far fa-eye"></i> 3.5K Views</span>
+                            <span style="margin-left: 15px;"><i class="far fa-clock"></i> April 3, 2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-homepage-trending-item">
+                    <div class="blog-homepage-trending-number">4</div>
+                    <div class="blog-homepage-trending-content">
+                        <h3 class="blog-homepage-trending-title"><a href="#">Zero Trust Security Model: Implementation Guide for Businesses</a></h3>
+                        <div class="blog-homepage-trending-meta">
+                            <span><i class="far fa-eye"></i> 3.1K Views</span>
+                            <span style="margin-left: 15px;"><i class="far fa-clock"></i> April 1, 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Latest Articles Section -->
+<div class="blog-homepage-container">
+    <div class="blog-homepage-section">
+        <div class="blog-homepage-section-header">
+            <h2 class="blog-homepage-section-title">Latest Articles</h2>
+            <a href="#" class="blog-homepage-view-all">View All Articles <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="blog-homepage-grid">
+            <div class="blog-homepage-card">
+                <div class="blog-homepage-card-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="Blog Post Image">
+                </div>
+                <div class="blog-homepage-card-content">
+                    <span class="blog-homepage-category phishing">Phishing</span>
+                    <h3 class="blog-homepage-card-title"><a href="#">Sophisticated Phishing Campaign Uses AI-Generated Content to Target Executives</a></h3>
+                    <p class="blog-homepage-card-excerpt">New phishing attacks are leveraging AI to create highly convincing emails that bypass traditional security filters. Learn the warning signs and protective measures.</p>
+                    <div class="blog-homepage-meta">
+                        <div class="blog-homepage-author">
+                            <img src="https://plus.unsplash.com/premium_photo-1683836722388-8643468c327d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW50ZXJuZXR8ZW58MHx8MHx8fDA%3D" alt="Author">
+                            <span>Sarah Johnson</span>
+                        </div>
+                        <div class="blog-homepage-date">
+                            <i class="far fa-clock"></i> April 9, 2025
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-homepage-card">
+                <div class="blog-homepage-card-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="Blog Post Image">
+                </div>
+                <div class="blog-homepage-card-content">
+                    <span class="blog-homepage-category malware">Malware</span>
+                    <h3 class="blog-homepage-card-title"><a href="#">Fileless Malware: The Invisible Threat to Your System Security</a></h3>
+                    <p class="blog-homepage-card-excerpt">Fileless malware attacks are on the rise, operating entirely in memory to evade detection. Discover how these attacks work and advanced protection strategies.</p>
+                    <div class="blog-homepage-meta">
+                        <div class="blog-homepage-author">
+                            <img src="https://plus.unsplash.com/premium_photo-1683836722388-8643468c327d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW50ZXJuZXR8ZW58MHx8MHx8fDA%3D" alt="Author">
+                            <span>David Chen</span>
+                        </div>
+                        <div class="blog-homepage-date">
+                            <i class="far fa-clock"></i> April 7, 2025
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-homepage-card">
+                <div class="blog-homepage-card-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="Blog Post Image">
+                </div>
+                <div class="blog-homepage-card-content">
+                    <span class="blog-homepage-category scams">Scams</span>
+                    <h3 class="blog-homepage-card-title"><a href="#">Cryptocurrency Investment Scams: Recognizing Red Flags Before It's Too Late</a></h3>
+                    <p class="blog-homepage-card-excerpt">With crypto scams becoming increasingly sophisticated, learn to identify warning signs and protect your investments from fraudulent schemes targeting digital assets.</p>
+                    <div class="blog-homepage-meta">
+                        <div class="blog-homepage-author">
+                            <img src="https://plus.unsplash.com/premium_photo-1683836722388-8643468c327d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW50ZXJuZXR8ZW58MHx8MHx8fDA%3D" alt="Author">
+                            <span>Alicia Rodriguez</span>
+                        </div>
+                        <div class="blog-homepage-date">
+                            <i class="far fa-clock"></i> April 5, 2025
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Security Tools Section -->
+<div class="blog-homepage-container">
+    <div class="blog-homepage-section">
+        <div class="blog-homepage-section-header">
+            <h2 class="blog-homepage-section-title">Recommended Security Tools</h2>
+            <a href="#" class="blog-homepage-view-all">View All Tools <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="blog-homepage-grid">
+            <div class="blog-homepage-card">
+                <div class="blog-homepage-card-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="Security Tool Image">
+                </div>
+                <div class="blog-homepage-card-content">
+                    <span class="blog-homepage-category security">Security</span>
+                    <h3 class="blog-homepage-card-title"><a href="#">Best Antivirus Solutions for Small Businesses in 2025</a></h3>
+                    <p class="blog-homepage-card-excerpt">Our security experts review and compare the most effective antivirus software that provides comprehensive protection for small business environments.</p>
+                    <div class="blog-homepage-meta">
+                        <div class="blog-homepage-author">
+                            <img src="https://plus.unsplash.com/premium_photo-1683836722388-8643468c327d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW50ZXJuZXR8ZW58MHx8MHx8fDA%3D" alt="Author">
+                            <span>James Wilson</span>
+                        </div>
+                        <div class="blog-homepage-date">
+                            <i class="far fa-clock"></i> April 2, 2025
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-homepage-card">
+                <div class="blog-homepage-card-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="Security Tool Image">
+                </div>
+                <div class="blog-homepage-card-content">
+                    <span class="blog-homepage-category security">Security</span>
+                    <h3 class="blog-homepage-card-title"><a href="#">Top VPN Services: Privacy and Security Comparison</a></h3>
+                    <p class="blog-homepage-card-excerpt">Detailed analysis of leading VPN services with focus on encryption standards, privacy policies, speed performance, and overall security benefits.</p>
+                    <div class="blog-homepage-meta">
+                        <div class="blog-homepage-author">
+                            <img src="https://plus.unsplash.com/premium_photo-1683836722388-8643468c327d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW50ZXJuZXR8ZW58MHx8MHx8fDA%3D" alt="Author">
+                            <span>Emily Parker</span>
+                        </div>
+                        <div class="blog-homepage-date">
+                            <i class="far fa-clock"></i> March 30, 2025
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-homepage-card">
+                <div class="blog-homepage-card-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="Security Tool Image">
+                </div>
+                <div class="blog-homepage-card-content">
+                    <span class="blog-homepage-category security">Security</span>
+                    <h3 class="blog-homepage-card-title"><a href="#">Password Managers: Essential Tools for Modern Security</a></h3>
+                    <p class="blog-homepage-card-excerpt">Explore how password managers enhance your online security by generating strong passwords and safely storing credentials across multiple platforms.</p>
+                    <div class="blog-homepage-meta">
+                        <div class="blog-homepage-author">
+                            <img src="https://plus.unsplash.com/premium_photo-1683836722388-8643468c327d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW50ZXJuZXR8ZW58MHx8MHx8fDA%3D" alt="Author">
+                            <span>Robert Taylor</span>
+                        </div>
+                        <div class="blog-homepage-date">
+                            <i class="far fa-clock"></i> March 28, 2025
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- JavaScript for animations -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Intersection Observer for fade-in animations
+        const sections = document.querySelectorAll('.blog-homepage-section, .blog-homepage-categories');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    });
+</script>
+<script>
+    // 1. SLOW DOWN THE NEWS SCROLL
+// Find the current animation in your CSS and modify the animation duration
+// Change this in your CSS:
+// .blog-homepage-news-scroll-content {
+//     animation: scroll-left 30s linear infinite;
+// }
+// to a longer duration like 60s:
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollContent = document.querySelector('.blog-homepage-news-scroll-content');
+    if (scrollContent) {
+        scrollContent.style.animation = 'scroll-left 60s linear infinite';
+    }
+});
+
+// 2. SEARCH FUNCTIONALITY
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.querySelector('.blog-homepage-search input');
+    const searchButton = document.querySelector('.blog-homepage-search button');
+    const allArticles = document.querySelectorAll('.blog-homepage-card, .blog-homepage-featured-main, .blog-homepage-trending-item');
+    
+    // Function to perform search
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        
+        if (searchTerm === '') {
+            // If search is empty, show all articles
+            allArticles.forEach(article => {
+                article.style.display = '';
+                // Remove highlight from previously highlighted text
+                const highlightedElements = article.querySelectorAll('.search-highlight');
+                highlightedElements.forEach(el => {
+                    el.outerHTML = el.textContent;
+                });
+            });
+            return;
+        }
+        
+        // Show/hide articles based on search term
+        allArticles.forEach(article => {
+            const title = article.querySelector('.blog-homepage-card-title, .blog-homepage-featured-title, .blog-homepage-trending-title').textContent.toLowerCase();
+            const excerpt = article.querySelector('.blog-homepage-card-excerpt, .blog-homepage-featured-excerpt');
+            const excerptText = excerpt ? excerpt.textContent.toLowerCase() : '';
+            const category = article.querySelector('.blog-homepage-category');
+            const categoryText = category ? category.textContent.toLowerCase() : '';
+            
+            if (title.includes(searchTerm) || excerptText.includes(searchTerm) || categoryText.includes(searchTerm)) {
+                article.style.display = '';
+                
+                // Highlight matching text
+                highlightText(article, searchTerm);
+            } else {
+                article.style.display = 'none';
+            }
+        });
+        
+        // Show search results message
+        showSearchResults(searchTerm);
+    }
+    
+    // Function to highlight matching text
+    function highlightText(element, searchTerm) {
+        const textElements = [
+            element.querySelector('.blog-homepage-card-title, .blog-homepage-featured-title, .blog-homepage-trending-title'),
+            element.querySelector('.blog-homepage-card-excerpt, .blog-homepage-featured-excerpt')
+        ].filter(el => el); // Filter out null elements
+        
+        textElements.forEach(textEl => {
+            // Remove previous highlights
+            const highlightedElements = textEl.querySelectorAll('.search-highlight');
+            highlightedElements.forEach(el => {
+                el.outerHTML = el.textContent;
+            });
+            
+            // Add new highlights
+            const html = textEl.innerHTML;
+            const regex = new RegExp(searchTerm, 'gi');
+            textEl.innerHTML = html.replace(regex, match => `<span class="search-highlight" style="background-color: yellow;">${match}</span>`);
+        });
+    }
+    
+    // Function to show search results message
+    function showSearchResults(searchTerm) {
+        // Remove existing message if any
+        const existingMessage = document.querySelector('.search-results-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+        
+        // Count visible articles
+        const visibleArticles = Array.from(allArticles).filter(article => article.style.display !== 'none');
+        
+        // Create message element
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'search-results-message';
+        messageDiv.style.padding = '25px';
+        messageDiv.style.margin = '30px 0';
+        messageDiv.style.borderRadius = '12px';
+        messageDiv.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+        
+        if (visibleArticles.length > 0) {
+        // Results found styling
+        messageDiv.style.backgroundColor = 'var(--primary_light)';
+        messageDiv.style.borderLeft = '5px solid var(--primary_color)';
+        
+        const resultCount = visibleArticles.length;
+        const pluralText = resultCount === 1 ? 'result' : 'results';
+        
+        messageDiv.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div style="background-color: var(--primary_color); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div>
+                    <h3 style="margin: 0 0 5px 0; font-family: var(--font_yantramanv); font-size: 20px;">
+                        ${resultCount} ${pluralText} found for "${searchTerm}"
+                    </h3>
+                    <p style="margin: 0; color: var(--dark2);">
+                        Showing articles matching your search criteria
+                    </p>
+                </div>
+            </div>
+        `;
+    } else {
+        // No results found - enhanced styling and helpful suggestions
+        messageDiv.style.backgroundColor = '#FFF9F9';
+        messageDiv.style.borderLeft = '5px solid var(--warning_color)';
+        
+        messageDiv.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div style="background-color: var(--warning_color); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div style="flex: 1;">
+                    <h3 style="margin: 0 0 5px 0; font-family: var(--font_yantramanv); font-size: 20px;">
+                        No results found for "${searchTerm}"
+                    </h3>
+                    <p style="margin: 0 0 15px 0; color: var(--dark2);">
+                        We couldn't find any articles matching your search criteria.
+                    </p>
+                    <div style="background-color: white; border-radius: 8px; padding: 15px; border: 1px solid rgba(0,0,0,0.05);">
+                        <p style="font-weight: 500; margin: 0 0 10px 0;">Try the following:</p>
+                        <ul style="margin: 0; padding-left: 20px; color: var(--dark2);">
+                            <li>Check your spelling</li>
+                            <li>Use more general keywords</li>
+                            <li>Try searching for related terms like "${getSuggestedTerm(searchTerm)}"</li>
+                            <li>Browse our categories below</li>
+                        </ul>
+                    </div>
+                    <div style="display: flex; justify-content: center; margin-top: 20px;">
+                        <button id="clearSearchBtn" style="background-color: var(--primary_color); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.3s ease;">
+                            Clear Search & Show All Articles
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+        
+        // Insert message after search container
+        const searchContainer = document.querySelector('.blog-homepage-search-container');
+        searchContainer.parentNode.insertBefore(messageDiv, searchContainer.nextSibling);
+        
+        // Add event listener to clear search button if it exists
+        const clearSearchBtn = document.getElementById('clearSearchBtn');
+        if (clearSearchBtn) {
+            clearSearchBtn.addEventListener('click', function() {
+                searchInput.value = '';
+                performSearch();
+                // Scroll back to search bar
+                searchContainer.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Add hover effect
+            clearSearchBtn.addEventListener('mouseover', function() {
+                this.style.backgroundColor = 'var(--dark1)';
+                this.style.transform = 'translateY(-2px)';
+            });
+            clearSearchBtn.addEventListener('mouseout', function() {
+                this.style.backgroundColor = 'var(--primary_color)';
+                this.style.transform = 'translateY(0)';
+            });
+        }
+    }
+    // Helper function to suggest related search terms
+function getSuggestedTerm(searchTerm) {
+    // Dictionary of related cybersecurity terms
+    const relatedTerms = {
+        'ransomware': ['malware', 'encryption', 'recovery'],
+        'phishing': ['scam', 'email security', 'social engineering'],
+        'malware': ['virus', 'trojan', 'ransomware'],
+        'hack': ['breach', 'attack', 'vulnerability'],
+        'security': ['protection', 'defense', 'safeguard'],
+        'password': ['authentication', 'credential', '2fa'],
+        'breach': ['leak', 'hack', 'compromise'],
+        'encryption': ['cryptography', 'secure', 'cipher'],
+        'firewall': ['protection', 'network security', 'blocking'],
+        'vulnerability': ['exploit', 'patch', 'flaw']
+    };
+    
+    // Check if search term is in our dictionary
+    const term = Object.keys(relatedTerms).find(key => 
+        searchTerm.toLowerCase().includes(key) || key.includes(searchTerm.toLowerCase())
+    );
+    
+    if (term && relatedTerms[term]) {
+        // Return a random suggestion from the related terms
+        return relatedTerms[term][Math.floor(Math.random() * relatedTerms[term].length)];
+    }
+    
+    // Default suggestions if no match
+    const defaultSuggestions = ['ransomware', 'phishing', 'malware', 'security'];
+    return defaultSuggestions[Math.floor(Math.random() * defaultSuggestions.length)];
+}
+    
+    // Event listeners
+    if (searchButton) {
+        searchButton.addEventListener('click', performSearch);
+    }
+    
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    }
+});
+
+// 3. CATEGORY FILTERING FUNCTIONALITY
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryCards = document.querySelectorAll('.blog-homepage-category-card');
+    const articles = document.querySelectorAll('.blog-homepage-card, .blog-homepage-featured-main, .blog-homepage-trending-item');
+    
+    // Add active class for styling selected category
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+        .blog-homepage-category-card.active {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(19, 81, 216, 0.25);
+        }
+        .blog-homepage-category-card.active::before {
+            transform: scaleX(1);
+        }
+        .category-filter-active {
+            padding: 10px 20px;
+            background-color: var(--primary_light);
+            border-radius: 10px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .clear-filter {
+            background-color: var(--primary_color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .clear-filter:hover {
+            background-color: var(--dark1);
+        }
+    `;
+    document.head.appendChild(styleElement);
+    
+    // Function to filter articles by category
+    function filterByCategory(categoryName) {
+        // Reset all cards active state
+        categoryCards.forEach(card => {
+            card.classList.remove('active');
+        });
+        
+        // If we already have an active filter message, remove it
+        const existingFilterMessage = document.querySelector('.category-filter-active');
+        if (existingFilterMessage) {
+            existingFilterMessage.remove();
+        }
+        
+        // Show all articles first (reset)
+        articles.forEach(article => {
+            article.style.display = '';
+        });
+        
+        // If category name is "all", we're done (show all)
+        if (categoryName === 'all') {
+            return;
+        }
+        
+        // Set active class on selected category
+        const selectedCard = Array.from(categoryCards).find(card => 
+            card.querySelector('.blog-homepage-category-name').textContent.toLowerCase() === categoryName.toLowerCase());
+        
+        if (selectedCard) {
+            selectedCard.classList.add('active');
+        }
+        
+        // Filter articles
+        articles.forEach(article => {
+            const articleCategory = article.querySelector('.blog-homepage-category');
+            if (articleCategory) {
+                const articleCategoryText = articleCategory.textContent.trim().toLowerCase();
+                if (articleCategoryText !== categoryName.toLowerCase()) {
+                    article.style.display = 'none';
+                }
+            } else {
+                // If no category found in this article, hide it
+                article.style.display = 'none';
+            }
+        });
+        
+        // Show filter active message
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'category-filter-active';
+        messageDiv.innerHTML = `
+            <strong>Showing articles in category: ${categoryName}</strong>
+            <button class="clear-filter">Clear Filter</button>
+        `;
+        
+        // Insert message after categories section
+        const categoriesSection = document.querySelector('.blog-homepage-categories');
+        categoriesSection.parentNode.insertBefore(messageDiv, categoriesSection.nextSibling);
+        
+        // Add event listener to clear filter button
+        const clearButton = messageDiv.querySelector('.clear-filter');
+        clearButton.addEventListener('click', function() {
+            filterByCategory('all');
+        });
+    }
+    
+    // Add click event to category cards
+    categoryCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const categoryName = this.querySelector('.blog-homepage-category-name').textContent;
+            filterByCategory(categoryName);
+            
+            // Scroll to show filtered results
+            const featuredSection = document.querySelector('.blog-homepage-featured');
+            if (featuredSection) {
+                featuredSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

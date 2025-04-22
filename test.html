@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Protect - Cybersecurity for Everyone</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary_color: #1351D8;
+            --dark1: #1A1A1A;
+            --light_white: #ffffff;
+            --font_yantramanv: 'DM Sans', sans-serif;
+            --font_syne: 'DM Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.5;
+            color: var(--dark1);
+        }
+
+        .about-section {
+            padding: 100px 0;
+            background-color: #f8f9ff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-container {
+            max-width: 1550px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            font-family: var(--font_syne);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--primary_color);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-family: var(--font_yantramanv);
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .bg-shape {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.05;
+        }
+
+        .bg-shape-1 {
+            top: 5%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            background: var(--primary_color);
+            border-radius: 50%;
+        }
+
+        .bg-shape-2 {
+            bottom: -15%;
+            left: -10%;
+            width: 700px;
+            height: 700px;
+            background: var(--primary_color);
+            border-radius: 50%;
+        }
+
+        .bg-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--primary_color);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .particle-1 { top: 15%; left: 20%; width: 8px; height: 8px; }
+        .particle-2 { top: 30%; left: 80%; width: 12px; height: 12px; }
+        .particle-3 { top: 65%; left: 30%; width: 15px; height: 15px; }
+        .particle-4 { top: 80%; left: 70%; width: 10px; height: 10px; }
+        .particle-5 { top: 40%; left: 40%; width: 6px; height: 6px; }
+        .particle-6 { top: 75%; left: 15%; width: 9px; height: 9px; }
+
+        /* About specific styles */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            margin-top: 50px;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--dark1);
+        }
+
+        .about-text {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0px 4px 20px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary_color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .about-image {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0px 15px 30px rgba(19, 81, 216, 0.15);
+        }
+
+        .about-image .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(19, 81, 216, 0.1);
+            border-radius: 20px;
+        }
+
+        .mission-values {
+            margin-top: 100px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0px 4px 20px 5px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 30px rgba(19, 81, 216, 0.15);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(19, 81, 216, 0.1);
+            border-radius: 50%;
+            margin: 0 auto 25px;
+        }
+
+        .value-icon svg {
+            width: 35px;
+            height: 35px;
+            fill: var(--primary_color);
+        }
+
+        .value-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark1);
+        }
+
+        .value-description {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .team-section {
+            margin-top: 100px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0px 4px 20px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 30px rgba(19, 81, 216, 0.15);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 250px;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .member-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .member-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--dark1);
+        }
+
+        .member-role {
+            font-size: 14px;
+            color: var(--primary_color);
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .social-link {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(19, 81, 216, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary_color);
+        }
+
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--primary_color);
+            transition: fill 0.3s;
+        }
+
+        .social-link:hover svg {
+            fill: white;
+        }
+
+        .journey-timeline {
+            margin-top: 100px;
+            position: relative;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: rgba(19, 81, 216, 0.1);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            top: 15px;
+            border-radius: 50%;
+            background-color: var(--primary_color);
+            z-index: 1;
+        }
+
+        .timeline-left {
+            left: 0;
+        }
+
+        .timeline-right {
+            left: 50%;
+        }
+
+        .timeline-left::after {
+            right: -12px;
+        }
+
+        .timeline-right::after {
+            left: -12px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0px 4px 20px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 30px rgba(19, 81, 216, 0.15);
+        }
+
+        .timeline-year {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary_color);
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark1);
+        }
+
+        .timeline-text {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .testimonials {
+            margin-top: 100px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0px 4px 20px 5px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 30px rgba(19, 81, 216, 0.15);
+        }
+
+        .testimonial-quote {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark1);
+        }
+
+        .author-title {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .cta-section {
+            margin-top: 100px;
+            background: linear-gradient(135deg, #1351D8 0%, #0c3ca3 100%);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-bg-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .cta-bg-shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -100px;
+        }
+
+        .cta-bg-shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            left: -50px;
+        }
+
+        .cta-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: white;
+            color: var(--primary_color);
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 1s cubic-bezier(.97,.01,.92,1);
+        }
+
+        .slide-up {
+            animation: slideUp 0.8s cubic-bezier(.97,.01,.92,1);
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s cubic-bezier(.97,.01,.92,1);
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s cubic-bezier(.97,.01,.92,1);
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1s; }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            0% { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            0% { 
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            0% { 
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .about-grid, .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .team-grid, .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-grid, .values-grid, .team-grid, .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .section-title, .about-title, .cta-title {
+                font-size: 36px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .timeline-right {
+                left: 0;
+            }
+            
+            .cta-section {
+                padding: 40px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="about-section">
+        <div class="bg-shape bg-shape-1"></div>
+        <div class="bg-shape bg-shape-2"></div>
+        
+        <div class="bg-particles">
+            <div class="particle particle-1"></div>
+            <div class="particle particle-2"></div>
+            <div class="particle particle-3"></div>
+            <div class="particle particle-4"></div>
+            <div class="particle particle-5"></div>
+            <div class="particle particle-6"></div>
+        </div>
+        
+        <div class="custom-container">
+            <div class="section-header fade-in">
+                <p class="section-subtitle">OUR STORY</p>
+                <h2 class="section-title">The People Behind Protect</h2>
+                <p class="section-description">Meet the team that's driven to make cybersecurity accessible for everyone, regardless of age, gender, background or technical expertise. We're on a mission to create a safer digital world where everyone can navigate online with confidence.</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-content slide-in-left">
+                    <h3 class="about-title">Making Digital Security Accessible to All</h3>
+                    <p class="about-text">Founded in 2022, Protect was born out of a simple yet powerful observation: cybersecurity knowledge and resources were primarily designed for tech-savvy individuals, leaving the majority of internet users vulnerable to evolving digital threats.</p>
+                    <p class="about-text">We set out to change this by creating a centralized hub where anyone — from children to seniors, from tech novices to professionals — could find the information, tools, and support they need to protect themselves in the digital world.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">250K+</div>
+                            <div class="stat-label">Monthly Visitors</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">9</div>
+                            <div class="stat-label">Threat Categories</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Security Guides</div>
+                        </div>
+                    </div>
+                    
+                    <p class="about-text">Today, Protect serves as a trusted advisor to hundreds of thousands of users monthly, offering actionable guidance on recognizing, preventing, and reporting cyber threats. We believe that cybersecurity is a right, not a privilege, and we're committed to bridging the knowledge gap for all internet users.</p>
+                </div>
+                
+                <div class="about-image slide-in-right">
+                    <img src="/api/placeholder/600/400" alt="Protect team working together">
+                    <div class="image-overlay"></div>
+                </div>
+            </div>
+            
+            <div class="mission-values">
+                <div class="section-header fade-in">
+                    <p class="section-subtitle">OUR PRINCIPLES</p>
+                    <h2 class="section-title">Mission & Values</h2>
+                    <p class="section-description">The core principles that drive our work and shape our approach to creating a more secure digital world for everyone.</p>
+                </div>
+                
+                <div class="values-grid">
+                    <div class="value-card slide-up delay-1">
+                        <div class="value-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Zm4-9H13V8a1,1,0,0,0-2,0v3H8a1,1,0,0,0,0,2h3v3a1,1,0,0,0,2,0V13h3a1,1,0,0,0,0-2Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Inclusivity</h3>
+                        <p class="value-description">We design all our resources with accessibility in mind, ensuring that cybersecurity knowledge is available to everyone regardless of technical expertise, age, or background.</p>
+                    </div>
+                    
+                    <div class="value-card slide-up delay-2">
+                        <div class="value-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20ZM15.33,9.76a4,4,0,0,0-7.15,2.58,1,1,0,0,0,2,0,2,2,0,0,1,2.42-1.95,2,2,0,0,1,1.38,1.92,1.91,1.91,0,0,1-.63,1.4,3.93,3.93,0,0,0-1.35,3,1,1,0,0,0,2,0,2,2,0,0,1,.78-1.56,3.9,3.9,0,0,0,1.24-2.85A3.94,3.94,0,0,0,15.33,9.76ZM12,18a1,1,0,1,0-1-1A1,1,0,0,0,12,18Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Education</h3>
+                        <p class="value-description">We believe in empowering individuals through education rather than fear. Our approach focuses on practical knowledge that builds confidence and develops lasting security habits.</p>
+                    </div>
+                    
+                    <div class="value-card slide-up delay-3">
+                        <div class="value-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21.6,18.2L13,11.75v-1.5a9,9,0,1,0-2,0v1.5L2.4,18.2A1,1,0,0,0,3,20H21a1,1,0,0,0,.6-1.8ZM12,4a7,7,0,1,1-7,7A7,7,0,0,1,12,4ZM4.34,18l7.66-5.75L19.66,18Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Community</h3>
+                        <p class="value-description">We foster a supportive environment where people can learn from each other's experiences, share insights, and collectively strengthen our digital defenses against evolving threats.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-section">
+                <div class="section-header fade-in">
+                    <p class="section-subtitle">THE EXPERTS</p>
+                    <h2 class="section-title">Meet Our Team</h2>
+                    <p class="section-description">The diverse group of cybersecurity specialists, educators, and communicators who work together to make Protect a trusted resource for digital safety.</p>
+                </div>
+                
+                <div class="team-grid">
+                    <div class="team-member slide-up delay-1">
+                        <div class="member-image" style="background-image: url('/api/placeholder/300/300')"></div>
+                        <div class="member-info">
+                            <h3 class="member-name">Alex Morgan</h3>
+                            <p class="member-role">Founder & Director</p>
+                            <p>Former cybersecurity consultant with a passion for making security knowledge accessible to everyone.</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M22,5.8a8.49,8.49,0,0,1-2.36.64,4.13,4.13,0,0,0,1.81-2.27,8.21,8.21,0,0,1-2.61,1,4.1,4.1,0,0,0-7,3.74A11.64,11.64,0,0,1,3.39,4.62a4.16,4.16,0,0,0-.55,2.07A4.09,4.09,0,0,0,4.66,10.1,4.05,4.05,0,0,1,2.8,9.59v.05a4.1,4.1,0,0,0,3.3,4A3.93,3.93,0,0,1,5,13.81a4.9,4.9,0,0,1-.77-.07,4.11,4.11,0,0,0,3.83,2.84A8.22,8.22,0,0,1,3,18.34a7.93,7.93,0,0,1-1-.06,11.57,11.57,0,0,0,6.29,1.85A11.59,11.59,0,0,0,20,8.45c0-.17,0-.35,0-.53A8.43,8.43,0,0,0,22,5.8Z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M16,3H8A5,5,0,0,0,3,8v8a5,5,0,0,0,5,5h8a5,5,0,0,0,5-5V8A5,5,0,0,0,16,3Zm3,13a3,3,0,0,1-3,3H8a3,3,0,0,1-3-3V8A3,3,0,0,1,8,5h8a3,3,0,0,1,3,3ZM12,7a5,5,0,1,0,5,5A5,5,0,0,0,12,7Zm0,8a3,3,0,1,1,3-3A3,3,0,0,1,12,15Z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M20.47,2H3.53A1.45,1.45,0,0,0,2.06,3.43V20.57A1.45,1.45,0,0,0,3.53,22H20.47a1.45,1.45,0,0,0,1.47-1.43V3.43A1.45,1.45,0,0,0,20.47,2ZM8.09,18.74h-3v-9h3ZM6.59,8.48h0a1.56,1.56,0,1,1,0-3.11,1.57,1.57,0,1,1,0,3.11ZM18.91,18.74h-3V13.91c0-1.21-.43-2-1.52-2A1.65,1.65,0,0,0,12.85,13a2,2,0,0,0-.1.73v5h-3s0-8.18,0-9h3V11A3,3,0,0,1,15.46,9.5c2,0,3.45,1.29,3.45,4.06Z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member slide-up delay-2">
+                        <div class="member-image" style="background-image: url('/api/placeholder/300/300')"></div>
+                        <div class="member-info">
+                            <h3 class="member-name">Samira Chen</h3>
+                            <p class="member-role">Chief Security Educator</p>
+                            <p>Specializes in translating complex security concepts into easy-to-understand guidance for all ages.</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M22,5.8a8.49,8.49,0,0,1-2.36.64,4.13,4.13,0,0,0,1.81-2.27,8.21,8.21,0,0,1-2.61,1,4.1,4.1,0,0,0-7,3.74A11.64,11.64,0,0,1,3.39,4.62a4.16,4.16,0,0,0-.55,2.07A4.09,4.09,0,0,0,4.66,10.1,4.05,4.05,0,0,1,2.8,9.59v.05a4.1,4.1,0,0,0,3.3,4A3.93,3.93,0,0,1,5,13.81a4.9,4.9,0,0,1-.77-.07,4.11,4.11,0,0,0,3.83,2.84A8.22,8.22,0,0,1,3,18.34a7.93,7.93,0,0,1-1-.06,11.57,11.57,0,0,0,6.29,1.85A11.59,11.59,0,0,0,20,8.45c0-.17,0-.35,0-.53A8.43,8.43,0,0,0,22,5.8Z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M16,3H8A5,5,0,0,0,3,8v8a5,5,0,0,0,5,5h8a5,5,0,0,0,5-5V8A5,5,0,0,0,16,3Zm3,13a3,3,0,0,1-3,3H8a3,3,0,0,1-3-3V8A3,3,0,0,1,8,5h8a3,3,0,0,1,3,3ZM12,7a5,5,0,1,0,5,5A5,5,0,0,0,12,7Zm0,8a3,3,0,1,1,3-3A3,3,0,0,1,12,15Z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M20.47,2H3.53A1.45,1.45,0,0,0,2.06,3.43V20.57A1.45,1.45,0,0,0,3.53,22H20.47a1.45,1.45,0,0,0,1.47-1.43V3.43A1.45,1.45,0,0,0,20.47,2ZM8.09,18.74h-3v-9h3ZM6.59,8.48h0a1.56,1.56,0,1,1,0-3.11,1.57,1.57,0,1,1,0,3.11ZM18.91,18.74h-3V13.91c0-1.21-.43-2-1.52-2A1.65,1.65,0,0,0,12.85,13a2,2,0,0,0-.1.73v5h-3s0-8.18,0-9h3V11A3,3,0,0,1,15.46,9.5c2,0,3.45,1.29,3.45,4.06Z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member slide-up delay-3">
+                        <div class="member-image" style="background-image: url('/api/placeholder/300/300')"></div>
+                        <div class="member-info">
+                            <h3 class="member-name">Marcus Okonkwo</h3>
+                            <p class="member-role">Threat Intelligence Lead</p>
+                            <p>Tracks emerging cyber threats and translates technical details into actionable protection strategies.</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M22,5.8a8.49,8.49,0,0,1-2.36.64,4.13,4.13,0,0,0,1.81-2.27,8.21,8.21,0,0,1-2.61,1,4.1,4.1,0,0,0-7,3.74A11.64,11.64,0,0,1,3.39,4.62a4.16,4.16,0,0,0-.55,2.07A4.09,4.09,0,0,0,4.66,10.1,4.05,4.05,0,0,1,2.8,9.59v.05a4.1,4.1,0,0,0,3.3,4A3.93,3.93,0,0,1,5,13.81a4.9,4.9,0,0,1-.77-.07,4.11,4.11,0,0,0,3.83,2.84A8.22,8.22,0,0,1,3,18.34a7.93,7.93,0,0,1-1-.06,11.57,11.57,0,0,0,6.29,1.85A11.59,11.59,0,0,0,20,8.45c0-.17,0-.35,0-.53A8.43,8.43,0,0,0,22,5.8Z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M16,3H8A5,5,0,0,0,3,8v8a5,5,0,0,0,5,5h8a5,5,0,0,0,5-5V8A5,5,0,0,0,16,3Zm3,13a3,3,0,0,1-3,3H8a3,3,0,0,1-3-3V8A3,3,0,0,1,8,5h8a3,3,0,0,1,3,3ZM12,7a5,5,0,1,0,5,5A5,5,0,0,0,12,7Zm0,8a3,3,0,1,1,3-3A3,3,0,0,1,12,15Z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M20.47,2H3.53A1.45,1.45,0,0,0,2.06,3.43V20.57A1.45,1.45,0,0,0,3.53,22H20.47a1.45,1.45,0,0,0,1.47-1.43V3.43A1.45,1.45,0,0,0,20.47,2ZM8.09,18.74h-3v-9h3ZM6.59,8.48h0a1.56,1.56,0,1,1,0-3.11,1.57,1.57,0,1,1,0,3.11ZM18.91,18.74h-3V13.91c0-1.21-.43-2-1.52-2A1.65,1.65,0,0,0,12.85,13a2,2,0,0,0-.1.73v5h-3s0-8.18,0-9h3V11A3,3,0,0,1,15.46,9.5c2,0,3.45,1.29,3.45,4.06Z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member slide-up delay-4">
+                        <div class="member-image" style="background-image: url('/api/placeholder/300/300')"></div>
+                        <div class="member-info">
+                            <h3 class="member-name">Elena Vasquez</h3>
+                            <p class="member-role">Community Manager</p>
+                            <p>Facilitates knowledge sharing and builds connections between users, experts, and organizations.</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M22,5.8a8.49,8.49,0,0,1-2.36.64,4.13,4.13,0,0,0,1.81-2.27,8.21,8.21,0,0,1-2.61,1,4.1,4.1,0,0,0-7,3.74A11.64,11.64,0,0,1,3.39,4.62a4.16,4.16,0,0,0-.55,2.07A4.09,4.09,0,0,0,4.66,10.1,4.05,4.05,0,0,1,2.8,9.59v.05a4.1,4.1,0,0,0,3.3,4A3.93,3.93,0,0,1,5,13.81a4.9,4.9,0,0,1-.77-.07,4.11,4.11,0,0,0,3.83,2.84A8.22,8.22,0,0,1,3,18.34a7.93,7.93,0,0,1-1-.06,11.57,11.57,0,0,0,6.29,1.85A11.59,11.59,0,0,0,20,8.45c0-.17,0-.35,0-.53A8.43,8.43,0,0,0,22,5.8Z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M16,3H8A5,5,0,0,0,3,8v8a5,5,0,0,0,5,5h8a5,5,0,0,0,5-5V8A5,5,0,0,0,16,3Zm3,13a3,3,0,0,1-3,3H8a3,3,0,0,1-3-3V8A3,3,0,0,1,8,5h8a3,3,0,0,1,3,3ZM12,7a5,5,0,1,0,5,5A5,5,0,0,0,12,7Zm0,8a3,3,0,1,1,3-3A3,3,0,0,1,12,15Z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M20.47,2H3.53A1.45,1.45,0,0,0,2.06,3.43V20.57A1.45,1.45,0,0,0,3.53,22H20.47a1.45,1.45,0,0,0,1.47-1.43V3.43A1.45,1.45,0,0,0,20.47,2ZM8.09,18.74h-3v-9h3ZM6.59,8.48h0a1.56,1.56,0,1,1,0-3.11,1.57,1.57,0,1,1,0,3.11ZM18.91,18.74h-3V13.91c0-1.21-.43-2-1.52-2A1.65,1.65,0,0,0,12.85,13a2,2,0,0,0-.1.73v5h-3s0-8.18,0-9h3V11A3,3,0,0,1,15.46,9.5c2,0,3.45,1.29,3.45,4.06Z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="journey-timeline">
+                <div class="section-header fade-in">
+                    <p class="section-subtitle">OUR PROGRESS</p>
+                    <h2 class="section-title">The Protect Journey</h2>
+                    <p class="section-description">How we've grown from a small educational initiative to become a trusted cybersecurity resource for people around the world.</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item timeline-left slide-in-left delay-1">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2022</div>
+                            <h3 class="timeline-title">The Beginning</h3>
+                            <p class="timeline-text">Founded as a blog focused on providing basic cybersecurity advice for non-technical users and families.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item timeline-right slide-in-right delay-2">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2023</div>
+                            <h3 class="timeline-title">Category Expansion</h3>
+                            <p class="timeline-text">Developed our comprehensive threat categorization system and released in-depth guides for each category.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item timeline-left slide-in-left delay-3">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2024</div>
+                            <h3 class="timeline-title">Community Growth</h3>
+                            <p class="timeline-text">Reached 150,000 monthly visitors and launched our interactive reporting system to help users report threats to proper authorities.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item timeline-right slide-in-right delay-4">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2025</div>
+                            <h3 class="timeline-title">Today & Beyond</h3>
+                            <p class="timeline-text">Continuing to expand our educational resources, tools directory, and community connections to make cybersecurity truly accessible for all.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonials">
+                <div class="section-header fade-in">
+                    <p class="section-subtitle">USER STORIES</p>
+                    <h2 class="section-title">What Our Community Says</h2>
+                    <p class="section-description">Real experiences from people who have used Protect to enhance their online security and protect themselves from cyber threats.</p>
+                </div>
+                
+                <div class="testimonial-grid">
+                    <div class="testimonial-card slide-up delay-1">
+                        <p class="testimonial-quote">"As a teacher, I needed simple ways to explain online safety to my students. Protect's kid-friendly guides have been invaluable in my classroom. Now my students are teaching their parents!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background-image: url('/api/placeholder/100/100')"></div>
+                            <div class="author-info">
+                                <div class="author-name">James Wilson</div>
+                                <div class="author-title">Elementary School Teacher</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card slide-up delay-2">
+                        <p class="testimonial-quote">"After falling victim to a phishing scam, I found Protect. Their step-by-step recovery guide helped me secure my accounts and the reporting tools made sure I alerted the right authorities."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background-image: url('/api/placeholder/100/100')"></div>
+                            <div class="author-info">
+                                <div class="author-name">Maria Rodriguez</div>
+                                <div class="author-title">Small Business Owner</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card slide-up delay-3">
+                        <p class="testimonial-quote">"At 72, I was afraid to use online banking until my grandson showed me Protect. Their senior-focused security tips gave me the confidence to manage my finances online safely."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background-image: url('/api/placeholder/100/100')"></div>
+                            <div class="author-info">
+                                <div class="author-name">Robert Johnson</div>
+                                <div class="author-title">Retired Engineer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <div class="cta-bg-shape cta-bg-shape-1"></div>
+                <div class="cta-bg-shape cta-bg-shape-2"></div>
+                
+                <h2 class="cta-title">Join Our Mission for a Safer Digital World</h2>
+                <p class="cta-text">Everyone deserves to feel safe online. Explore our resources, share them with your community, and help us build a world where cybersecurity knowledge is accessible to all.</p>
+                <a href="#" class="cta-button">Explore Resources</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+        

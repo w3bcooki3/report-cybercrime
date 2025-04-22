@@ -1,0 +1,1628 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield - Cybersecurity Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #111827;
+            --dark-secondary: #1E293B;
+            --light-bg: #F8FAFC;
+            --light-text: #F1F5F9;
+            --primary: #0EA5E9;
+            --primary-dark: #0284C7;
+            --accent: #10B981;
+            --accent-dark: #059669;
+            --warning: #FBBF24;
+            --danger: #EF4444;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --gray-900: #0F172A;
+            --font-main: 'Outfit', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--gray-700);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        .gap-8 {
+            gap: 2rem;
+        }
+
+        .mt-8 {
+            margin-top: 2rem;
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .py-8 {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .py-12 {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .py-16 {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .px-8 {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .slide-left {
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        .slide-right {
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--gray-900);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.75rem;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+            border: none;
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Header */
+        .header {
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(to right, var(--danger), #F97316);
+            color: white;
+            padding: 0.75rem 0;
+            position: relative;
+        }
+
+        .alert-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            font-weight: 500;
+        }
+
+        .alert-pulse {
+            position: relative;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .alert-pulse::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            opacity: 0.7;
+        }
+
+        /* News Ticker */
+        .news-ticker {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 0.75rem 0;
+            overflow: hidden;
+        }
+
+        .ticker-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-label {
+            background-color: var(--warning);
+            color: var(--gray-900);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-right: 1.5rem;
+            white-space: nowrap;
+        }
+
+        .ticker-wrapper {
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .ticker-items {
+            display: flex;
+            animation: ticker 30s linear infinite;
+        }
+
+        .ticker-item {
+            margin-right: 3rem;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ticker-item i {
+            color: var(--primary);
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(16, 185, 129, 0.2));
+            animation: gradient 15s ease infinite;
+            background-size: 400% 400%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .hero-btn {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        /* Search Section */
+        .search-section {
+            background-color: white;
+            border-radius: 16px;
+            margin-top: -3rem;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            z-index: 2;
+        }
+
+        .search-container {
+            padding: 2rem;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-input-wrapper {
+            flex: 1;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .search-input-wrapper:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+        }
+
+        .search-input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-400);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            font-family: var(--font-main);
+        }
+
+        .search-btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Category Pills */
+        .category-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .category-pill {
+            background-color: var(--gray-100);
+            color: var(--gray-700);
+            border: 1px solid var(--gray-200);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .category-pill i {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        .category-pill:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .category-pill:hover i {
+            color: white;
+        }
+
+        .category-pill.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .category-pill.active i {
+            color: white;
+        }
+
+        /* Blog Cards */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.1);
+        }
+
+        .blog-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.5));
+        }
+
+        .blog-category-label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card:hover .blog-title {
+            color: var(--primary);
+        }
+
+        .blog-excerpt {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            flex: 1;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-200);
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-author img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .blog-date {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Trending Section */
+        .trending-section {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trending-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(14, 165, 233, 0.1), transparent 50%),
+                         radial-gradient(circle at 70% 70%, rgba(16, 185, 129, 0.1), transparent 50%);
+            animation: pulse 10s infinite alternate;
+        }
+
+        .trending-section .section-title {
+            color: white;
+        }
+
+        .trending-section .section-title::after {
+            background: var(--accent);
+        }
+
+        .trending-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .trending-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: auto auto;
+            gap: 1.5rem;
+        }
+
+        .trending-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .trending-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .trending-item-large {
+            grid-column: span 6;
+            grid-row: span 2;
+            height: 500px;
+        }
+
+        .trending-item-medium {
+            grid-column: span 6;
+            height: 240px;
+        }
+
+        .trending-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .trending-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .trending-item:hover .trending-image img {
+            transform: scale(1.1);
+        }
+
+        .trending-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8));
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .trending-item:hover .trending-overlay {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9));
+        }
+
+        .trending-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        .trending-category {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .trending-title {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+        }
+
+        .trending-item-large .trending-title {
+            font-size: 2rem;
+        }
+
+        .trending-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            color: var(--gray-300);
+        }
+
+        .trending-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .trending-author img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gray-300);
+        }
+
+        .trending-date {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Latest Blog Section */
+        .latest-blogs {
+            background-color: white;
+            padding: 6rem 0;
+        }
+
+        /* Featured Blog Section */
+        .featured-blogs {
+            background-color: var(--gray-100);
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-blogs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230ea5e9' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .featured-blog-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .featured-blog-image {
+            position: relative;
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .featured-blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-blog-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-blog-subtitle {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: var(--primary);
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-blog-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-blog-excerpt {
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .trending-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .trending-item-large, .trending-item-medium {
+                grid-column: span 1;
+                height: 280px;
+            }
+            
+            .trending-item-large {
+                grid-row: span 1;
+            }
+            
+            .featured-blog-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-blog-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding: 6rem 0;
+            }
+            
+            .search-form {
+                flex-direction: column;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .trending-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-blog-content {
+                padding: 2rem;
+            }
+            
+            .featured-blog-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav {
+                gap: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Alert Banner -->
+    <div class="alert-banner">
+        <div class="container">
+            <div class="alert-content">
+                <div class="alert-pulse"></div>
+                <p>CRITICAL ALERT: New zero-day exploit targeting Windows systems detected. Update your systems immediately!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- News Ticker -->
+    <div class="news-ticker">
+        <div class="container ticker-container">
+            <div class="ticker-label">CYBER NEWS</div>
+            <div class="ticker-wrapper">
+                <div class="ticker-items">
+                    <div class="ticker-item">
+                        <i class="fas fa-shield-alt"></i>
+                        Major data breach affects over 2 million users at TechCorp
+                    </div>
+                    <div class="ticker-item">
+                        <i class="fas fa-lock"></i>
+                        Ransomware attacks increased by 300% in the first quarter
+                    </div>
+                    <div class="ticker-item">
+                        <i class="fas fa-bug"></i>
+                        Critical vulnerability discovered in popular IoT devices
+                    </div>
+                    <div class="ticker-item">
+                        <i class="fas fa-user-shield"></i>
+                        New legislation requires enhanced cybersecurity measures for financial institutions
+                    </div>
+                    <div class="ticker-item">
+                        <i class="fas fa-robot"></i>
+                        AI-powered security tools showing promising results against zero-day threats
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    Cyber<span>Shield</span>
+                </a>
+                <nav class="nav">
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Blog</a>
+                    <a href="#" class="nav-link">Categories</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">Contact</a>
+                </nav>
+                <div class="header-actions">
+                    <a href="#" class="btn btn-primary">Subscribe</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in">Cybersecurity Insights & Solutions</h1>
+                <p class="fade-in">Stay informed about the latest threats, vulnerabilities, and best practices to keep your digital life secure.</p>
+                <a href="#" class="btn btn-primary hero-btn pulse">Explore Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <form class="search-form">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search search-input-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search for articles, topics, or keywords...">
+                </div>
+                <button type="submit" class="btn btn-primary search-btn">Search</button>
+            </form>
+            <div class="category-pills">
+                <div class="category-pill active">
+                    <i class="fas fa-shield-alt"></i>
+                    All Topics
+                </div>
+                <div class="category-pill">
+                    <i class="fas fa-bug"></i>
+                    Vulnerabilities
+                </div>
+                <div class="category-pill">
+                    <i class="fas fa-lock"></i>
+                    Data Privacy
+                </div>
+                <div class="category-pill">
+                    <i class="fas fa-robot"></i>
+                    AI Security
+                </div>
+                <div class="category-pill">
+                    <i class="fas fa-cloud"></i>
+                    Cloud Security
+                </div>
+                <div class="category-pill">
+                    <i class="fas fa-mobile-alt"></i>
+                    Mobile Security
+                </div>
+                <div class="category-pill">
+                    <i class="fas fa-network-wired"></i>
+                    Network Security
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Blogs Section -->
+    <section class="latest-blogs">
+        <div class="container">
+            <div class="section-subtitle">Stay Informed</div>
+            <h2 class="section-title">Latest Articles</h2>
+            <div class="blog-grid">
+                <!-- Blog Card 1 -->
+                <div class="blog-card slide-left">
+                    <div class="blog-image">
+                        <img src="https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Blog Image">
+                        <div class="blog-category-label">Ransomware</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">The Rising Threat of Double Extortion Ransomware</h3>
+                        <p class="blog-excerpt">Learn how attackers are combining data theft with encryption to maximize leverage against victims and how to protect your organization.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <img src="https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Author">
+                                <span>Sarah Johnson</span>
+                            </div>
+                            <div class="blog-date">
+                                <i class="far fa-calendar"></i>
+                                <span>April 12, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog Card 2 -->
+                <div class="blog-card slide-left" style="animation-delay: 0.2s;">
+                    <div class="blog-image">
+                        <img src="https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Blog Image">
+                        <div class="blog-category-label">Zero Trust</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Implementing Zero Trust Architecture in 2025</h3>
+                        <p class="blog-excerpt">A comprehensive guide to adopting zero trust principles in your organization's security infrastructure with practical steps.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <img src="https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Author">
+                                <span>Michael Chen</span>
+                            </div>
+                            <div class="blog-date">
+                                <i class="far fa-calendar"></i>
+                                <span>April 10, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog Card 3 -->
+                <div class="blog-card slide-left" style="animation-delay: 0.4s;">
+                    <div class="blog-image">
+                        <img src="https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Blog Image">
+                        <div class="blog-category-label">IoT Security</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Securing the Internet of Things: Challenges and Solutions</h3>
+                        <p class="blog-excerpt">With billions of connected devices, IoT security has become a critical concern. Discover best practices for securing smart devices.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <img src="https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Author">
+                                <span>Lisa Rodriguez</span>
+                            </div>
+                            <div class="blog-date">
+                                <i class="far fa-calendar"></i>
+                                <span>April 8, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="#" class="btn btn-outline">View All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Section -->
+    <section class="trending-section">
+        <div class="container trending-container">
+            <div class="section-subtitle">Hot Topics</div>
+            <h2 class="section-title">Trending Now</h2>
+            <div class="trending-grid">
+                <!-- Trending Item 1 (Large) -->
+                <div class="trending-item trending-item-large">
+                    <div class="trending-image">
+                        <img src="https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Trending Blog">
+                    </div>
+                    <div class="trending-overlay"></div>
+                    <div class="trending-content">
+                        <span class="trending-category">AI Security</span>
+                        <h3 class="trending-title">How AI is Revolutionizing Threat Detection</h3>
+                        <div class="trending-meta">
+                            <div class="trending-author">
+                                <img src="https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Author">
+                                <span>James Wilson</span>
+                            </div>
+                            <div class="trending-date">
+                                <i class="far fa-calendar"></i>
+                                <span>April 15, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trending Item 2 (Medium) -->
+                <div class="trending-item trending-item-medium">
+                    <div class="trending-image">
+                        <img src="https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Trending Blog">
+                    </div>
+                    <div class="trending-overlay"></div>
+                    <div class="trending-content">
+                        <span class="trending-category">Phishing</span>
+                        <h3 class="trending-title">Advanced Phishing Techniques to Watch Out For</h3>
+                        <div class="trending-meta">
+                            <div class="trending-author">
+                                <img src="https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Author">
+                                <span>Emma Davis</span>
+                            </div>
+                            <div class="trending-date">
+                                <i class="far fa-calendar"></i>
+                                <span>April 14, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trending Item 3 (Medium) -->
+                <div class="trending-item trending-item-medium">
+                    <div class="trending-image">
+                        <img src="https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Trending Blog">
+                    </div>
+                    <div class="trending-overlay"></div>
+                    <div class="trending-content">
+                        <span class="trending-category">Cloud Security</span>
+                        <h3 class="trending-title">Secure Cloud Migration Strategies</h3>
+                        <div class="trending-meta">
+                            <div class="trending-author">
+                                <img src="https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Author">
+                                <span>Robert Kim</span>
+                            </div>
+                            <div class="trending-date">
+                                <i class="far fa-calendar"></i>
+                                <span>April 11, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Blog Section -->
+    <section class="featured-blogs">
+        <div class="container">
+            <div class="section-subtitle">Deep Dive</div>
+            <h2 class="section-title">Featured Analysis</h2>
+            <div class="featured-blog-card">
+                <div class="featured-blog-image">
+                    <img src="https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Featured Blog">
+                </div>
+                <div class="featured-blog-content">
+                    <div class="featured-blog-subtitle">Expert Insight</div>
+                    <h3 class="featured-blog-title">The Evolution of Cyber Warfare: Nation-State Threats in 2025</h3>
+                    <p class="featured-blog-excerpt">An in-depth analysis of how geopolitical tensions are manifesting in cyberspace, and what organizations can do to protect critical infrastructure from sophisticated attacks.</p>
+                    <a href="#" class="btn btn-primary">Read Full Analysis</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        // Add JS functionality as needed
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category pills functionality
+            const categoryPills = document.querySelectorAll('.category-pill');
+            categoryPills.forEach(pill => {
+                pill.addEventListener('click', function() {
+                    categoryPills.forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.slide-left, .slide-right');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(element);
+            });
+        });
+    </script>
+    <script>
+        // Wait for DOM to fully load
+document.addEventListener('DOMContentLoaded', function() {
+    // Sample blog data - in a real implementation, this would come from a database
+    const blogArticles = [
+        {
+            id: 1,
+            title: "The Rising Threat of Double Extortion Ransomware",
+            excerpt: "Learn how attackers are combining data theft with encryption to maximize leverage against victims and how to protect your organization.",
+            category: "Ransomware",
+            author: "Sarah Johnson",
+            date: "April 12, 2025",
+            image: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D",
+            authorImage: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+            id: 2,
+            title: "Implementing Zero Trust Architecture in 2025",
+            excerpt: "A comprehensive guide to adopting zero trust principles in your organization's security infrastructure with practical steps.",
+            category: "Zero Trust",
+            author: "Michael Chen",
+            date: "April 10, 2025",
+            image: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D",
+            authorImage: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+            id: 3,
+            title: "Securing the Internet of Things: Challenges and Solutions",
+            excerpt: "With billions of connected devices, IoT security has become a critical concern. Discover best practices for securing smart devices.",
+            category: "IoT Security",
+            author: "Lisa Rodriguez",
+            date: "April 8, 2025",
+            image: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D",
+            authorImage: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+            id: 4,
+            title: "How AI is Revolutionizing Threat Detection",
+            excerpt: "Advanced machine learning algorithms are changing how we detect and respond to cyber threats. Learn about the latest innovations.",
+            category: "AI Security",
+            author: "James Wilson",
+            date: "April 15, 2025",
+            image: "/api/placeholder/600/500",
+            authorImage: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+            id: 5,
+            title: "Advanced Phishing Techniques to Watch Out For",
+            excerpt: "Cybercriminals are using increasingly sophisticated phishing methods. Learn how to identify and protect against these attacks.",
+            category: "Phishing",
+            author: "Emma Davis",
+            date: "April 14, 2025",
+            image: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D",
+            authorImage: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+            id: 6,
+            title: "Secure Cloud Migration Strategies",
+            excerpt: "Moving to the cloud? Learn essential security strategies to protect your data during and after migration.",
+            category: "Cloud Security",
+            author: "Robert Kim",
+            date: "April 11, 2025",
+            image: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D",
+            authorImage: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+            id: 7,
+            title: "Mobile Security Best Practices for Enterprise",
+            excerpt: "Protect your organization from mobile-based threats with these comprehensive security measures and policies.",
+            category: "Mobile Security",
+            author: "Priya Sharma",
+            date: "April 7, 2025",
+            image: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D",
+            authorImage: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+            id: 8,
+            title: "Network Segmentation: A Critical Defense Strategy",
+            excerpt: "Learn how proper network segmentation can prevent lateral movement and contain security breaches within your organization.",
+            category: "Network Security",
+            author: "David Martinez",
+            date: "April 5, 2025",
+            image: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D",
+            authorImage: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+            id: 9,
+            title: "Data Privacy Regulations: Global Compliance Guide",
+            excerpt: "Navigate the complex landscape of international data privacy laws and ensure your organization stays compliant.",
+            category: "Data Privacy",
+            author: "Elizabeth Wong",
+            date: "April 3, 2025",
+            image: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D",
+            authorImage: "https://plus.unsplash.com/premium_photo-1661963874418-df1110ee39c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D"
+        }
+    ];
+
+    // DOM Elements
+    const searchForm = document.querySelector('.search-form');
+    const searchInput = document.querySelector('.search-input');
+    const categoryPills = document.querySelectorAll('.category-pill');
+    const blogGrid = document.querySelector('.blog-grid');
+    
+    // Current filter state
+    let currentFilter = {
+        searchTerm: '',
+        category: 'All Topics'
+    };
+
+    // Initialize page
+    renderFilteredArticles();
+    setupEventListeners();
+
+    // Setup event listeners
+    function setupEventListeners() {
+        // Search form submission
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            currentFilter.searchTerm = searchInput.value.trim().toLowerCase();
+            renderFilteredArticles();
+        });
+
+        // Real-time search as user types (optional)
+        searchInput.addEventListener('input', function() {
+            currentFilter.searchTerm = searchInput.value.trim().toLowerCase();
+            renderFilteredArticles();
+        });
+
+        // Category pill selection
+        categoryPills.forEach(pill => {
+            pill.addEventListener('click', function() {
+                // Update UI
+                categoryPills.forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update filter
+                const categoryText = this.textContent.trim();
+                currentFilter.category = categoryText;
+                renderFilteredArticles();
+            });
+        });
+    }
+
+    // Filter articles based on current filter state
+    function filterArticles() {
+        return blogArticles.filter(article => {
+            // Search term filter
+            const matchesSearch = currentFilter.searchTerm === '' || 
+                article.title.toLowerCase().includes(currentFilter.searchTerm) || 
+                article.excerpt.toLowerCase().includes(currentFilter.searchTerm) ||
+                article.category.toLowerCase().includes(currentFilter.searchTerm) ||
+                article.author.toLowerCase().includes(currentFilter.searchTerm);
+            
+            // Category filter
+            const matchesCategory = currentFilter.category === 'All Topics' || 
+                article.category === currentFilter.category.replace(/^.*\s/, ''); // Extract category name from pill text
+            
+            return matchesSearch && matchesCategory;
+        });
+    }
+
+    // Render filtered articles to page
+    function renderFilteredArticles() {
+        const filteredArticles = filterArticles();
+        
+        // Clear current articles
+        blogGrid.innerHTML = '';
+        
+        // Check if we have results
+        if (filteredArticles.length === 0) {
+            blogGrid.innerHTML = `
+                <div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+                    <i class="fas fa-search" style="font-size: 3rem; color: var(--gray-400); margin-bottom: 1rem;"></i>
+                    <h3>No articles found</h3>
+                    <p>Try adjusting your search or filter criteria</p>
+                </div>
+            `;
+            return;
+        }
+        
+        // Render each article
+        filteredArticles.forEach((article, index) => {
+            const articleCard = document.createElement('div');
+            articleCard.className = 'blog-card slide-left';
+            articleCard.style.animationDelay = `${index * 0.2}s`;
+            
+            articleCard.innerHTML = `
+                <div class="blog-image">
+                    <img src="${article.image}" alt="${article.title}">
+                    <div class="blog-category-label">${article.category}</div>
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">${article.title}</h3>
+                    <p class="blog-excerpt">${article.excerpt}</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <img src="${article.authorImage}" alt="${article.author}">
+                            <span>${article.author}</span>
+                        </div>
+                        <div class="blog-date">
+                            <i class="far fa-calendar"></i>
+                            <span>${article.date}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add click event to view full article (in a real implementation)
+            articleCard.addEventListener('click', function() {
+                console.log(`Viewing article: ${article.id} - ${article.title}`);
+                // In real implementation: window.location.href = `/blog/${article.id}`;
+            });
+            
+            blogGrid.appendChild(articleCard);
+        });
+        
+        // Animate new cards
+        setTimeout(() => {
+            const newCards = document.querySelectorAll('.blog-card');
+            newCards.forEach(card => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            });
+        }, 100);
+    }
+
+    // Helper function to highlight search terms in text (optional enhancement)
+    function highlightSearchTerm(text, searchTerm) {
+        if (!searchTerm) return text;
+        
+        const regex = new RegExp(`(${searchTerm})`, 'gi');
+        return text.replace(regex, '<mark>$1</mark>');
+    }
+
+    // Optional: Add a clear search button
+    function addClearSearchButton() {
+        const searchWrapper = document.querySelector('.search-input-wrapper');
+        const clearButton = document.createElement('button');
+        clearButton.type = 'button';
+        clearButton.className = 'search-clear-btn';
+        clearButton.innerHTML = '<i class="fas fa-times"></i>';
+        clearButton.style.position = 'absolute';
+        clearButton.style.right = '1rem';
+        clearButton.style.top = '50%';
+        clearButton.style.transform = 'translateY(-50%)';
+        clearButton.style.background = 'none';
+        clearButton.style.border = 'none';
+        clearButton.style.color = 'var(--gray-400)';
+        clearButton.style.cursor = 'pointer';
+        clearButton.style.display = 'none';
+        
+        searchInput.addEventListener('input', function() {
+            clearButton.style.display = this.value ? 'block' : 'none';
+        });
+        
+        clearButton.addEventListener('click', function() {
+            searchInput.value = '';
+            currentFilter.searchTerm = '';
+            clearButton.style.display = 'none';
+            renderFilteredArticles();
+        });
+        
+        searchWrapper.appendChild(clearButton);
+    }
+    
+    // Initialize optional features
+    addClearSearchButton();
+});
+    </script>
+</body>
+</html>
