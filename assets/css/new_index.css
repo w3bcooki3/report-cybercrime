@@ -1,0 +1,132 @@
+/* Animated Text Container - Improved Responsive Behavior */
+.animated-words-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    /* Base height that will be adjusted in media queries */
+    height: 110px; 
+    margin-bottom: 30px;
+}
+
+/* Animated Text Styling with Gradient */
+.animated-word {
+    font-family: var(--font_yantramanv);
+    font-size: 94px;
+    font-weight: 700;
+    line-height: 110px;
+    letter-spacing: -1px;
+    /* Enhanced gradient with better color definition */
+    background: linear-gradient(135deg, #1351D8 0%, #4F8DFF 50%, rgba(79, 141, 255, 0.7) 90%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: 300% 300%;
+    animation: gradientFlow 8s infinite;
+    display: block;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    transform: translateY(30px);
+    transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.animated-word.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(79, 141, 255, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(79, 141, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(79, 141, 255, 0);
+    }
+}
+
+/* Gradient Animation */
+@keyframes gradientFlow {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.highlight {
+    color: #4F8DFF;
+    position: relative;
+    display: inline-block;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    background-color: rgba(79, 141, 255, 0.3);
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 4px;
+}
+
+/* Improved Responsive Typography - Better height management */
+@media (max-width: 1200px) {
+    .animated-word {
+        font-size: 78px;
+    }
+    .animated-words-container {
+        height: 90px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .animated-word {
+        font-size: 64px;
+        line-height: 1.1;
+    }
+    .animated-words-container {
+        height: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .animated-word {
+        font-size: 48px;
+        line-height: 1.15;
+    }
+    .animated-words-container {
+        height: 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    .animated-word {
+        font-size: 40px;
+        line-height: 1.2;
+    }
+    .animated-words-container {
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .animated-word {
+        font-size: 40px;
+        line-height: 1.2;
+    }
+    .animated-words-container {
+        height: 50px;
+    }
+}

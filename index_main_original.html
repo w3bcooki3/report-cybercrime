@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="landing-page/css/landing-page.css">
-    <link rel="stylesheet" href="./assets/css/new_index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- ========== End Stylesheet ========== -->
 
@@ -404,27 +403,25 @@
             <div id="yellow2"></div>
             <video src="./assets/vid/loader.mp4" autoplay loop muted></video>    
         </div> 
-        -->
-
-        <!-- Hero Section with JavaScript Text Animation -->
+    -->
+        <!-- Hero -->
         <section class="hero-section-wrap hero-home2">
             <div class="hero-section-content-wrap">
+                <img class="bg-shape slide-left" src="./assets/imgs/bg-shape-6.svg" alt="Shape" />
+                <img class="bg-shape2 slide-right" src="./assets/imgs/bg-shape-5.svg" alt="Shape" />
                 <div id="hero-section-text" class="custom-container">
                     <div class="hero-section-content text-center">
                         <h5 class="section-subtitle">TAKE CONTROL OF YOUR ONLINE SECURITY</h5>
-                        <h1 class="section-title fade-in">We help you</h1>
-                        <div class="animated-heading section-title">
-                            <div class="animated-words-container">
-                                <!-- Phrases will be added by JS -->
-                            </div>
-                        </div>
+                        <h1 class="section-title fade-in">Your First Line of Defense Against Cyber Threats</h1>
                         <p>Empower yourself with the knowledge and tools to build a strong online defense.</p>
-                        <a href="#" class="theme-btn2 pulse">Report Now <i class="iconoir-arrow-up-right"></i></a>
+                        <a href="#" class="theme-btn2">
+                            Secure Your Future Now 
+                            <i class="iconoir-arrow-up-right"></i>  
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
-
 
 
         <!-- Reporting Categories -->
@@ -1430,63 +1427,9 @@
     <script src="./assets/js/swiper-bundle.min.js"></script>
     <script src="./assets/js/client-marquee.js"></script>
     <script src="./assets/js/theme-custom.js"></script>
+    <script src="./assets/js/form1.js"></script>
     <script src="./assets/js/home.js"></script>
-
-    <script>
-        // Wait for DOM to fully load
-        document.addEventListener('DOMContentLoaded', function() {
-            // The phrases to cycle through
-            const phrases = [
-                'Recognize threats', 
-                'Prevent attacks', 
-                'Protect yourself', 
-                'Report incidents',
-                'Stay informed'
-            ];
-            
-            // Get the container
-            const container = document.querySelector('.animated-words-container');
-            
-            // Clear any existing content
-            container.innerHTML = '';
-            
-            // Create elements for all phrases
-            const textElements = [];
-            
-            // Create all text elements but keep only first one visible
-            phrases.forEach((phrase, index) => {
-                const element = document.createElement('span');
-                element.className = 'animated-word' + (index === 0 ? ' active' : '');
-                element.innerHTML = `<span class="highlight">${phrase}</span>`; // <-- FIXED
-                container.appendChild(element);
-                textElements.push(element);
-            });
-
-            
-            let currentIndex = 0;
-            let nextIndex = 1;
-            
-            function animateText() {
-                // Hide current text
-                textElements[currentIndex].classList.remove('active');
-                
-                // Show next text after a delay
-                setTimeout(() => {
-                    textElements[nextIndex].classList.add('active');
-                    
-                    // Update indices
-                    currentIndex = nextIndex;
-                    nextIndex = (nextIndex + 1) % phrases.length;
-                }, 600);
-            }
-            
-            // Start the animation cycle
-            setInterval(animateText, 3500);
-            
-            console.log('Animation script loaded successfully!');
-        });
-    </script>
-
+    <script src="./assets/js/subscribe-form.js"></script>
 </body>
 
 </html>
