@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Cybersecurity Help</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@400;500;700&family=Yantramanav:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables */
+        :root {
+            --dark1: #1C1C1C;
+            --dark2: #454545;
+            --light_white: #F9F9F9;
+            --primary_color: #1351D8;
+            --primary_color2: #4F8DFF;
+            --primary_light: #F3F6FD;
+            --primary_light2: rgb(19 81 216 / 10%);
+            --gray: #D9D9D9;
+            --font_syne: 'Syne', sans-serif;
+            --font_yantramanv: 'Yantramanav', sans-serif;
+            --font_dm: 'DM Sans', sans-serif;
+            --yellow_color: #FFD600;
+        }
+
+        /* Reset Browsers */
+        *,*:before,*:after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul,ol {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none !important;
+        }
+        input:focus,
+        textarea:focus,
+        button:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* Template Default Styles */
+        body {
+            font-size: 16px;
+            font-family: var(--font_dm);
+            line-height: 1.5;
+            font-weight: 400;
+            overflow-x: hidden;
+            background-color: var(--light_white);
+            color: var(--dark1);
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top right, rgba(19, 81, 216, 0.05), transparent 70%),
+                        radial-gradient(circle at bottom left, rgba(19, 81, 216, 0.05), transparent 70%);
+            z-index: 0;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+
+        .age_custom-container {
+            max-width: 1550px;
+            margin: 0 auto;
+            padding: 0 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Help Section Specific Styles */
+        .helpfor-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .helpfor-hero h1 {
+            font-family: var(--font_yantramanv);
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+            animation: fadeIn 1s cubic-bezier(.97,.01,.92,1);
+            position: relative;
+            color: var(--dark1);
+        }
+        
+        .helpfor-hero h1::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--primary_color);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .helpfor-hero p {
+            font-size: 22px;
+            margin-bottom: 80px;
+            max-width: 600px;
+            animation: fadeIn 1s cubic-bezier(.97,.01,.92,1);
+            animation-delay: 0.5s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+            color: var(--dark2);
+        }
+        
+        .helpfor-options {
+            display: flex;
+            gap: 26px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1100px;
+        }
+        
+        .helpfor-card {
+            width: 320px;
+            height: 240px;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0px 4px 20px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .helpfor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .helpfor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.05) 100%);
+            z-index: 0;
+        }
+        
+        .helpfor-card h2 {
+            font-family: var(--font_syne);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+        }
+        
+        .helpfor-card p {
+            font-size: 17px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .helpfor-card .arrow-icon {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .helpfor-card:hover .arrow-icon {
+            transform: translateX(5px);
+        }
+        
+        .helpfor-card .card-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .helpfor-card .illustration {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 140px;
+            height: 140px;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .helpfor-kids {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            animation: popIn 0.6s ease;
+            animation-delay: 0.6s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        
+        .helpfor-teens {
+            background: linear-gradient(135deg, var(--primary_color), var(--primary_color2));
+            animation: popIn 0.6s ease;
+            animation-delay: 0.8s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        
+        .helpfor-adults {
+            background: linear-gradient(135deg, var(--dark1), var(--dark2));
+            animation: popIn 0.6s ease;
+            animation-delay: 1s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        
+        .helpfor-seniors {
+            background: linear-gradient(135deg, #9C27B0, #673AB7);
+            animation: popIn 0.6s ease;
+            animation-delay: 1.2s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        
+        /* SVG Icons */
+        .kids-icon, .teens-icon, .adults-icon, .seniors-icon {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Animation Styles */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            70% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .helpfor-hero h1 {
+                font-size: 42px;
+            }
+            
+            .helpfor-hero p {
+                font-size: 18px;
+                margin-bottom: 50px;
+            }
+            
+            .helpfor-options {
+                gap: 16px;
+            }
+            
+            .helpfor-card {
+                width: 300px;
+                height: 220px;
+                padding: 22px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .helpfor-hero h1 {
+                font-size: 36px;
+            }
+            
+            .helpfor-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .helpfor-card {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="age_custom-container">
+        <div class="helpfor-hero">
+            <h1>Resources for all ages</h1>
+            
+            <div class="helpfor-options">
+                <div class="helpfor-card helpfor-kids">
+                    <div class="card-content">
+                        <h2>Kids</h2>
+                        <p>Ages 5-12 <span class="arrow-icon">→</span></p>
+                    </div>
+                    <div class="illustration kids-icon">
+                        <svg width="140" height="140" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M100,50 m-25,0 a25,25 0 1,1 50,0 a25,25 0 1,1 -50,0" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+                            <path d="M125,130 C125,130 120,90 100,90 C80,90 75,130 75,130" stroke="rgba(255,255,255,0.6)" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M65,70 L65,110" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+                            <path d="M135,70 L135,110" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+                            <path d="M65,90 L80,90" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+                            <path d="M135,90 L120,90" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+                            <circle cx="90" cy="45" r="4" fill="rgba(255,255,255,0.8)"/>
+                            <circle cx="110" cy="45" r="4" fill="rgba(255,255,255,0.8)"/>
+                            <path d="M95,60 a10,10 0 0,0 10,0" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M85,140 L85,155" stroke="rgba(255,255,255,0.6)" stroke-width="3"/>
+                            <path d="M115,140 L115,155" stroke="rgba(255,255,255,0.6)" stroke-width="3"/>
+                            <path d="M75,155 L95,155" stroke="rgba(255,255,255,0.6)" stroke-width="3"/>
+                            <path d="M105,155 L125,155" stroke="rgba(255,255,255,0.6)" stroke-width="3"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="helpfor-card helpfor-teens">
+                    <div class="card-content">
+                        <h2>Teens</h2>
+                        <p>Ages 13-17 <span class="arrow-icon">→</span></p>
+                    </div>
+                    <div class="illustration teens-icon">
+                        <svg width="140" height="140" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M100,50 m-30,0 a30,30 0 1,1 60,0 a30,30 0 1,1 -60,0" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+                            <path d="M125,165 C125,165 120,110 100,110 C80,110 75,165 75,165" stroke="rgba(255,255,255,0.6)" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M80,130 L100,120" stroke="rgba(255,255,255,0.6)" stroke-width="3"/>
+                            <path d="M120,130 L100,120" stroke="rgba(255,255,255,0.6)" stroke-width="3"/>
+                            <path d="M100,120 L100,140" stroke="rgba(255,255,255,0.6)" stroke-width="3"/>
+                            <rect x="75" y="80" width="50" height="20" rx="2" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+                            <circle cx="90" cy="50" r="4" fill="rgba(255,255,255,0.8)"/>
+                            <circle cx="110" cy="50" r="4" fill="rgba(255,255,255,0.8)"/>
+                            <path d="M90,65 a10,10 0 0,0 20,0" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="helpfor-card helpfor-adults">
+                    <div class="card-content">
+                        <h2>Adults</h2>
+                        <p>Ages 18-64 <span class="arrow-icon">→</span></p>
+                    </div>
+                    <div class="illustration adults-icon">
+                        <svg width="140" height="140" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M100,50 m-30,0 a30,30 0 1,1 60,0 a30,30 0 1,1 -60,0" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+                            <path d="M135,165 C135,165 130,110 100,110 C70,110 65,165 65,165" stroke="rgba(255,255,255,0.6)" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M100,90 m-45,0 a45,45 0 1,0 90,0" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="4" stroke-dasharray="8 4"/>
+                            <path d="M100,80 m-15,0 a15,15 0 1,0 30,0 a15,15 0 1,0 -30,0" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3"/>
+                            <path d="M100,80 v-10 m0,25 v10" stroke="rgba(255,255,255,0.8)" stroke-width="3"/>
+                            <path d="M90,80 h-10 m35,0 h10" stroke="rgba(255,255,255,0.8)" stroke-width="3"/>
+                            <path d="M85,130 L85,150" stroke="rgba(255,255,255,0.6)" stroke-width="3"/>
+                            <path d="M115,130 L115,150" stroke="rgba(255,255,255,0.6)" stroke-width="3"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="helpfor-card helpfor-seniors">
+                    <div class="card-content">
+                        <h2>Seniors</h2>
+                        <p>Ages 65+ <span class="arrow-icon">→</span></p>
+                    </div>
+                    <div class="illustration seniors-icon">
+                        <svg width="140" height="140" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M100,50 m-30,0 a30,30 0 1,1 60,0 a30,30 0 1,1 -60,0" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+                            <path d="M135,165 C135,165 130,110 100,110 C70,110 65,165 65,165" stroke="rgba(255,255,255,0.6)" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M80,50 C80,50 85,40 100,40 C115,40 120,50 120,50" stroke="rgba(255,255,255,0.6)" stroke-width="3"/>
+                            <circle cx="90" cy="50" r="3" fill="rgba(255,255,255,0.8)"/>
+                            <circle cx="110" cy="50" r="3" fill="rgba(255,255,255,0.8)"/>
+                            <path d="M90,70 a10,10 0 0,0 20,0" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M65,110 L80,90" stroke="rgba(255,255,255,0.6)" stroke-width="3"/>
+                            <path d="M135,110 L120,90" stroke="rgba(255,255,255,0.5)" stroke-width="3"/>
+                            <path d="M100,110 L100,80" stroke="rgba(255,255,255,0.6)" stroke-width="3"/>
+                            <path d="M80,140 C80,140 90,130 100,130 C110,130 120,140 120,140" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

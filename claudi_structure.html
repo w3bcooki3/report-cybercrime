@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protect - Cybersecurity for Everyone</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%);
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        .emoji-icon {
+            display: inline-block;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-blue-600">
+                        <i class="fas fa-shield-alt mr-2"></i>Protect
+                    </span>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#learn" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">Learn</a>
+                    <a href="#report" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">Report</a>
+                    <a href="#tools" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">Tools</a>
+                    <a href="#events" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">Events</a>
+                    <a href="#contact" class="px-4 py-2 rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">Contact Us</a>
+                </div>
+                <div class="flex md:hidden items-center">
+                    <button type="button" class="text-gray-500 hover:text-blue-600 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="md:w-3/5">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Cybersecurity for Everyone</h1>
+                    <p class="text-xl mb-8">Your all-in-one platform to help you <span class="font-semibold">recognize, prevent, protect, and report</span> cyber threats. No matter your age, experience, or background, you'll find simple and clear help here.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#learn" class="btn-primary px-6 py-3 rounded-lg font-medium text-white shadow-lg">
+                            <i class="fas fa-book-open mr-2"></i>Start Learning
+                        </a>
+                        <a href="#report" class="bg-white px-6 py-3 rounded-lg font-medium text-blue-600 shadow-lg hover:bg-gray-50 transition-all">
+                            <i class="fas fa-flag mr-2"></i>Report a Threat
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block md:w-2/5">
+                    <img src="/api/placeholder/600/400" alt="Cybersecurity Protection" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">What You Can Do on Protect</h2>
+            
+            <!-- Learn About Cyber Threats -->
+            <div id="learn" class="mb-16">
+                <div class="bg-blue-50 rounded-xl p-8 mb-8">
+                    <div class="flex flex-col md:flex-row md:items-center">
+                        <div class="md:w-2/3 mb-6 md:mb-0 md:pr-8">
+                            <div class="text-blue-600 text-4xl mb-4">🔍</div>
+                            <h3 class="text-2xl font-bold mb-4">Learn About Cyber Threats</h3>
+                            <p class="text-lg mb-6">Explore easy-to-understand guides, videos, and articles across <span class="font-semibold">9 major cybercrime categories</span>:</p>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <i class="fas fa-fish-fins text-blue-500 mr-2"></i> Phishing
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <i class="fas fa-lock text-blue-500 mr-2"></i> Ransomware
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <i class="fas fa-phone text-blue-500 mr-2"></i> Scam Calls & SMS
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <i class="fas fa-laptop-code text-blue-500 mr-2"></i> Computer Hacking
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <i class="fas fa-credit-card text-blue-500 mr-2"></i> Financial Fraud
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <i class="fas fa-share-nodes text-blue-500 mr-2"></i> Social Media Hacking
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <i class="fas fa-heart text-blue-500 mr-2"></i> Romance Scams
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <i class="fas fa-headset text-blue-500 mr-2"></i> Fake Tech Support
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <i class="fas fa-id-card text-blue-500 mr-2"></i> Identity Theft
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="inline-flex items-center font-medium text-blue-600 hover:text-blue-800">
+                                Go to Reporting & Guides
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        <div class="md:w-1/3">
+                            <img src="/api/placeholder/400/300" alt="Learning Resources" class="rounded-lg shadow-md">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Report a Cybercrime -->
+            <div id="report" class="mb-16">
+                <div class="bg-green-50 rounded-xl p-8 mb-8">
+                    <div class="flex flex-col md:flex-row md:items-center">
+                        <div class="md:w-1/3 mb-6 md:mb-0 md:pr-8 order-2 md:order-1">
+                            <img src="/api/placeholder/400/300" alt="Reporting Dashboard" class="rounded-lg shadow-md">
+                        </div>
+                        <div class="md:w-2/3 order-1 md:order-2 md:pl-8">
+                            <div class="text-green-600 text-4xl mb-4">📝</div>
+                            <h3 class="text-2xl font-bold mb-4">Report a Cybercrime</h3>
+                            <p class="text-lg mb-6">Not sure where or how to report something suspicious? We make it easy. Choose your threat type and get direct links to the correct reporting authorities — no guesswork needed.</p>
+                            
+                            <a href="#" class="btn-primary inline-flex items-center px-6 py-3 rounded-lg font-medium text-white">
+                                Report a Threat
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Free Security Tools -->
+            <div id="tools" class="mb-16">
+                <div class="bg-purple-50 rounded-xl p-8 mb-8">
+                    <div class="flex flex-col md:flex-row md:items-center">
+                        <div class="md:w-2/3 mb-6 md:mb-0 md:pr-8">
+                            <div class="text-purple-600 text-4xl mb-4">🛠️</div>
+                            <h3 class="text-2xl font-bold mb-4">Free Security Tools</h3>
+                            <p class="text-lg mb-6">Find trusted, free cybersecurity tools to protect your devices and data:</p>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <i class="fas fa-virus-slash text-purple-500 mr-2"></i> Antivirus software
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <i class="fas fa-shield-alt text-purple-500 mr-2"></i> VPNs
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <i class="fas fa-ban text-purple-500 mr-2"></i> Ad blockers
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <i class="fas fa-key text-purple-500 mr-2"></i> Password managers
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <i class="fas fa-browser text-purple-500 mr-2"></i> Anti-scam extensions
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="inline-flex items-center font-medium text-purple-600 hover:text-purple-800">
+                                See Recommended Tools
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        <div class="md:w-1/3">
+                            <img src="/api/placeholder/400/300" alt="Security Tools" class="rounded-lg shadow-md">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cyber Events -->
+            <div id="events" class="mb-16">
+                <div class="bg-orange-50 rounded-xl p-8 mb-8">
+                    <div class="flex flex-col md:flex-row md:items-center">
+                        <div class="md:w-1/3 mb-6 md:mb-0 md:pr-8 order-2 md:order-1">
+                            <img src="/api/placeholder/400/300" alt="Cyber Events" class="rounded-lg shadow-md">
+                        </div>
+                        <div class="md:w-2/3 order-1 md:order-2 md:pl-8">
+                            <div class="text-orange-600 text-4xl mb-4">📅</div>
+                            <h3 class="text-2xl font-bold mb-4">Cyber Events & Awareness</h3>
+                            <p class="text-lg mb-6">Stay informed with global cybersecurity events, webinars, and awareness days that matter.</p>
+                            
+                            <a href="#" class="inline-flex items-center font-medium text-orange-600 hover:text-orange-800">
+                                View Events
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Community Section -->
+    <div class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Join the Cyber-Safe Community</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">We're building a space where everyone feels safe online. Whether you're here to learn or help, you're part of the solution.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card bg-white rounded-xl shadow-md p-6 text-center">
+                    <div class="emoji-icon">👥</div>
+                    <h3 class="text-xl font-bold mb-3">Community Forums</h3>
+                    <p class="text-gray-600 mb-4">Connect with others, share experiences, and learn together in our moderated forums.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800">Join Discussion</a>
+                </div>
+                
+                <div class="card bg-white rounded-xl shadow-md p-6 text-center">
+                    <div class="emoji-icon">🎓</div>
+                    <h3 class="text-xl font-bold mb-3">Free Webinars</h3>
+                    <p class="text-gray-600 mb-4">Attend expert-led sessions on the latest threats and protection strategies.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800">Register Now</a>
+                </div>
+                
+                <div class="card bg-white rounded-xl shadow-md p-6 text-center">
+                    <div class="emoji-icon">📱</div>
+                    <h3 class="text-xl font-bold mb-3">Mobile App</h3>
+                    <p class="text-gray-600 mb-4">Get alerts and protection on the go with our free mobile application.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800">Download App</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="py-16 hero-gradient text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-6">Get Started Today</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Pick where you'd like to begin your journey to better online security:</p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#learn" class="bg-white px-6 py-3 rounded-lg font-medium text-blue-600 shadow-lg hover:bg-gray-50 transition-all">
+                    <i class="fas fa-search mr-2"></i>Explore Threats
+                </a>
+                <a href="#report" class="bg-white px-6 py-3 rounded-lg font-medium text-blue-600 shadow-lg hover:bg-gray-50 transition-all">
+                    <i class="fas fa-flag mr-2"></i>Report Cybercrime
+                </a>
+                <a href="#tools" class="bg-white px-6 py-3 rounded-lg font-medium text-blue-600 shadow-lg hover:bg-gray-50 transition-all">
+                    <i class="fas fa-shield-alt mr-2"></i>Protect Yourself
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Need Help or Have a Question?</h2>
+                <p class="text-xl text-gray-600">We're here for you. Contact us or check our FAQs</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <form class="bg-gray-50 rounded-xl shadow-md p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                        <select id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option>General Question</option>
+                            <option>Report a Website Issue</option>
+                            <option>Partnership Inquiry</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn-primary px-8 py-3 rounded-lg font-medium text-white shadow-lg">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Protect</h4>
+                    <p class="text-gray-400 mb-4">Your trusted resource for cybersecurity education, reporting, and protection.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#learn" class="text-gray-400 hover:text-white">Learn</a></li>
+                        <li><a href="#report" class="text-gray-400 hover:text-white">Report</a></li>
+                        <li><a href="#tools" class="text-gray-400 hover:text-white">Tools</a></li>
+                        <li><a href="#events" class="text-gray-400 hover:text-white">Events</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Glossary</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Videos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Statistics</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i> help@protect-cyber.org
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-2"></i> 1-800-CYBER-HELP
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Global Reach, Local Support
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>© 2025 Protect. All rights reserved. | <a href="#" class="hover:text-white">Privacy Policy</a> | <a href="#" class="hover:text-white">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for simple interactions -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

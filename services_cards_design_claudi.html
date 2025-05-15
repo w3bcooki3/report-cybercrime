@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield - Data Protection Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@400;500;600;700&family=Yantramanav:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables */
+        :root {
+            --dark1: #1C1C1C;
+            --dark2: #454545;
+            --light_white: #F9F9F9;
+            --primary_color: #1351D8;
+            --primary_color2: #4F8DFF;
+            --primary_light: #F3F6FD;
+            --primary_light2: rgb(19 81 216 / 10%);
+            --gray: #D9D9D9;
+            --font_syne: 'Syne', sans-serif;
+            --font_yantramanv: 'Yantramanav', sans-serif;
+            --font_dm: 'DM Sans', sans-serif;
+            --yellow_color: #FFD600;
+        }
+
+        /* Reset Browsers */
+        *,*:before,*:after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul,ol {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none !important;
+        }
+        input:focus,
+        textarea:focus,
+        button:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* Template Default Styles */
+        body {
+            font-size: 16px;
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.5;
+            font-weight: 400;
+            overflow-x: hidden;
+            background-color: #f5f2ef;
+        }
+        img {
+            max-width: 100%;
+        }
+
+        
+
+        /*slide-left Animation */
+        .slide-left {
+            animation: slideLeft 1s;
+        }
+
+        /*slide-right Animation */
+        .slide-right {
+            animation: slideRight 1s;
+        }
+
+        /*fade-in Animation */
+        .fade-in {
+            animation: fadeIn 1s cubic-bezier(.97,.01,.92,1);
+        }
+
+        /*bounce-in Animation */
+        .bounce-in {
+            animation: bounceIn 0.5s ease;
+            animation-delay: 1s;
+            visibility: hidden;
+            animation-fill-mode: forwards;
+        }
+
+        /*pop-in Animation */
+        .pop-in {
+            animation: popIn 1.5s ease;
+        }
+
+        /*delay-2 Animation */
+        .delay-2 {
+            animation-delay: 1.5s;
+        }
+
+        /*delay-3 Animation */
+        .delay-3 {
+            animation-delay: 2s;
+        }
+
+        /*fadeIn Effects */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /*bounceIn Effects */
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% { transform: scale(.9); }
+            100% { transform: scale(1); visibility: visible; }
+        }
+
+        /*popIn Effects */
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /*slideLeft Effects */
+        @keyframes slideLeft {
+            0%{
+                transform: translateX(-900px) rotate(-90deg);
+            }
+            100% {
+                transform: translateX(0) rotate(0);
+            }
+        }
+
+        /*slideRight Effects */
+        @keyframes slideRight {
+            0%{
+                transform: translateX(900px) rotate(90deg);
+            }
+            100% {
+                transform: translateX(0) rotate(0);
+            }
+        }
+        
+        /* Services Grid (Image 2) */
+        .main-services-section {
+            padding: 50px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .main-services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .main-service-card {
+            background-color: white;
+            border-radius: 24px;
+            padding: 40px 30px;
+            position: relative;
+            height: 100%;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .main-service-card.main {
+            background-color: #FF4B1E;
+            color: white;
+        }
+        
+        .main-service-card .subtitle {
+            text-transform: uppercase;
+            color: #FF4B1E;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .main-service-card.main .subtitle {
+            color: white;
+        }
+        
+        .main-service-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .main-service-card.main h3 {
+            font-size: 32px;
+        }
+        
+        .main-service-card p {
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .main-service-card.main p {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .main-service-icon {
+            margin-bottom: 20px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .main-service-card.main .main-service-icon {
+            opacity: 0.7;
+        }
+        
+        .main-arrow-link {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 32px;
+            height: 32px;
+            background-color: #FF4B1E;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .main-service-card.main .main-arrow-link {
+            background-color: white;
+            color: #FF4B1E;
+        }
+        
+        .main-arrow-link:hover {
+            transform: scale(1.1);
+        }
+        
+        .main-arrow-icon {
+            width: 16px;
+            height: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Services Grid (Image 2) -->
+    <section class="main-services-section">
+        <div class="main-services-grid">
+            <!-- Main Card -->
+            <div class="main-service-card main">
+                <div class="main-service-icon">
+                    <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M75 25H25C20 25 15 30 15 35V65C15 70 20 75 25 75H75C80 75 85 70 85 65V35C85 30 80 25 75 25Z" stroke="white" stroke-width="2"/>
+                        <path d="M50 35C55.5228 35 60 30.5228 60 25C60 19.4772 55.5228 15 50 15C44.4772 15 40 19.4772 40 25C40 30.5228 44.4772 35 50 35Z" stroke="white" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span class="subtitle">OUR SERVICES</span>
+                <h3>Professional Data Protection in the Face of Digital Threats</h3>
+            </div>
+
+            <!-- Malware and Virus Removal Card -->
+            <div class="main-service-card">
+                <div class="main-service-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M30 15C32.7614 15 35 12.7614 35 10C35 7.23858 32.7614 5 30 5C27.2386 5 25 7.23858 25 10C25 12.7614 27.2386 15 30 15Z" stroke="#333" stroke-width="1.5"/>
+                        <path d="M45 30C47.7614 30 50 27.7614 50 25C50 22.2386 47.7614 20 45 20C42.2386 20 40 22.2386 40 25C40 27.7614 42.2386 30 45 30Z" stroke="#333" stroke-width="1.5"/>
+                        <path d="M15 30C17.7614 30 20 27.7614 20 25C20 22.2386 17.7614 20 15 20C12.2386 20 10 22.2386 10 25C10 27.7614 12.2386 30 15 30Z" stroke="#333" stroke-width="1.5"/>
+                        <path d="M30 55C32.7614 55 35 52.7614 35 50C35 47.2386 32.7614 45 30 45C27.2386 45 25 47.2386 25 50C25 52.7614 27.2386 55 30 55Z" stroke="#333" stroke-width="1.5"/>
+                        <path d="M30 30L30 45M30 5L30 15M15 30L40 45M45 30L15 30" stroke="#333" stroke-width="1.5"/>
+                        <path d="M30 35C32.7614 35 35 32.7614 35 30C35 27.2386 32.7614 25 30 25C27.2386 25 25 27.2386 25 30C25 32.7614 27.2386 35 30 35Z" fill="#FF4B1E" stroke="#333" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <h3>Malware and Virus Removal</h3>
+                <p>Identifies, removes, and prevents malicious software from compromising your system</p>
+                <a href="#" class="main-arrow-link">
+                    <svg class="main-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Database & Cloud Security Card -->
+            <div class="main-service-card">
+                <div class="main-service-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="10" width="40" height="10" rx="2" stroke="#333" stroke-width="1.5"/>
+                        <rect x="10" y="25" width="40" height="10" rx="2" stroke="#333" stroke-width="1.5"/>
+                        <rect x="10" y="40" width="40" height="10" rx="2" stroke="#333" stroke-width="1.5"/>
+                        <circle cx="35" cy="15" r="2" fill="#FF4B1E"/>
+                        <circle cx="45" cy="15" r="2" fill="#FF4B1E"/>
+                        <circle cx="35" cy="30" r="2" fill="#FF4B1E"/>
+                        <circle cx="45" cy="30" r="2" fill="#FF4B1E"/>
+                        <circle cx="35" cy="45" r="2" fill="#FF4B1E"/>
+                        <circle cx="45" cy="45" r="2" fill="#FF4B1E"/>
+                    </svg>
+                </div>
+                <h3>Database & Cloud Security</h3>
+                <p>Secures databases and cloud environments against unauthorized access and cyber threats</p>
+                <a href="#" class="main-arrow-link">
+                    <svg class="main-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Account Access Recovery Card -->
+            <div class="main-service-card">
+                <div class="main-service-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="15" y="15" width="30" height="20" rx="2" stroke="#333" stroke-width="1.5"/>
+                        <path d="M20 35V40C20 42.2091 21.7909 44 24 44H36C38.2091 44 40 42.2091 40 40V35" stroke="#333" stroke-width="1.5"/>
+                        <path d="M25 25H35" stroke="#333" stroke-width="1.5"/>
+                        <path d="M25 30H35" stroke="#333" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <h3>Account Access Recovery</h3>
+                <p>Restores access to compromised or locked accounts securely and efficiently</p>
+                <a href="#" class="main-arrow-link">
+                    <svg class="main-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Protection System Creation Card -->
+            <div class="main-service-card">
+                <div class="main-service-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 15H45C46.1046 15 47 15.8954 47 17V50C47 51.1046 46.1046 52 45 52H15C13.8954 52 13 51.1046 13 50V17C13 15.8954 13.8954 15 15 15Z" stroke="#333" stroke-width="1.5"/>
+                        <path d="M20 25H40" stroke="#333" stroke-width="1.5"/>
+                        <path d="M20 32H40" stroke="#333" stroke-width="1.5"/>
+                        <path d="M20 39H40" stroke="#333" stroke-width="1.5"/>
+                        <path d="M20 46H40" stroke="#333" stroke-width="1.5"/>
+                        <path d="M25 10L25 20" stroke="#333" stroke-width="1.5"/>
+                        <path d="M35 10L35 20" stroke="#333" stroke-width="1.5"/>
+                        <path d="M25 15L30 10L35 15" stroke="#FF4B1E" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <h3>Protection System Creation</h3>
+                <p>Designs and implements robust security systems for safeguarding data and infrastructure</p>
+                <a href="#" class="main-arrow-link">
+                    <svg class="main-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Technical Support Card -->
+            <div class="main-service-card">
+                <div class="main-service-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M40 20C40 14.4772 35.5228 10 30 10C24.4772 10 20 14.4772 20 20" stroke="#333" stroke-width="1.5"/>
+                        <rect x="15" y="20" width="30" height="25" rx="2" stroke="#333" stroke-width="1.5"/>
+                        <path d="M30 35V45" stroke="#333" stroke-width="1.5"/>
+                        <circle cx="30" cy="30" r="5" stroke="#333" stroke-width="1.5"/>
+                        <path d="M45 30C50 32 50 38 45 40" stroke="#333" stroke-width="1.5"/>
+                        <path d="M15 30C10 32 10 38 15 40" stroke="#333" stroke-width="1.5"/>
+                        <circle cx="48" cy="22" r="4" stroke="#FF4B1E" stroke-width="1.5"/>
+                        <path d="M48 20V24" stroke="#FF4B1E" stroke-width="1.5"/>
+                        <path d="M46 22H50" stroke="#FF4B1E" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <h3>Technical Support 24/7</h3>
+                <p>Provides round-the-clock technical assistance to resolve IT issues quickly and effectively</p>
+                <a href="#" class="main-arrow-link">
+                    <svg class="main-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

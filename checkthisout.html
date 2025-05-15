@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Therapy Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@400;500;700&family=Yantramanav:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables */
+        :root {
+            --dark1: #1C1C1C;
+            --dark2: #454545;
+            --light_white: #F9F9F9;
+            --primary_color: #1351D8;
+            --primary_color2: #4F8DFF;
+            --primary_light: #F3F6FD;
+            --primary_light2: rgb(19 81 216 / 10%);
+            --gray: #D9D9D9;
+            --font_syne: 'Syne', sans-serif;
+            --font_yantramanv: 'Yantramanav', sans-serif;
+            --font_dm: 'DM Sans', sans-serif;
+            --yellow_color: #FFD600;
+            
+            /* Theme specific colors */
+            --theme-green-dark: #2B5741;
+            --theme-green-medium: #3A6A53;
+            --theme-green-light: #4A9562;
+            --theme-blue-dark: #2B5761;
+            --theme-blue-medium: #437E90;
+            --theme-blue-light: #5AA6BB;
+            --theme-orange-dark: #7A3F09;
+            --theme-orange-medium: #B75E0F;
+            --theme-orange-light: #D97923;
+        }
+
+        /* Reset Browsers */
+        *,*:before,*:after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul,ol {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none !important;
+        }
+        input:focus,
+        textarea:focus,
+        button:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* Template Default Styles */
+        body {
+            font-size: 16px;
+            font-family: var(--font_dm);
+            line-height: 1.5;
+            font-weight: 400;
+            overflow-x: hidden;
+            background-color: var(--theme-green-dark);
+            color: #fff;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top right, rgba(74, 149, 98, 0.15), transparent 70%),
+                         radial-gradient(circle at bottom left, rgba(74, 149, 98, 0.15), transparent 70%);
+            z-index: 0;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+
+        .custom-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Therapy Page Specific Styles */
+        .therapy-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .therapy-hero h1 {
+            font-family: var(--font_yantramanv);
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+            animation: fadeIn 1s cubic-bezier(.97,.01,.92,1);
+            position: relative;
+        }
+        
+        .therapy-hero h1::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .therapy-hero p {
+            font-size: 22px;
+            margin-bottom: 80px;
+            max-width: 600px;
+            animation: fadeIn 1s cubic-bezier(.97,.01,.92,1);
+            animation-delay: 0.5s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        
+        .therapy-options {
+            display: flex;
+            gap: 26px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1100px;
+        }
+        
+        .therapy-card {
+            width: 320px;
+            height: 240px;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .therapy-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .therapy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.1) 100%);
+            z-index: 0;
+        }
+        
+        .therapy-card h2 {
+            font-family: var(--font_syne);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .therapy-card p {
+            font-size: 17px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+        }
+        
+        .therapy-card .arrow-icon {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .therapy-card:hover .arrow-icon {
+            transform: translateX(5px);
+        }
+        
+        .therapy-card .card-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .therapy-card .illustration {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 140px;
+            height: 140px;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .card-individual {
+            background: linear-gradient(135deg, var(--theme-green-light), var(--theme-green-medium));
+            animation: popIn 0.6s ease;
+            animation-delay: 0.8s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        
+        .card-couples {
+            background: linear-gradient(135deg, var(--theme-blue-light), var(--theme-blue-medium));
+            animation: popIn 0.6s ease;
+            animation-delay: 1s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        
+        .card-teen {
+            background: linear-gradient(135deg, var(--theme-orange-light), var(--theme-orange-medium));
+            animation: popIn 0.6s ease;
+            animation-delay: 1.2s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        
+        /* SVG Icons */
+        .individual-icon {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .couples-icon {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .teen-icon {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Animation Styles */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            70% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .therapy-hero h1 {
+                font-size: 42px;
+            }
+            
+            .therapy-hero p {
+                font-size: 18px;
+                margin-bottom: 50px;
+            }
+            
+            .therapy-options {
+                gap: 16px;
+            }
+            
+            .therapy-card {
+                width: 300px;
+                height: 220px;
+                padding: 22px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .therapy-hero h1 {
+                font-size: 36px;
+            }
+            
+            .therapy-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .therapy-card {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-container">
+        <div class="therapy-hero">
+            <h1>You deserve to be happy.</h1>
+            <p>What type of therapy are you looking for?</p>
+            
+            <div class="therapy-options">
+                <div class="therapy-card card-individual">
+                    <div class="card-content">
+                        <h2>Individual</h2>
+                        <p>For myself <span class="arrow-icon">→</span></p>
+                    </div>
+                    <div class="illustration individual-icon">
+                        <svg width="140" height="140" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M120,70 C120,86.569 106.569,100 90,100 C73.431,100 60,86.569 60,70 C60,53.431 73.431,40 90,40 C106.569,40 120,53.431 120,70 Z" fill="#F2E8CF" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
+                            <path d="M75,140 C75,140 67,115 90,115 C113,115 105,140 105,140" stroke="#F2E8CF" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M135,165 C135,165 130,110 90,110 C50,110 45,165 45,165" stroke="#F2E8CF" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M95,70 C95,72.761 92.761,75 90,75 C87.239,75 85,72.761 85,70" stroke="#51704D" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M100,63 C100,63 95,60 90,60 C85,60 80,63 80,63" stroke="#51704D" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M75,60 C75,60 77,58 80,58" stroke="#51704D" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M105,60 C105,60 103,58 100,58" stroke="#51704D" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M129,78 C132.866,78 136,81.134 136,85 C136,88.866 132.866,92 129,92" stroke="#F2E8CF" stroke-width="6" stroke-linecap="round"/>
+                            <ellipse cx="115" cy="85" rx="10" ry="15" fill="#92B58B"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="therapy-card card-couples">
+                    <div class="card-content">
+                        <h2>Couples</h2>
+                        <p>For me and my partner <span class="arrow-icon">→</span></p>
+                    </div>
+                    <div class="illustration couples-icon">
+                        <svg width="140" height="140" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M65,70 C65,83.807 53.807,95 40,95 C26.193,95 15,83.807 15,70 C15,56.193 26.193,45 40,45 C53.807,45 65,56.193 65,70 Z" fill="#BFD7EA" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
+                            <path d="M145,70 C145,83.807 133.807,95 120,95 C106.193,95 95,83.807 95,70 C95,56.193 106.193,45 120,45 C133.807,45 145,56.193 145,70 Z" fill="#F2E8CF" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
+                            <path d="M80,155 C80,155 75,105 40,105 C5,105 0,155 0,155" stroke="#BFD7EA" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M160,155 C160,155 155,105 120,105 C85,105 80,155 80,155" stroke="#F2E8CF" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M80,125 C80,125 90,140 100,130" stroke="#5A8CA8" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M80,125 C80,125 70,140 60,130" stroke="#5A8CA8" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M45,70 C45,72.761 42.761,75 40,75 C37.239,75 35,72.761 35,70" stroke="#5A8CA8" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M125,70 C125,72.761 122.761,75 120,75 C117.239,75 115,72.761 115,70" stroke="#5A8D6A" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M50,63 C50,63 45,60 40,60 C35,60 30,63 30,63" stroke="#5A8CA8" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M130,63 C130,63 125,60 120,60 C115,60 110,63 110,63" stroke="#5A8D6A" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="therapy-card card-teen">
+                    <div class="card-content">
+                        <h2>Teen</h2>
+                        <p>For my child <span class="arrow-icon">→</span></p>
+                    </div>
+                    <div class="illustration teen-icon">
+                        <svg width="140" height="140" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M120,70 C120,86.569 106.569,100 90,100 C73.431,100 60,86.569 60,70 C60,53.431 73.431,40 90,40 C106.569,40 120,53.431 120,70 Z" fill="#F4D1A6" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
+                            <path d="M135,165 C135,165 130,110 90,110 C50,110 45,165 45,165" stroke="#F4D1A6" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M90,130 L90,140" stroke="#BA6216" stroke-width="6" stroke-linecap="round"/>
+                            <path d="M75,115 L65,125" stroke="#BA6216" stroke-width="6" stroke-linecap="round"/>
+                            <path d="M105,115 L115,125" stroke="#BA6216" stroke-width="6" stroke-linecap="round"/>
+                            <path d="M95,70 C95,72.761 92.761,75 90,75 C87.239,75 85,72.761 85,70" stroke="#BA6216" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M100,63 C100,63 95,60 90,60 C85,60 80,63 80,63" stroke="#BA6216" stroke-width="2" stroke-linecap="round"/>
+                            <rect x="70" y="85" width="40" height="10" rx="5" fill="#F4D1A6" stroke="#BA6216" stroke-width="1"/>
+                            <path d="M75,60 C75,60 77,58 80,58" stroke="#BA6216" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M105,60 C105,60 103,58 100,58" stroke="#BA6216" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
