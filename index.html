@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="landing-page/css/landing-page.css">
     <link rel="stylesheet" href="./assets/css/new_index.css">
+    <link rel="stylesheet" href="./assets/css/testing_new_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- ========== End Stylesheet ========== -->
 
@@ -314,64 +315,16 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="mega-menu-item">
+                                <li>
                                     <a href="learn.html">Learn</a>
-                                    <span class="dropdown-menu-item-icon">
-                                        <i class="las la-angle-down"></i>
-                                    </span>
-                                    <div class="mega-menu mega-menu-portfolio">
-                                        <div class="mega-menu-inner">
-                                            <div class="custom-container d-flex">
-                                                <div class="left">
-                                                    <div
-                                                        class="mega-menu-link-wrap d-flex align-items-start justify-content-between">
-                                                        <div class="mega-menu-portfolio-card">
-                                                            <div class="img-box">
-                                                                <img src="./assets/imgs/portfolio-mega-menu-1.jpg"
-                                                                    alt="Portfolio" />
-                                                            </div>
-                                                            <div class="content-box">
-                                                                <h3><a href="learning2.html">Learn2</a></h3>
-                                                                <p>we undertook a project to <br>migrate their existing.
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="mega-menu-portfolio-card">
-                                                            <div class="img-box">
-                                                                <img src="./assets/imgs/portfolio-mega-menu-2.jpg"
-                                                                    alt="Portfolio" />
-                                                            </div>
-                                                            <div class="content-box">
-                                                                <h3><a href="Learn-edcu.html">Games</a></h3>
-                                                                <p>The mobile application has <br>significantly
-                                                                    improved.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div
-                                                        class="mega-meu-footer d-flex align-items-center justify-content-between w-full">
-                                                        <ul class="mega-menu-social d-flex align-items-center">
-                                                            <li><a href="#"><i class="iconoir-dribbble"></i></a></li>
-                                                            <li><a href="#"><i class="iconoir-twitter"></i></a></li>
-                                                            <li><a href="#"><i class="iconoir-instagram"></i></a></li>
-                                                            <li><a href="#"><i class="iconoir-linkedin"></i></a></li>
-                                                        </ul>
-
-                                                        <p>
-                                                            <a href="portfolio.html">View Guide
-                                                                <i class="iconoir-arrow-up-right"></i></a>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
+                                </li>
+                                <li>
+                                    <a href="Learn-edcu.html">Games</a>
                                 </li>
                                 <li>
                                     <a href="contact.html">Contact</a>
                                 </li>
+                            </ul>
                             <!---
                             <select class="country-select" name="country" id="country">
                                 <option value="en">EN</option>
@@ -383,14 +336,7 @@
                     </div>
                     <div class="header-right">
                         <div class="header-contact-info d-flex align-items-center">
-                            <div class="phone-number">
-                                <a href="#!">
-                                    Email 
-                                    <i class="iconoir-arrow-up-right"></i>   
-                                </a>
-                                contact@protect.org
-                            </div>
-                            <a href="contact.html" class="theme-btn">Join as Volunteer</a>
+                            <a href="contact.html" class="theme-btn pulse">Report Now</a>
                         </div>
                     </div>
                 </div>
@@ -406,25 +352,31 @@
         </div> 
         -->
 
-        <!-- Hero Section with JavaScript Text Animation -->
-        <section class="hero-section-wrap hero-home2">
-            <div class="hero-section-content-wrap">
-                <div id="hero-section-text" class="custom-container">
-                    <div class="hero-section-content text-center">
-                        <h5 class="section-subtitle">TAKE CONTROL OF YOUR ONLINE SECURITY</h5>
-                        <h1 class="section-title fade-in">We help you</h1>
-                        <div class="animated-heading section-title">
-                            <div class="animated-words-container">
-                                <!-- Phrases will be added by JS -->
-                            </div>
-                        </div>
-                        <p>Empower yourself with the knowledge and tools to build a strong online defense.</p>
-                        <a href="#" class="theme-btn2 pulse">Report Now <i class="iconoir-arrow-up-right"></i></a>
+        <!-- Hero Section -->
+        <section class="main-hero-section">
+            <div class="world-map-bg"></div>
+            <div class="main-hero-content fade-in">
+                <p class="main-tag-line">TAKE CONTROL OF YOUR ONLINE SECURITY</p>
+                
+                <h1 class="main-hero-title">
+                    <span class="main-title-dark">We help you</span>
+
+                    <div class="main-title-orange">
+                        <span class="main-animated-text visible" data-index="0">Report Digital Threats</span>
+                        <span class="main-animated-text" data-index="1">Prevent Cyber Attacks</span>
+                        <span class="main-animated-text" data-index="2">Stay Safe Online</span>
+                        <span class="main-animated-text" data-index="3">Protect Your Data</span>
                     </div>
-                </div>
+                    
+                </h1>
+                
+                <p class="main-hero-description">
+                    Join our cybersecurity community to stay protected online. Learn about the latest threats, share your experiences, and access tools and resources to safeguard your digital life.
+                </p>
+                
+                <a href="#allresources" class="theme-btn2 pulse">Explore our Resources <i class="iconoir-arrow-up-right"></i></a>
             </div>
         </section>
-
 
 
         <!-- Reporting Categories -->
@@ -786,77 +738,238 @@
         </section>
 
 
-        <!-- Cybersecurity Resources Section -->
-        <section class="cyber-resources-section">
-            <div class="cyber-custom-container">
-                <div class="cyber-section-header fade-in">
-                    <h3 class="cyber-section-subtitle">FREE RESOURCES</h3>
-                    <h2 class="cyber-section-title">Cybersecurity Tools & Solutions</h2>
+
+
+        <section class="main-hero-section-wrap" id="allresources">
+            <div class="mainpage-custom-container">
+                <div class="hero-contact-form-wrap">
+                    <!-- Services Grid (Image 2) -->
+                    <section class="main-services-section">
+                        <div class="section-heading">
+                            <h2>Advanced Cybersecurity Resources</h2>
+                            <p>Comprehensive protection strategies and expert solutions for organizations and individuals of all knowledge levels</p>
+                        </div>
+                        <div class="main-services-grid">
+                            <div class="main-service-card slide-left">
+                                <div class="main-service-icon">
+                                    <img src="https://wpriverthemes.com/HTML/synck/assets/imgs/service-icon-3.svg" alt="Incident Response Icon">
+                                </div>
+                                <div class="main-subtitle">Incident Response</div>
+                                <h3>Report Cyber Threats</h3>
+                                <p>Select from 9 categories of cybercrime and report to the appropriate authorities with our streamlined, secure reporting system.</p>
+                                <br>
+                                <a href="#" class="main-arrow-link">
+                                    <svg class="main-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <div class="main-service-card popIn">
+                                <div class="main-service-icon">
+                                    <img src="https://wpriverthemes.com/HTML/synck/assets/imgs/service-icon-3.svg" alt="Icon Description">
+                                </div>
+                                <div class="main-subtitle">Educational Resources</div>
+                                <h3>Expert Knowledge Base</h3>
+                                <p>Comprehensive guides to understand different cybersecurity threats and implement effective protection strategies for individuals and enterprises.</p>
+                                <br>
+                                <a href="#" class="main-arrow-link">
+                                    <svg class="main-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            
+                            <div class="main-service-card slide-right">
+                                <div class="main-service-icon">
+                                    <img src="https://wpriverthemes.com/HTML/synck/assets/imgs/service-icon-3.svg" alt="Icon Description">
+                                </div>
+                                <div class="main-subtitle">Protection Solutions</div>
+                                <h3>Security Tools</h3>
+                                <p>Discover our curated selection of enterprise-grade and consumer security tools to safeguard your devices and networks against emerging threats.</p>
+                                <br>
+                                <a href="#" class="main-arrow-link">
+                                    <svg class="main-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <div class="main-service-card slide-left">
+                                <div class="main-service-icon">
+                                    <img src="https://wpriverthemes.com/HTML/synck/assets/imgs/service-icon-3.svg" alt="Icon Description">
+                                </div>
+                                <div class="main-subtitle">Education Center</div>
+                                <h3>Learning Resources</h3>
+                                <p>Access vetted educational materials from industry experts, designed for all knowledge levels from beginners to advanced security professionals.</p>
+                                <br>
+                                <a href="#" class="main-arrow-link">
+                                    <svg class="main-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+
+                            
+                            <div class="main-service-card fade-in">
+                                <div class="main-service-icon">
+                                    <img src="https://wpriverthemes.com/HTML/synck/assets/imgs/service-icon-3.svg" alt="Icon Description">
+                                </div>
+                                <div class="main-subtitle">Industry Updates</div>
+                                <h3>Security Events</h3>
+                                <p>Stay informed about upcoming conferences, workshops, and webinars organized by leading cybersecurity organizations and our expert partners.</p>
+                                <br>
+                                <a href="#" class="main-arrow-link">
+                                    <svg class="main-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <div class="main-service-card slide-right">
+                                <div class="main-service-icon">
+                                    <img src="https://wpriverthemes.com/HTML/synck/assets/imgs/service-icon-3.svg" alt="Icon Description">
+                                </div>
+                                <div class="main-subtitle">Knowledge Center</div>
+                                <h3>Expert Insights</h3>
+                                <p>Stay informed with our regularly updated collection of articles, analysis, and research on emerging threats, best practices, and industry trends.</p>
+                                <br>
+                                <a href="#" class="main-arrow-link">
+                                    <svg class="main-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <div class="main-service-card slide-left">
+                                <div class="main-service-icon">
+                                    <img src="https://wpriverthemes.com/HTML/synck/assets/imgs/service-icon-3.svg" alt="Icon Description">
+                                </div>
+                                <div class="main-subtitle">Restoration</div>
+                                <h3>Recovery Solutions</h3>
+                                <p>Comprehensive step-by-step guides for removing various types of malware and restoring system integrity after a security incident.</p>
+                                <br>
+                                <a href="#" class="main-arrow-link">
+                                    <svg class="main-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <div class="main-service-card popIn">
+                                <div class="main-service-icon">
+                                    <img src="https://wpriverthemes.com/HTML/synck/assets/imgs/service-icon-3.svg" alt="Icon Description">
+                                </div>
+                                <div class="main-subtitle">Testing & Analysis</div>
+                                <h3>Security Assessment</h3>
+                                <p>Advanced vulnerability scanning and risk assessment tools to identify security gaps and provide actionable recommendations for your systems.</p>
+                                <br>
+                                <a href="#" class="main-arrow-link">
+                                    <svg class="main-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <div class="main-service-card slide-right">
+                                <div class="main-service-icon">
+                                    <img src="https://wpriverthemes.com/HTML/synck/assets/imgs/service-icon-3.svg" alt="Icon Description">
+                                </div>
+                                <div class="main-subtitle">Community Engagement</div>
+                                <h3>Connect & Share</h3>
+                                <p>Join our moderated forums to discuss security challenges, share experiences, and receive guidance from security professionals and fellow users.</p>
+                                <br>
+                                <a href="#" class="main-arrow-link">
+                                    <svg class="main-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-                
-                <div class="cyber-resources-grid">
-                    <!-- Resource Card 1 -->
-                    <div class="cyber-resource-card fade-in">
-                        <div class="cyber-resource-icon">
-                            <i class="fas fa-shield-alt"></i>
+            </div>
+        </section>
+
+
+        <!-- Age-Specific Resources Section -->
+        <section class="age-resources-section">
+            <div class="custom-container">
+                <div class="age-resources-heading">
+                    <h2>Resources For All Ages</h2>
+                    <p class="fade-in">Age-appropriate cybersecurity education and protection guidance for everyone</p>
+                </div>
+                <div class="helpfor-options">
+                    <div class="helpfor-card helpfor-kids">
+                        <div class="main-card-content">
+                            <h3>For Kids</h3>
+                            <p>Fun & interactive safety lessons <span class="arrow-icon">→</span></p>
                         </div>
-                        <div class="cyber-resource-content">
-                            <h3 class="cyber-resource-title">Security Assessment Tool</h3>
-                            <p class="cyber-resource-description">Free online tool to evaluate your organization's cybersecurity posture and identify vulnerabilities.</p>
-                            <a href="#" class="cyber-read-more">
-                                Start Assessment
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Resource Card 2 -->
-                    <div class="cyber-resource-card fade-in">
-                        <div class="cyber-resource-icon">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <div class="cyber-resource-content">
-                            <h3 class="cyber-resource-title">Password Strength Analyzer</h3>
-                            <p class="cyber-resource-description">Test the security of your passwords and get personalized improvement recommendations.</p>
-                            <a href="#" class="cyber-read-more">
-                                Access Tool
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
+                        <div class="illustration">
+                            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M45 15C48.3137 15 51 12.3137 51 9C51 5.68629 48.3137 3 45 3C41.6863 3 39 5.68629 39 9C39 12.3137 41.6863 15 45 15Z" fill="white" fill-opacity="0.8"/>
+                                <path d="M57 36C53.7 36 51 33.3 51 30V24H39V30C39 33.3 36.3 36 33 36C29.7 36 27 33.3 27 30V21C27 17.7 29.7 15 33 15H57C60.3 15 63 17.7 63 21V30C63 33.3 60.3 36 57 36Z" fill="white" fill-opacity="0.8"/>
+                                <path d="M54 39V72C54 75.3 51.3 78 48 78H42C38.7 78 36 75.3 36 72V39C36 35.7 38.7 33 42 33H48C51.3 33 54 35.7 54 39Z" fill="white" fill-opacity="0.8"/>
+                                <path d="M72 39V63C72 66.3 69.3 69 66 69H60C56.7 69 54 66.3 54 63V39C54 35.7 56.7 33 60 33H66C69.3 33 72 35.7 72 39Z" fill="white" fill-opacity="0.8"/>
+                                <path d="M36 39V51C36 54.3 33.3 57 30 57H24C20.7 57 18 54.3 18 51V39C18 35.7 20.7 33 24 33H30C33.3 33 36 35.7 36 39Z" fill="white" fill-opacity="0.8"/>
+                            </svg>
                         </div>
                     </div>
-                    
-                    <!-- Resource Card 3 -->
-                    <div class="cyber-resource-card fade-in">
-                        <div class="cyber-resource-icon">
-                            <i class="fas fa-envelope"></i>
+
+                    <div class="helpfor-card helpfor-teens">
+                        <div class="main-card-content">
+                            <h3>For Teens</h3>
+                            <p>Social media & digital identity <span class="arrow-icon">→</span></p>
                         </div>
-                        <div class="cyber-resource-content">
-                            <h3 class="cyber-resource-title">Phishing Simulation Platform</h3>
-                            <p class="cyber-resource-description">Test your team's phishing awareness with our realistic simulation platform.</p>
-                            <a href="#" class="cyber-read-more">
-                                Start Testing
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
+                        <div class="illustration">
+                            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M72 21H18C15.8 21 14 22.8 14 25V65C14 67.2 15.8 69 18 69H72C74.2 69 76 67.2 76 65V25C76 22.8 74.2 21 72 21Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 33H76" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M27 42H45" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M27 51H54" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M27 60H63" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </div>
                     </div>
-                    
-                    <!-- Resource Card 4 -->
-                    <div class="cyber-resource-card fade-in">
-                        <div class="cyber-resource-icon">
-                            <i class="fas fa-book"></i>
+
+                    <div class="helpfor-card helpfor-adults">
+                        <div class="main-card-content">
+                            <h3>For Adults</h3>
+                            <p>Work & financial security <span class="arrow-icon">→</span></p>
                         </div>
-                        <div class="cyber-resource-content">
-                            <h3 class="cyber-resource-title">Security Awareness Training</h3>
-                            <p class="cyber-resource-description">Free educational modules to help train employees on cybersecurity best practices.</p>
-                            <a href="#" class="cyber-read-more">
-                                Access Training
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
+                        <div class="illustration">
+                            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M45 51C53.2843 51 60 44.2843 60 36C60 27.7157 53.2843 21 45 21C36.7157 21 30 27.7157 30 36C30 44.2843 36.7157 51 45 51Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M21 72C21 63.7157 31.0589 57 45 57C58.9411 57 69 63.7157 69 72" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M45 15V9" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M66.3639 24.5147L70.6066 20.2721" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M72 42H78" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 42H18" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M23.6361 24.5147L19.3934 20.2721" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="helpfor-card helpfor-seniors">
+                        <div class="main-card-content">
+                            <h3>For Seniors</h3>
+                            <p>Scam awareness & safe browsing <span class="arrow-icon">→</span></p>
+                        </div>
+                        <div class="illustration">
+                            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M45 57C55.4934 57 64 48.4934 64 38C64 27.5066 55.4934 19 45 19C34.5066 19 26 27.5066 26 38C26 48.4934 34.5066 57 45 57Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M45 30V38L50 43" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M27.78 18.24L23.4 13.86" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M62.22 18.24L66.6 13.86" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M45 19V11" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M29.1 71.1C33.3 68.4 38.94 66.6 45 66.6C51.06 66.6 56.7 68.4 60.9 71.1" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
 
         <!-- Featured Programs Section -->
         <section class="cyber-featured-section">
@@ -1426,56 +1539,27 @@
     <script src="./assets/js/home.js"></script>
 
     <script>
-        // Wait for DOM to fully load
+        // Animation for text switching
         document.addEventListener('DOMContentLoaded', function() {
-            // The phrases to cycle through
-            const phrases = [
-                'Recognize threats', 
-                'Prevent attacks', 
-                'Protect yourself', 
-                'Report incidents',
-                'Stay informed'
-            ];
-            
-            // Get the container
-            const container = document.querySelector('.animated-words-container');
-            
-            // Clear any existing content
-            container.innerHTML = '';
-            
-            // Create elements for all phrases
-            const textElements = [];
-            
-            // Create all text elements but keep only first one visible
-            phrases.forEach((phrase, index) => {
-                const element = document.createElement('span');
-                element.className = 'animated-word' + (index === 0 ? ' active' : '');
-                element.textContent = phrase;
-                container.appendChild(element);
-                textElements.push(element);
-            });
-            
+            const animatedTexts = document.querySelectorAll('.main-animated-text');
             let currentIndex = 0;
-            let nextIndex = 1;
+            const totalTexts = animatedTexts.length;
             
-            function animateText() {
+            function rotateText() {
                 // Hide current text
-                textElements[currentIndex].classList.remove('active');
+                animatedTexts[currentIndex].classList.remove('visible');
                 
-                // Show next text after a delay
+                // Move to next text or back to beginning
+                currentIndex = (currentIndex + 1) % totalTexts;
+                
+                // Show new text
                 setTimeout(() => {
-                    textElements[nextIndex].classList.add('active');
-                    
-                    // Update indices
-                    currentIndex = nextIndex;
-                    nextIndex = (nextIndex + 1) % phrases.length;
-                }, 600);
+                    animatedTexts[currentIndex].classList.add('visible');
+                }, 500); // Delay to match the transition time
             }
             
-            // Start the animation cycle
-            setInterval(animateText, 3500);
-            
-            console.log('Animation script loaded successfully!');
+            // Change text every 3 seconds
+            setInterval(rotateText, 3000);
         });
     </script>
 
